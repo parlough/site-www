@@ -151,10 +151,6 @@ For information on deploying with Firebase, see the following resources:
 * In the Firebase Hosting documentation,
   [Customize Hosting Behavior](https://firebase.google.com/docs/hosting/url-redirects-rewrites)
   covers redirects, rewrites, and more.
-* The Google I/O 2017 codelab
-  [Build an AngularDart & Firebase Web App](https://codelabs.developers.google.com/codelabs/angulardart-firebase-web-app/)
-  walks through using Firebase for server-side communication,
-  but doesn't include instructions for serving the app.
 
 [build]: /tools/webdev#build
 [build_runner]: /tools/build_runner
