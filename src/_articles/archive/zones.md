@@ -37,12 +37,11 @@ a simple HTTP server
 might use the following code:
 
 {% prettify dart tag=pre+code %}
-[!runZoned(() {!]
-  HttpServer.bind('0.0.0.0', port).then((server) {
+[!runZonedGuarded(() {!]
+  HttpServer.bind('0.0.0.0', 55345).then((server) {
     server.listen(staticFiles.serveRequest);
   });
-[!},
-onError: (e, stackTrace) => print('Oh noes! $e $stackTrace'));!]
+[!}, (error, stackTrace) => print('Oh noes! $error $stackTrace'));!]
 {% endprettify %}
 
 Running the HTTP server in a zone
@@ -63,7 +62,7 @@ Zones make the following tasks possible:
   as shown in the preceding example.
 
 * Associating data—known as
-  <em>zone-local values</em>—with individual zones.
+  _zone-local values_—with individual zones.
 
 * Overriding a limited set of methods,
   such as `print()` and `scheduleMicrotask()`,
@@ -106,19 +105,19 @@ the code executes in 3 different zones:
 <pre>
 import 'dart:async';
 
-<span class="zone1">main() {
+<span class="zone1">void main() {
   foo();
   var future;
   runZoned(() {</span>          // Starts a new child zone (zone #2).
-<span class="zone2">    future = new Future(bar).then(baz);
+<span class="zone2">    future = Future(bar).then(baz);
   </span><span class="zone1">});
   future.then(qux);
 }</span>
 
-foo() => <em><span class="zone1">...foo</span><span class="zone3">-body...</span></em>  // Executed twice (once each in two zones).
-bar() => <em><span class="zone2">...bar-body...</span></em>
-baz(x) => <span class="zone2">runZoned(() =></span> <span class="zone3">foo()</span><span class="zone2">);</span> // New child zone (zone #3).
-qux(x) => <em><span class="zone1">...qux-body...</span></em>
+void foo() => <em><span class="zone1">...foo</span><span class="zone3">-body...</span></em>  // Executed twice (once each in two zones).
+void bar() => <em><span class="zone2">...bar-body...</span></em>
+void baz(x) => <span class="zone2">runZoned(() =></span> <span class="zone3">foo()</span><span class="zone2">);</span> // New child zone (zone #3).
+void qux(x) => <em><span class="zone1">...qux-body...</span></em>
 </pre>
 
 The following figure shows the code's execution order,
@@ -162,21 +161,21 @@ The concept is similar to a try-catch in synchronous code.
 An _uncaught error_ is often caused by some code using `throw`
 to raise an exception that is not handled by a `catch` statement.
 Another way to produce an uncaught error is
-to call `new Future.error()` or
+to call `Future.error()` or
 a Completer's `completeError()` method.
 
-Use the `onError` argument to `runZoned()` to
-install a _zoned error handler_—an asynchronous error handler
+Use second argument to `runZonedGuarded()` to
+specify a _zoned error handler_—an asynchronous error handler
 that's invoked for every uncaught error in the zone.
 For example:
 
 <!-- run_zoned1.dart -->
 {% prettify dart tag=pre+code %}
-runZoned(() {
-  Timer.run(() { throw 'Would normally kill the program'; });
-}, onError: (error, stackTrace) {
-  print('Uncaught error: $error');
-});
+runZonedGuarded(() {
+  Timer.run(() {
+    throw 'Would normally kill the program';
+  });
+}, (error, _) => print('Uncaught error: $error'));
 {% endprettify %}
 
 The preceding code has an asynchronous callback
@@ -216,14 +215,20 @@ can't cross into an error zone.
 
 <!-- run_zoned2.dart -->
 {% prettify dart tag=pre+code %}
-var f = new Future.error(499);
-f = f.whenComplete(() { print('Outside runZoned'); });
-runZoned(() {
-  f = f.whenComplete(() { print('Inside non-error zone'); });
+var f = Future.error(499);
+f = f.whenComplete(() {
+  print('Outside runZoned');
 });
 runZoned(() {
-  f = f.whenComplete(() { print('Inside error zone (not called)'); });
-}, onError: print);
+  f = f.whenComplete(() {
+  print('Inside non-error zone');
+  });
+});
+runZonedGuarded(() {
+  f = f.whenComplete(() {
+    print('Inside error zone (not called)');
+  });
+}, (error, _) => print(error));
 {% endprettify %}
 
 Here's the output you see if you run the example:
@@ -231,21 +236,19 @@ Here's the output you see if you run the example:
 {% prettify xml tag=pre+code %}
 Outside runZoned
 Inside non-error zone
-Uncaught Error: 499
 Unhandled exception:
 499
 ...stack trace...
 {% endprettify %}
 
 If you remove the calls to `runZoned()` or
-remove the `onError` argument,
+replace the `runZonedGuarded()` call with `runZoned()`,
 you see this output:
 
 {% prettify xml tag=pre+code %}
 Outside runZoned
 Inside non-error zone
 [!Inside error zone (not called)!]
-Uncaught Error: 499
 Unhandled exception:
 499
 ...stack trace...
@@ -268,15 +271,15 @@ Consider this example:
 
 <!-- run_zoned3.dart -->
 {% prettify dart tag=pre+code %}
-var completer = new Completer();
-var future = completer.future.then((x) => x + 1);
+final completer = Completer();
+final future = completer.future.then((x) => x + 1);
 var zoneFuture;
-runZoned(() {
+runZonedGuarded(() {
   zoneFuture = future.then((y) => throw 'Inside zone');
-}, onError: (error) {
-  print('Caught: $error');
+}, (error, _) => print('Caught: $error'));
+zoneFuture.catchError((e) {
+  print('Never reached');
 });
-zoneFuture.catchError((e) { print('Never reached'); });
 completer.complete(499);
 {% endprettify %}
 
@@ -304,19 +307,21 @@ which aren't evaluated until you ask for values.
 
 ### Example: Using a stream with runZoned()
 
-Here is an example of using a stream with `runZoned()`:
+Here is an example of using a stream with `runZonedGuarded()`:
 
 <!-- stream.dart -->
 {% prettify dart tag=pre+code %}
-var stream = new File('stream.dart').openRead()
-    .map((x) => throw 'Callback throws');
-
-runZoned(() { stream.listen(print); },
-         onError: (e) { print('Caught error: $e'); });
+final stream =
+    File('stream.dart').openRead().map((x) => throw 'Callback throws');
+runZonedGuarded(() {
+  stream.listen(print);
+}, (error, _) {
+  print('Caught error: $error');
+});
 {% endprettify %}
 
 The exception thrown by the callback
-is caught by the error handler of `runZoned()`.
+is caught by the error handler of `runZonedGuarded()`.
 Here's the output:
 
 {% prettify xml tag=pre+code %}
@@ -391,20 +396,23 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-Future splitLinesStream(stream) {
+Future<List<String>> splitLinesStream(Stream<List<int>> stream) {
   return stream
-      .transform(ASCII.decoder)
+      .transform(ascii.decoder)
       .transform(const LineSplitter())
       .toList();
 }
 
-Future splitLines(filename) {
-  return splitLinesStream(new File(filename).openRead());
+Future<List<String>> splitLines(filename) {
+  return splitLinesStream(File(filename).openRead());
 }
-main() {
-  Future.forEach(['foo.txt', 'bar.txt'],
-                 (file) => splitLines(file)
-                     .then((lines) { lines.forEach(print); }));
+
+void main() {
+  Future.forEach(
+      const ['foo.txt', 'bar.txt'],
+      (file) => splitLines(file).then((lines) {
+      lines.forEach(print);
+}));
 }
 {% endprettify %}
 
@@ -421,24 +429,26 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-Future splitLinesStream(stream) {
+Future<List<String>> splitLinesStream(Stream<List<int>> stream) {
   return stream
-      .transform(ASCII.decoder)
+      .transform(ascii.decoder)
       .transform(const LineSplitter())
 [!      .map((line) => '${Zone.current[#filename]}: $line')!]
       .toList();
 }
 
-Future splitLines(filename) {
+Future<List<String>> splitLines(filename) {
 [!  return runZoned(() {!]
-    return splitLinesStream(new File(filename).openRead());
-[!  }, zoneValues: { #filename: filename });!]
+    return splitLinesStream(File(filename).openRead());
+[!  }, zoneValues: {#filename: filename});!]
 }
 
-main() {
-  Future.forEach(['foo.txt', 'bar.txt'],
-                 (file) => splitLines(file)
-                     .then((lines) { lines.forEach(print); }));
+void main() {
+  Future.forEach<String>(
+      const ['foo.txt', 'bar.txt'],
+      (file) => splitLines(file).then((lines) {
+          lines.forEach(print);
+        }));
 }
 {% endprettify %}
 
@@ -451,7 +461,7 @@ that works in asynchronous contexts.
 
 ## Overriding functionality
 
-Use the `zoneSpecification` argument to `runZoned()`
+Use the `zoneSpecification` argument to `runZoned()` or `runZonedGuarded()`
 to override functionality that is managed by zones.
 The argument's value is a
 [ZoneSpecification]({{site.dart_api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/ZoneSpecification-class.html) object,
@@ -461,7 +471,6 @@ with which you can override any of the following functionality:
 * Registering and running callbacks in the zone
 * Scheduling microtasks and timers
 * Handling uncaught asynchronous errors
-  (`onError` is a shortcut for this)
 * Printing
 
 ### Example: Overriding print
@@ -576,21 +585,12 @@ and stopping the timer whenever the zone is left.
 Providing `run*` parameters to the ZoneSpecification
 lets you specify the code that the zone executes.
 
-{{site.alert.info}}
-  **API note:**
-  In the future, zones might provide a simpler alternative
-  for the common case of sandwiching zone code:
-  an onEnter/onLeave API.
-  See [issue 17532](https://github.com/dart-lang/sdk/issues/17532)
-  for details.
-{{site.alert.end}}
-
 The `run*` parameters—`run`, `runUnary`, and `runBinary`—specify
 code to execute every time the zone is asked to execute code.
 These parameters work for zero-argument, one-argument,
 and two-argument callbacks, respectively.
 The `run` parameter also works for the initial, synchronous code
-that executes just after calling `runZoned()`.
+that is executed immediately after calling `runZoned()` in the zone's `body`
 
 Here's an example of profiling code using `run*`:
 
