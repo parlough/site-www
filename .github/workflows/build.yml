@@ -47,7 +47,7 @@ jobs:
           # submodules param for checkout action to get site-shared, 'true' might be enough
           submodules: "recursive"
       - run: mkdir -p $TMP
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: 14
       - uses: ruby/setup-ruby@v1
@@ -94,7 +94,7 @@ jobs:
           # submodules param for checkout action to get site-shared, 'true' might be enough
           submodules: "recursive"
       - run: mkdir -p $TMP
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: 14
       - uses: ruby/setup-ruby@v1
@@ -125,7 +125,7 @@ jobs:
           # submodules param for checkout action to get site-shared, 'true' might be enough
           submodules: "recursive"
       - run: mkdir -p $TMP
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version: 14
       - uses: ruby/setup-ruby@v1
