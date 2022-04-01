@@ -42,7 +42,7 @@ jobs:
             task: ./tool/analyze-and-test-examples.sh
             experimental: false
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           # submodules param for checkout action to get site-shared, 'true' might be enough
           submodules: "recursive"
@@ -74,7 +74,7 @@ jobs:
 #      github.event_name == 'push'
 #      && github.ref == 'refs/heads/master'
 #    steps:
-#      - uses: actions/checkout@v2
+#      - uses: actions/checkout@v3
 #      - run: mkdir -p $TMP
 #      - uses: dart-lang/setup-dart@v1.3
 #        with:
@@ -89,7 +89,7 @@ jobs:
       && github.ref == 'refs/heads/master'
       && github.repository == 'dart-lang/site-www'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           # submodules param for checkout action to get site-shared, 'true' might be enough
           submodules: "recursive"
@@ -120,7 +120,7 @@ jobs:
     runs-on: ubuntu-latest
     if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
           # submodules param for checkout action to get site-shared, 'true' might be enough
           submodules: "recursive"
