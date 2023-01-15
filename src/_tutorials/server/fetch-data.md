@@ -4,30 +4,29 @@ description: Fetch data over the internet using the http package.
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 
-{{site.why.start}}
-  <h4>What you'll learn</h4>
-  {: .no_toc}
-
+{{site.why.learn}}
   * The basics of what HTTP requests and URIs are and what they are used for.
   * Making HTTP requests using `package:http`.
-  * Decoding JSON into class-based structures.
+  * Decoding JSON strings into Dart objects with `dart:convert`.
+  * Converting JSON objects into class-based structures.
 {{site.why.end}}
 
 ## URIs and HTTP requests
 
+### HTTP requests
 
-### Uris
+### URIs
 
 To make an HTTP request,
 you need to provide a URI (Uniform Resource Identifier) for the resource.
-A URI is a character stirng that uniquely identifies a reosurce.
+A URI is a character string that uniquely identifies a resource.
 A URL (Uniform Resource Locator) is a specific kind of URI
 that also provides the location of the resource.
 URLs for resources on the web contain three pieces of information:
 
-* The protocol used for communication (https)
+* The scheme used for determining the protocol used (https)
 * The hostname of the server (dart.dev)
-* The path to the resourcec (/tutorials/server/fetch-data)
+* The path to the resource (/tutorials/server/fetch-data.html)
 
 ## Retrieve the necessary dependencies
 
@@ -175,7 +174,7 @@ Now that you've retrieved data and
 converted it to a more easily accessible format,
 you can use it however you'd like.
 Some possibilities include
-outputing information to a CLI, or
+outputting information to a CLI, or
 displaying it in a [web][] or [Flutter][] app.
 
 Here is complete, runnable example
