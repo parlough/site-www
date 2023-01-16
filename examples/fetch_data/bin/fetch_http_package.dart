@@ -26,14 +26,14 @@ Future<PackageInfo?> getPackage(String packageName) async {
   final packageUrl = Uri.https('dart.dev/f/packages', '/$packageName.json');
   final packageResponse = await http.get(packageUrl);
 
-  if (packageResponse.statusCode == 200) {
-    final packageJson =
-        json.decode(packageResponse.body) as Map<String, dynamic>;
-
-    return PackageInfo.fromJson(packageJson);
-  } else {
+  // If the request didn't succeed, return null
+  if (packageResponse.statusCode != 200) {
     return null;
   }
+
+  final packageJson = json.decode(packageResponse.body) as Map<String, dynamic>;
+
+  return PackageInfo.fromJson(packageJson);
 }
 // #enddocregion get-package
 

@@ -108,7 +108,7 @@ create one is a common solution.
 
 The following snippet shows two ways
 to create a `Uri` object
-pointing to fake JSON-formatted information
+pointing to mock JSON-formatted information
 about `package:http` hosted on this site:
 
 <?code-excerpt "lib/fetch_data.dart (build-uris)"?>
@@ -133,7 +133,7 @@ of a requested resource,
 you can use the top-level [`read`][http-read]
 function found in `package:http`.
 The following example uses `read` to
-retrieve the fake JSON-formatted information
+retrieve the mock JSON-formatted information
 about `package:http` as a string,
 then prints it out:
 
@@ -148,7 +148,7 @@ void main() async {
 
 This results in the following JSON-formatted output,
 which can also be seen in your browser at
-[https://dart.dev/f/packages/http.json][fake-http-json].
+[https://dart.dev/f/packages/http.json][mock-http-json].
 
 ```json
 {
@@ -186,7 +186,7 @@ of the key-value pairs to the `headers` optional named parameter:
 ```
 
 [http-read]: {{site.pub-api}}/http/latest/http/read.html
-[fake-http-json]: /f/packages/http.json
+[mock-http-json]: /f/packages/http.json
 [`Future`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
 [status code]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 [headers]: https://developer.mozilla.org/docs/Web/HTTP/Headers
@@ -263,9 +263,9 @@ you can use Dart's built-in [`json.decode`][decode-docs] function
 in the `dart:convert` library
 to convert the raw string into
 a JSON representation using Dart objects.
-In this case, our JSON data is represented in a map structure
+In this case, the JSON data is represented in a map structure
 and in JSON, map keys are always strings,
-so we can cast the result of `json.decode` to a `Map<String, dynamic>`:
+so you can cast the result of `json.decode` to a `Map<String, dynamic>`:
 
 <?code-excerpt "lib/fetch_data.dart (json-decode)" plaster="none" replace="/decodeMain/main/g"?>
 ```dart
@@ -284,6 +284,18 @@ void main() async {
 [decode-docs]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/JsonCodec/decode.html
 
 ### Create a class to store the data
+
+To provide the decoded JSON with more structure,
+making it easier to work with,
+you can create a class which can store the 
+retrieved data using specific types depending
+on the schema of your data.
+
+The following snippets shows a class-based representation
+which can store the package information returned
+from the mock JSON file you requested.
+This structure assumes all fields except the `repository` 
+are required and provided every time.
 
 <?code-excerpt "bin/fetch_http_package.dart (package-info)" plaster="none"?>
 ```dart
@@ -308,11 +320,13 @@ class PackageInfo {
 
 Now that you have a class to store your data in,
 you need to add a mechanism to convert
-the decoded JSON into your `PackageInfo` object.
+the decoded JSON into a `PackageInfo` object.
 
 Convert the decoded JSON
 by manually writing a `fromJson` method
-matching the earlier JSON format:
+matching the earlier JSON format,
+casting types as necessary
+and handling the optional `repository` field:
 
 <?code-excerpt "bin/fetch_http_package.dart (from-json)"?>
 ```dart
@@ -334,16 +348,29 @@ class PackageInfo {
 ```
 
 A handwritten method, such as used here,
-might be sufficient for relatively simple APIs,
-but there other options.
-To learn more about JSON serialization,
-including automatic generation of JSON serialization logic,
+is often sufficient for relatively simple JSON structures,
+but there are more flexible options as well.
+To learn more about JSON serialization and deserialization,
+including automatic generation of the conversion logic,
 see the [Using JSON][] guide.
+
+[Using JSON]: /guides/json
 
 ### Convert the response to a `PackageInfo` object
 
-To learn more about JSON and parsing it,
-see the [Using JSON][] guide.
+Now you have a class to store your data
+and a way to convert the decoded JSON object
+into an object of that type.
+Next you can write a function which 
+puts everything to together:
+
+1. Create your `URI` based off a passed-in package name.
+2. Use `http.get` to retrieve the data for that package.
+3. If the request didn't succeed, return null.
+4. If the request succeeded, use `json.decode` to
+   decode the response body into a JSON string.
+5. Converted the decoded JSON string into a `PackageInfo` object
+   using the `PackageInfo.fromJson` factory constructor you created.
 
 <?code-excerpt "bin/fetch_http_package.dart (get-package)"?>
 ```dart
@@ -351,18 +378,16 @@ Future<PackageInfo?> getPackage(String packageName) async {
   final packageUrl = Uri.https('dart.dev/f/packages', '/$packageName.json');
   final packageResponse = await http.get(packageUrl);
 
-  if (packageResponse.statusCode == 200) {
-    final packageJson =
-        json.decode(packageResponse.body) as Map<String, dynamic>;
-
-    return PackageInfo.fromJson(packageJson);
-  } else {
+  // If the request didn't succeed, return null
+  if (packageResponse.statusCode != 200) {
     return null;
   }
+
+  final packageJson = json.decode(packageResponse.body) as Map<String, dynamic>;
+
+  return PackageInfo.fromJson(packageJson);
 }
 ```
-
-[Using JSON]: /guides/json
 
 ## Utilize the parsed data
 
@@ -374,7 +399,7 @@ outputting information to a CLI, or
 displaying it in a [web][] or [Flutter][] app.
 
 Here is complete, runnable example
-which requests, then displays
+which requests, decodes, then displays
 the mock information about the `http` package:
 
 <?code-excerpt "bin/fetch_http_package.dart"?>
@@ -406,14 +431,14 @@ Future<PackageInfo?> getPackage(String packageName) async {
   final packageUrl = Uri.https('dart.dev/f/packages', '/$packageName.json');
   final packageResponse = await http.get(packageUrl);
 
-  if (packageResponse.statusCode == 200) {
-    final packageJson =
-        json.decode(packageResponse.body) as Map<String, dynamic>;
-
-    return PackageInfo.fromJson(packageJson);
-  } else {
+  // If the request didn't succeed, return null
+  if (packageResponse.statusCode != 200) {
     return null;
   }
+
+  final packageJson = json.decode(packageResponse.body) as Map<String, dynamic>;
+
+  return PackageInfo.fromJson(packageJson);
 }
 
 class PackageInfo {
