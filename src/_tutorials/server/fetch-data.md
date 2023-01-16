@@ -115,7 +115,9 @@ void readMain() async {
 }
 ```
 
-This results in the following JSON-formatted output:
+This results in the following JSON-formatted output,
+which can also be seen in your browser at
+[https://dart.dev/f/packages/http.json][fake-http-json].
 
 ```json
 {
@@ -153,6 +155,7 @@ of the key-value pairs to the `headers` optional named parameter:
 ```
 
 [http-read]: {{site.pub-api}}/http/latest/http/read.html
+[fake-http-json]: /f/packages/http.json
 [`Future`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
 [status code]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 [headers]: https://developer.mozilla.org/docs/Web/HTTP/Headers
