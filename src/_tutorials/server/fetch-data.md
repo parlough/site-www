@@ -133,14 +133,14 @@ of a requested resource,
 you can use the top-level [`read`][http-read]
 function found in `package:http`
 which returns a `Future<String>` or throws
-a [`ClientException`][http-client-exc] if the request wasn't successful. 
+a [`ClientException`][http-client-exc] if the request wasn't successful.
 The following example uses `read` to
 retrieve the mock JSON-formatted information
 about `package:http` as a string,
 then prints it out:
 
 {{site.alert.info}}
-  Many methods in `package:http`, including `read`, 
+  Many methods in `package:http`, including `read`,
   access the network and perform potentially time-consuming operations,
   therefore they do so asynchronously and return a [`Future`][].
   If you haven't encountered futures yet,
@@ -176,7 +176,7 @@ such as the [status code][] or the [headers][],
 you can instead use the top-level [`get`][http-get] function
 which returns a `Future` with a [`Response`][http-response].
 
-The following snippet uses `get` in order to 
+The following snippet uses `get` in order to
 exit early if the request was not successful,
 which is indicated with a status code of **200**:
 
@@ -314,14 +314,14 @@ void main() async {
 
 To provide the decoded JSON with more structure,
 making it easier to work with,
-you can create a class which can store the 
+you can create a class which can store the
 retrieved data using specific types depending
 on the schema of your data.
 
 The following snippets shows a class-based representation
 which can store the package information returned
 from the mock JSON file you requested.
-This structure assumes all fields except the `repository` 
+This structure assumes all fields except the `repository`
 are required and provided every time.
 
 <?code-excerpt "bin/fetch_http_package.dart (package-info)" plaster="none"?>
@@ -388,7 +388,7 @@ see the [Using JSON][] guide.
 Now you have a class to store your data
 and a way to convert the decoded JSON object
 into an object of that type.
-Next you can write a function which 
+Next you can write a function which
 puts everything to together:
 
 1. Create your `URI` based off a passed-in package name.
