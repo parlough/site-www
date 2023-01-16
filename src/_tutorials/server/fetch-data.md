@@ -13,9 +13,40 @@ js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
   * Converting JSON objects into class-based structures.
 {{site.why.end}}
 
-## URIs and HTTP requests
+Most applications require some form of communication or
+data retrieval from the internet.
+Many apps do so through HTTP requests,
+which are sent from a client to a server
+to perform a specific action for a resource
+specified through a [URI][] (Uniform Resource Identifier).
+
+The data communicated over HTTP can technically be in any form,
+but using [JSON][] (JavaScript Object Notation),
+is a popular choice,
+particularly due to its great support on the web.
+The Dart SDK and ecosystem also have extensive support for JSON
+with multiple options to best meet your app's requirements.
+
+In this tutorial,
+you will learn more about HTTP requests, URIs, and JSON.
+Then you will learn how to use [`package:http`][http-pub]
+and Dart's JSON in the [`dart:convert`][convert-docs] library
+to fetch, decode, then use JSON-formatted data
+retrieved from an HTTP server.
+
+[URI]: https://wikipedia.org/wiki/Uniform_Resource_Identifier
+[JSON]: https://www.json.org/json-en.html
+
+## HTTP requests, JSON, and URIs
+
+### JSON
 
 ### HTTP requests
+
+To learn more details about the HTTP protocol,
+check out [An overview of HTTP][] on the mdn web docs.
+
+[An overview of HTTP]: https://developer.mozilla.org/docs/Web/HTTP/Overview
 
 ### URIs
 
@@ -410,5 +441,6 @@ to prevent your interface from becoming unresponsive.
 [Concurrency in Dart]: /guides/language/concurrency
 [isolate]: /guides/language/concurrency#how-isolates-work
 
+[convert-docs]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
 [http-pub]: https://pub.dev/packages/http
 [http-docs]: https://pub.dev/documentation/http
