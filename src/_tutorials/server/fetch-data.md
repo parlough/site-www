@@ -51,6 +51,10 @@ import it and optionally [specify a library prefix][]:
 import 'package:http/http.dart' as http;
 ```
 
+To learn more specifics about `package:http`,
+see its [page on the pub.dev site][http-pub]
+and its [API documentation][http-docs].
+
 [`dart pub add`]: /tools/pub/cmd/pub-add
 [specify a library prefix]: /guides/language/language-tour#specifying-a-library-prefix
 
@@ -68,58 +72,142 @@ but due to its flexibility,
 parsing a string with `Uri.parse` to
 create one is a common solution.
 
-The following snippet creates a `Uri` object
-pointing to the JSON-formatted information
-about `package:http` from the [pub.dev site][].
+The following snippet shows two ways
+to create a `Uri` object
+pointing to fake JSON-formatted information
+about `package:http` hosted on this site:
 
 ```dart
-Uri.parse('https://pub.dev/api/packages/http');
+// Parse the entire URI, including the scheme
+Uri.parse('https://dart.dev/f/packages/http.json');
+
+// Specifically create a URI with the https scheme
+Uri.https('dart.dev/f/packages', '/http.json');
 ```
 
 To learn about other ways of building and interacting with URIs,
 see the [library tour's discussion about URIs][library-tour-uri].
 
-[pub.dev site]: {{site.pub}}
 [`Uri`]: {{site.dart-api}}/dart-core/Uri-class.html
 [library-tour-uri]: /guides/libraries/library-tour#uris
 
 ## Make a network request
 
-If you just need the body of the response,
-you can use the top-level `read` function.
+If you just need to quickly get a string representation
+of a requested resource,
+you can use the top-level [`read`][http-read]
+function found in `package:http`.
+The following example uses `read` to
+retrieve mock information about `package:http` as a string,
+then prints it out:
 
 ```dart
+import 'package:http/http.dart' as http;
+
+void main() async {
+  final httpPackageUrl = Uri.https('dart.dev/f/packages/http.json');
+  final httpPackageInfo = await http.read(httpPackageUrl);
+  print(httpPackageInfo);
+}
 ```
+
+This results in the following JSON-formatted output:
+
+```json
+{
+  "name": "http",
+  "latestVersion": "0.13.5",
+  "description": "A composable, multi-platform, Future-based API for HTTP requests.",
+  "publisher": "dart.dev",
+  "repository": "https://github.com/dart-lang/http"
+}
+```
+
+{{site.alert.info}}
+  Many methods in `package:http` access the network and
+  perform potentially time-consuming operations,
+  therefore they do so asynchronously and return a [`Future`][].
+  If you haven't encountered futures yet,
+  you can learn about them—as well as the `async` and `await` keywords—in the
+  [asynchronous programming codelab](/codelabs/async-await).
+{{site.alert.end}}
 
 If you need other information from the response,
-such as the `statusCode` or the `headers`,
-you can instead use the top-level `get` function.
-
-If the endpoint you are requesting from requires more information,
-it often requires you to include [HTTP headers][].
-You can specify headers by passing in a `Map<String, String>`
-of the key-value pairs to the `headers` optional named parameter.
+such as the [status code][] or the [headers][],
+you can instead use the top-level [`get`][http-get] function
+which returns a `Future` with a [`Response`][http-response]:
 
 ```dart
 ```
 
-[HTTP headers]: https://developer.mozilla.org/docs/Web/HTTP/Headers
+If the endpoint you are requesting from requires more information,
+it often requires you to include [HTTP headers][headers].
+You can specify headers by passing in a `Map<String, String>`
+of the key-value pairs to the `headers` optional named parameter:
+
+```dart
+```
+
+[http-read]: {{site.pub-api}}/http/latest/http/read.html
+[`Future`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
+[status code]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+[headers]: https://developer.mozilla.org/docs/Web/HTTP/Headers
+[http-get]: {{site.pub-api}}/http/latest/http/get.html
+[http-response]: {{site.pub-api}}/http/latest/http/Response-class.html
 
 ### Make multiple requests
 
 If you're making multiple requests to the same server,
 you can instead keep a persistent connection
-through a `Client`,
+through a [`Client`][http-client],
+which has similar methods to the top-level ones,
 and close it when done.
 
 ```dart
+import 'package:http/http.dart' as http;
+import 'package:http/retry.dart';
+
+Future<void> main() async {
+  final client = RetryClient(http.Client());
+  try {
+    print(await client.read(Uri.https('dart.dev/f/packages', '/http.json')));
+  } finally {
+    client.close();
+  }
+}
 ```
 
 To enable the client to retry failed requests,
-wrap your created `Client` in a `RetryClient`:
+wrap your created `Client` in a [`RetryClient`][http-retry-client]:
 
 ```dart
+import 'package:http/http.dart' as http;
+import 'package:http/retry.dart';
+
+Future<void> main() async {
+  final client = [!RetryClient(http.Client())!];
+  try {
+    print(await client.read(Uri.https('dart.dev/f/packages', '/http.json')));
+  } finally {
+    client.close();
+  }
+}
 ```
+
+The `RetryClient` has a default behavior
+for how many times to retry and how long between each request,
+but its behavior can be modified through parameters
+to the [`RetryClient()`][http-retry-client-cons]
+or [`RetryClient.withDelays()`][http-retry-client-delay] constructors.
+
+`package:http` has much more functionality and customization,
+so make sure to check out its [page on the pub.dev site][http-pub]
+and its [API documentation][http-docs].
+
+[http-client]: {{site.pub-api}}/http/latest/http/Client-class.html
+[http-retry-client]: {{site.pub-api}}/http/latest/retry/RetryClient-class.html
+[http-retry-client-cons]: {{site.pub-api}}/http/latest/retry/RetryClient/RetryClient.html
+[http-retry-client-delay]: {{site.pub-api}}/http/latest/retry/RetryClient/RetryClient.withDelays.html
 
 ## Decode the retrieved data
 
@@ -129,11 +217,21 @@ you can utilize that data.
 
 ### Create a class to store the data
 
-
 ```dart
-class PackageVersion {
-    final String name;
+class PackageInfo {
+  final String name;
+  final String latestVersion;
+  final String description;
+  final String publisher;
+  final Uri? repository;
 
+  PackageInfo({
+    required this.name,
+    required this.latestVersion,
+    required this.description,
+    required this.publisher,
+    this.repository,
+  });
 }
 ```
 
@@ -141,16 +239,27 @@ class PackageVersion {
 
 Now that you have a class to store your data in,
 you need to add a mechanism to convert
-the decoded JSON into your `PackageVersion` object.
+the decoded JSON into your `PackageInfo` object.
 
 Convert the decoded JSON
 by manually writing a `fromJson` method
 matching the earlier JSON format:
 
 ```dart
-class PackageVersion {
-    final String name;
+class PackageInfo {
+  // ...
 
+  factory PackageInfo.fromJson(Map<String, dynamic> json) {
+    final repository = json['repository'] as String?;
+
+    return PackageInfo(
+      name: json['name'] as String,
+      latestVersion: json['latestVersion'] as String,
+      description: json['description'] as String,
+      publisher: json['publisher'] as String,
+      repository: repository != null ? Uri.tryParse(repository) : null,
+    );
+  }
 }
 ```
 
@@ -161,7 +270,7 @@ To learn more about JSON serialization,
 including automatic generation of JSON serialization logic,
 see the [Using JSON][] guide.
 
-### Convert the response to a `Package` object
+### Convert the response to a `PackageInfo` object
 
 To learn more about JSON and parsing it,
 see the [Using JSON][] guide.
@@ -182,30 +291,91 @@ which requests, then displays information
 about the latest `package:http` release
 to the console:
 
-```dart
-void main() {
+```dart:run-dartpad:ga_id-fetch-data-complete
+import 'dart:convert';
 
+import 'package:http/http.dart' as http;
+
+void main() async {
+  final httpPackage = await getPackage('http');
+
+  if (httpPackage == null) {
+    print('Failed to retrieve information about the http package!');
+    return;
+  }
+
+  print('Information about the http package:');
+  print('Latest version: ${httpPackage.latestVersion}');
+  print('Description: ${httpPackage.description}');
+  print('Publisher: ${httpPackage.publisher}');
+
+  final httpRepository = httpPackage.repository;
+  if (httpRepository != null) {
+    print('Repository: ${httpPackage.repository}');
+  }
 }
 
-Future<PackageInfo> requestPackageInfo(String package, String version) async {
+Future<PackageInfo?> getPackage(String packageName) async {
+  final packageUrl = Uri.https('dart.dev/f/packages', '/$packageName.json');
+  final packageResponse = await http.get(packageUrl);
 
+  if (packageResponse.statusCode == 200) {
+    final packageJson = jsonDecode(packageResponse.body);
+
+    return PackageInfo.fromJson(packageJson);
+  } else {
+    return null;
+  }
 }
 
 class PackageInfo {
+  final String name;
+  final String latestVersion;
+  final String description;
+  final String publisher;
+  final Uri? repository;
 
+  PackageInfo({
+    required this.name,
+    required this.latestVersion,
+    required this.description,
+    required this.publisher,
+    this.repository,
+  });
+
+  factory PackageInfo.fromJson(Map<String, dynamic> json) {
+    final repository = json['repository'] as String?;
+
+    return PackageInfo(
+      name: json['name'] as String,
+      latestVersion: json['latestVersion'] as String,
+      description: json['description'] as String,
+      publisher: json['publisher'] as String,
+      repository: repository != null ? Uri.tryParse(repository) : null,
+    );
+  }
 }
 ```
 
+For another example that covers fetching then displaying data in Flutter,
+see the [Fetching data from the internet][] Flutter cookbook.
+
 [web]: /web
 [Flutter]: {{site.flutter}}
+[Fetching data from the internet]: {{site.flutter-docs}}/cookbook/networking/fetch-data
 
 ## What next?
 
-Now that you've retrieved and parsed the data,
-you can do a lot more than just print it out.
-One common use case is displaying the retrieved data
-within a web or Flutter application.
-To learn more about integrating retrieved data into a Flutter app,
-see Flutter's [Fetching data from the internet][] documentation.
+Now that you have retrieved, parsed, and utilized
+data from the internet,
+consider learning more about [Concurrency in Dart][].
+If your data is large and complex,
+you can move retrieval and decoding
+to another [isolate][] as a background worker
+to prevent your interface from becoming unresponsive.
 
-[Fetching data from the internet]: {{site.flutter-docs}}/cookbook/networking/fetch-data
+[Concurrency in Dart]: /guides/language/concurrency
+[isolate]: /guides/language/concurrency#how-isolates-work
+
+[http-pub]: https://pub.dev/packages/http
+[http-docs]: https://pub.dev/documentation/http
