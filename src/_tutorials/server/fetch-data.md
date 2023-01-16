@@ -173,9 +173,9 @@ and close it when done.
 <?code-excerpt "lib/fetch_data.dart (http-client)" replace="/clientMain/main/g"?>
 ```dart
 void main() async {
+  final httpPackageUrl = Uri.https('dart.dev/f/packages', '/http.json');
   final client = http.Client();
   try {
-    final httpPackageUrl = Uri.https('dart.dev/f/packages', '/http.json');
     final httpPackageInfo = await client.read(httpPackageUrl);
     print(httpPackageInfo);
   } finally {
@@ -194,9 +194,9 @@ import 'package:http/http.dart' as http;
 [!import 'package:http/retry.dart';!]
 
 void main() async {
+  final httpPackageUrl = Uri.https('dart.dev/f/packages', '/http.json');
   final client = [!RetryClient(http.Client())!];
   try {
-    final httpPackageUrl = Uri.https('dart.dev/f/packages', '/http.json');
     final httpPackageInfo = await client.read(httpPackageUrl);
     print(httpPackageInfo);
   } finally {
@@ -287,6 +287,23 @@ see the [Using JSON][] guide.
 
 To learn more about JSON and parsing it,
 see the [Using JSON][] guide.
+
+<?code-excerpt "bin/fetch_http_package.dart (get-package)"?>
+```dart
+Future<PackageInfo?> getPackage(String packageName) async {
+  final packageUrl = Uri.https('dart.dev/f/packages', '/$packageName.json');
+  final packageResponse = await http.get(packageUrl);
+
+  if (packageResponse.statusCode == 200) {
+    final packageJson =
+        jsonDecode(packageResponse.body) as Map<String, dynamic>;
+
+    return PackageInfo.fromJson(packageJson);
+  } else {
+    return null;
+  }
+}
+```
 
 [Using JSON]: /guides/json
 

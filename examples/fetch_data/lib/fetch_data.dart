@@ -25,9 +25,9 @@ void readMain() async {
 
 // #docregion http-client
 void clientMain() async {
+  final httpPackageUrl = Uri.https('dart.dev/f/packages', '/http.json');
   final client = http.Client();
   try {
-    final httpPackageUrl = Uri.https('dart.dev/f/packages', '/http.json');
     final httpPackageInfo = await client.read(httpPackageUrl);
     print(httpPackageInfo);
   } finally {
@@ -38,9 +38,9 @@ void clientMain() async {
 
 // #docregion http-retry
 void retryMain() async {
+  final httpPackageUrl = Uri.https('dart.dev/f/packages', '/http.json');
   final client = RetryClient(http.Client());
   try {
-    final httpPackageUrl = Uri.https('dart.dev/f/packages', '/http.json');
     final httpPackageInfo = await client.read(httpPackageUrl);
     print(httpPackageInfo);
   } finally {

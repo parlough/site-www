@@ -21,6 +21,7 @@ void main() async {
   }
 }
 
+// #docregion get-package
 Future<PackageInfo?> getPackage(String packageName) async {
   final packageUrl = Uri.https('dart.dev/f/packages', '/$packageName.json');
   final packageResponse = await http.get(packageUrl);
@@ -34,6 +35,7 @@ Future<PackageInfo?> getPackage(String packageName) async {
     return null;
   }
 }
+// #enddocregion get-package
 
 // #docregion package-info, from-json
 class PackageInfo {
