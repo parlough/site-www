@@ -144,7 +144,7 @@ you need to add a mechanism to convert
 the decoded JSON into your `PackageVersion` object.
 
 Convert the decoded JSON
-by manually writing writing a `fromJson` method
+by manually writing a `fromJson` method
 matching the earlier JSON format:
 
 ```dart
@@ -154,7 +154,7 @@ class PackageVersion {
 }
 ```
 
-A hand-written method, such as used here,
+A handwritten method, such as used here,
 might be sufficient for relatively simple APIs,
 but there other options.
 To learn more about JSON serialization,
