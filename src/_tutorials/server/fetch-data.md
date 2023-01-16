@@ -185,7 +185,7 @@ void main() async {
 ```
 
 To enable the client to retry failed requests,
-import 'package:http/retry.dart' and
+import `package:http/retry.dart` and
 wrap your created `Client` in a [`RetryClient`][http-retry-client]:
 
 <?code-excerpt "lib/fetch_data.dart (http-retry)" plaster="none" replace="/retryMain/main/g; /(i.*?retry.*)/[!$1!]/g; /(Retry.*?\)\))/[!$1!]/g"?>
