@@ -26,6 +26,25 @@ void readMain() async {
 }
 // #enddocregion http-read
 
+// #docregion http-get
+void getMain() async {
+  final httpPackageUrl = Uri.https('dart.dev/f/packages', '/http.json');
+  final httpPackageResponse = await http.get(httpPackageUrl);
+  if (httpPackageResponse.statusCode != 200) {
+    print('Failed to retrieve the http package!');
+    return;
+  }
+  print(httpPackageResponse.body);
+}
+// #enddocregion http-get
+
+void headers() async {
+  // #docregion http-headers
+  await http.get(Uri.https('dart.dev/f/packages', '/http.json'),
+      headers: {'User-Agent': '<product name>/<product-version>'});
+  // #enddocregion http-headers
+}
+
 // #docregion json-decode
 
 void decodeMain() async {

@@ -131,11 +131,22 @@ see the [library tour's discussion about URIs][library-tour-uri].
 If you just need to quickly get a string representation
 of a requested resource,
 you can use the top-level [`read`][http-read]
-function found in `package:http`.
+function found in `package:http`
+which returns a `Future<String>` or throws
+a [`ClientException`][http-client-exc] if the request wasn't successful. 
 The following example uses `read` to
 retrieve the mock JSON-formatted information
 about `package:http` as a string,
 then prints it out:
+
+{{site.alert.info}}
+  Many methods in `package:http`, including `read`, 
+  access the network and perform potentially time-consuming operations,
+  therefore they do so asynchronously and return a [`Future`][].
+  If you haven't encountered futures yet,
+  you can learn about them—as well as the `async` and `await` keywords—in the
+  [asynchronous programming codelab](/codelabs/async-await).
+{{site.alert.end}}
 
 <?code-excerpt "lib/fetch_data.dart (http-read)" replace="/readMain/main/g"?>
 ```dart
@@ -158,34 +169,44 @@ which can also be seen in your browser at
   "publisher": "dart.dev",
   "repository": "https://github.com/dart-lang/http"
 }
-```
-
-{{site.alert.info}}
-  Many methods in `package:http` access the network and
-  perform potentially time-consuming operations,
-  therefore they do so asynchronously and return a [`Future`][].
-  If you haven't encountered futures yet,
-  you can learn about them—as well as the `async` and `await` keywords—in the
-  [asynchronous programming codelab](/codelabs/async-await).
-{{site.alert.end}}
+```  
 
 If you need other information from the response,
 such as the [status code][] or the [headers][],
 you can instead use the top-level [`get`][http-get] function
-which returns a `Future` with a [`Response`][http-response]:
+which returns a `Future` with a [`Response`][http-response].
 
+The following snippet uses `get` in order to 
+exit early if the request was not successful,
+which is indicated with a status code of **200**:
+
+<?code-excerpt "lib/fetch_data.dart (http-get)" replace="/getMain/main/g"?>
 ```dart
+void main() async {
+  final httpPackageUrl = Uri.https('dart.dev/f/packages', '/http.json');
+  final httpPackageResponse = await http.get(httpPackageUrl);
+  if (httpPackageResponse.statusCode != 200) {
+    print('Failed to retrieve the http package!');
+    return;
+  }
+  print(httpPackageResponse.body);
+}
 ```
 
 If the endpoint you are requesting from requires more information,
+such as authentication or user-agent information,
 it often requires you to include [HTTP headers][headers].
 You can specify headers by passing in a `Map<String, String>`
 of the key-value pairs to the `headers` optional named parameter:
 
+<?code-excerpt "lib/fetch_data.dart (http-headers)"?>
 ```dart
+await http.get(Uri.https('dart.dev/f/packages', '/http.json'),
+    headers: {'User-Agent': '<product name>/<product-version>'});
 ```
 
 [http-read]: {{site.pub-api}}/http/latest/http/read.html
+[http-client-exc]: {{site.pub-api}}/http/latest/http/ClientException-class.html
 [mock-http-json]: /f/packages/http.json
 [`Future`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
 [status code]: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
