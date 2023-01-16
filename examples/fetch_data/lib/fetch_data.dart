@@ -1,6 +1,9 @@
+// #docregion json-decode
+import 'dart:convert';
+
 // #docregion http-import,http-retry
 import 'package:http/http.dart' as http;
-// #enddocregion http-import
+// #enddocregion json-decode, http-import
 import 'package:http/retry.dart';
 
 // #enddocregion http-retry
@@ -22,6 +25,16 @@ void readMain() async {
   print(httpPackageInfo);
 }
 // #enddocregion http-read
+
+// #docregion json-decode
+
+void decodeMain() async {
+  final httpPackageUrl = Uri.https('dart.dev/f/packages', '/http.json');
+  final httpPackageInfo = await http.read(httpPackageUrl);
+  final httpPackageJson = json.decode(httpPackageInfo) as Map<String, dynamic>;
+  print(httpPackageJson);
+}
+// #enddocregion json-decode
 
 // #docregion http-client
 void clientMain() async {

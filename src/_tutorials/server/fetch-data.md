@@ -137,9 +137,9 @@ retrieve the fake JSON-formatted information
 about `package:http` as a string,
 then prints it out:
 
-<?code-excerpt "lib/fetch_data.dart (http-read)"?>
+<?code-excerpt "lib/fetch_data.dart (http-read)" replace="/readMain/main/g"?>
 ```dart
-void readMain() async {
+void main() async {
   final httpPackageUrl = Uri.https('dart.dev/f/packages', '/http.json');
   final httpPackageInfo = await http.read(httpPackageUrl);
   print(httpPackageInfo);
@@ -253,9 +253,35 @@ and its [API documentation][http-docs].
 
 ## Decode the retrieved data
 
-Now that you have made a network request
-and retrieved the returned data,
-you can utilize that data.
+While you now have made a network request
+and retrieved the returned data as string,
+accessing specific portions of information
+from a string can be a challenge.
+
+Since the data is already in a JSON format,
+you can use Dart's built-in [`json.decode`][decode-docs] function
+in the `dart:convert` library
+to convert the raw string into
+a JSON representation using Dart objects.
+In this case, our JSON data is represented in a map structure
+and in JSON, map keys are always strings,
+so we can cast the result of `json.decode` to a `Map<String, dynamic>`:
+
+<?code-excerpt "lib/fetch_data.dart (json-decode)" plaster="none" replace="/decodeMain/main/g"?>
+```dart
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
+
+void main() async {
+  final httpPackageUrl = Uri.https('dart.dev/f/packages', '/http.json');
+  final httpPackageInfo = await http.read(httpPackageUrl);
+  final httpPackageJson = json.decode(httpPackageInfo) as Map<String, dynamic>;
+  print(httpPackageJson);
+}
+```
+
+[decode-docs]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/JsonCodec/decode.html
 
 ### Create a class to store the data
 
