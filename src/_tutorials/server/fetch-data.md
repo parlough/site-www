@@ -4,6 +4,8 @@ description: Fetch data over the internet using the http package.
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 
+<?code-excerpt path-base="fetch_data"?>
+
 {{site.why.learn}}
   * The basics of what HTTP requests and URIs are and what they are used for.
   * Making HTTP requests using `package:http`.
@@ -47,6 +49,7 @@ $ dart pub add http
 To then use `package:http` in your code,
 import it and optionally [specify a library prefix][]:
 
+<?code-excerpt "lib/fetch_data.dart (http-import)"?>
 ```dart
 import 'package:http/http.dart' as http;
 ```
@@ -77,6 +80,7 @@ to create a `Uri` object
 pointing to fake JSON-formatted information
 about `package:http` hosted on this site:
 
+<?code-excerpt "lib/fetch_data.dart (build-uris)"?>
 ```dart
 // Parse the entire URI, including the scheme
 Uri.parse('https://dart.dev/f/packages/http.json');
@@ -98,14 +102,14 @@ of a requested resource,
 you can use the top-level [`read`][http-read]
 function found in `package:http`.
 The following example uses `read` to
-retrieve mock information about `package:http` as a string,
+retrieve the fake JSON-formatted information
+about `package:http` as a string,
 then prints it out:
 
+<?code-excerpt "lib/fetch_data.dart (http-read)"?>
 ```dart
-import 'package:http/http.dart' as http;
-
-void main() async {
-  final httpPackageUrl = Uri.https('dart.dev/f/packages/http.json');
+void readMain() async {
+  final httpPackageUrl = Uri.https('dart.dev/f/packages', '/http.json');
   final httpPackageInfo = await http.read(httpPackageUrl);
   print(httpPackageInfo);
 }
@@ -163,14 +167,14 @@ through a [`Client`][http-client],
 which has similar methods to the top-level ones,
 and close it when done.
 
+<?code-excerpt "lib/fetch_data.dart (http-client)" replace="/clientMain/main/g"?>
 ```dart
-import 'package:http/http.dart' as http;
-import 'package:http/retry.dart';
-
-Future<void> main() async {
-  final client = RetryClient(http.Client());
+void main() async {
+  final client = http.Client();
   try {
-    print(await client.read(Uri.https('dart.dev/f/packages', '/http.json')));
+    final httpPackageUrl = Uri.https('dart.dev/f/packages', '/http.json');
+    final httpPackageInfo = await client.read(httpPackageUrl);
+    print(httpPackageInfo);
   } finally {
     client.close();
   }
@@ -178,16 +182,20 @@ Future<void> main() async {
 ```
 
 To enable the client to retry failed requests,
+import 'package:http/retry.dart' and
 wrap your created `Client` in a [`RetryClient`][http-retry-client]:
 
+<?code-excerpt "lib/fetch_data.dart (http-retry)" plaster="none" replace="/retryMain/main/g; /(i.*?retry.*)/[!$1!]/g; /(Retry.*?\)\))/[!$1!]/g"?>
 ```dart
 import 'package:http/http.dart' as http;
-import 'package:http/retry.dart';
+[!import 'package:http/retry.dart';!]
 
-Future<void> main() async {
+void main() async {
   final client = [!RetryClient(http.Client())!];
   try {
-    print(await client.read(Uri.https('dart.dev/f/packages', '/http.json')));
+    final httpPackageUrl = Uri.https('dart.dev/f/packages', '/http.json');
+    final httpPackageInfo = await client.read(httpPackageUrl);
+    print(httpPackageInfo);
   } finally {
     client.close();
   }
@@ -217,6 +225,7 @@ you can utilize that data.
 
 ### Create a class to store the data
 
+<?code-excerpt "bin/fetch_http_package.dart (package-info)" plaster="none"?>
 ```dart
 class PackageInfo {
   final String name;
@@ -245,9 +254,10 @@ Convert the decoded JSON
 by manually writing a `fromJson` method
 matching the earlier JSON format:
 
+<?code-excerpt "bin/fetch_http_package.dart (from-json)"?>
 ```dart
 class PackageInfo {
-  // ...
+  // ···
 
   factory PackageInfo.fromJson(Map<String, dynamic> json) {
     final repository = json['repository'] as String?;
@@ -287,11 +297,11 @@ outputting information to a CLI, or
 displaying it in a [web][] or [Flutter][] app.
 
 Here is complete, runnable example
-which requests, then displays information
-about the latest `package:http` release
-to the console:
+which requests, then displays
+the mock information about the `http` package:
 
-```dart:run-dartpad:ga_id-fetch-data-complete
+<?code-excerpt "bin/fetch_http_package.dart"?>
+```dart:run-dartpad:height-480px:ga_id-fetch-data-complete
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
@@ -320,7 +330,8 @@ Future<PackageInfo?> getPackage(String packageName) async {
   final packageResponse = await http.get(packageUrl);
 
   if (packageResponse.statusCode == 200) {
-    final packageJson = jsonDecode(packageResponse.body);
+    final packageJson =
+        jsonDecode(packageResponse.body) as Map<String, dynamic>;
 
     return PackageInfo.fromJson(packageJson);
   } else {
@@ -357,8 +368,10 @@ class PackageInfo {
 }
 ```
 
-For another example that covers fetching then displaying data in Flutter,
-see the [Fetching data from the internet][] Flutter cookbook.
+{{site.alert.flutter-note}}
+  For another example that covers fetching then displaying data in Flutter,
+  see the [Fetching data from the internet][] Flutter cookbook.
+{{site.alert.end}}
 
 [web]: /web
 [Flutter]: {{site.flutter}}
