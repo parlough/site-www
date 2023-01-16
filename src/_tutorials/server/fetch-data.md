@@ -193,6 +193,11 @@ void main() async {
 }
 ```
 
+There are many other status codes besides **200**
+and your app may want to handle them differently.
+To learn more about what different status codes mean,
+see [HTTP response status codes][] on mdn web docs.
+
 If the endpoint you are requesting from requires more information,
 such as authentication or user-agent information,
 it often requires you to include [HTTP headers][headers].
@@ -213,6 +218,7 @@ await http.get(Uri.https('dart.dev/f/packages', '/http.json'),
 [headers]: https://developer.mozilla.org/docs/Web/HTTP/Headers
 [http-get]: {{site.pub-api}}/http/latest/http/get.html
 [http-response]: {{site.pub-api}}/http/latest/http/Response-class.html
+[HTTP response status codes]: https://developer.mozilla.org/docs/Web/HTTP/Status
 
 ### Make multiple requests
 
@@ -387,26 +393,37 @@ puts everything to together:
 
 1. Create your `URI` based off a passed-in package name.
 2. Use `http.get` to retrieve the data for that package.
-3. If the request didn't succeed, return null.
+3. If the request didn't succeed, throw an `Exception`
+   or preferably your own custom `Exception` subclass.
 4. If the request succeeded, use `json.decode` to
    decode the response body into a JSON string.
 5. Converted the decoded JSON string into a `PackageInfo` object
    using the `PackageInfo.fromJson` factory constructor you created.
 
-<?code-excerpt "bin/fetch_http_package.dart (get-package)"?>
+<?code-excerpt "bin/fetch_http_package.dart (get-package)" plaster="none"?>
 ```dart
-Future<PackageInfo?> getPackage(String packageName) async {
+Future<PackageInfo> getPackage(String packageName) async {
   final packageUrl = Uri.https('dart.dev/f/packages', '/$packageName.json');
   final packageResponse = await http.get(packageUrl);
 
-  // If the request didn't succeed, return null
+  // If the request didn't succeed, throw an exception
   if (packageResponse.statusCode != 200) {
-    return null;
+    throw PackageRetrievalException(
+      packageName: packageName,
+      statusCode: packageResponse.statusCode,
+    );
   }
 
   final packageJson = json.decode(packageResponse.body) as Map<String, dynamic>;
 
   return PackageInfo.fromJson(packageJson);
+}
+
+class PackageRetrievalException implements Exception {
+  final String packageName;
+  final int? statusCode;
+
+  PackageRetrievalException({required this.packageName, this.statusCode});
 }
 ```
 
@@ -430,10 +447,12 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 void main() async {
-  final httpPackage = await getPackage('http');
+  PackageInfo httpPackage;
 
-  if (httpPackage == null) {
-    print('Failed to retrieve information about the http package!');
+  try {
+    httpPackage = await getPackage('http');
+  } on PackageRetrievalException catch (e) {
+    print(e);
     return;
   }
 
@@ -448,13 +467,16 @@ void main() async {
   }
 }
 
-Future<PackageInfo?> getPackage(String packageName) async {
+Future<PackageInfo> getPackage(String packageName) async {
   final packageUrl = Uri.https('dart.dev/f/packages', '/$packageName.json');
   final packageResponse = await http.get(packageUrl);
 
-  // If the request didn't succeed, return null
+  // If the request didn't succeed, throw an exception
   if (packageResponse.statusCode != 200) {
-    return null;
+    throw PackageRetrievalException(
+      packageName: packageName,
+      statusCode: packageResponse.statusCode,
+    );
   }
 
   final packageJson = json.decode(packageResponse.body) as Map<String, dynamic>;
@@ -487,6 +509,26 @@ class PackageInfo {
       publisher: json['publisher'] as String,
       repository: repository != null ? Uri.tryParse(repository) : null,
     );
+  }
+}
+
+class PackageRetrievalException implements Exception {
+  final String packageName;
+  final int? statusCode;
+
+  PackageRetrievalException({required this.packageName, this.statusCode});
+
+  @override
+  String toString() {
+    final buf = StringBuffer();
+    buf.write('Failed to retrieve package:$packageName');
+
+    if (statusCode != null) {
+      buf.write(' with a status code of $statusCode');
+    }
+
+    buf.writeln('!');
+    return super.toString();
   }
 }
 ```

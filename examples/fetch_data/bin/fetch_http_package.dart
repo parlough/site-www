@@ -3,10 +3,12 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 void main() async {
-  final httpPackage = await getPackage('http');
+  PackageInfo httpPackage;
 
-  if (httpPackage == null) {
-    print('Failed to retrieve information about the http package!');
+  try {
+    httpPackage = await getPackage('http');
+  } on PackageRetrievalException catch (e) {
+    print(e);
     return;
   }
 
@@ -22,13 +24,16 @@ void main() async {
 }
 
 // #docregion get-package
-Future<PackageInfo?> getPackage(String packageName) async {
+Future<PackageInfo> getPackage(String packageName) async {
   final packageUrl = Uri.https('dart.dev/f/packages', '/$packageName.json');
   final packageResponse = await http.get(packageUrl);
 
-  // If the request didn't succeed, return null
+  // If the request didn't succeed, throw an exception
   if (packageResponse.statusCode != 200) {
-    return null;
+    throw PackageRetrievalException(
+      packageName: packageName,
+      statusCode: packageResponse.statusCode,
+    );
   }
 
   final packageJson = json.decode(packageResponse.body) as Map<String, dynamic>;
@@ -70,3 +75,27 @@ class PackageInfo {
   // #docregion package-info
 }
 // #enddocregion package-info, from-json
+// #docregion get-package
+
+class PackageRetrievalException implements Exception {
+  final String packageName;
+  final int? statusCode;
+
+  PackageRetrievalException({required this.packageName, this.statusCode});
+  // #enddocregion get-package
+
+  @override
+  String toString() {
+    final buf = StringBuffer();
+    buf.write('Failed to retrieve package:$packageName information');
+
+    if (statusCode != null) {
+      buf.write(' with a status code of $statusCode');
+    }
+
+    buf.writeln('!');
+    return super.toString();
+  }
+  // #docregion get-package
+}
+// #enddocregion get-package
