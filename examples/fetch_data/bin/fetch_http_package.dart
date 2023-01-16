@@ -28,7 +28,7 @@ Future<PackageInfo?> getPackage(String packageName) async {
 
   if (packageResponse.statusCode == 200) {
     final packageJson =
-        jsonDecode(packageResponse.body) as Map<String, dynamic>;
+        json.decode(packageResponse.body) as Map<String, dynamic>;
 
     return PackageInfo.fromJson(packageJson);
   } else {
