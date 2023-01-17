@@ -34,7 +34,6 @@ and Dart's JSON in the [`dart:convert`][convert-docs] library
 to fetch, decode, then use JSON-formatted data
 retrieved from an HTTP server.
 
-[URI]: https://wikipedia.org/wiki/Uniform_Resource_Identifier
 [JSON]: https://www.json.org/
 
 ## HTTP requests, JSON, and URIs
@@ -50,7 +49,7 @@ see [Retrieve the necessary dependencies][].
 ### JSON
 
 JSON (JavaScript Object Notation) is a data-interchange format
-that has become ubiquitous across 
+that has become ubiquitous across
 application development and client-server communication.
 It is both lightweight but also easy for
 humans to read and write due to being text based.
@@ -60,16 +59,37 @@ such as lists and maps can be serialized and represented by strings.
 Most languages have many implementations and
 parsers have become extremely fast,
 so you don't need to worry about interoperability or performance.
-To learn more about the JSON format, see [Introducing JSON][].
+For more information about the JSON format, see [Introducing JSON][].
 To learn more about working with JSON in Dart,
 see the [Using JSON][] guide.
 
 [Introducing JSON]: https://www.json.org/
-[Using JSON]: /guides/json
 
 ### HTTP requests
 
-To learn more details about the HTTP protocol,
+HTTP (Hypertext Transfer Protocol) is a stateless protocol
+designed for transmitting documents,
+originally for communication between web clients and web servers.
+You interacted with the protocol to load this page,
+as your browser uses an HTTP `GET` request
+to retrieve the contents of a page from a web server.
+Since its introduction use of the HTTP protocol and its various versions
+have expanded to applications outside the web as well,
+essentially wherever communication from a client to a server is needed.
+
+HTTP requests sent from the client to communicate with the server
+are composed of multiple components,
+that libraries such as provided by `package:http` enable control of:
+
+* An HTTP method defining the desired action,
+  such as `GET` to retrieve data or `POST` to submit new data.
+* The location of the resource through a URI.
+* The version of HTTP being used.
+* Headers to provide extra information to the server.
+* An optional body, so the request can send data to the server,
+  not just retrieve it.
+
+To learn more about the HTTP protocol,
 check out [An overview of HTTP][] on the mdn web docs.
 
 [An overview of HTTP]: https://developer.mozilla.org/docs/Web/HTTP/Overview
@@ -92,13 +112,12 @@ There are other optional parameters as well
 that aren't used by the current page:
 
 * Parameters to customize extra behavior: `?key1=value1&key2=value2`
-* An anchor, that isn't sent to the server, 
+* An anchor, that isn't sent to the server,
   which points to a specific location in the resource: `#uris`
 
 To learn more about URLs,
 see [What is a URL?][] on the mdn web docs.
 
-[URI]: https://wikipedia.org/wiki/Uniform_Resource_Identifier
 [What is a URL?]: https://developer.mozilla.org/docs/Learn/Common_questions/What_is_a_URL
 
 ## Retrieve the necessary dependencies
@@ -168,7 +187,7 @@ see the [library tour's discussion about URIs][library-tour-uri].
 
 ## Make a network request
 
-If you just need to quickly get a string representation
+If you just need to quickly fetch a string representation
 of a requested resource,
 you can use the top-level [`read`][http-read]
 function found in `package:http`
@@ -421,8 +440,6 @@ To learn more about JSON serialization and deserialization,
 including automatic generation of the conversion logic,
 see the [Using JSON][] guide.
 
-[Using JSON]: /guides/json
-
 ### Convert the response to a `PackageInfo` object
 
 Now you have a class to store your data
@@ -595,6 +612,8 @@ to prevent your interface from becoming unresponsive.
 [Concurrency in Dart]: /guides/language/concurrency
 [isolate]: /guides/language/concurrency#how-isolates-work
 
+[URI]: https://wikipedia.org/wiki/Uniform_Resource_Identifier
+[Using JSON]: /guides/json
 [convert-docs]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
 [http-pub]: https://pub.dev/packages/http
 [http-docs]: https://pub.dev/documentation/http
