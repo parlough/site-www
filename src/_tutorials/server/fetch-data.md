@@ -20,10 +20,10 @@ which are sent from a client to a server
 to perform a specific action for a resource
 specified through a [URI][] (Uniform Resource Identifier).
 
-The data communicated over HTTP can technically be in any form,
-but using [JSON][] (JavaScript Object Notation),
-is a popular choice,
-particularly due to its great support on the web.
+Data communicated over HTTP can technically be in any form,
+but using [JSON][] (JavaScript Object Notation)
+is a popular choice due to its human-readability
+and language independent nature.
 The Dart SDK and ecosystem also have extensive support for JSON
 with multiple options to best meet your app's requirements.
 
@@ -35,11 +35,29 @@ to fetch, decode, then use JSON-formatted data
 retrieved from an HTTP server.
 
 [URI]: https://wikipedia.org/wiki/Uniform_Resource_Identifier
-[JSON]: https://www.json.org/json-en.html
+[JSON]: https://www.json.org/
 
 ## HTTP requests, JSON, and URIs
 
 ### JSON
+
+JSON (JavaScript Object Notation) is a data-interchange format
+that has become ubiquitous across 
+application development and client-server communication.
+It is both lightweight but also easy for
+humans to read and write due to being text based.
+With JSON, various data types and simple data structures
+such as lists and maps can be serialized and represented by strings.
+
+Most languages have many implementations and
+parsers have become extremely fast,
+so you don't need to worry about interoperability or performance.
+To learn more about the JSON format, see [Introducing JSON][].
+To learn more about working with JSON in Dart,
+see the [Using JSON][] guide.
+
+[Introducing JSON]: https://www.json.org/
+[Using JSON]: /guides/json
 
 ### HTTP requests
 
@@ -48,18 +66,32 @@ check out [An overview of HTTP][] on the mdn web docs.
 
 [An overview of HTTP]: https://developer.mozilla.org/docs/Web/HTTP/Overview
 
-### URIs
+### URIs and URLs
 
 To make an HTTP request,
-you need to provide a URI (Uniform Resource Identifier) for the resource.
+you need to provide a [URI][] (Uniform Resource Identifier) for the resource.
 A URI is a character string that uniquely identifies a resource.
 A URL (Uniform Resource Locator) is a specific kind of URI
 that also provides the location of the resource.
-URLs for resources on the web contain three pieces of information:
+URLs for resources on the web contain three pieces of information.
+For this current page, the URL is composed of:
 
-* The scheme used for determining the protocol used (https)
-* The hostname of the server (dart.dev)
-* The path to the resource (/tutorials/server/fetch-data.html)
+* The scheme used for determining the protocol used: `https`
+* The authority or hostname of the server: `dart.dev`
+* The path to the resource: `/tutorials/server/fetch-data.html`
+
+There are other optional parameters as well
+that aren't used by the current page:
+
+* Parameters to customize extra behavior: `?key1=value1&key2=value2`
+* An anchor, that isn't sent to the server, 
+  which points to a specific location in the resource: `#uris`
+
+To learn more about URLs,
+see [What is a URL?][] on the mdn web docs.
+
+[URI]: https://wikipedia.org/wiki/Uniform_Resource_Identifier
+[What is a URL?]: https://developer.mozilla.org/docs/Learn/Common_questions/What_is_a_URL
 
 ## Retrieve the necessary dependencies
 
@@ -196,7 +228,7 @@ void main() async {
 There are many other status codes besides **200**
 and your app may want to handle them differently.
 To learn more about what different status codes mean,
-see [HTTP response status codes][] on mdn web docs.
+see [HTTP response status codes][] on the mdn web docs.
 
 If the endpoint you are requesting from requires more information,
 such as authentication or user-agent information,
