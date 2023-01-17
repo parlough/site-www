@@ -39,6 +39,14 @@ retrieved from an HTTP server.
 
 ## HTTP requests, JSON, and URIs
 
+The following sections provide some extra background and information
+around the technologies and concepts used in the tutorial
+to facilitate fetching data from the server.
+To skip directly to the tutorial content,
+see [Retrieve the necessary dependencies][].
+
+[Retrieve the necessary dependencies]: #retrieve-the-necessary-dependencies
+
 ### JSON
 
 JSON (JavaScript Object Notation) is a data-interchange format
