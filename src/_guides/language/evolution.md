@@ -409,8 +409,8 @@ Patches should not change the language except for bug fixes.
 To illustrate: Dart 2.18.3 serves as the latest release of the
 Dart 2.18 SDK language version.
 
-Each Dart SDK supports all of the language versions within its major
-version number.
+Each Dart SDK supports all of the language versions within
+its major version number.
 That means that Dart SDK 2.18.3 supports language versions
 2.0 through 2.18 inclusive, but not Dart 1.x.
 
