@@ -434,7 +434,7 @@ Sometimes, a Dart file might need to use an older language version.
 For example, you might not be able to migrate all the files in a package
 to null safety at the same time.
 
-Dart supports for per-library language version selection.
+Dart supports per-library language version selection.
 To opt to have a different language version from
 the rest of a package, a [Dart library][] must
 include a comment in the following format:
