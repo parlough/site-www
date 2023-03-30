@@ -272,7 +272,8 @@ class A<X> {};
 class B<X> extends A<void Function(X)> {};
 ```
 
-You can now use `async` as an identifier in asynchronous and generator functions.
+You can now use `async` as an identifier in
+asynchronous and generator functions.
 
 ### Dart 2.3
 _Released 8 May 2019_
