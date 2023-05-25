@@ -22,7 +22,7 @@ FIREBASE_CHANNEL ?= dart
 JEKYLL_SITE_HOST ?= 0.0.0.0
 JEKYLL_SITE_PORT ?= 4000
 
-# Here so Docker Compose does not complain, add any env 
+# Here so Docker Compose does not complain, add any env
 # overrides to this file. Blank is okay, it's ignored.
 # For example, add a FIREBASE_PROJECT if staging
 .env:
@@ -159,3 +159,7 @@ test-builds:
 TEST_CHANNEL =? stable
 test-run:
 	docker run --rm -it -v ${PWD}:/app ${BUILD_TAG}:${TEST_CHANNEL} bash
+
+next-prev:
+	dart pub get
+	dart run tool/next_prev.dart ${ADJACENTS}
