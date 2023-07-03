@@ -37,5 +37,6 @@ else
   echo -e "$(blue "Emulator is running")"
 fi
 
+ARGS="$*"
 SKIP_FILE="$TOOL_DIR/config/linkcheck-skip-list.txt"
-dart run linkcheck :$EMULATOR_PORT --skip-file $SKIP_FILE
+dart run linkcheck $ARGS --skip-file $SKIP_FILE :$EMULATOR_PORT
