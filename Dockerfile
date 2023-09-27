@@ -1,4 +1,4 @@
-FROM ruby:3.2-slim-bookworm@sha256:6ff55a14560f94d6c199033e4aa90cc7f0b7afaea5a50bc91cfbc4905f366f39 as base
+FROM debian:bookworm-slim@sha256:24c92a69df28b21676d721fe18c0bf64138bfc69b486746ad935b49cc31b0b91 as base
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=US/Pacific
@@ -16,10 +16,6 @@ RUN apt update && apt install -yq --no-install-recommends \
 
 RUN echo "alias lla='ls -lAhG --color=auto'" >> ~/.bashrc
 WORKDIR /root
-
-
-# google-chrome-stable
-
 
 # ============== DART ==============
 # See https://github.com/dart-lang/dart-docker
@@ -88,18 +84,13 @@ RUN mkdir -p /etc/apt/keyrings \
     && npm install -g npm # Ensure latest npm
 
 
-# ============== DEV/JEKYLL SETUP ==============
+# ============== DEV/11TY SETUP ==============
 FROM node as dev
 WORKDIR /app
 
-ENV JEKYLL_ENV=development
-COPY Gemfile Gemfile.lock ./
-RUN gem update --system && gem install bundler
-RUN BUNDLE_WITHOUT="test production" bundle install --jobs=4 --retry=2
-
 ENV NODE_ENV=development
 COPY package.json package-lock.json ./
-RUN npm install -g firebase-tools@12.4.0
+RUN npm install -g firebase-tools@12.5.4
 RUN npm install
 
 COPY ./ ./
@@ -157,7 +148,7 @@ RUN bundle exec jekyll build --config $BUILD_CONFIGS
 
 # ============== DEPLOY to FIREBASE ==============
 FROM build as deploy
-RUN npm install -g firebase-tools@12.4.0
+RUN npm install -g firebase-tools@12.5.4
 ARG FIREBASE_TOKEN
 ENV FIREBASE_TOKEN=$FIREBASE_TOKEN
 ARG FIREBASE_PROJECT=default

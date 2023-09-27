@@ -1,7 +1,7 @@
 {
   "name": "dart.dev",
   "version": "0.0.0",
-  "private": false,
+  "private": true,
   "description": "Source code for https://dart.dev",
   "repository": {
     "type": "git",
@@ -9,5 +9,18 @@
   },
   "dependencies": {
     "bootstrap-scss": "^4.6.2"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "eleventy-sass": "^2.2.3",
+    "js-yaml": "^4.1.0",
+    "markdown-it": "^13.0.1",
+    "markdown-it-anchor": "^8.6.7",
+    "markdown-it-attrs": "^4.1.6",
+    "markdown-it-container": "^3.0.0",
+    "markdown-it-deflist": "^2.1.0",
+    "markdown-it-toc-done-right": "^4.2.0",
+    "sass": "^1.68.0",
+    "shiki": "^0.14.4"
   }
 }
