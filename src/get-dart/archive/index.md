@@ -18,14 +18,14 @@ Want to install Dart with your OS's package manager?
 [Get Dart.](/get-dart)
 
 {{site.alert.warn}}
-  {% include_relative _sdk-terms.md %}
+  {% include './_sdk-terms.md' %}
 {{site.alert.end}}
 
 ## Stable channel
 
 Stable channel builds are tested and approved for production use.
 
-{% include_relative _archives_table.html channel="stable" %}
+{% include './_archives_table.html', channel:'stable' %}
 
 ## Beta channel
 
@@ -34,7 +34,7 @@ We recommend testing, but not releasing, your apps against beta
 to preview new features or test compatibility with future releases.
 Beta channel builds are not suitable for production use.
 
-{% include_relative _archives_table.html channel="beta" %}
+{% include './_archives_table.html', channel:'beta' %}
 
 ## Dev channel
 
@@ -42,7 +42,7 @@ Dev channel builds can provide early access
 to new features but might contain bugs.
 Dev channel builds are not suitable for production use.
 
-{% include_relative _archives_table.html channel="dev" %}
+{% include './_archives_table.html', channel:'dev' %}
 
 ## Main channel
 

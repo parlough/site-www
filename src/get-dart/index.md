@@ -31,7 +31,7 @@ and has Dart's [`dart`](/tools/dart-tool) command-line interface
 in its `bin` folder.
 
 {{site.alert.warn}}
-  {% include_relative archive/_sdk-terms.md %}
+  {% include './archive/_sdk-terms.md' %}
 {{site.alert.end}}
 
 <ul class="tabs__top-bar">
@@ -40,13 +40,13 @@ in its `bin` folder.
   <li class="tab-link" data-tab="tab-sdk-install-mac">macOS</li>
 </ul>
 <div id="tab-sdk-install-windows" class="tabs__content current" markdown="1">
-{% include_relative _windows.md %}
+{% include './_windows.md' %}
 </div>
 <div id="tab-sdk-install-linux" class="tabs__content" markdown="1">
-{% include_relative _linux.md %}
+{% include './_linux.md' %}
 </div>
 <div id="tab-sdk-install-mac" class="tabs__content" markdown="1">
-{% include_relative _mac.md %}
+{% include './_mac.md' %}
 </div>
 
 ## System requirements

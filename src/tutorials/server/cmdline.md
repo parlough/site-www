@@ -88,7 +88,7 @@ displays the contents of any files listed on the command line. This app uses
 various classes, functions, and properties available to command-line apps. For a
 brief description of key app features, click the highlighted code below.
 
-{% include_relative _dcat-example.html %}
+{% include './_dcat-example.html' %}
 
 
 ### Getting dependencies

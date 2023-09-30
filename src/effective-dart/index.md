@@ -139,4 +139,4 @@ Dart constructs.
 
 ## Summary of all rules
 
-{% include_relative _toc.md %}
+{% include './_toc.md' %}
