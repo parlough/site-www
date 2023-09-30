@@ -40,6 +40,7 @@ module.exports = function (eleventyConfig) {
   );
 
   eleventyConfig.setLiquidOptions({
+    cache: true,
     strictFilters: true,
     // strictVariables: true, TODO(parlough): Enable
     lenientIf: true

@@ -1,4 +1,4 @@
-{% assign page_url_path = page.url | regex_replace: '/index$|/index\.html$|\.html$|/$' -%}
+{% assign page_url_path = url | regex_replace: '/index$|/index\.html$|\.html$|/$' -%}
 {% assign active_entries = nav | active_nav_entry_index_array: page_url_path -%}
 
 <ul class="nav flex-column">
@@ -26,15 +26,15 @@
           {% assign show = '' -%}
         {% endif -%}
         <li class="nav-item">
-          <a class="nav-link {{class}} collapsable" data-toggle="collapse" href="#{{id}}" role="button"
+          <a class="nav-link {{class}}" data-toggle="collapse" href="#{{id}}" role="button"
              aria-expanded="{{expanded}}" aria-controls="{{id}}"
           >{{entry.title}}</a>
       
           <ul class="nav flex-column flex-nowrap collapse {{show}}" id="{{id}}">
             {% if isActive -%}
-            {% include 'sidenav-level-2.html', parent_id:id, children:entry.children, active_entries:active_entries -%}
+            {% render 'sidenav-level-2.html', parent_id:id, children:entry.children, active_entries:active_entries -%}
             {% else -%}
-            {% include 'sidenav-level-2.html', parent_id:id, children:entry.children -%}
+            {% render 'sidenav-level-2.html', parent_id:id, children:entry.children -%}
             {% endif -%}
           </ul>
         </li>
@@ -45,7 +45,7 @@
         {% assign isExternal = false -%}
         {% endif -%}
         <li class="nav-item">
-          <a class="{{class}} nav-link" href="{{entry.permalink}}"
+          <a class="nav-link {{class}}" href="{{entry.permalink}}"
              {%- if isExternal %} target="_blank" rel="noopener" {%- endif -%}
           >{{entry.title}}
             {%- if isExternal -%}
