@@ -31,7 +31,7 @@ allowing `dart:ffi` and `package:ffigen` to interact with Swift.
 
 ## Objective-C Example
 
-This guide walks you through [an example]({{page.example}})
+This guide walks you through [an example]({{example}})
 that uses `package:ffigen` to generate bindings for
 [`AVAudioPlayer`]({{page.appledoc}}/avfaudio/avaudioplayer?language=objc).
 This API requires at least macOS SDK 10.7,
@@ -84,7 +84,7 @@ The entry point is the header file containing the API.
 In this example, it is the internal `AVAudioPlayer.h` header.
 
 Another import thing you'll see,
-if you look at the [example config]({{page.example}}/pubspec.yaml),
+if you look at the [example config]({{example}}/pubspec.yaml),
 is the exclude and include options.
 By default, `ffigen` generates bindings for everything
 it finds in the header,
@@ -177,7 +177,7 @@ $ dart run ffigen --config my_ffigen_config.yaml
 ```
 
 For this example, this will generate
-[avf_audio_bindings.dart]({{page.example}}/avf_audio_bindings.dart).
+[avf_audio_bindings.dart]({{example}}/avf_audio_bindings.dart).
 
 This file contains a class called `AVFAudio`, which is the native library
 wrapper that loads all the API functions using FFI,
@@ -189,7 +189,7 @@ such as `AVAudioPlayer` and its dependencies.
 ### Using the bindings
 
 Now you're ready to load and interact with the generated library.
-The example app, [play_audio.dart]({{page.example}}/play_audio.dart),
+The example app, [play_audio.dart]({{example}}/play_audio.dart),
 loads and plays audio files passed as command line arguments.
 The first step is to load the
 [dylib]({{page.appledoc}}/avfaudio?language=objc)

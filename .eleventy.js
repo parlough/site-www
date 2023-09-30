@@ -55,6 +55,30 @@ module.exports = function (eleventyConfig) {
     return activeEntryIndexes.length === 0 ? null : activeEntryIndexes;
   });
 
+  eleventyConfig.addFilter('array_to_sentence_string', function(list, joiner = 'and') {
+    if (!list || list.length === 0) {
+      return '';
+    }
+    
+    if (list.length === 1) {
+      return list[0];
+    }
+    
+    let result = '';
+
+    for (let i = 0; i < list.length; i++) {
+      const item = list[i];
+      if (i === list.length - 1) {
+        result += `${joiner} ${item}`;
+      } else {
+        result += `${item}, `;
+      }
+    }
+    
+    return result;
+  });
+
+
   eleventyConfig.addFilter('underscore_breaker', _underscoreBreaker);
 
   eleventyConfig.addPlugin(eleventySass, {

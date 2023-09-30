@@ -37,14 +37,14 @@ for calling a C library.
 
 The hello_world example has the following files:
 
-| **Source file**                                                          | **Description**                                                                                  |
-|--------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
-| [hello.dart]({{page.hw}}/hello.dart)                                     | A Dart file that uses the `hello_world()` function from a C library.                             |
-| [pubspec.yaml]({{page.hw}}/pubspec.yaml)                                 | The Dart [pubspec](/tools/pub/pubspec) file, with a lower bounds on the SDK that's at least 2.6. |
-| [hello_library/hello.h]({{page.hw}}/hello_library/hello.h)               | Declares the `hello_world()` function.                                                           |
-| [hello_library/hello.c]({{page.hw}}/hello_library/hello.c)               | A C file that imports `hello.h` and defines the `hello_world()` function.                        |
-| [hello_library/hello.def]({{page.hw}}/hello_library/hello.def)           | A module-definition file which specifies information used when building a DLL.                   |
-| [hello_library/CMakeLists.txt]({{page.hw}}/hello_library/CMakeLists.txt) | A CMake build file for compiling the C code into a dynamic library.                              |
+| **Source file**                                                     | **Description**                                                                                  |
+|---------------------------------------------------------------------|--------------------------------------------------------------------------------------------------|
+| [hello.dart]({{hw}}/hello.dart)                                     | A Dart file that uses the `hello_world()` function from a C library.                             |
+| [pubspec.yaml]({{hw}}/pubspec.yaml)                                 | The Dart [pubspec](/tools/pub/pubspec) file, with a lower bounds on the SDK that's at least 2.6. |
+| [hello_library/hello.h]({{hw}}/hello_library/hello.h)               | Declares the `hello_world()` function.                                                           |
+| [hello_library/hello.c]({{hw}}/hello_library/hello.c)               | A C file that imports `hello.h` and defines the `hello_world()` function.                        |
+| [hello_library/hello.def]({{hw}}/hello_library/hello.def)           | A module-definition file which specifies information used when building a DLL.                   |
+| [hello_library/CMakeLists.txt]({{hw}}/hello_library/CMakeLists.txt) | A CMake build file for compiling the C code into a dynamic library.                              |
 {:.table .table-striped }
 
 {% comment %}
@@ -87,7 +87,7 @@ Hello World
 
 ### Using dart:ffi
 
-The [`hello.dart` file]({{page.hw}}/hello.dart)
+The [`hello.dart` file]({{hw}}/hello.dart)
 illustrates the steps for using `dart:ffi` to call a C function:
 
 1. Import `dart:ffi`.
@@ -172,7 +172,7 @@ depends on your platform and the type of library.
 For details, see the following:
 
 * Flutter `dart:ffi` pages: [Android][android], [iOS][ios], and [macOS][macos] 
-* [`dart:ffi` examples]({{page.samples}})
+* [`dart:ffi` examples]({{samples}})
 
 ## Interfacing with native types
 
@@ -259,9 +259,9 @@ to automatically create FFI wrappers from C header files.
 [android]: {{site.flutter-docs}}/development/platform-integration/android/c-interop
 [macos]: {{site.flutter-docs}}/development/platform-integration/macos/c-interop
 [FFI]: https://en.wikipedia.org/wiki/Foreign_function_interface
-[hello_world]: {{page.hw}}
-[primitives]: {{page.samples}}/primitives
-[structs]: {{page.samples}}/structs
+[hello_world]: {{hw}}
+[primitives]: {{samples}}/primitives
+[structs]: {{samples}}/structs
 [sqlite]: https://github.com/dart-lang/sdk/tree/main/samples/ffi/sqlite
 [mini tutorial.]: https://github.com/dart-lang/sdk/blob/main/samples/ffi/sqlite/docs/sqlite-tutorial.md
 [`NativeType`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/NativeType-class.html

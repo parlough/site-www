@@ -1,6 +1,6 @@
-{% for lint in site.data.linter_rules %}
+{% for lint in linter_rules %}
 
-{% if lint.group == include.type %}
+{% if lint.group == type %}
 
 {% assign badges = "" %}
 

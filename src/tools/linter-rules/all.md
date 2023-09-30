@@ -11,7 +11,7 @@ Add them to your
 [`analysis_options.yaml`](/tools/analysis) file
 and adjust as you see fit.
 
-{% assign sorted_lints = site.data.linter_rules | sort: "name" %}
+{% assign sorted_lints = linter_rules | sort: "name" %}
 
 <?code-excerpt ?>
 ```yaml

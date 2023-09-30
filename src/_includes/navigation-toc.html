@@ -1,5 +1,5 @@
 {% unless page.toc == false or page.layout == 'homepage' %}
-{% assign toc = content | toc_only %}
+{% assign toc = '' %}
 {% assign itemCount = toc | split: 'class="toc-entry' | size %}
 
 {% assign collapsible = false %}
