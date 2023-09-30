@@ -2,5 +2,5 @@
 layout: default
 ---
 
-{% capture linter-rule %}{% include linter-page-content.md lint=page.lint %}{% endcapture %}
+{% capture linter-rule %}{% include 'linter-page-content.md', lint:page.lint %}{% endcapture %}
 {{ linter-rule | markdownify }}

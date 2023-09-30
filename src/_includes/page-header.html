@@ -1,5 +1,5 @@
 <header id="page-header" class="site-header">
-  {% include navigation-main.html %}
+  {% include 'navigation-main.html' %}
   {% if page.obsolete == true %}
   <div class="alert alert-warning">
     <h4 class="text-center">
@@ -8,4 +8,4 @@
   </div>
   {% endif %}
 </header>
-{% if site.show_banner %} {% include banner.html %} {% endif %}
+{% if site.show_banner %} {% include 'banner.html' %} {% endif %}
