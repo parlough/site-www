@@ -27,7 +27,7 @@ console view. Try editing the source code—perhaps you'd like to change the
 greeting to use another language.
 
 {{site.alert.note}}
-  {% include dartpad-embedded-troubleshooting.md %}
+  {% include 'dartpad-embedded-troubleshooting.md' %}
 {{site.alert.end}}
 
 <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
@@ -45,7 +45,7 @@ More information:
 
 ## 2. Install Dart
 
-{% include get-sdk.md %}
+{% include 'get-sdk.md' %}
 
 ## 3. Create a small app
 

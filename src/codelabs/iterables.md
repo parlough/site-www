@@ -33,7 +33,7 @@ Estimated time to complete this codelab: 60 minutes.
 
 {{site.alert.note}}
   This page uses embedded DartPads to display examples and exercises.
-  {% include dartpads-embedded-troubleshooting.md %}
+  {% include 'dartpads-embedded-troubleshooting.md' %}
 {{site.alert.end}}
 
 ## What are collections?
