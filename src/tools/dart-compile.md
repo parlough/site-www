@@ -126,7 +126,7 @@ The following sections have details about each type of output
 that `dart compile` can produce.
 
 
-### Self-contained executables (exe) {#exe}
+### Self-contained executables (exe) {:#exe}
 
 The `exe` subcommand produces a standalone executable for
 Windows, macOS, or Linux.
@@ -174,7 +174,7 @@ The `exe` subcommand has some known limitations:
 
 {% include known-issues/compile-ki.md %}
 
-### AOT modules (aot-snapshot) {#aot-snapshot}
+### AOT modules (aot-snapshot) {:#aot-snapshot}
 
 Use AOT modules to reduce disk space requirements when distributing
 multiple command-line apps. The `aot-snapshot` subcommand produces an
@@ -204,7 +204,7 @@ To learn more, see the
 {% endcomment %}
 
 
-### JIT modules (jit-snapshot) {#jit-snapshot}
+### JIT modules (jit-snapshot) {:#jit-snapshot}
 
 JIT modules include all the parsed classes and compiled code that's
 generated during a training run of a program.
@@ -227,7 +227,7 @@ unlike modules produced using the
 [`kernel` subcommand](#kernel).
 
 
-### Portable modules (kernel) {#kernel}
+### Portable modules (kernel) {:#kernel}
 
 Use the `kernel` subcommand to package up an app into a
 single, portable file that
@@ -249,7 +249,7 @@ they can have much slower startup than architecture-specific AOT output formats.
 [Kernel AST]: https://github.com/dart-lang/sdk/blob/main/pkg/kernel/README.md
 
 
-### JavaScript (js) {#js}
+### JavaScript (js) {:#js}
 
 The `js` subcommand compiles Dart code to deployable JavaScript.
 
@@ -275,7 +275,7 @@ $ dart compile js -O2 -o out/main.js web/main.dart
 ```
 
 
-#### Improving production web compiliation {#helping-generate-efficient-code}
+#### Improving production web compiliation {:#helping-generate-efficient-code}
 
 Follow these practices to improve type inference, reduce file size, and
 improve JavaScript performance:

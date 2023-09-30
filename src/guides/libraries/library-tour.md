@@ -1773,12 +1773,12 @@ The dart:convert library also has converters for ASCII and ISO-8859-1
 (Latin1). For details, see the [API reference for the dart:convert library.][dart:convert]
 
 
-## dart:html - browser-based apps {#darthtml}
+## dart:html - browser-based apps {:#darthtml}
 
 {% include_relative _dart-html-tour.md %}
 
 
-## dart:io - I/O for servers and command-line apps {#dartio}
+## dart:io - I/O for servers and command-line apps {:#dartio}
 
 {% include_relative _dart-io-tour.md %}
 

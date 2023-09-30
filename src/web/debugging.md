@@ -56,7 +56,7 @@ to debug a Dart web app, you need the following software:
 
 [cl-tools]: #getting-command-line-tool-packages
 
-## Getting started with Dart DevTools {#using-dart-devtools}
+## Getting started with Dart DevTools {:#using-dart-devtools}
 
 <img src="/assets/img/dart-devtools-screenshot.png" alt="DevTools">
 

@@ -97,7 +97,7 @@ extension SmartIterable<T> on Iterable<T> { ... }
 [extensions]: /language/extension-methods
 
 <a id="do-name-libraries-and-source-files-using-lowercase_with_underscores"></a>
-### DO name packages, directories, and source files using `lowercase_with_underscores` {#do-name-packages-and-file-system-entities-using-lowercase-with-underscores}
+### DO name packages, directories, and source files using `lowercase_with_underscores` {:#do-name-packages-and-file-system-entities-using-lowercase-with-underscores}
 
 {% include linter-rule-mention.md rule1="file_names" rule2="package_names" %}
 <!-- source for rules (update these if you update the guideline):
@@ -487,7 +487,7 @@ an import or export), it may remain whole even if it causes the line to go over
 because newlines are significant inside the string and splitting the lines into
 shorter ones can alter the program.
 
-### DO use curly braces for all flow control statements {#do-use-curly-braces-for-all-flow-control-structures}
+### DO use curly braces for all flow control statements {:#do-use-curly-braces-for-all-flow-control-structures}
 
 {% include linter-rule-mention.md rule="curly_braces_in_flow_control_structures" %}
 

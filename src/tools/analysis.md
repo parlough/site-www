@@ -151,7 +151,7 @@ and `my_other_other_package`, and file #2 to analyze the code in
 `my_package`.
 
 
-## Enabling stricter type checks {#enabling-additional-type-checks}
+## Enabling stricter type checks {:#enabling-additional-type-checks}
 
 If you want stricter static checks than
 the [Dart type system][type-system] requires,
@@ -266,7 +266,7 @@ for (final n in numbers) {
 warning - The generic type 'List<dynamic>' should have explicit type arguments but doesn't - strict_raw_type
 ```
 
-## Enabling and disabling linter rules {#enabling-linter-rules}
+## Enabling and disabling linter rules {:#enabling-linter-rules}
 
 The analyzer package also provides a code linter. A wide variety of
 [linter rules][] are available. Linters tend to be
@@ -275,7 +275,7 @@ For example, some rules are more appropriate for regular Dart packages
 and others are designed for Flutter apps.
 Note that linter rules can have false positives, unlike static analysis.
 
-### Enabling Dart team recommended linter rules {#lints}
+### Enabling Dart team recommended linter rules {:#lints}
 
 The Dart team provides two sets of recommended linter rules
 in the [lints package][]:
@@ -331,7 +331,7 @@ include: package:lints/recommended.yaml
 
 [lints package]: {{site.pub-pkg}}/lints
 
-### Enabling individual rules {#individual-rules}
+### Enabling individual rules {:#individual-rules}
 
 To enable a single linter rule, add `linter:` to the analysis options file
 as a top-level key,
@@ -387,7 +387,7 @@ linter:
   You can use the other syntax for rules in an included file.
 {{site.alert.end}}
 
-## Enabling analyzer plugins (experimental) {#plugins}
+## Enabling analyzer plugins (experimental) {:#plugins}
 
 The analyzer has experimental support for plugins.
 These plugins integrate with the analyzer to add functionality

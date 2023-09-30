@@ -725,7 +725,7 @@ You might still encounter older code using `class` to define mixins, but the new
 syntax is preferred.
 
 
-### AVOID mixing in a type that isn't intended to be a mixin {#avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin}
+### AVOID mixing in a type that isn't intended to be a mixin {:#avoid-mixing-in-a-class-that-isnt-intended-to-be-a-mixin}
 
 {% include linter-rule-mention.md rule="prefer_mixin" %}
 

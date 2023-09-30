@@ -44,7 +44,7 @@ For an informal look at the experience of using the migration tool, watch this v
 [Gradual null safety migration for large Dart projects]: https://medium.com/dartlang/gradual-null-safety-migration-for-large-dart-projects-85acb10b64a9
 
 
-## 1. Wait to migrate {#step1-wait}
+## 1. Wait to migrate {:#step1-wait}
 
 We strongly recommend migrating code in order, 
 with the leaves of the dependency graph being migrated first.
@@ -140,7 +140,7 @@ update its dependencies to null-safe versions:
 2. Run `dart pub get`.
 
 
-## 2. Migrate {#step2-migrate}
+## 2. Migrate {:#step2-migrate}
 
 Most of the changes that your code needs to be null safe
 are easily predictable.
@@ -168,7 +168,7 @@ You have two options for migrating:
 [null safety FAQ]: /null-safety/faq
 
 
-### Using the migration tool {#migration-tool}
+### Using the migration tool {:#migration-tool}
 
 The migration tool takes a package of null-unsafe Dart code
 and converts it to null safety.
@@ -246,7 +246,7 @@ Because you know that `zero` can't be null,
 you can improve the migration result.
 
 
-#### Improving migration results {#hint-markers}
+#### Improving migration results {:#hint-markers}
 
 When analysis infers the wrong nullability,
 you can override its proposed edits by inserting temporary hint markers:
@@ -418,7 +418,7 @@ for more help on migrating code by hand.
 [Unsound null safety]: /null-safety/unsound-null-safety
 
 
-## 3. Analyze {#step3-analyze}
+## 3. Analyze {:#step3-analyze}
 
 Update your packages
 (using `dart pub get` in your IDE or on the command line).
@@ -433,7 +433,7 @@ $ dart analyze     # or `flutter analyze`
 [static analysis]: /tools/analysis
 
 
-## 4. Test {#step4-test}
+## 4. Test {:#step4-test}
 
 If your code passes analysis, run tests:
 
@@ -448,7 +448,7 @@ then you might need to remigrate it.
 If so, revert your code changes before using the migration tool again.
 
 
-## 5. Publish {#step5-publish}
+## 5. Publish {:#step5-publish}
 
 We encourage you to publish packages—possibly as prereleases—as 
 soon as you migrate:
@@ -461,7 +461,7 @@ soon as you migrate:
 
 [publish the package as a prerelease]: /tools/pub/publishing#publishing-prereleases
 
-### Update the package version {#package-version}
+### Update the package version {:#package-version}
 
 Update the version of the package
 to indicate a breaking change:

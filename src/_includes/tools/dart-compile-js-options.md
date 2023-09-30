@@ -1,4 +1,4 @@
-#### Options {#prod-compile-options}
+#### Options {:#prod-compile-options}
 
 The `dart compile js` command has multiple options
 to customize javascript code compilation.

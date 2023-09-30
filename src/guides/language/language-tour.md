@@ -318,7 +318,7 @@ This content has moved to [Methods](/language/methods).
 
 This content has moved to [Methods](/language/methods#instance-methods).
 
-#### Operators {#_operators}
+#### Operators {:#_operators}
 
 This content has moved to [Methods](/language/methods#operators).
 
@@ -440,7 +440,7 @@ This content has moved to [Libraries & visibility](/language/libraries#importing
 
 This content has moved to [Libraries & visibility](/language/libraries#lazily-loading-a-library).
 
-#### The `library` directive {#library-directive}
+#### The `library` directive {:#library-directive}
 
 This content has moved to [Libraries & visibility](/language/libraries#library-directive).
 

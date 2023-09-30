@@ -47,7 +47,7 @@ one way that a Dart app can interact with items on the page.
 These concepts provide the foundation
 for more interesting and useful web apps.
 
-## About the Dart, HTML, and CSS triumvirate {#source-files}
+## About the Dart, HTML, and CSS triumvirate {:#source-files}
 
 If you've used
 [DartPad]({{site.dartpad}}){:target="_blank" rel="noopener"},
@@ -85,7 +85,7 @@ type face, font size, color, background color,
 borders, margins, and alignment, to name a few.
 
 
-## About the DOM {#dom-intro}
+## About the DOM {:#dom-intro}
 
 The Document Object Model (DOM)
 represents the structure of a web document as a tree of nodes.
@@ -146,7 +146,7 @@ A program could add and delete nodes,
 or even insert an entire subtree of nodes.
 
 
-## Create a new Dart app {#create-dart-app}
+## Create a new Dart app {:#create-dart-app}
 
 1. Go to the [DartPad]({{site.dartpad}}){:target="_blank" rel="noopener"}.
 2. Click the **New Pad** button to undo any changes you might have made
@@ -164,7 +164,7 @@ or even insert an entire subtree of nodes.
   [HTML and Dart connections](#connections) shows the full HTML code.
 {{site.alert.end}}
 
-## Edit the HTML source code {#create-html}
+## Edit the HTML source code {:#create-html}
 
 1. Click **HTML**, at the upper left of DartPad.
    The view switches from Dart code to the (currently non-existent) HTML code.
@@ -180,7 +180,7 @@ or even insert an entire subtree of nodes.
 3. Expand the output pane to see how a browser would render your HTML.
 
 
-## About the HTML source code {#about-html-code}
+## About the HTML source code {:#about-html-code}
 
 This HTML code is similar to the HTML code in the
 various diagrams earlier in this tutorial,
@@ -201,7 +201,7 @@ The Dart code you create in the next step uses this ID
 to get the paragraph element.
 
 
-## Edit the Dart source code {#dart-editor-happiness}
+## Edit the Dart source code {:#dart-editor-happiness}
 
 1. Click **Dart** at the upper right of DartPad.
    The view switches from HTML code to Dart code.
@@ -221,7 +221,7 @@ to get the paragraph element.
 The text in the output pane changes to "Wake up, sleepy head!"
 
 
-## About the Dart source code {#about-dart-code}
+## About the Dart source code {:#about-dart-code}
 
 Let's step through the Dart code.
 
@@ -373,7 +373,7 @@ the browser page containing this app,
 thus dynamically displaying the text on the browser page.
 
 
-## HTML and Dart connections {#connections}
+## HTML and Dart connections {:#connections}
 
 The Dart web app changed
 the text in the browser window dynamically at runtime.
@@ -420,7 +420,7 @@ assuming that the Dart code is in a file named `main.dart`:
 
 The `<script>` element specifies the location of the compiled Dart code.
 
-## Give the app some style with CSS {#add-css}
+## Give the app some style with CSS {:#add-css}
 
 Most HTML uses cascading style sheets (CSS) to define _styles_
 that control the appearance of page elements.
@@ -448,7 +448,7 @@ which apply only to the page element
 that has the ID `RipVanWinkle`.
 
 
-## About CSS selectors {#about-css-selectors}
+## About CSS selectors {:#about-css-selectors}
 
 IDs, classes, and other information about elements
 are established in HTML.

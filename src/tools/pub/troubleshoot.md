@@ -3,7 +3,7 @@ title: Troubleshooting pub
 description: Common gotchas you might run into when using pub.
 ---
 
-## Getting a "403" error when publishing a package {#pub-publish-403}
+## Getting a "403" error when publishing a package {:#pub-publish-403}
 
 You receive the following error when running `pub publish`:
 
@@ -20,7 +20,7 @@ publish a package, but the pub client registers you with another account.
 You can reset pub's authentication process
 by deleting the pub credentials file:
 
-#### Linux {#pub-credentials-linux}
+#### Linux {:#pub-credentials-linux}
 
 If `$XDG_CONFIG_HOME` is defined:
 
@@ -34,13 +34,13 @@ Otherwise:
 $ rm $HOME/.config/dart/pub-credentials.json
 ```
 
-#### macOS {#pub-credentials-mac}
+#### macOS {:#pub-credentials-mac}
 
 ```terminal
 $ rm $HOME/Library/Application Support/dart/pub-credentials.json
 ```
 
-#### Windows {#pub-credentials-windows}
+#### Windows {:#pub-credentials-windows}
 
 If you're using Command Prompt:
 
@@ -62,7 +62,7 @@ $ Remove-Item -Path "%APPDATA%\dart\pub-credentials.json"
 
 [`PUB_CACHE`]: /tools/pub/environment-variables
 
-## Getting an "UnauthorizedAccess" error when publishing a package {#pub-publish-unauthorized}
+## Getting an "UnauthorizedAccess" error when publishing a package {:#pub-publish-unauthorized}
 
 You receive the following error when running `pub publish`:
 
@@ -75,7 +75,7 @@ You will see this message if you are not on the list of people
 authorized to publish new versions of a package.
 See [Uploaders](/tools/pub/publishing#uploaders).
 
-## Pub build fails with HttpException error {#pub-get-fails}
+## Pub build fails with HttpException error {:#pub-get-fails}
 
 You receive an HttpException error similar to the following when
 running `pub build`:
@@ -163,7 +163,7 @@ Try this workaround, which uses the command line to complete sign-in:
    $ curl 'http://localhost:<port>?code=...'
    ```
 
-## Getting a socket error trying to find a package {#pub-get-socket-error}
+## Getting a socket error trying to find a package {:#pub-get-socket-error}
 
 The following error might occur if
 you have no internet access, your ISP is blocking `pub.dev`,

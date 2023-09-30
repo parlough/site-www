@@ -86,7 +86,7 @@ A [Language Server Protocol implementation][LSP] is also available for
 [LSP]: https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/tool/lsp_spec/README.md
 [LSP-capable editors]: https://microsoft.github.io/language-server-protocol/implementors/tools/
 
-### Command-line tools {#cli}
+### Command-line tools {:#cli}
 
 The Dart SDK includes the following general-purpose `dart` tool:
 
@@ -102,14 +102,14 @@ The Dart SDK includes the following general-purpose `dart` tool:
 : A suite of debugging and performance tools.
 
 
-## Tool for developing web apps {#web}
+## Tool for developing web apps {:#web}
 
 The following tool supports developing web apps:
 
 [`webdev`](/tools/webdev)
 : A CLI to build and serve Dart web apps.
 
-## Tools for developing command-line apps and servers {#server}
+## Tools for developing command-line apps and servers {:#server}
 
 The following tools support developing or running
 command-line apps and servers:

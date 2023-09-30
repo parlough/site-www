@@ -27,7 +27,7 @@ it just fetches a specific revision of the git repository.
 Therefore, when many people are collaborating
 it's often preferable to use a private package repository.
 
-## Authenticating with a custom package repository {#token-authentication}
+## Authenticating with a custom package repository {:#token-authentication}
 
 Most custom package repositories are
 private package repositories that require authentication.
@@ -180,7 +180,7 @@ Publishing example_package 1.0.0 to https://dart-packages.example.com
 {{site.alert.end}}
 
 
-### Overriding the default package repository {#default-override}
+### Overriding the default package repository {:#default-override}
 
 By default, `dart pub` retrieves dependencies from and publishes packages
 to the [pub.dev site]({{site.pub}})

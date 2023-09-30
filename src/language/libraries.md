@@ -148,7 +148,7 @@ Keep in mind the following when you use deferred loading:
   using <code>deferred as <em>namespace</em></code>.
   The `loadLibrary()` function returns a [`Future`](/guides/libraries/library-tour#future).
 
-### The `library` directive {#library-directive}
+### The `library` directive {:#library-directive}
 
 To specify library-level [doc comments][] or [metadata annotations][],
 attach them to a `library` declaration at the start of the file.

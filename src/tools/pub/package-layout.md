@@ -178,7 +178,7 @@ Two directories in your package are public to other packages: `lib` and
 `bin`. You place [public libraries](#public-libraries) in `lib` and
 [public tools](#public-tools) in `bin`.
 
-### Public libraries {#public-libraries}
+### Public libraries {:#public-libraries}
 
 The following directory structure shows the `lib` portion of enchilada:
 
@@ -242,7 +242,7 @@ resolve. Instead, your entrypoints should go in the appropriate
 For more information on packages, see
 [Creating packages](/guides/libraries/create-packages).
 
-### Public tools {#public-tools}
+### Public tools {:#public-tools}
 
 Dart scripts placed inside of the `bin` directory are public. If you're
 inside the directory of a package, you can use

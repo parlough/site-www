@@ -85,7 +85,7 @@ affect how your package's page looks:
   description, homepage, etc.
 
 
-### Advantages of using a verified publisher {#verified-publisher}
+### Advantages of using a verified publisher {:#verified-publisher}
 
 You can publish packages using either a verified publisher (recommended)
 or an independent Google Account.
@@ -99,7 +99,7 @@ Using a verified publisher has the following advantages:
   next to your package name on search pages and individual package pages.
 
 
-### Creating a verified publisher {#create-verified-publisher}
+### Creating a verified publisher {:#create-verified-publisher}
 
 To create a verified publisher, follow these steps:
 
@@ -360,7 +360,7 @@ then you can ignore the following warning from `dart pub publish`:
    instead."*
 
 
-## Retracting a package version {#retract}
+## Retracting a package version {:#retract}
 
 To prevent new package consumers from adopting a recently
 published version of your package, you can retract that package version
@@ -418,7 +418,7 @@ Then go to the package's **Admin** tab,
 where you can retract or restore recent package versions.
 
 
-## Marking packages as discontinued {#discontinue}
+## Marking packages as discontinued {:#discontinue}
 
 Although packages always remain published, it can be useful to signal to
 developers that a package is no longer being actively maintained.

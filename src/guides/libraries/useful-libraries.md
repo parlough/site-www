@@ -35,7 +35,7 @@ The following packages are useful for a wide range of projects.
 {:.table .table-striped .nowrap}
 
 
-## Packages that expand on Dart core libraries {#packages-that-correspond-to-sdk-libraries}
+## Packages that expand on Dart core libraries {:#packages-that-correspond-to-sdk-libraries}
 
 Each of the following packages builds upon a [core library](/guides/libraries),
 adding functionality and filling in missing features:

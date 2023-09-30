@@ -88,7 +88,7 @@ You can customize your build using build configuration files.
 To learn more about build configuration files, see the 
 [build_web_compilers][] package.
 
-### webdev serve {#serve}
+### webdev serve {:#serve}
 
 To serve a development version of your web app, run the following
 command.
@@ -136,7 +136,7 @@ default (8081) to 8083:
 $ webdev serve web test:8083 # App: 8080; tests: 8083
 ```
 
-### webdev build {#build}
+### webdev build {:#build}
 
 Use the following command to build your app:
 
@@ -155,7 +155,7 @@ $ webdev build --output web:build
 ```
 
 
-### build_runner test {#test}
+### build_runner test {:#test}
 
 Use the `build_runner test` command to run your app's component tests:
 

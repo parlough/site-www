@@ -51,7 +51,7 @@ Because the nodes you care about most are usually elements,
 this tutorial focuses on `Element`,
 rather than on `Node`.
 
-## Running the Todo app {#try-app}
+## Running the Todo app {:#try-app}
 
 In this tutorial, you will be working with a sample web app
 that is a partial implementation of a todo list.
@@ -134,7 +134,7 @@ Right now, this app is for procrastinators only
 because the program can only add items to your to do list
 but not remove them.
 
-## About parent and child Elements in Dart {#tree-structure}
+## About parent and child Elements in Dart {:#tree-structure}
 
 The `Node` class implements the basic treeing behavior
 for nodes in the Dart DOM.
@@ -210,7 +210,7 @@ When you change an `Element` or its child elements in your Dart program,
 you change the DOM and therefore the web page.
 The browser re-renders the page automatically.
 
-## Setting up the page in HTML {#html-code}
+## Setting up the page in HTML {:#html-code}
 
 Let's take a look at the todo app
 to see how it dynamically
@@ -239,7 +239,7 @@ containing the task items.
 Dart code adds elements to this list
 whenever the user enters text into the input element.
 
-## Getting an element from the DOM {#dart-code}
+## Getting an element from the DOM {:#dart-code}
 
 The following diagram shows
 the Dart code for the todo app.
@@ -273,7 +273,7 @@ This program uses three:
 | `<li>`    | [`LIElement`]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/LIElement-class.html){:target="_blank" rel="noopener"}       |
 {: .table}
 
-## Registering an event handler {#event-handler}
+## Registering an event handler {:#event-handler}
 
 When a user enters text into the input field,
 a _change_ event fires,
@@ -297,7 +297,7 @@ that an input element can generate.
 For example, you can use `click` to handle mouse clicks,
 or `keyDown` for when the user presses a key on the keyboard.
 
-## About EventListener functions {#about-event-listeners}
+## About EventListener functions {:#about-event-listeners}
 
 The argument passed to the `listen()` method is a _callback function_
 of type
@@ -326,7 +326,7 @@ the `Event` object also knows where the event occurred.
 
 The `addToDoItem()` function ignores the Event object passed to it.
 
-## Adding an element to the DOM tree {#add-elem}
+## Adding an element to the DOM tree {:#add-elem}
 
 The change event handler has the following code:
 
@@ -343,7 +343,7 @@ When the DOM changes, the browser re-renders the browser page.
 The effect, in our todo app, is that a new bullet item appears
 in the to do list.
 
-## Styling the page elements {#about-css}
+## Styling the page elements {:#about-css}
 
 Let's take a look at the CSS file for this app.
 
@@ -365,7 +365,7 @@ This rule matches all `<li>` elements in the
 element with the ID `to-do-list`, thus styling
 each item in the to do list.
 
-## Moving elements within the DOM tree {#moving-elements}
+## Moving elements within the DOM tree {:#moving-elements}
 
 The Anagram app shows how to move an element within the DOM.
 

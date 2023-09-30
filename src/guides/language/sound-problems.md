@@ -47,7 +47,7 @@ You can see other examples of static analysis errors,
 as well as other error types, in the following sections.
 
 
-## No type errors {#no-type-errors}
+## No type errors {:#no-type-errors}
 
 If you're not seeing expected errors or warnings,
 make sure that you're using the latest version of Dart

@@ -163,11 +163,11 @@ Future<int> lastPositive(Stream<int> stream) =>
     stream.lastWhere((x) => x >= 0);
 ```
 
-## Two kinds of streams {#two-kinds-of-streams}
+## Two kinds of streams {:#two-kinds-of-streams}
 
 There are two kinds of streams.
 
-### Single subscription streams {#single-subscription-streams}
+### Single subscription streams {:#single-subscription-streams}
 
 The most common kind of stream contains a sequence of events that
 are parts of a larger whole.
@@ -182,7 +182,7 @@ and then the rest of the stream makes no sense.
 When you start listening,
 the data will be fetched and provided in chunks.
 
-### Broadcast streams {#broadcast-streams}
+### Broadcast streams {:#broadcast-streams}
 
 The other kind of stream is intended for individual messages that
 can be handled one at a time. This kind of stream can be used for
@@ -194,7 +194,7 @@ More than one listener can listen at the same time,
 and you can listen again later after canceling a previous
 subscription.
 
-## Methods that process a stream {#process-stream-methods}
+## Methods that process a stream {:#process-stream-methods}
 
 The following methods on [Stream\<T>][Stream] process the stream and return a
 result:
@@ -257,7 +257,7 @@ Future<String> join([String separator = '']) async =>
 (The actual implementations are slightly more complex,
 but mainly for historical reasons.)
 
-## Methods that modify a stream {#modify-stream-methods}
+## Methods that modify a stream {:#modify-stream-methods}
 
 The following methods on Stream return a new stream based
 on the original stream.
@@ -322,7 +322,7 @@ Stream<S> mapLogErrors<S, T>(
 }
 ```
 
-### The transform() function {#transform-function}
+### The transform() function {:#transform-function}
 
 The `transform()` function is not just for error handling;
 it is a more generalized "map" for streams.
@@ -334,7 +334,7 @@ For example, decoders like [Utf8Decoder][] are transformers.
 A transformer requires only one function, [bind()][], which can be
 easily implemented by an `async` function.
 
-### Reading and decoding a file {#reading-decoding-file}
+### Reading and decoding a file {:#reading-decoding-file}
 
 The following code reads a file and runs two transforms over the stream.
 It first converts the data from UTF8 and then runs it through
@@ -357,7 +357,7 @@ void main(List<String> args) async {
 }
 ```
 
-## The listen() method {#listen-method}
+## The listen() method {:#listen-method}
 
 The final method on Stream is `listen()`. This is a "low-level"
 method—all other stream functions are defined in terms of `listen()`.

@@ -381,7 +381,7 @@ The code from the following excerpt isn't actually what is being shown in the pa
 ```dart
 void main() {
   print(Function.apply(int.parse, ['11']));
-  print(Function.apply(int.parse, ['11'], {#radix: 16}));
+  print(Function.apply(int.parse, ['11'], {:#radix: 16}));
 }
 ```
 {% endcomment %}

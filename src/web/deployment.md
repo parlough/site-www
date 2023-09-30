@@ -7,7 +7,7 @@ Deploying a Dart web app works like deploying any other web app.
 This page describes how to compile your app, tips for making it smaller
 and faster, and points you to resources for serving the app.
 
-## Building your app {#compiling-to-javascript}
+## Building your app {:#compiling-to-javascript}
 
 Use the `webdev` tool to build your app. It compiles Dart to JavaScript
 and generates all the assets you need for deployment.

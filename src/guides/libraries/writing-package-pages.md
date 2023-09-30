@@ -72,7 +72,7 @@ that works well on pub.dev:
 7. [Tell users where to go next](#tip7)
 
 
-### 1. Put a short description at the top {#tip1}
+### 1. Put a short description at the top {:#tip1}
 
 According to our user research,
 package users spend only a few seconds to
@@ -111,7 +111,7 @@ which starts with a brief explanation of the package and a caution:
 either above or under the short description. 
 
 
-### 2. Include visual content {#tip2}
+### 2. Include visual content {:#tip2}
 
 If your package page is a wall of text with no visual content,
 users might find it intimidating and stop reading.
@@ -150,7 +150,7 @@ adding visual content made the `in_app_purchase` package page look informative a
 {{site.alert.end}}
 
 
-### 3. Use lists to present important information {#tip3}
+### 3. Use lists to present important information {:#tip3}
 
 Lists can draw attention to important information on your README.
 You might use lists for the following:
@@ -167,7 +167,7 @@ Another option is using a table,
 like the table of platform support in the next section.
 
 
-#### Key features of the package {#list1}
+#### Key features of the package {:#list1}
 
 First, clearly list what your package can do.
 Some users might be looking for a very specific feature.
@@ -190,7 +190,7 @@ that lists the package's features and platform support:
   class="screenshot-narrow">
 
 
-#### Parameters, attributes, or properties {#list2}
+#### Parameters, attributes, or properties {:#list2}
 
 Consider listing parameters, attributes, or properties for quick reference.
 (Remember, the content of the package README appears in the
@@ -208,7 +208,7 @@ in the API reference documentation can also be useful.
 See the [async]({{site.pub-pkg}}/async) package for an example.
 
 
-#### Unusual requirements {#list3}
+#### Unusual requirements {:#list3}
 
 If your package needs a specific setup, beyond what all packages require,
 list setup instructions in the README.
@@ -222,7 +222,7 @@ shows instructions on getting started with Google Maps Platform:
   class="screenshot">
 
 
-#### Functionality that's out of scope of your package {#list4}
+#### Functionality that's out of scope of your package {:#list4}
 
 To help users know whether your package can help them,
 list the features that users might expect,
@@ -238,7 +238,7 @@ you might want to list out-of-scope functionality:
   say that in the README.
 
 
-#### Contents {#list5}
+#### Contents {:#list5}
 
 Users find it easier to navigate a page or section
 when it has a table of contents.
@@ -256,7 +256,7 @@ and go to the code that interests them:
   class="screenshot">
 
 
-### 4. Include usage examples {#tip4}
+### 4. Include usage examples {:#tip4}
 
 If your package looks promising, users might want to test your package.
 Include a "Get started" or "Usage" section that has
@@ -284,7 +284,7 @@ the `in_app_purchase` package:
   alt="sample code of the package in_app_purchase" 
   class="screenshot">
 
-### 5. Use Dart code formatting {#tip5}
+### 5. Use Dart code formatting {:#tip5}
 
 When adding code examples,
 use three backticks plus `dart` (<code>```dart</code>) instead of
@@ -312,7 +312,7 @@ final like = 'this';
 </table>
 
 
-### 6. Mention related terms {#tip6}
+### 6. Mention related terms {:#tip6}
 
 A recent UX study found that
 many users use the within-page search feature
@@ -351,7 +351,7 @@ The rest of the page consistently uses that term:
   class="screenshot">
 
 
-### 7. Tell users where to go next {#tip7}
+### 7. Tell users where to go next {:#tip7}
 
 Help your users find out more about the package.
 Here are some suggestions for what to tell potential users:

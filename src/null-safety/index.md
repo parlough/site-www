@@ -131,7 +131,7 @@ listed by the analyzer.
 [the download page]: /get-dart/archive
 [status of the dependencies]: /null-safety/migration-guide#check-dependency-status
 
-## Dart 2.x and null safety {#enable-null-safety}
+## Dart 2.x and null safety {:#enable-null-safety}
 
 From Dart 2.12 to 2.19, you need to enable null safety.
 You cannot use null safety in SDK versions earlier than Dart 2.12.
@@ -149,7 +149,7 @@ environment:
 
 [language version]: /guides/language/evolution#language-versioning
 
-## Migrating existing code {#migrate}
+## Migrating existing code {:#migrate}
 
 {{site.alert.warning}}
   Dart 3 removes the `dart migrate` tool.

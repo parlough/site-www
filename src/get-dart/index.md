@@ -11,7 +11,7 @@ The Dart SDK has the libraries and command-line tools that you need to develop
 Dart command-line, server, and non-Flutter web apps.
 For details, see the [Dart SDK overview](/tools/sdk).
 
-## Installing the Dart SDK {#install}
+## Installing the Dart SDK {:#install}
 
 As the following instructions show,
 you can use a package manager
@@ -74,7 +74,7 @@ Dart supports the following macOS versions as of November 2022:
   - macOS 13 (Ventura)
 * **Supported architectures:** x64, ARM64.
 
-## About release channels and version strings {#release-channels}
+## About release channels and version strings {:#release-channels}
 
 The Dart SDK has three release channels:
 

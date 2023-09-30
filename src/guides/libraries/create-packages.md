@@ -271,7 +271,7 @@ For the how-and-why of documenting libraries, see
 [Effective Dart: Documentation](/effective-dart/documentation#consider-writing-a-library-level-doc-comment).
 
 
-## Distributing an open source library {#distributing-a-library}
+## Distributing an open source library {:#distributing-a-library}
 
 If your library is open source,
 we recommend sharing it on the [pub.dev site.]({{site.pub}})

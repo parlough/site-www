@@ -14,7 +14,7 @@ a section in [Understanding null safety][].
 [Understanding null safety]: /null-safety/understanding-null-safety
 
 
-## Only local variables can be promoted {#property-or-this}
+## Only local variables can be promoted {:#property-or-this}
 
 **The cause:**
 You're trying to promote a property or `this`,
@@ -111,7 +111,7 @@ one or more of the following:
 {{site.alert.end}}
 
 
-### Possibly written after promotion {#write}
+### Possibly written after promotion {:#write}
 
 **The cause:**
 Trying to promote a variable that might have been
@@ -176,7 +176,7 @@ void f(bool b, int? i, [!int j!]) {
 ```
 
 
-### Possibly written in a previous loop iteration {#loop-or-switch}
+### Possibly written in a previous loop iteration {:#loop-or-switch}
 
 **The cause:**
 You're trying to promote something that
@@ -255,7 +255,7 @@ void f(int i, int? j, int? k) {
 
 
 
-### In catch after possible write in try {#catch}
+### In catch after possible write in try {:#catch}
 
 **The cause:**
 The variable might have been written to in a `try` block,
@@ -409,7 +409,7 @@ void f(Object o) {
 ```
 
 
-### Write captured by a local function {#captured-local}
+### Write captured by a local function {:#captured-local}
 
 **The cause:**
 The variable has been write captured by
@@ -486,7 +486,7 @@ void f(int? i, int? j) {
 ```
 
 
-### Written outside of the current closure or function expression {#write-outer}
+### Written outside of the current closure or function expression {:#write-outer}
 
 **The cause:**
 The variable is written to outside of a closure or function expression,
@@ -567,7 +567,7 @@ whether or not it's assigned later,
 `j` can never have a non-null value.
 
 
-### Write captured outside of the current closure or function expression {#captured-outer}
+### Write captured outside of the current closure or function expression {:#captured-outer}
 
 **The cause:**
 The variable you're trying to promote is write captured
