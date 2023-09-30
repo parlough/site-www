@@ -64,7 +64,7 @@ You might find the following tutorials helpful.
 
 ## More resources
 
-[Dart API]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}})
+[Dart API]({{site.dart-api}}/{{site.sdkInfo.channel}})
 : API reference for dart:* libraries.
 
 [dart:io section of the library tour](/guides/libraries/library-tour#dartio)

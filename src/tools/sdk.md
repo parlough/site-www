@@ -13,8 +13,8 @@ the [Dart tools](/tools) page.
 
 {{site.alert.version-note}}
   This site's documentation and examples use
-  {% if site.data.pkg-vers.SDK.channel == 'dev' %} the **dev channel** {% endif -%}
-  version [{{site.data.pkg-vers.SDK.vers}}][site SDK version]{:.no-automatic-external}
+  {% if site.sdkInfo.channel == 'dev' %} the **dev channel** {% endif -%}
+  version [{{site.sdkInfo.version}}][site SDK version]{:.no-automatic-external}
   of the **Dart SDK**.
 {{site.alert.end}}
 
@@ -47,4 +47,4 @@ go to [the SDK issue tracker](https://github.com/dart-lang/sdk/issues).
 [build the SDK from source]: https://github.com/dart-lang/sdk/wiki/Building
 [Dart libraries]: /guides/libraries/library-tour
 [flutter]: https://flutter.dev/docs/get-started/install
-[site SDK version]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/{{site.data.pkg-vers.SDK.vers}}/index.html
+[site SDK version]: {{site.dart-api}}/{{site.sdkInfo.channel}}/{{site.sdkInfo.version}}/index.html

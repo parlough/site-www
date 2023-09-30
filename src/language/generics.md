@@ -219,6 +219,6 @@ allows you to use the type argument `T` in several places:
 * In the type of an argument (`List<T>`).
 * In the type of a local variable (`T tmp`).
 
-[`List`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
+[`List`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/List-class.html
 [By convention]: /effective-dart/design#do-follow-existing-mnemonic-conventions-when-naming-type-parameters
 [top-and-bottom]: /null-safety/understanding-null-safety#top-and-bottom

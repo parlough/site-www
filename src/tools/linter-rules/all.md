@@ -6,7 +6,7 @@ show_breadcrumbs: true
 ---
 
 The following is an auto-generated list of all linter rules
-available in the Dart SDK as of version `{{site.data.pkg-vers.SDK.vers}}`.
+available in the Dart SDK as of version `{{site.sdkInfo.version}}`.
 Add them to your
 [`analysis_options.yaml`](/tools/analysis) file
 and adjust as you see fit.

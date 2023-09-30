@@ -806,8 +806,8 @@ assert(httpUri.toString() == 'http://example.org/foo/bar?lang=dart');
 assert(httpsUri.toString() == 'https://example.org/foo/bar?lang=dart');
 ```
 
-[`Uri.http`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Uri/Uri.http.html
-[`Uri.https`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Uri/Uri.https.html
+[`Uri.http`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Uri/Uri.http.html
+[`Uri.https`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Uri/Uri.https.html
 
 ### Dates and times
 
@@ -937,9 +937,9 @@ unique, but it should be well distributed.
   or [`Object.hashAllUnordered()`][].
 {{site.alert.end}}
 
-[`Object.hash()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object/hash.html
-[`Object.hashAll()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object/hashAll.html
-[`Object.hashAllUnordered()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object/hashAllUnordered.html
+[`Object.hash()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Object/hash.html
+[`Object.hashAll()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Object/hashAll.html
+[`Object.hashAllUnordered()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Object/hashAllUnordered.html
 
 {% comment %}
 Note: There's disagreement over whether to include identical() in the ==
@@ -1299,8 +1299,8 @@ or with an error if any of the provided futures fail.
 
 #### Handling errors for multiple futures
 
-You can also wait for parallel operations on an [iterable]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/FutureIterable/wait.html)
-or [record]({{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/FutureRecord2/wait.html)
+You can also wait for parallel operations on an [iterable]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/FutureIterable/wait.html)
+or [record]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/FutureRecord2/wait.html)
 of futures.
 
 These extensions return a future with the resulting values of all provided
@@ -1804,57 +1804,57 @@ sampling of what you can install using pub.
 To learn more about the Dart language, see the
 [language tour][].
 
-[ArgumentError]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/ArgumentError-class.html
+[ArgumentError]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/ArgumentError-class.html
 [Assert]: /language/error-handling#assert
-[Comparable]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Comparable-class.html
-[Dart API]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}
-[DateTime]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/DateTime-class.html
-[Duration]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Duration-class.html
-[Exception]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Exception-class.html
-[Expando]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Expando-class.html
-[Finalizable]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/Finalizable-class.html
-[Finalizer]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Finalizer-class.html
-[Future.wait()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future/wait.html
-[Future]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Future-class.html
-[IndexedDB]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-indexed_db/dart-indexed_db-library.html
-[Iterable]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
-[Iterator]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterator-class.html
+[Comparable]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Comparable-class.html
+[Dart API]: {{site.dart-api}}/{{site.sdkInfo.channel}}
+[DateTime]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/DateTime-class.html
+[Duration]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Duration-class.html
+[Exception]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Exception-class.html
+[Expando]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Expando-class.html
+[Finalizable]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/Finalizable-class.html
+[Finalizer]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Finalizer-class.html
+[Future.wait()]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Future/wait.html
+[Future]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Future-class.html
+[IndexedDB]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-indexed_db/dart-indexed_db-library.html
+[Iterable]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterable-class.html
+[Iterator]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterator-class.html
 [JSON]: https://www.json.org/
-[List]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
-[Map]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
-[Match]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Match-class.html
-[NativeFinalizer]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-ffi/NativeFinalizer-class.html
-[NoSuchMethodError]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/NoSuchMethodError-class.html
-[Object]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Object-class.html
-[`ParallelWaitError`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/ParallelWaitError-class.html
-[Pattern]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Pattern-class.html
-[Random]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/Random-class.html
-[RegExp]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/RegExp-class.html
-[Set]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Set-class.html
-[Stream]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
-[StringBuffer]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/StringBuffer-class.html
-[String]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/String-class.html
-[Symbol]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Symbol-class.html
+[List]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/List-class.html
+[Map]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Map-class.html
+[Match]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Match-class.html
+[NativeFinalizer]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/NativeFinalizer-class.html
+[NoSuchMethodError]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/NoSuchMethodError-class.html
+[Object]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Object-class.html
+[`ParallelWaitError`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/ParallelWaitError-class.html
+[Pattern]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Pattern-class.html
+[Random]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-math/Random-class.html
+[RegExp]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/RegExp-class.html
+[Set]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Set-class.html
+[Stream]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Stream-class.html
+[StringBuffer]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/StringBuffer-class.html
+[String]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/String-class.html
+[Symbol]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Symbol-class.html
 [UTF-8]: https://en.wikipedia.org/wiki/UTF-8
-[Uri]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Uri-class.html
-[WeakReference]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/WeakReference-class.html
-[`Random.secure()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/Random/Random.secure.html
-[dart:async]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/dart-async-library.html
-[dart:collection]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-collection/dart-collection-library.html
-[dart:convert]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-convert/dart-convert-library.html
-[dart:core]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/dart-core-library.html
+[Uri]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Uri-class.html
+[WeakReference]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/WeakReference-class.html
+[`Random.secure()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-math/Random/Random.secure.html
+[dart:async]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/dart-async-library.html
+[dart:collection]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-collection/dart-collection-library.html
+[dart:convert]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-convert/dart-convert-library.html
+[dart:core]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/dart-core-library.html
 [dart:ffi]: /guides/libraries/c-interop
 [dart:io tour]: #dartio
-[dart:math]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-math/dart-math-library.html
-[dart:typed\_data]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-typed_data/dart-typed_data-library.html
+[dart:math]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-math/dart-math-library.html
+[dart:typed\_data]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-typed_data/dart-typed_data-library.html
 [docs.flutter]: {{site.flutter-api}}
-[double]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/double-class.html
+[double]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/double-class.html
 [garbage-collected]: https://medium.com/flutter/flutter-dont-fear-the-garbage-collector-d69b3ff1ca30
-[int]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/int-class.html
+[int]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/int-class.html
 [language tour]: /language
-[num]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num-class.html
-[toStringAsFixed()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num/toStringAsFixed.html
-[toStringAsPrecision()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/num/toStringAsPrecision.html
+[num]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/num-class.html
+[toStringAsFixed()]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/num/toStringAsFixed.html
+[toStringAsPrecision()]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/num/toStringAsPrecision.html
 [weak reference]: https://en.wikipedia.org/wiki/Weak_reference
-[web audio]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-web_audio/dart-web_audio-library.html
+[web audio]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-web_audio/dart-web_audio-library.html
 [webdev libraries]: /web/libraries

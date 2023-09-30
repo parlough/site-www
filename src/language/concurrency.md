@@ -64,8 +64,8 @@ immediately returns an object of type `Future<String>`.
 At some point in the future,
 the `Future<String>` completes with either a string value or an error.
 
-[`readAsStringSync()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File/readAsStringSync.html
-[`readAsString()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-io/File/readAsString.html
+[`readAsStringSync()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-io/File/readAsStringSync.html
+[`readAsString()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-io/File/readAsString.html
 
 
 #### Why asynchronous code matters
@@ -302,7 +302,7 @@ It has its own memory and
 doesn't share any state with the main isolate.
 The worker isolate can block without affecting other isolates.
 
-[`send()` method]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort/send.html
+[`send()` method]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/SendPort/send.html
 
 ## Code examples
 
@@ -451,10 +451,10 @@ isolate-related API to simplify isolate management:
 * [`Isolate.spawn()`][] and [`Isolate.exit()`][]
 * [`ReceivePort`][] and [`SendPort`][]
 
-[`Isolate.exit()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/exit.html
-[`Isolate.spawn()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawn.html
-[`ReceivePort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/ReceivePort-class.html
-[`SendPort`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/SendPort-class.html
+[`Isolate.exit()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/exit.html
+[`Isolate.spawn()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/spawn.html
+[`ReceivePort`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/ReceivePort-class.html
+[`SendPort`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/SendPort-class.html
 
 You can use these primitives directly for more granular
 control over isolate functionality. For example, `run()` shuts
@@ -499,7 +499,7 @@ and the new isolate isn't in its spawner's isolate group.
 Another performance consequence is that message passing
 is slower when isolates are in different groups.
 
-[`Isolate.spawnUri()`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-isolate/Isolate/spawnUri.html
+[`Isolate.spawnUri()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/spawnUri.html
 
 {{site.alert.flutter-note}}
   Flutter doesn't support `Isolate.spawnUri()`.

@@ -124,7 +124,7 @@ To learn more about each rule,
 click on its name.
 
 For an auto-generated list containing all linter rules
-in Dart `{{site.data.pkg-vers.SDK.vers}}`,
+in Dart `{{site.sdkInfo.version}}`,
 check out [All linter rules](/tools/linter-rules/all).
 
 ### Error rules

@@ -500,11 +500,11 @@ Iterable<int> naturalsDownFrom(int n) sync* {
 }
 ```
 
-[`Iterable`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
-[`Stream`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-async/Stream-class.html
+[`Iterable`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterable-class.html
+[`Stream`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-async/Stream-class.html
 [record]: /language/records#multiple-returns
 
-[Function API reference]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Function-class.html
+[Function API reference]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Function-class.html
 [Callable objects]: /language/callable-objects
 [type annotations for public APIs]: /effective-dart/design#do-type-annotate-fields-and-top-level-variables-if-the-type-isnt-obvious
 [if statement]: /language/branches#if

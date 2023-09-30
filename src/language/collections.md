@@ -321,11 +321,11 @@ For more details and examples of using collection `if` and `for`, see the
 
 [collections]: /guides/libraries/library-tour#collections
 [type inference]: /language/type-system#type-inference
-[`List`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/List-class.html
-[`Map`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Map-class.html
+[`List`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/List-class.html
+[`Map`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Map-class.html
 [Using constructors]: /language/classes#using-constructors
 [collections proposal]: https://github.com/dart-lang/language/blob/main/accepted/2.3/control-flow-collections/feature-specification.md
 [spread proposal]: https://github.com/dart-lang/language/blob/main/accepted/2.3/spread-collections/feature-specification.md
 [generics]: /language/generics
-[`Set`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Set-class.html
+[`Set`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Set-class.html
 [if-case]: /language/branches#if-case

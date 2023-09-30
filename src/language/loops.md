@@ -145,6 +145,6 @@ candidates
 [exceptions]: /language/error-handling
 [branching]: /language/branches
 [iteration]: /guides/libraries/library-tour#iteration
-[forEach()]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable/forEach.html
-[`Iterable`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-core/Iterable-class.html
+[forEach()]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterable/forEach.html
+[`Iterable`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Iterable-class.html
 [pattern]: /language/patterns

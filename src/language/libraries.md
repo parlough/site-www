@@ -172,6 +172,6 @@ for advice on how to implement a package, including:
 * How to use conditional imports and exports to implement
   a library that supports multiple platforms.
 
-[dart:html]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-html
+[dart:html]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html
 [doc comments]: /effective-dart/documentation#consider-writing-a-library-level-doc-comment
 [metadata annotations]: /language/metadata

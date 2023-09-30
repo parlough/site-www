@@ -120,4 +120,4 @@ to optimize it in the same way as static interop.
 As a result, we highly recommend using static interop over
 `dart:js_util` whenever it's possible.
 
-[`dart:js_util`]: {{site.dart-api}}/{{site.data.pkg-vers.SDK.channel}}/dart-js_util/dart-js_util-library.html
+[`dart:js_util`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-js_util/dart-js_util-library.html
