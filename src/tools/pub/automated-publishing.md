@@ -101,10 +101,10 @@ on:
   push:
     tags:
     # must align with the tag-pattern configured on pub.dev, often just replace
-    # {{version}} with [0-9]+.[0-9]+.[0-9]+*
-    - 'v[0-9]+.[0-9]+.[0-9]+*' # tag-pattern on pub.dev: 'v{{version}}'
+      # {% raw %}{{version}}{% endraw %} with [0-9]+.[0-9]+.[0-9]+*
+    - 'v[0-9]+.[0-9]+.[0-9]+*' # tag-pattern on pub.dev: 'v{% raw %}{{version}}{% endraw %}'
     # If you prefer tags like '1.2.3', without the 'v' prefix, then use:
-    # - '[0-9]+.[0-9]+.[0-9]+*' # tag-pattern on pub.dev: '{{version}}'
+    # - '[0-9]+.[0-9]+.[0-9]+*' # tag-pattern on pub.dev: '{% raw %}{{version}}{% endraw %}'
     # If your repository contains multiple packages consider a pattern like:
     # - 'my_package_name-v[0-9]+.[0-9]+.[0-9]+*'
 
@@ -121,8 +121,9 @@ jobs:
 Make sure to match the pattern in `on.push.tags` with the _tag pattern_
 specified on pub.dev. Otherwise, the GitHub Action workflow won't work.
 If publishing multiple packages from the same repository, 
-use a per-package _tag pattern_ like `my_package_name-v{{version}}`
-and create a separate workflow file for each package.
+use a per-package _tag pattern_ like 
+`my_package_name-v{% raw %}{{version}}{% endraw %}` and
+create a separate workflow file for each package.
 
 The workflow file above uses
 `dart-lang/setup-dart/.github/workflows/publish.yml` to publish the package.
@@ -144,7 +145,7 @@ name: Publish to pub.dev
 on:
   push:
     tags:
-    - 'v[0-9]+.[0-9]+.[0-9]+*' # tag pattern on pub.dev: 'v{{version}}'
+    - 'v[0-9]+.[0-9]+.[0-9]+*' # tag pattern on pub.dev: 'v{% raw %}{{version}{% endraw %}'
 
 # Publish using custom workflow
 jobs:
@@ -195,7 +196,7 @@ environment:
 ```
 
 ```terminal
-$ git tag v1.2.3          # assuming my tag pattern is: 'v{{version}}'
+$ git tag v1.2.3          # assuming my tag pattern is: 'v{% raw %}{{version}}{% endraw %}'
 $ git push origin v1.2.3  # triggers the action that publishes my package.
 ```
 

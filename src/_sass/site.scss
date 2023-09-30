@@ -290,37 +290,6 @@ main .content {
   h4,
   h5,
   h6 {
-    .anchor {
-      float: left;
-      margin-left: -($icon-size + $anchor-padding);
-      padding-right: $anchor-padding;
-      overflow: hidden;
-
-      .octicon-link {
-        @include transition(.1s);
-
-        @include md-icon-before("tag");
-        font-style: italic;
-        font-size: 24px;
-        color: $site-color-body;
-        opacity: 0;
-
-        &:hover {
-          color: lighten($brand-primary, 25%);
-        }
-      }
-
-      &:focus .octicon-link {
-        opacity: 1
-      }
-    }
-
-    &:hover {
-      .anchor .octicon-link {
-        opacity: 1
-      }
-    }
-
     // Push # link targets clear of page header.
     &[id] {
       scroll-margin: 60px;
@@ -424,10 +393,6 @@ main .content {
     a {
       color: $site-color-card-text;
       font-family: $site-font-family-gsans;
-    }
-
-    .octicon-link {
-      display: none !important;
     }
   }
 

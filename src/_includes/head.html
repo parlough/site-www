@@ -42,11 +42,11 @@
   <meta name="twitter:description" content="{{desc}}">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="{{page.title}}">
+  <meta property="og:title" content="{{title}}">
   <meta property="og:description" content="{{desc}}">
   <meta property="og:url" content="{{ page.url | url }}">
 
-  {% assign og_image_path = page.og_image default: '/assets/shared/dart-logo-for-shares.png' -%}
+  {% assign og_image_path = page.og_image | default: '/assets/shared/dart-logo-for-shares.png' -%}
   {% assign og_type = page.og_type -%}
 
   {% comment %} Add page URL to page relative paths {% endcomment -%}

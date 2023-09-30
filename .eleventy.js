@@ -4,7 +4,7 @@ const markdownItAnchor = require('markdown-it-anchor');
 const markdownItContainer = require('markdown-it-container');
 const markdownItTocDoneRight = require('markdown-it-toc-done-right');
 const markdownItAttrs = require('markdown-it-attrs');
-const path = require('path');
+const { markdownItTable } = require('markdown-it-table');
 const eleventySass = require('eleventy-sass');
 
 module.exports = function (eleventyConfig) {
@@ -36,11 +36,12 @@ module.exports = function (eleventyConfig) {
           }
         }
       })
+      .use(markdownItTable) // TODO(parlough): Tables broken
   );
 
   eleventyConfig.setLiquidOptions({
     strictFilters: true,
-    strictVariables: true,
+    // strictVariables: true, TODO(parlough): Enable
     lenientIf: true
   });
 
@@ -55,31 +56,13 @@ module.exports = function (eleventyConfig) {
     return activeEntryIndexes.length === 0 ? null : activeEntryIndexes;
   });
 
-  eleventyConfig.addFilter('array_to_sentence_string', function(list, joiner = 'and') {
-    if (!list || list.length === 0) {
-      return '';
-    }
-    
-    if (list.length === 1) {
-      return list[0];
-    }
-    
-    let result = '';
-
-    for (let i = 0; i < list.length; i++) {
-      const item = list[i];
-      if (i === list.length - 1) {
-        result += `${joiner} ${item}`;
-      } else {
-        result += `${item}, `;
-      }
-    }
-    
-    return result;
-  });
-
-
+  eleventyConfig.addFilter('array_to_sentence_string', _arrayToSentenceString);
+  
   eleventyConfig.addFilter('underscore_breaker', _underscoreBreaker);
+
+  eleventyConfig.addFilter('throw_error', function (error) {
+    throw new Error(error);
+  });
 
   eleventyConfig.addPlugin(eleventySass, {
     sass: {
@@ -147,4 +130,27 @@ function _underscoreBreaker(stringToBreak, inAnchor = false) {
   }
 
   return stringToBreak.replace('_', '_<wbr>');
+}
+
+function _arrayToSentenceString(list, joiner = 'and') {
+  if (!list || list.length === 0) {
+    return '';
+  }
+
+  if (list.length === 1) {
+    return list[0];
+  }
+
+  let result = '';
+
+  for (let i = 0; i < list.length; i++) {
+    const item = list[i];
+    if (i === list.length - 1) {
+      result += `${joiner} ${item}`;
+    } else {
+      result += `${item}, `;
+    }
+  }
+
+  return result;
 }

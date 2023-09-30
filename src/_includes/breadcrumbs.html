@@ -11,7 +11,8 @@ Embeds breadcrumb RDFa, follows ARIA guidelines. References:
 {% if url.size > 0 -%}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb" vocab="http://schema.org/" typeof="BreadcrumbList">
-  {% assign position = 0 -%}
+  {% assign position = 0 -%} 
+  {% if breadcrumbs -%}
   {% for crumb in breadcrumbs -%}
     {% if forloop.first -%}
       {% comment %}Skip site root{% endcomment -%}
@@ -28,6 +29,7 @@ Embeds breadcrumb RDFa, follows ARIA guidelines. References:
       <meta property="position" content="{{forloop.index0}}" />
     </li>
   {% endfor %}
+  {% endif -%}  
   </ol>
 </nav>
 {%- endif -%}
