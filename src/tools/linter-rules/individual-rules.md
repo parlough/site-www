@@ -1,4 +1,12 @@
-{% assign lint = include.lint -%}
+---
+pagination:
+  data: linter_rules
+  size: 1
+  alias: lint
+permalink: "/tools/linter-rules/{{lint.name}}"
+eleventyComputed:
+  title: "{{ lint.name }}"
+---
 
 {{lint.description}}
 
