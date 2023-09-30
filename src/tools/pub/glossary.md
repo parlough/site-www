@@ -50,7 +50,7 @@ If the locked hash doesn't match what's currently in the pub cache,
 pub redownloads the archive. If it still doesn't match, the lockfile
 updates and a warning is printed. For example:
 
-```nocode
+```plaintext
 $ dart pub get
 Resolving dependencies...
 [!Cached version of foo-1.0.0 has wrong hash - redownloading.!]
@@ -76,7 +76,7 @@ To make a discrepancy become an error instead of a warning, use
 [`dart pub get --enforce-lockfile`][]. It will cause the resolution to fail
 if it cannot find package archives with the same hashes, without updating the lockfile.
 
-```nocode
+```plaintext
 $ dart pub get [!--enforce-lockfile!]
 Resolving dependencies...
 Cached version of foo-1.0.0 has wrong hash - redownloading.

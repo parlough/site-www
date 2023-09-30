@@ -298,7 +298,7 @@ void main() {
 ```
 
 {:.console-output}
-```nocode
+```plaintext
 Fetching user order...
 Your order is: Instance of '_Future<String>'
 ```
@@ -328,7 +328,7 @@ Future<String> fetchUserOrder() =>
 ```
 
 {:.console-output}
-```nocode
+```plaintext
 Fetching user order...
 Your order is: Large Latte
 ```

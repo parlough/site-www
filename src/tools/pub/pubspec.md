@@ -240,7 +240,7 @@ can be run directly from the command line. To make a script publicly
 available, list it under the `executables` field.
 Entries are listed as key/value pairs:
 
-```nocode
+```plaintext
 <name-of-executable>: <Dart-script-from-bin>
 ```
 

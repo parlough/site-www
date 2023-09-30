@@ -184,7 +184,7 @@ After you've configured automated publishing on `pub.dev` and created a
 GitHub Actions workflow, you can publish a new version of your package.
 To publish, push a _git tag_ matching the configured _tag pattern_.
 
-```terminal
+```bash
 $ cat pubspec.yaml
 ```
 
@@ -195,7 +195,7 @@ environment:
   sdk: ^2.19.0
 ```
 
-```terminal
+```bash
 $ git tag v1.2.3          # assuming my tag pattern is: 'v{% raw %}{{version}}{% endraw %}'
 $ git push origin v1.2.3  # triggers the action that publishes my package.
 ```
@@ -320,7 +320,7 @@ grant Cloud Build permission to impersonate this service account.
 1. [Create a cloud project][12], if you don't have an existing project.
 1. Create a _service account_ as follows:
 
-    ```terminal
+    ```bash
     $ gcloud iam service-accounts create pub-dev \
       --description='Service account to be impersonated when publishing to pub.dev' \
       --display-name='pub-dev'
@@ -362,21 +362,21 @@ the service account created for publishing in the previous section.
 1. Enable the [IAM Service Account Credentials API][14] in the cloud project.
    Attempts to impersonate a service account will fail without this API.
 
-   ```terminal
+   ```bash
    # Enable IAM Service Account Credentials API
    $ gcloud services enable iamcredentials.googleapis.com
    ```
 
 1. Find the project number.
 
-   ```terminal
+   ```bash
    # The PROJECT_NUMBER can be obtained as follows:
    $ gcloud projects describe $PROJECT_ID --format='value(projectNumber)'
    ```
 
 1. Grant the permission to impersonate the publishing service account.
 
-   ```terminal
+   ```bash
    # Grant default cloud
    $ gcloud iam service-accounts add-iam-policy-binding \
      pub-dev@$PROJECT_ID.iam.gserviceaccount.com \
@@ -541,7 +541,7 @@ To learn more, check out how to
 
 1. Create exported service account keys for an existing service account.
 
-    ```terminal
+    ```bash
     $ gcloud iam service-accounts keys create key-file.json \
       --iam-account=pub-dev@$PROJECT_ID.iam.gserviceaccount.com
     ```
@@ -560,7 +560,7 @@ To publish a package using exported service account keys:
 
 1. Setup gcloud to authenticate using `key-file.json` (created in the previous step)
 
-    ```terminal
+    ```bash
     $ gcloud auth activate-service-account --key-file=key-file.json
     ```
 
@@ -568,7 +568,7 @@ To publish a package using exported service account keys:
    `dart pub token add https://pub.dev`.
    To impersonate service account, include the `--include-email` option.
 
-    ```terminal
+    ```bash
     $ gcloud auth print-identity-token \
       --audiences=https://pub.dev \
       | dart pub token add https://pub.dev
@@ -577,7 +577,7 @@ To publish a package using exported service account keys:
 1. Publish using the temporary token.
    Add the `--force` option to skip the `yes/no` prompt.
 
-    ```terminal
+    ```bash
     $ dart pub publish --force
     ```
 

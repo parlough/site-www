@@ -9,7 +9,7 @@ that works with either the
 With either tool, add the `pub` command followed by
 a subcommand such as `get`:
 
-```terminal
+```bash
 $ dart pub get    # Gets dependencies for a non-Flutter package
 $ flutter pub get # Gets dependencies for a Flutter package
 ```

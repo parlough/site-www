@@ -47,7 +47,7 @@ that uses `package:jnigen` to generate bindings for a simple class.
 First, add `package:jni` as a dependency and
 `package:jnigen` as a [dev dependency][].
 
-```terminal
+```bash
 $ dart pub add jni dev:jnigen
 ```
 
@@ -93,7 +93,7 @@ public class Example {
 To generate the Dart (and C) bindings, run `jnigen` and
 specify the config file using the `--config` option:
 
-```terminal
+```bash
 $ dart run jnigen --config jnigen.yaml
 ```
 
@@ -123,14 +123,14 @@ Before running the example,
 you must build the dynamic libraries for `jni` and the generated C files. 
 The Java sources also must be compiled. To do so, run:
 
-```terminal
+```bash
 $ dart run jni:setup -p jni -s src/example
 $ javac java/dev/dart/Example.java
 ```
 
 Now you can run the example:
 
-```terminal
+```bash
 $ dart run jnigen_example:sum 17 25
 ```
 

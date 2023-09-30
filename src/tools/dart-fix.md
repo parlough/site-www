@@ -29,13 +29,13 @@ finds and fixes two types of issues:
 
 To preview proposed changes, use the `--dry-run` flag:
 
-```terminal
+```bash
 $ dart fix --dry-run
 ```
 
 To apply the proposed changes, use the `--apply` flag:
 
-```terminal
+```bash
 $ dart fix --apply
 ```
 
@@ -101,7 +101,7 @@ environment:
 
 You should then see the following when viewing the proposed changes:
 
-```terminal
+```bash
 $ dart fix --dry-run
 Computing fixes in myapp (dry run)... 9.0s
 

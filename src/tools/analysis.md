@@ -43,7 +43,7 @@ produces the following warning:
 
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="empty_statements" replace="/lib\/lint.dart/example.dart/g"?>
-```nocode
+```plaintext
 info - example.dart:9:19 - Unnecessary empty statement. Try removing the empty statement or restructuring the code. - empty_statements
 ```
 </blockquote>
@@ -60,7 +60,7 @@ var [!controller = StreamController<String>()!];
 
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="close_sinks" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 info - Unclosed instance of 'Sink'. Try invoking 'close' in the function in which the 'Sink' was created. - close_sinks
 ```
 </blockquote>
@@ -193,7 +193,7 @@ void bar(String jsonText) {
 
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="The argument type 'dynamic' can't be assigned"  replace="/-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 error - The argument type 'dynamic' can't be assigned to the parameter type 'List<String>'. - argument_type_not_assignable
 ```
 
@@ -229,7 +229,7 @@ print('Lines: ${lines.values.reduce((a, b) => a + b)}'); // Runtime error
 
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="The type argument(s) of 'Map'"  replace="/. Use.*'Map'. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 warning - The type argument(s) of 'Map' can't be inferred - inference_failure_on_collection_literal
 ```
 
@@ -262,7 +262,7 @@ for (final n in numbers) {
 
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="The generic type" replace="/. Use explicit.*\. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 warning - The generic type 'List<dynamic>' should have explicit type arguments but doesn't - strict_raw_type
 ```
 
@@ -304,7 +304,7 @@ Recommended rules
 To enable either set of lints,
 add the [lints package][] as a dev dependency:
 
-```terminal
+```bash
 $ dart pub add --dev lints
 ```
 
@@ -409,7 +409,7 @@ To enable a plugin:
 
  1. Add the package containing the plugin as a dev dependency.
 
-    ```terminal
+    ```bash
     $ dart pub add --dev <your_favorite_analyzer_plugin_package>
     ```
 

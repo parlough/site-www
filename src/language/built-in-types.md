@@ -347,7 +347,7 @@ void main() {
 
 The output, depending on your environment, looks something like this:
 
-```terminal
+```bash
 $ dart run bin/main.dart
 Hi 🇩🇰
 The end of the string: ???
@@ -369,7 +369,7 @@ names but not identifier symbols.
 To get the symbol for an identifier, use a symbol literal, which is just
 `#` followed by the identifier:
 
-```nocode
+```plaintext
 #radix
 #bar
 ```

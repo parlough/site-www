@@ -8,7 +8,7 @@ description: Common gotchas you might run into when using pub.
 You receive the following error when running `pub publish`:
 
 {:.console-output}
-```nocode
+```plaintext
 HTTP error 403: Forbidden
 ...
 You aren't an uploader for package '<foo>'
@@ -24,19 +24,19 @@ by deleting the pub credentials file:
 
 If `$XDG_CONFIG_HOME` is defined:
 
-```terminal
+```bash
 $ rm $XDG_CONFIG_HOME/dart/pub-credentials.json
 ```
 
 Otherwise:
 
-```terminal
+```bash
 $ rm $HOME/.config/dart/pub-credentials.json
 ```
 
 #### macOS {:#pub-credentials-mac}
 
-```terminal
+```bash
 $ rm $HOME/Library/Application Support/dart/pub-credentials.json
 ```
 
@@ -44,13 +44,13 @@ $ rm $HOME/Library/Application Support/dart/pub-credentials.json
 
 If you're using Command Prompt:
 
-```terminal
+```bash
 $ del "%APPDATA%\dart\pub-credentials.json"
 ```
 
 If you're using PowerShell:
 
-```terminal
+```bash
 $ Remove-Item -Path "%APPDATA%\dart\pub-credentials.json"
 ```
 
@@ -67,7 +67,7 @@ $ Remove-Item -Path "%APPDATA%\dart\pub-credentials.json"
 You receive the following error when running `pub publish`:
 
 {:.console-output}
-```nocode
+```plaintext
 UnauthorizedAccess: Unauthorized user: <username> is not allowed to upload versions to package '<foo>'.
 ```
 
@@ -81,7 +81,7 @@ You receive an HttpException error similar to the following when
 running `pub build`:
 
 {:.console-output}
-```nocode
+```plaintext
 Pub build failed, [1] IsolateSpawnException: 'HttpException: Connection closed while receiving data,
 ...
 library handler failed
@@ -102,19 +102,19 @@ You can set the proxy server environment variable as follows.
 
 On Linux/macOS:
 
-```terminal
+```bash
 $ export https_proxy=hostname:port
 ```
 
 On Windows Command Prompt:
 
-```terminal
+```bash
 $ set https_proxy=hostname:port
 ```
 
 On Windows PowerShell:
 
-```terminal
+```bash
 $ $Env:https_proxy="hostname:port"
 ```
 
@@ -122,19 +122,19 @@ If the proxy requires credentials, you can set them as follows.
 
 On Linux/macOS:
 
-```terminal
+```bash
 $ export https_proxy=username:password@hostname:port
 ```
 
 On Windows Command Prompt:
 
-```terminal
+```bash
 $ set https_proxy=username:password@hostname:port
 ```
 
 On Windows PowerShell:
 
-```terminal
+```bash
 $ $Env:https_proxy="username:password@hostname:port"
 ```
 
@@ -159,7 +159,7 @@ Try this workaround, which uses the command line to complete sign-in:
    as the one where `dart pub publish` was called, use the `curl` command to
    complete sign-in using the _new localhost URL_:
 
-   ```terminal
+   ```bash
    $ curl 'http://localhost:<port>?code=...'
    ```
 
@@ -170,7 +170,7 @@ you have no internet access, your ISP is blocking `pub.dev`,
 or security software is blocking internet access from `dart`.
 
 {:.console-output}
-```nocode
+```plaintext
 Got socket error trying to find package ... at https://pub.dev.
 pub get failed (server unavailable) -- attempting retry 1 in 1 second...
 ```

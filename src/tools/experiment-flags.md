@@ -21,7 +21,7 @@ For example, to enable the experiments
 `super-mixins` and `no-slow-checks`,
 add those flags to the `dart` command:
 
-```terminal
+```bash
 $ dart run --enable-experiment=super-mixins,no-slow-checks bin/main.dart
 ```
 

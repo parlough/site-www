@@ -37,7 +37,7 @@ use the `--define` option or its abbreviation, `-D`.
 Specify the declaration key-value pair
 using a `<NAME>=<VALUE>` format:
 
-```terminal
+```bash
 $ dart run --define=DEBUG=true -DFLAVOR=free
 ```
 
@@ -127,7 +127,7 @@ Both `dart run` and the `dart compile` subcommands accept
 any number of the `-D` or `--define` options
 to specify environment declaration values.
 
-```terminal
+```bash
 $ dart run --define=DEBUG=true -DFLAVOR=free main.dart
 $ dart compile exe --define=DEBUG=true -DFLAVOR=free main.dart
 $ dart compile js --define=DEBUG=true -DFLAVOR=free main.dart
@@ -184,7 +184,7 @@ To learn more, check out JetBrains' documentation for
 To specify environment declarations to the Flutter tool,
 use the `--dart-define` option instead:
 
-```terminal
+```bash
 $ flutter run --dart-define=DEBUG=true
 ```
 

@@ -40,7 +40,7 @@ To manually specify the secret token,
 use the `dart pub token add` command
 which prompts for the token:
 
-```terminal
+```bash
 $ dart pub token add https://dart-packages.example.com
 Enter secret token: [enter secret token]
 Requests to "https://dart-packages.example.com" will now be authenticated using the secret token.
@@ -49,7 +49,7 @@ Requests to "https://dart-packages.example.com" will now be authenticated using 
 You can also tell `dart pub` to read the token from an environment variable,
 including in a CI environment, with the `--env-var` flag:
 
-```terminal
+```bash
 $ dart pub token add https://dart-packages.example.com --env-var MY_SECRET_TOKEN
 Requests to "https://dart-packages.example.com" will now be authenticated using the secret token stored in the environment variable "MY_SECRET_TOKEN".
 ```
@@ -90,7 +90,7 @@ for more information on how to authenticate your requests.
 You can also use the `dart pub add` command
 with the `--hosted` flag to add a dependency from a custom package repository:
 
-```terminal
+```bash
 $ dart pub add example_package --hosted https://dart-packages.example.com
 ```
 
@@ -161,7 +161,7 @@ publish_to: https://dart-packages.example.com
 To then publish a new version of the package,
 use `dart pub publish`:
 
-```terminal
+```bash
 $ dart pub publish
 Publishing example_package 1.0.0 to https://dart-packages.example.com
 |-- CHANGELOG.md

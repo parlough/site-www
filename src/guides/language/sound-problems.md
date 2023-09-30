@@ -69,7 +69,7 @@ If properly configured, the analyzer produces the following error:
 
 {:.console-output}
 <?code-excerpt "analyzer-results-stable.txt" retain="/'int' can't be .* 'bool'/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 error - A value of type 'int' can't be assigned to a variable of type 'bool'. Try changing the type of the variable, or casting the right-hand type to 'bool'. - invalid_assignment
 ```
 
@@ -86,7 +86,7 @@ see [Runtime errors](#common-errors-and-warnings).
 ### Undefined member
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/getter.*isn't defined for the type/" replace="/. Try.*.'context2D'. / /g; /getter/<member\x3E/g; /'\w+'/'...'/g; /-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 error - The <member> '...' isn't defined for the type '...' - undefined_<member>
 ```
 
@@ -109,7 +109,7 @@ canvas.[!context2D!].lineTo(x, y);
 
 {:.console-output}
 <?code-excerpt "analyzer-results-stable.txt" retain="/context2D.*isn't defined for the type/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 error - The getter 'context2D' isn't defined for the type 'Element'. Try importing the library that defines 'context2D', correcting the name to the name of an existing getter, or defining a getter or field named 'context2D'. - undefined_getter
 ```
 
@@ -165,7 +165,7 @@ var c = C(Iterable.empty()).collection;
 
 {:.console-output}
 <?code-excerpt "analyzer-results-stable.txt" retain="/add.*isn't defined for the type/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 error - The method 'add' isn't defined for the type 'Iterable'. Try correcting the name to the name of an existing method, or defining a method named 'add'. - undefined_method
 ```
 
@@ -198,7 +198,7 @@ c.add(2);
 ### Invalid method override
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/isn't a valid override of.*add/" replace="/'[\w\.]+'/'...'/g; /\('.*?'\)//g; /-(.*?):(.*?):(.*?)-/-/g; /' . -/' -/g"?>
-```nocode
+```plaintext
 error - '...'  isn't a valid override of '...' - invalid_override
 ```
 
@@ -230,7 +230,7 @@ class MyAdder extends NumberAdder {
 
 {:.console-output}
 <?code-excerpt "analyzer-results-stable.txt" retain="/isn't a valid override of.*add/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 error - 'MyAdder.add' ('num Function(int, int)') isn't a valid override of 'NumberAdder.add' ('num Function(num, num)'). - invalid_override
 ```
 
@@ -279,7 +279,7 @@ For more information, see
 ### Missing type arguments
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/isn't a valid override of.*method/" replace="/'\S+'/'...'/g; /\('.*?'\)//g; /-(.*?):(.*?):(.*?)-/-/g; /' . -/' -/g"?>
-```nocode
+```plaintext
 error - '...'  isn't a valid override of '...' - invalid_override
 ```
 
@@ -304,7 +304,7 @@ class Subclass extends Superclass {
 
 {:.console-output}
 <?code-excerpt "analyzer-results-stable.txt" retain="/isn't a valid override of.*method/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 error - 'Subclass.method' ('void Function(int)') isn't a valid override of 'Superclass.method' ('void Function(dynamic)'). - invalid_override
 ```
 
@@ -349,7 +349,7 @@ see [Customizing static analysis](/tools/analysis).
 ### Unexpected collection element type
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/common_fixes_analysis.*'double' can't be assigned to a variable of type 'int'./" replace="/. Try.*'int'. / /g; /'\S+'/'...'/g; /-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 error - A value of type '...' can't be assigned to a variable of type '...' - invalid_assignment
 ```
 
@@ -374,7 +374,7 @@ map['d'] = [!1.5!];
 
 {:.console-output}
 <?code-excerpt "analyzer-results-stable.txt" retain="/common_fixes_analysis.*'double' can't be assigned to a variable of type 'int'/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 error - A value of type 'double' can't be assigned to a variable of type 'int'. Try changing the type of the variable, or casting the right-hand type to 'int'. - invalid_assignment
 ```
 
@@ -399,7 +399,7 @@ specify the type as `<String, dynamic>`.
 ### Constructor initialization list super() call
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/The superconstructor call must be last in an initializer list.*/" replace="/Animal/.../g; /-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 error - The superconstructor call must be last in an initializer list: '...'. - super_invocation_not_last
 ```
 
@@ -418,7 +418,7 @@ HoneyBadger(Eats food, String name)
 
 {:.console-output}
 <?code-excerpt "analyzer-results-stable.txt" retain="/The superconstructor call must be last in an initializer list.*/" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 error - The superconstructor call must be last in an initializer list: 'Animal'. - super_invocation_not_last
 ```
 
@@ -443,7 +443,7 @@ HoneyBadger(Eats food, String name)
 ### The argument type ... can't be assigned to the parameter type ...
 
 <?code-excerpt "analyzer-results-stable.txt" retain="/The argument type.*bool Function/" replace="/'bool.*?\)'/'...'/g; /-(.*?):(.*?):(.*?)-/-/g"?>
-```nocode
+```plaintext
 error - The argument type '...' can't be assigned to the parameter type '...'. - argument_type_not_assignable
 ```
 
@@ -467,7 +467,7 @@ filterValues(([!String!] x) => x.contains('Hello'));
 
 {:.console-output}
 <?code-excerpt "analyzer-results-stable.txt" retain="/The argument type.*bool Function/" replace="/-(.*?)-/-/g"?>
-```nocode
+```plaintext
 error - The argument type 'bool Function(String)' can't be assigned to the parameter type 'bool Function(dynamic)'. - argument_type_not_assignable
 ```
 
@@ -558,7 +558,7 @@ assumeStrings(<int>[![1, 2, 3]!]);
 
 {:.console-output}
 <?code-excerpt "test/strong_test.dart (downcast-check-msg)" replace="/const msg = ./Exception: /g; /.;//g"?>
-```nocode
+```plaintext
 Exception: type 'List<int>' is not a subtype of type 'List<String>'
 ```
 

@@ -46,7 +46,7 @@ Depending on **build_test** is optional; do it if you'll be testing your code.
 
 As usual after `pubspec.yaml` changes, run `dart pub get` or `dart pub upgrade`:
 
-```terminal
+```bash
 $ dart pub get
 ```
 
@@ -54,7 +54,7 @@ $ dart pub get
 
 The following is an example of using the build_runner **build** command:
 
-```terminal
+```bash
 $ # From a directory that contains a pubspec.yaml file:
 $ dart run build_runner build
 ```

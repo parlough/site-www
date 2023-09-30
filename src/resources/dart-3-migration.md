@@ -74,7 +74,7 @@ the code is affected by any other Dart 3 changes.
 To understand if your source code is impacted by any Dart 3 changes, 
 use these steps:
 
-```terminal
+```bash
 $ dart --version    # Make sure this reports 3.0.0 or higher.
 $ dart pub get      # This should resolve without issues.
 $ dart analyze      # This should pass without errors.
@@ -83,14 +83,14 @@ $ dart analyze      # This should pass without errors.
 If the `pub get` step fails, try to upgrade your dependencies
 to see if more recent versions might support Dart 3:
 
-```terminal
+```bash
 $ dart pub upgrade
 $ dart analyze      # This should pass without errors.
 ```
 
 Or, if needed, also include [major versions][] upgrades:
 
-```terminal
+```bash
 $ dart pub upgrade --major-versions
 $ dart analyze      # This should pass without errors.
 ```
@@ -117,7 +117,7 @@ that applies to all Dart 3 code.
 Packages developed without null safety support will cause issues
 when resolving dependencies with `pub get`:
 
-```terminal
+```bash
 $ dart pub get
 
 Because pkg1 doesn't support null safety, version solving failed.
@@ -128,7 +128,7 @@ Libraries that opt out of null safety with [language version comments][]
 that select any language version below `2.12` will
 cause analysis or compilation errors:
 
-```terminal
+```bash
 $ dart analyze .
 Analyzing ....                         0.6s
 
@@ -137,7 +137,7 @@ Analyzing ....                         0.6s
   • illegal_language_version_override
 ```
 
-```terminal
+```bash
 $ dart run bin/my_app.dart
 ../pkg1/lib/pkg1.dart:1:1: Error: Library doesn't support null safety.
 // @dart=2.9
@@ -171,7 +171,7 @@ that only applies to language version 3.0 or later.
 
 Dart analysis produces errors like:
 
-```nocode
+```plaintext
 line 2 • Using a colon as a separator before a default value is no longer supported.
 ```
 
@@ -191,7 +191,7 @@ int someInt({int x = 0}) => x;
 
 This migration can be made manually, or automated with `dart fix`:
 
-```terminal
+```bash
 $ dart fix --apply --code=obsolete_colon_for_default_value
 ```
 
@@ -215,7 +215,7 @@ that only applies to language version 3.0 or later.
 
 An analysis error like:
 
-```nocode
+```plaintext
 Mixin can only be applied to class.
 ```
 
@@ -278,7 +278,7 @@ that only applies to language version 3.0 or later.
 
 You will see an error like:
 
-```nocode
+```plaintext
 The label used in a 'continue' statement must be defined on either a loop or a switch member.
 ```
 
@@ -408,7 +408,7 @@ that applies to all Dart 3 code.
 Dart analysis (e.g. in your IDE, or in `dart analyze`/`flutter analyze`)
 will fail with errors like:
 
-```nocode
+```plaintext
 error line 2 • Undefined class 'CyclicInitializationError'.
 ```
 
@@ -574,7 +574,7 @@ that applies to all Dart 3 code.
 
 The former configuration options will fail with a warning like:
 
-```nocode
+```plaintext
 The option 'implicit-casts' is no longer supported.
 Try using the new 'strict-casts' option.
 ```

@@ -5,7 +5,7 @@ description: Use dart pub downgrade to get the lowest versions of all dependenci
 
 _Downgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-```nocode
+```plaintext
 $ dart pub downgrade [--[no-]offline] [-n|--dry-run] [dependencies...] 
 ```
 
@@ -15,7 +15,7 @@ in the current working directory, as well as their [transitive
 dependencies](/tools/pub/glossary#transitive-dependency).
 For example:
 
-```terminal
+```bash
 $ dart pub downgrade
 Resolving dependencies... (1.2s)
 + barback 0.13.0
@@ -41,7 +41,7 @@ It's possible to tell `dart pub downgrade` to downgrade specific dependencies to
 lowest version while leaving the rest of the dependencies alone as much as
 possible. For example:
 
-```terminal
+```bash
 $ dart pub downgrade test
 Resolving dependencies...
   barback 0.15.2+2

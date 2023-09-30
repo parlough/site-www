@@ -5,7 +5,7 @@ description: Use dart pub upgrade to get the latest versions of all dependencies
 
 _Upgrade_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-```nocode
+```plaintext
 $ dart pub upgrade [options] [dependencies]
 ```
 
@@ -24,7 +24,7 @@ directory, as well as their [transitive
 dependencies](/tools/pub/glossary#transitive-dependency).
 For example:
 
-```terminal
+```bash
 $ dart pub upgrade
 Dependencies upgraded!
 ```
@@ -51,7 +51,7 @@ You can tell `dart pub upgrade` to upgrade specific dependencies to the
 latest version while leaving the rest of the dependencies alone as much as
 possible. For example:
 
-```terminal
+```bash
   $ dart pub upgrade test args
   Dependencies upgraded!
 ```

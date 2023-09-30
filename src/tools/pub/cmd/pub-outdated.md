@@ -5,7 +5,7 @@ description: Use dart pub outdated to help you update your package dependencies.
 
 _Outdated_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-```nocode
+```plaintext
 $ dart pub outdated [options]
 ```
 
@@ -79,7 +79,7 @@ To fix the first dependency (`args`),
 which is listed as upgradable,
 you just need to run `dart pub upgrade`:
 
-```terminal
+```bash
 $ dart pub upgrade
 Resolving dependencies... 
 > args 1.6.0 (was 1.4.4)
@@ -107,7 +107,7 @@ you've made all necessary changes.
 In this example, the `path` and `meta` packages are still out-of-date,
 due to constraints determined by other dependencies:
 
-```terminal
+```bash
 $ dart pub upgrade
 ...
 $ dart pub outdated
@@ -130,7 +130,7 @@ Newer versions, while available, are not mutually compatible.
 To see why these packages are out-of-date, you can run `dart pub deps`
 and look for dependencies on these packages:
 
-```terminal
+```bash
 $ dart pub deps -s list
 ...
 dependencies:

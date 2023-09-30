@@ -16,13 +16,13 @@ Then it gets package dependencies (unless you specify the `--no-pub` flag).
 Here's an example of using `dart create` to create a directory named `my_cli` 
 that contains a simple console app (the default template):
 
-```terminal
+```bash
 $ dart create my_cli
 ```
 
 To use a different template, such as `web`, add a template argument:
 
-```terminal
+```bash
 $ dart create -t web my_web_app
 ```
 
@@ -45,13 +45,13 @@ These templates result in a file structure that follows
 If the specified directory already exists, `dart create` fails. 
 You can force project generation with the `--force` flag:
 
-```terminal
+```bash
 $ dart create --force <DIRECTORY>
 ```
 
 For further information on command-line options, use the `--help` flag:
 
-```terminal
+```bash
 $ dart create --help
 ```
 

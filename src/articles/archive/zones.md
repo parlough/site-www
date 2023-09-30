@@ -238,7 +238,7 @@ runZonedGuarded(() {
 
 Here's the output you see if you run the example:
 
-```nocode
+```plaintext
 Outside of zones
 Inside non-error zone
 Uncaught Error: 499
@@ -251,7 +251,7 @@ If you remove the call to `runZoned()` or
 to `runZonedGuarded()`,
 you see this output:
 
-```nocode
+```plaintext
 Outside of zones
 Inside non-error zone
 [!Inside error zone (not called)!]
@@ -329,7 +329,7 @@ The error handler in `runZonedGuarded()`
 catches the error the callback throws.
 Here's the output:
 
-```nocode
+```plaintext
 Caught error: Callback throws
 ```
 

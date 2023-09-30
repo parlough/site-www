@@ -5,7 +5,7 @@ description: Use dart pub publish to publish your Dart package to the pub.dev si
 
 _Publish_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-```nocode
+```plaintext
 $ dart pub publish [options]
 ```
 

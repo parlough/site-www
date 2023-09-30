@@ -133,7 +133,7 @@ If you want to incrementally migrate a package by hand, follow these steps:
 
 2. Regenerate the [package configuration file][]:
 
-   ```terminal
+   ```bash
    $ dart pub get
    ```
 
@@ -178,7 +178,7 @@ You can do this in two ways:
 * Disable sound null safety using the `--no-sound-null-safety` flag
   to the `dart` or `flutter` command:
 
-  ```terminal
+  ```bash
   $ dart --no-sound-null-safety run
   $ flutter run --no-sound-null-safety
   ```

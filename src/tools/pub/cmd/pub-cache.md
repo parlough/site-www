@@ -5,7 +5,7 @@ description: Use dart pub cache to manage your system cache.
 
 _Cache_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-```nocode
+```plaintext
 $ dart pub cache add <package> [--version <constraint>] [--all]
 $ dart pub cache repair
 $ dart pub cache clean
@@ -18,7 +18,7 @@ The `dart pub cache` command works with the
 
 You can manually add a package to your system cache:
 
-```terminal
+```bash
 $ dart pub cache add <package>
 ```
 
@@ -26,7 +26,7 @@ $ dart pub cache add <package>
 
 You can perform a clean reinstallation of all packages in your system cache:
 
-```terminal
+```bash
 $ dart pub cache repair
 ```
 
@@ -42,7 +42,7 @@ and you might accidentally edit one of those files.
 You can empty the entire system cache
 to reclaim extra disk space or remove problematic packages:
 
-```terminal
+```bash
 $ dart pub cache clean
 ```
 
@@ -70,7 +70,7 @@ Use with `dart pub cache add`
 to install the version best matching the specified constraint. 
 For example:
 
-```terminal
+```bash
 $ dart pub cache add http --version "0.12.2"
 ```
 

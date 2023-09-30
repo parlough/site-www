@@ -7,6 +7,7 @@ const markdownItTocDoneRight = require('markdown-it-toc-done-right');
 const markdownItAttrs = require('markdown-it-attrs');
 const { markdownItTable } = require('markdown-it-table');
 const eleventySass = require('eleventy-sass');
+const shiki = require('shiki');
 
 module.exports = function (eleventyConfig) {
   const markdown = markdownIt({
@@ -39,9 +40,21 @@ module.exports = function (eleventyConfig) {
         }
       });
 
+  eleventyConfig.on('eleventy.before', async () => {
+    const highlighter = await shiki.getHighlighter({ 
+      theme: 'css-variables',
+      langs: ['dart', 'yaml', 'json', 'swift', 'css', 'html', 
+        'js', 'objc', 'bash', 'kotlin', 'md']
+    });
+    markdown.set({
+      highlight: (str, lang, attrs) => _highlight(highlighter, str, lang, attrs),
+    });
+  });
+
   eleventyConfig.setLibrary("md", markdown);
   
-  eleventyConfig.addDataExtension('yml,yaml', contents => yaml.load(contents));
+  eleventyConfig.addDataExtension('yml,yaml', 
+          contents => yaml.load(contents));
   
   eleventyConfig.setLiquidOptions({
     cache: true,
@@ -154,7 +167,6 @@ ${renderedContent}
   eleventyConfig.addPassthroughCopy('src/assets/img',{ expand: true });
   eleventyConfig.addPassthroughCopy('src/assets/shared',{ expand: true });
   eleventyConfig.addPassthroughCopy('src/f');
-  eleventyConfig.addPassthroughCopy('src/get-dart/archive/assets');
 
   return {
     htmlTemplateEngine: 'liquid',
@@ -230,4 +242,44 @@ function _arrayToSentenceString(list, joiner = 'and') {
   }
 
   return result;
+}
+
+function _highlight(highlighter, content, language, attributeString) {
+  // Skip embedded DartPads.
+  if (language.includes('-dartpad') || language.includes('file-')) {
+    return content; // TODO
+  }
+  
+  const attributes = _parseAttributes(attributeString);
+  
+  return highlighter.codeToHtml(content, { lang: language });
+}
+
+function _parseAttributes(attributes) {
+  const results = {};
+  
+  const titlePattern = /title:"([^"]+)"/;
+  const titleMatch = titlePattern.exec(attributes);
+  if (titleMatch) {
+    results['title'] = titleMatch[1];
+  }
+
+  const lineNumbersPattern = /lineNumbers(:(\d+))?/;
+  const lineNumbersMatch = lineNumbersPattern.exec(attributes);
+  if (lineNumbersMatch) {
+    results['lineNumbers'] = true;
+    if (lineNumbersMatch.length >= 3) {
+      results['lineNumbersStart'] = lineNumbersMatch[2];
+    }
+  }
+  
+  results['highlight'] = [];
+  
+  const highlightPattern = /3/;
+  let highlightMatch;
+  while (highlightMatch = highlightPattern.exec(attributes) && highlightMatch) {
+    
+  }
+  
+  return results;
 }

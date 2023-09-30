@@ -304,7 +304,7 @@ _jellyPoints = List.generate(jellyMax, (_) => Vec2D(), growable: false);
 
 You may encounter this error:
 
-```nocode
+```plaintext
 The default 'List' constructor isn't available when null safety is enabled. #default_list_constructor
 ```
 

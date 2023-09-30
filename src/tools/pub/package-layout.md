@@ -19,7 +19,7 @@ Here's what a complete package (named `enchilada`)
 that uses every corner of these guidelines
 might look like:
 
-```nocode
+```plaintext
 enchilada/
   .dart_tool/ *
   pubspec.yaml
@@ -70,7 +70,7 @@ enchilada/
 
 ## The pubspec
 
-```nocode
+```plaintext
 enchilada/
   pubspec.yaml
   pubspec.lock
@@ -92,7 +92,7 @@ For more information, see the [pubspec page](/tools/pub/pubspec).
 
 ## LICENSE
 
-```nocode
+```plaintext
 enchilada/
   LICENSE
 ```
@@ -104,7 +104,7 @@ so that others can reuse your work.
 
 ## README.md
 
-```nocode
+```plaintext
 enchilada/
   README.md
 ```
@@ -120,7 +120,7 @@ For guidance on how to write a great README, see
 
 ## CHANGELOG.md
 
-```nocode
+```plaintext
 enchilada/
   CHANGELOG.md
 ```
@@ -182,7 +182,7 @@ Two directories in your package are public to other packages: `lib` and
 
 The following directory structure shows the `lib` portion of enchilada:
 
-```nocode
+```plaintext
 enchilada/
   lib/
     enchilada.dart
@@ -210,7 +210,7 @@ If you want to organize your public libraries, you can also create
 subdirectories inside `lib`. If you do that, users will specify that path
 when they import it. Say you have the following file hierarchy:
 
-```nocode
+```plaintext
 enchilada/
   lib/
     some/
@@ -264,7 +264,7 @@ scripts in `bin`.
 
 ## Public assets
 
-```nocode
+```plaintext
 enchilada/
   lib/
     guacamole.css
@@ -281,7 +281,7 @@ in there and organize it with subdirectories however you like.
 
 ## Implementation files
 
-```nocode
+```plaintext
 enchilada/
   lib/
     src/
@@ -328,7 +328,7 @@ your package in its [pubspec](/tools/pub/pubspec).
 
 ## Web files
 
-```nocode
+```plaintext
 enchilada/
   web/
     index.html
@@ -349,7 +349,7 @@ such as images.
 
 ## Command-line apps
 
-```nocode
+```plaintext
 enchilada/
   bin/
     enchilada
@@ -366,7 +366,7 @@ using
 
 ## Tests and benchmarks
 
-```nocode
+```plaintext
 enchilada/
   test/
     enchilada_test.dart
@@ -380,7 +380,7 @@ and have `_test` at the end of their file names.
 Typically, these use the [test]({{site.pub-pkg}}/test)
 package.
 
-```nocode
+```plaintext
 enchilada/
   benchmark/
     make_lunch.dart
@@ -392,7 +392,7 @@ other empirical metrics).
 
 ## Documentation
 
-```nocode
+```plaintext
 enchilada/
   doc/
     api/
@@ -413,7 +413,7 @@ that you author.  Use whatever markup format that you prefer.
 
 ## Examples
 
-```nocode
+```plaintext
 enchilada/
   example/
     main.dart
@@ -455,7 +455,7 @@ https://github.com/search?q=org%3Adart-lang+exampleFileCandidates&type=Code
 
 ## Internal tools and scripts
 
-```nocode
+```plaintext
 enchilada/
   tool/
     generate_docs.dart

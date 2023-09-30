@@ -13,7 +13,7 @@ or download only the [Flutter SDK.]({{site.flutter}})
 Here's how you might use the `dart` tool
 to create, analyze, test, and run an app:
 
-```terminal
+```bash
 $ dart create -t console my_app
 $ cd my_app
 $ dart analyze
@@ -23,7 +23,7 @@ $ dart run bin/my_app.dart
 
 You can also run [`pub` commands][pub] using the `dart` tool:
 
-```terminal
+```bash
 $ dart pub get
 $ dart pub outdated
 $ dart pub upgrade
@@ -65,7 +65,7 @@ you might use the [`flutter` tool][] instead.
 To get help with any of the commands, enter `dart help <command>`.
 You can also get details on `pub` commands.
 
-```terminal
+```bash
 $ dart help pub outdated
 ```
 

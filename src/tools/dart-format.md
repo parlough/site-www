@@ -16,7 +16,7 @@ Provide a list of files or directories to the `dart format` command.
 For example, here's how to format all the Dart files
 in or under the current directory:
 
-```terminal
+```bash
 $ dart format .
 ```
 
@@ -25,7 +25,7 @@ use a space-delimited list.
 The following command formats all Dart files under the `lib` directory,
 plus one Dart file under the `bin` directory:
 
-```terminal
+```bash
 $ dart format lib bin/updater.dart 
 ```
 
@@ -38,7 +38,7 @@ add the `--output` or `-o` flag.
 Use `-o show` or `-o json` to get the contents of the formatted files,
 or `-o none` to see only which files would change.
 
-```terminal
+```bash
 $ dart format -o show bin/my_app.dart
 ```
 
@@ -48,7 +48,7 @@ add the `--set-exit-if-changed` flag.
 This exit code is often used with continuous integration (CI)
 to indicate that a check should fail.
 
-```terminal
+```bash
 $ dart format -o none --set-exit-if-changed bin/my_app.dart
 ```
 
@@ -56,7 +56,7 @@ For information on additional command-line options,
 use the `dart help` command or see the documentation for the
 [dart_style package.]({{site.pub-pkg}}/dart_style)
 
-```terminal
+```bash
 $ dart help format
 ```
 

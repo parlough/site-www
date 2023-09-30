@@ -17,7 +17,7 @@ dart run [options] [<DART_FILE> | <PACKAGE_TARGET>] [args]
 
 Here's an example of creating a new app and running it:
 
-```terminal
+```bash
 $ dart create myapp
 $ cd myapp
 $ dart run
@@ -29,7 +29,7 @@ $ dart run
 
 You can run a Dart file by passing its relative path:
 
-```terminal
+```bash
 $ dart run tool/debug.dart
 ```
 
@@ -56,7 +56,7 @@ that depends on the `bar` package.
 To run the main program that's in the `bar` package (`bin/bar.dart`),
 you can use this command:
 
-```terminal
+```bash
 $ dart run bar
 ```
 
@@ -65,7 +65,7 @@ use the form `<package name>:<program name>`. For example,
 to run the program `bin/baz.dart` that's in the `bar` package,
 use this command:
 
-```terminal
+```bash
 $ dart run bar:baz
 ```
 
@@ -87,7 +87,7 @@ which runs the main program for the current package.
 For example, if you're in the top directory of the `foo` package,
 this command runs `bin/foo.dart`:
 
-```terminal
+```bash
 $ dart run
 ```
 
@@ -95,14 +95,14 @@ If the program name doesn't match the package name,
 then add a colon and the program name.
 For example, this command runs `bin/baz.dart` in the current package:
 
-```terminal
+```bash
 $ dart run :baz
 ```
 
 To run a program that's in the current package but not in the `bin` directory,
 pass a relative path (as shown before):
 
-```terminal
+```bash
 $ dart run tool/debug.dart
 ```
 
@@ -111,7 +111,7 @@ $ dart run tool/debug.dart
 To supply [arguments to the `main()` function][args],
 put them at the end of the command:
 
-```terminal
+```bash
 $ dart run tool/debug.dart arg1 arg2
 ```
 
@@ -120,7 +120,7 @@ add the package name.
 Here's an example of running `bin/foo.dart` with arguments
 while you're in the top directory of the `foo` package:
 
-```terminal
+```bash
 $ dart run foo arg1 arg2
 ```
 
@@ -135,7 +135,7 @@ to your `dart run` command:
 - To enable [`assert` statements][assert],
   add the `--enable-asserts` flag:
 
-  ```terminal
+  ```bash
   $ dart run --enable-asserts tool/debug.dart
   ```
 
@@ -143,7 +143,7 @@ to your `dart run` command:
   through [Dart DevTools](/tools/dart-devtools),
   add the `--observe` flag:
 
-  ```terminal
+  ```bash
   $ dart run --observe tool/debug.dart
   ```
   

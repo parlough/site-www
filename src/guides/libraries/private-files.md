@@ -20,7 +20,7 @@ that your IDE or code editor, the pub tool, and other tools generate.
 **Don't commit** the following files and directories
 created by pub:
 
-```gitignore
+```plaintext
 .dart_tool/
 build/
 pubspec.lock  # Except for application packages
@@ -29,7 +29,7 @@ pubspec.lock  # Except for application packages
 **Don't commit** the API documentation directory
 created by [`dart doc`](/tools/dart-doc):
 
-```gitignore
+```plaintext
 doc/api/
 ```
 
@@ -39,7 +39,7 @@ For example, if your development environment creates
 any of the following files,
 consider putting them in a global ignore file:
 
-```gitignore
+```plaintext
 # IntelliJ
 *.iml
 *.ipr

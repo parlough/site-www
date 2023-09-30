@@ -81,7 +81,7 @@ check out the [Dart 3 migration guide](/resources/dart-3-migration).
 Packages developed without null safety support cause issues
 when resolving dependencies:
 
-```terminal
+```bash
 $ dart pub get
 
 Because pkg1 doesn't support null safety, version solving failed.
@@ -91,7 +91,7 @@ The lower bound of "sdk: '>=2.9.0 <3.0.0'" must be 2.12.0 or higher to enable nu
 Libraries incompatible with Dart 3 cause analysis or compilation errors.
 
 
-```terminal
+```bash
 $ dart analyze .
 Analyzing ....                         0.6s
 
@@ -100,7 +100,7 @@ Analyzing ....                         0.6s
   • illegal_language_version_override
 ```
 
-```terminal
+```bash
 $ dart run bin/my_app.dart
 ../pkg1/lib/pkg1.dart:1:1: Error: Library doesn't support null safety.
 // @dart=2.9
@@ -117,7 +117,7 @@ Dart 3 can be found in the stable channels for Dart and Flutter.
 To learn more, check out [the download page][] for details.
 To test your code for Dart 3 compatibility, use Dart 3 or later.
 
-```terminal
+```bash
 $ dart --version                     # make sure this reports 3.0.0-417.1.beta or higher
 $ dart pub get / flutter pub get     # this should resolve without issues
 $ dart analyze / flutter analyze     # this should pass without errors
@@ -164,7 +164,7 @@ Dart code written without null safety support can be migrated to use null
 safety. We recommend using the `dart migrate` tool, included in the Dart SDK
 versions 2.12 to 2.19.
 
-```terminal
+```bash
 $ cd my_app
 $ dart migrate
 ```

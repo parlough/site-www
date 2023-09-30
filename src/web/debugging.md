@@ -22,7 +22,7 @@ to start up the Dart development compiler.
 To enable Dart DevTools, add the `--debug` or `--debug-extension` option
 (at the command line or through your IDE):
 
-```terminal
+```bash
 $ webdev serve --debug
 ```
 
@@ -75,7 +75,7 @@ but you'll need to adjust the instructions to match your app.
 
 1. In your app's top directory, run `dart pub get` to get its dependencies.
 
-   ```terminal
+   ```bash
    $ cd example
    $ dart pub get
    ```
@@ -96,7 +96,7 @@ but you'll need to adjust the instructions to match your app.
    * If you have [Dart Debug Extension][] installed and want to use
      an existing instance of Chrome to debug:
 
-     ```terminal
+     ```bash
      $ webdev serve --debug-extension
      ```
 
@@ -104,7 +104,7 @@ but you'll need to adjust the instructions to match your app.
      which launches a new instance of Chrome
      and runs the app:
 
-     ```terminal
+     ```bash
      $ webdev serve --debug
      ```
 
@@ -165,14 +165,14 @@ If you're using the command line instead of an IDE or Dart-enabled editor,
 then you need the [webdev tool][webdev].
 Dart DevTools is provided by the SDK.
 
-```terminal
+```bash
 $ dart pub global activate webdev
 ```
 
 If your PATH environment variable is set up correctly,
 you can now use these tools at the command line:
 
-```terminal
+```bash
 $ webdev --help
 A tool to develop Dart web projects.
 ...
@@ -184,7 +184,7 @@ For information on setting PATH, see the
 Whenever you update the Dart SDK,
 update the tools by activating them again:
 
-```terminal
+```bash
 $ dart pub global activate webdev     # update webdev
 ```
 

@@ -23,7 +23,7 @@ see the [documentation part of Effective Dart][effective doc].
 Run `dart doc` from the root directory of your package. 
 For example:
 
-```terminal
+```bash
 $ cd my_app
 $ dart pub get
 $ dart doc .
@@ -41,7 +41,7 @@ with the `--output` flag.
 For information on command-line options, 
 use the `help` command:
 
-```terminal
+```bash
 $ dart help doc
 ```
 

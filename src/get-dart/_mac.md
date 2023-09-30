@@ -1,7 +1,7 @@
 [Install Homebrew,](https://brew.sh)
 and then run the following commands:
 
-```terminal
+```bash
 $ brew tap dart-lang/dart
 $ brew install dart
 ```
@@ -16,7 +16,7 @@ $ brew install dart
 
 To upgrade when a new release of Dart is available:
 
-```terminal
+```bash
 $ brew upgrade dart
 ```
 
@@ -24,19 +24,19 @@ To switch between locally installed Dart releases,
 first install the version you want to switch to if you haven't.
 For example, to install Dart 2.12:
 
-```terminal
+```bash
 $ brew install dart@2.12
 ```
 
 Then to switch between versions, 
 unlink the current version and link the desired version.
 
-```terminal
+```bash
 $ brew unlink dart@<old> && brew unlink dart@<new> && brew link dart@<new>
 ```
 
 To see which versions of Dart you've installed:
 
-```terminal
+```bash
 $ brew info dart
 ```

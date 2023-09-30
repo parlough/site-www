@@ -72,7 +72,7 @@ Let's run a small program.
 
  2. In the directory that contains the file you just created, run the program:
 
-    ```terminal
+    ```bash
     $ dart run hello_world.dart
     Hello, World!
     ```
@@ -103,13 +103,13 @@ with the [`dart create`](/tools/dart-create) command.
 
 1. Inside a directory, create the dcat app with the dart tool.
    
-   ```terminal
+   ```bash
    $ dart create dcat
    ```
    
 2. Change to the created directory.
 
-   ```terminal
+   ```bash
    $ cd dcat
    ```
    
@@ -117,7 +117,7 @@ with the [`dart create`](/tools/dart-create) command.
    to add the `args` package as a dependency. This adds `args` to 
    the list of your dependencies found in the `pubspec.yaml` file.
 
-   ```terminal
+   ```bash
    $ dart pub add args
    ```
 
@@ -135,7 +135,7 @@ Once you have your app's dependencies,
 you can run the app from the command line over any text file,
 like `pubspec.yaml`:
 
-```terminal
+```bash
 $ dart run bin/dcat.dart -n pubspec.yaml
 1 name: dcat
 2 description: A sample command-line application.
@@ -330,7 +330,7 @@ and the program copies them to stdout.
 The user signals the end of input by pressing <kbd>Control</kbd>+<kbd>D</kbd>
 (or <kbd>Control</kbd>+<kbd>Z</kbd> on Windows).
 
-```terminal
+```bash
 $ dart run bin/dcat.dart
 The quick brown fox jumps over the lazy dog.
 The quick brown fox jumps over the lazy dog.

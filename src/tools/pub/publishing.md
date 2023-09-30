@@ -131,7 +131,7 @@ or to update it to a new version.
 
 To test how `dart pub publish` will work, you can perform a dry run:
 
-```terminal
+```bash
 $ dart pub publish --dry-run
 ```
 
@@ -143,7 +143,7 @@ the files it intends to publish. Here's an example of publishing a package
 named `transmogrify`:
 
 {:.console-output}
-```nocode
+```plaintext
 Publishing transmogrify 1.0.0
     .gitignore
     CHANGELOG.md
@@ -164,7 +164,7 @@ Package has 0 warnings.
 
 When you're ready to publish your package, remove the `--dry-run` argument:
 
-```terminal
+```bash
 $ dart pub publish
 ```
 

@@ -69,13 +69,13 @@ You can download zip files for any channel.
 Stable, beta, and dev channel releases
 are available at URLs like the following:
 
-```nocode
+```plaintext
 https://storage.googleapis.com/dart-archive/channels/<[!stable|beta|dev!]>/release/<[!version!]>/sdk/dartsdk-<[!platform!]>-<[!architecture!]>-release.zip
 ```
 
 Examples:
 
-```nocode
+```plaintext
 https://storage.googleapis.com/dart-archive/channels/stable/release/2.7.2/sdk/dartsdk-windows-ia32-release.zip
 https://storage.googleapis.com/dart-archive/channels/stable/release/2.1.1/sdk/dartsdk-macos-x64-release.zip
 https://storage.googleapis.com/dart-archive/channels/beta/release/2.8.0-20.11.beta/sdk/dartsdk-linux-x64-release.zip
@@ -87,13 +87,13 @@ https://storage.googleapis.com/dart-archive/channels/dev/release/2.9.0-1.0.dev/s
 The latest main channel build
 is available at URLs like the following:
 
-```nocode
+```plaintext
 https://storage.googleapis.com/dart-archive/channels/be/raw/latest/sdk/dartsdk-<[!platform!]>-<[!architecture!]>-release.zip
 ```
 
 Example:
 
-```nocode
+```plaintext
 https://storage.googleapis.com/dart-archive/channels/be/raw/latest/sdk/dartsdk-windows-x64-release.zip
 ```
 
