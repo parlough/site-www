@@ -6,7 +6,6 @@ repo:
   this: https://github.com/dart-lang/site-www
   shared: https://github.com/dart-lang/site-shared
 branch: main
-source: src
 
 flutter: https://flutter.dev
 flutter-docs: https://docs.flutter.dev
