@@ -20,6 +20,7 @@ module.exports = function (eleventyConfig) {
       })
       .use(markdownItAnchor, {
         level: 2,
+        tabIndex: false,
         permalink: markdownItAnchor.permalink.ariaHidden({
           space: true,
           placement: 'after',

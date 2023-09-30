@@ -294,6 +294,31 @@ main .content {
     &[id] {
       scroll-margin: 60px;
     }
+
+    .heading-link {
+      @include transition(.1s);
+      overflow: hidden;
+      color: #4a4a4a;
+      opacity: 0;
+      
+      &:hover {
+        color: lighten($brand-primary, 25%);
+      }
+
+      &:focus {
+        opacity: 1
+      }
+
+      &:active {
+        color: $brand-primary;
+      }
+    }
+
+    &:hover {
+      .heading-link {
+        opacity: 1
+      }
+    }
   }
 
   // Push # link targets clear of page header.
