@@ -255,12 +255,12 @@ the [`dart doc`][] tool.
 [documentation comments](/effective-dart/documentation#doc-comments),
 which use the `///` syntax:
 
-{% prettify dart tag=pre+code %}
+```dart
 /// The event handler responsible for updating the badge in the UI.
 void updateBadge() {
   ...
 }
-{% endprettify %}
+```
 
 For an example of generated docs, see the
 [shelf documentation.]({{site.pub-api}}/shelf/latest)

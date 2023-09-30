@@ -97,11 +97,11 @@ Let's customize the app you just created.
     previous value by two (for details about `~/`, see [Arithmetic operators][]):
 
     <?code-excerpt "misc/test/tutorial/get_started.dart (calculate)" replace="/~\/ 2/[!$&!]/g"?>
-    {% prettify dart tag=pre+code %}
+    ```dart
     int calculate() {
       return 6 * 7 [!~/ 2!];
     }
-    {% endprettify %}
+    ```
 
  1. Save your changes.
 

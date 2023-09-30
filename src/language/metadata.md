@@ -23,7 +23,7 @@ see [Extending a class][].
 Here's an example of using the `@Deprecated` annotation:
 
 <?code-excerpt "misc/lib/language_tour/metadata/television.dart (deprecated)" replace="/@Deprecated.*/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 class Television {
   /// Use [turnOn] to turn the power on instead.
   [!@Deprecated('Use turnOn instead')!]
@@ -35,7 +35,7 @@ class Television {
   void turnOn() {...}
   // ···
 }
-{% endprettify %}
+```
 
 You can use `@deprecated` if you don't want to specify a message.
 However, we [recommend][dep-lint] always

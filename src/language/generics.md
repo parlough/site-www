@@ -163,22 +163,22 @@ Here's an example of extending `SomeBaseClass`,
 so that members of `SomeBaseClass` can be called on objects of type `T`:
 
 <?code-excerpt "misc/lib/language_tour/generics/base_class.dart" replace="/extends SomeBaseClass(?=. \{)/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 class Foo<T [!extends SomeBaseClass!]> {
   // Implementation goes here...
   String toString() => "Instance of 'Foo<$T>'";
 }
 
 class Extender extends SomeBaseClass {...}
-{% endprettify %}
+```
 
 It's OK to use `SomeBaseClass` or any of its subtypes as the generic argument:
 
 <?code-excerpt "misc/test/language_tour/generics_test.dart (SomeBaseClass-ok)" replace="/Foo.\w+./[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 var someBaseClassFoo = [!Foo<SomeBaseClass>!]();
 var extenderFoo = [!Foo<Extender>!]();
-{% endprettify %}
+```
 
 It's also OK to specify no generic argument:
 
@@ -191,9 +191,9 @@ print(foo); // Instance of 'Foo<SomeBaseClass>'
 Specifying any non-`SomeBaseClass` type results in an error:
 
 {:.fails-sa}
-{% prettify dart tag=pre+code %}
+```dart
 var foo = [!Foo<Object>!]();
-{% endprettify %}
+```
 
 
 ## Using generic methods
@@ -203,14 +203,14 @@ Methods and functions also allow type arguments:
 <!-- {{site.dartpad}}/a02c53b001977efa4d803109900f21bb -->
 <!-- https://gist.github.com/a02c53b001977efa4d803109900f21bb -->
 <?code-excerpt "misc/test/language_tour/generics_test.dart (method)" replace="/<T.(?=\()|T/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 [!T!] first[!<T>!](List<[!T!]> ts) {
   // Do some initial work or error checking, then...
   [!T!] tmp = ts[0];
   // Do some additional checking or processing...
   return tmp;
 }
-{% endprettify %}
+```
 
 Here the generic type parameter on `first` (`<T>`)
 allows you to use the type argument `T` in several places:

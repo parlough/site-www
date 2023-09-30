@@ -49,12 +49,12 @@ To use `await`, code must be in an `async` function—a
 function marked as `async`:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (checkVersion)" replace="/async|await/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 Future<void> checkVersion() [!async!] {
   var version = [!await!] lookUpVersion();
   // Do something with version
 }
-{% endprettify %}
+```
 
 {{site.alert.note}}
   Although an `async` function might perform time-consuming operations, 
@@ -101,12 +101,12 @@ For example, to use `await` in your app's `main()` function,
 the body of `main()` must be marked as `async`:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (main)" replace="/async|await/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 void main() [!async!] {
   checkVersion();
   print('In main: version is ${[!await!] lookUpVersion()}');
 }
-{% endprettify %}
+```
 
 {{site.alert.note}}
   The preceding example uses an `async` function (`checkVersion()`)
@@ -200,7 +200,7 @@ For example, to use an asynchronous for loop in your app's `main()` function,
 the body of `main()` must be marked as `async`:
 
 <?code-excerpt "misc/lib/language_tour/async.dart (number_thinker)" replace="/async|await for/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 void main() [!async!] {
   // ...
   [!await for!] (final request in requestServer) {
@@ -208,7 +208,7 @@ void main() [!async!] {
   }
   // ...
 }
-{% endprettify %}
+```
 
 For more information about asynchronous programming, in general, see the
 [dart:async](/guides/libraries/library-tour#dartasync---asynchronous-programming)

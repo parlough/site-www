@@ -1,7 +1,6 @@
 @use '../core/colors' as *;
 @use '../core/variables' as *;
 @use '../core/bootstrap';
-@use '../vendor/prettify';
 
 @mixin pre-defaults {
   background-color: $site-color-codeblock-bg;
@@ -78,6 +77,19 @@ pre.console-output {
   .s, .s1, .s2 { color: #00CCEE; } /* String, .Single, .Double quotes */
   .sb { color: #f56b78; } /* String.Backtick */
 }
+
+.str { color: #080 }  /* string content */
+.kwd { color: #008 }  /* a keyword */
+.com { color: #800 }  /* a comment */
+.typ { color: #606 }  /* a type name */
+.lit { color: #066 }  /* a literal value */
+/* punctuation, lisp open bracket, lisp close bracket */
+.pun, .opn, .clo { color: #660 }
+.tag { color: #008 }  /* a markup tag name */
+.atn { color: #606 }  /* a markup attribute name */
+.atv { color: #080 }  /* a markup attribute value */
+.dec, .var { color: #606 }  /* a declaration; a variable name */
+.fun { color: red }  /* a function name */
 
 // Match code-prettify classes to the extent possible.
 .highlight {

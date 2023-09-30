@@ -100,7 +100,7 @@ The first is the exception that was thrown,
 and the second is the stack trace (a [`StackTrace`][] object).
 
 <?code-excerpt "misc/lib/language_tour/exceptions.dart (try-catch-2)" replace="/\(e.*?\)/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 try {
   // ···
 } on Exception catch [!(e)!] {
@@ -109,14 +109,14 @@ try {
   print('Exception details:\n $e');
   print('Stack trace:\n $s');
 }
-{% endprettify %}
+```
 
 To partially handle an exception,
 while allowing it to propagate,
 use the `rethrow` keyword.
 
 <?code-excerpt "misc/test/language_tour/exceptions_test.dart (rethrow)" replace="/rethrow;/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 void misbehave() {
   try {
     dynamic foo = true;
@@ -134,7 +134,7 @@ void main() {
     print('main() finished handling ${e.runtimeType}.');
   }
 }
-{% endprettify %}
+```
 
 
 ### Finally

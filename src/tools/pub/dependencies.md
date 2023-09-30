@@ -80,7 +80,7 @@ using the `hosted` source:
 
 [own package repository]: /tools/pub/custom-package-repositories
 
-{% prettify yaml tag=pre+code %}
+```yaml
 environment:
   sdk: '>=[!2.15.0!] < 3.0.0'
 
@@ -88,7 +88,7 @@ dependencies:
   transmogrify:
     [!hosted: https://some-package-server.com!]
     version: ^1.4.0
-{% endprettify %}
+```
 
 The version constraint is optional but recommended. If no version constraint is
 given, `any` is assumed.
@@ -97,7 +97,7 @@ given, `any` is assumed.
 If your package has a [language version][] before 2.15,
 you must use a more verbose `hosted` format:
 
-{% prettify yaml tag=pre+code %}
+```yaml
 environment:
   sdk: '>=[!2.14.0!] < 3.0.0'
 
@@ -107,7 +107,7 @@ dependencies:
       [!name: transmogrify!]
       [!url: https://some-package-server.com!]
     version: ^1.4.0
-{% endprettify %}
+```
 {{site.alert.end}}
 
 [language version]: /guides/language/evolution#language-versioning

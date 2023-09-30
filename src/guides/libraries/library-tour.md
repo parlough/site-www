@@ -1381,7 +1381,7 @@ to subscribe to a list of files,
 passing in a function literal that searches each file or directory.
 
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (listen)" replace="/listen/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 void main(List<String> arguments) {
   // ...
   FileSystemEntity.isDirectory(searchPath).then((isDir) {
@@ -1397,14 +1397,14 @@ void main(List<String> arguments) {
     }
   });
 }
-{% endprettify %}
+```
 
 The equivalent code with await expressions,
 including an asynchronous for loop (`await for`),
 looks more like synchronous code:
 
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (await-for)" replace="/await for/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 void main(List<String> arguments) async {
   // ...
   if (await FileSystemEntity.isDirectory(searchPath)) {
@@ -1418,7 +1418,7 @@ void main(List<String> arguments) async {
     searchFile(File(searchPath), searchTerms);
   }
 }
-{% endprettify %}
+```
 
 {{site.alert.important}}
   Before using `await for`, make sure that it makes the code clearer and that
@@ -1439,13 +1439,13 @@ To get each value as it arrives, either use `await for` or
 subscribe to the stream using the `listen()` method:
 
 <?code-excerpt "misc/lib/library_tour/async/stream_web.dart (listen)" replace="/listen/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 // Add an event handler to a button.
 submitButton.onClick.[!listen!]((e) {
   // When the button is clicked, it runs this code.
   submitData();
 });
-{% endprettify %}
+```
 
 In this example, the `onClick` property is a `Stream` object provided by
 the submit button.
@@ -1498,7 +1498,7 @@ Code that executes after the stream is closed
 goes after the asynchronous for loop.
 
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (readFileAwaitFor)" replace="/try|catch/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 Future<void> readFileAwaitFor() async {
   var config = File('config.txt');
   Stream<List<int>> inputStream = config.openRead();
@@ -1514,7 +1514,7 @@ Future<void> readFileAwaitFor() async {
     print(e);
   }
 }
-{% endprettify %}
+```
 
 If you use the Stream API,
 then handle errors by registering an `onError` listener.
@@ -1522,7 +1522,7 @@ Run code after the stream is closed by registering
 an `onDone` listener.
 
 <?code-excerpt "misc/lib/library_tour/async/stream.dart (onDone)" replace="/onDone|onError/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 var config = File('config.txt');
 Stream<List<int>> inputStream = config.openRead();
 
@@ -1534,7 +1534,7 @@ inputStream.transform(utf8.decoder).transform(const LineSplitter()).listen(
 }, [!onError!]: (e) {
   print(e);
 });
-{% endprettify %}
+```
 
 
 ### More information
@@ -1741,7 +1741,7 @@ To convert a stream of UTF-8 characters into a Dart string, specify
 `utf8.decoder` to the Stream `transform()` method:
 
 <?code-excerpt "misc/test/library_tour/io_test.dart (utf8-decoder)" replace="/utf8.decoder/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 var lines = [!utf8.decoder!].bind(inputStream).transform(const LineSplitter());
 try {
   await for (final line in lines) {
@@ -1751,7 +1751,7 @@ try {
 } catch (e) {
   print(e);
 }
-{% endprettify %}
+```
 
 Use `utf8.encode()` to encode a Dart string as a list of UTF8-encoded
 bytes:

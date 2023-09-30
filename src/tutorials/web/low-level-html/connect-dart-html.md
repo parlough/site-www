@@ -267,9 +267,9 @@ Let's deconstruct it.
 `querySelector()` is a top-level function provided by the `dart:html` library
 that gets an `Element` object from the DOM.
 
-{% prettify dart tag=pre+code %}
+```dart
 [!querySelector!]('#RipVanWinkle')!.text = 'Wake up, sleepy head!';
-{% endprettify %}
+```
 
 The argument to `querySelector()` is a string
 containing a CSS selector that identifies the object.
@@ -301,18 +301,18 @@ we can use the
 [null assertion operator](/null-safety/understanding-null-safety#null-assertion-operator) (`!`)
 when referring to the element's properties:
 
-{% prettify dart tag=pre+code %}
+```dart
 querySelector('#RipVanWinkle')[!!!].text = 'Wake up, sleepy head!';
-{% endprettify %}
+```
 
 If the element with the `#RipVanWinkle` ID
 isn't guaranteed to be present in the DOM,
 you can instead use the conditional member access operator (`?.`)
 to set `text` only if the returned element is not `null`:
 
-{% prettify dart tag=pre+code %}
+```dart
 querySelector('#RipVanWinkle')[!?!].text = 'Wake up, sleepy head!';
-{% endprettify %}
+```
 
 If you plan to access the element multiple times
 and know its type,
@@ -320,10 +320,10 @@ another option is to
 [typecast](/language/operators#type-test-operators)
 the queried element to the expected type:
 
-{% prettify dart tag=pre+code %}
+```dart
 final paragraph = querySelector('#RipVanWinkle') [!as ParagraphElement!];
 paragraph.text = 'Wake up, sleepy head!';
-{% endprettify %}
+```
 
 To learn more about nullable types and null safety in general,
 see [Sound null safety](/null-safety).
@@ -350,9 +350,9 @@ you can simply use the Element `text` property,
 which has a getter and setter
 that walk the subtree of nodes for you and extract or set their text:
 
-{% prettify dart tag=pre+code %}
+```dart
 querySelector('#RipVanWinkle')![!.text!] = 'Wake up, sleepy head!';
-{% endprettify %}
+```
 
 However, if the text node has styles (and thus a subtree),
 getting text and then setting it immediately is likely
@@ -364,9 +364,9 @@ The assignment operator (`=`) sets the text
 of the `Element` returned by the `querySelector()` function
 to the string "Wake up, sleepy head!".
 
-{% prettify dart tag=pre+code %}
+```dart
 querySelector('#RipVanWinkle')!.text [!=!] 'Wake up, sleepy head!';
-{% endprettify %}
+```
 
 This causes the browser to immediately re-render
 the browser page containing this app,   

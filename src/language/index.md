@@ -317,11 +317,11 @@ mixin Piloted {
 To add a mixin's capabilities to a class, just extend the class with the mixin.
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (mixin-use)" replace="/with/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 class PilotedCraft extends Spacecraft [!with!] Piloted {
   // ···
 }
-{% endprettify %}
+```
 
 `PilotedCraft` now has the `astronauts` field as well as the `describeCrew()` method.
 
@@ -348,7 +348,7 @@ to be extended (or implemented) by a concrete class.
 Abstract classes can contain abstract methods (with empty bodies).
 
 <?code-excerpt "misc/lib/samples/spacecraft.dart (abstract)" replace="/abstract/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 [!abstract!] class Describable {
   void describe();
 
@@ -358,7 +358,7 @@ Abstract classes can contain abstract methods (with empty bodies).
     print('=========');
   }
 }
-{% endprettify %}
+```
 
 Any class extending `Describable` has the `describeWithEmphasis()` method, 
 which calls the extender's implementation of `describe()`.
@@ -373,14 +373,14 @@ Avoid callback hell and make your code much more readable by
 using `async` and `await`.
 
 <?code-excerpt "misc/test/samples_test.dart (async)" replace="/async/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 const oneSecond = Duration(seconds: 1);
 // ···
 Future<void> printWithDelay(String message) [!async!] {
   await Future.delayed(oneSecond);
   print(message);
 }
-{% endprettify %}
+```
 
 The method above is equivalent to:
 
@@ -448,7 +448,7 @@ if (astronauts == 0) {
 To catch an exception, use a `try` statement with `on` or `catch` (or both):
 
 <?code-excerpt "misc/test/samples_test.dart (try)" replace="/on.*e\)/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 Future<void> describeFlybyObjects(List<String> flybyObjects) async {
   try {
     for (final object in flybyObjects) {
@@ -461,7 +461,7 @@ Future<void> describeFlybyObjects(List<String> flybyObjects) async {
     flybyObjects.clear();
   }
 }
-{% endprettify %}
+```
 
 Note that the code above is asynchronous;
 `try` works for both synchronous code and code in an `async` function.

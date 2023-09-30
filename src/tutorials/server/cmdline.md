@@ -184,7 +184,7 @@ Here is the `dcat` code that uses these classes to parse and store command-line
 arguments:
 
 <?code-excerpt "misc/bin/dcat/dcat.dart (arg processing)" plaster="none" replace="/(ArgR.*|List[^\)]*|\..*|parser.*|argResults\S[^);]+)/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 void main([!List<String> arguments!]) {
   exitCode = 0; // presume success
   final [!parser = ArgParser()..addFlag(lineNumber, negatable: false, abbr: 'n');!]
@@ -195,7 +195,7 @@ void main([!List<String> arguments!]) {
 
   dcat(paths, showLineNumbers: [!argResults[lineNumber] as bool!]);
 }
-{% endprettify %}
+```
 
 The runtime passes command-line arguments to the app's `main()` function as a
 list of strings. The `ArgParser` is configured to parse the `-n` flag. The
@@ -244,12 +244,12 @@ Here's the code from the `dcat` program that writes the line number to
 the `stdout` (if the `-n` flag is set) followed by the line from the file.
 
 <?code-excerpt "misc/bin/dcat/dcat.dart (showLineNumbers)" replace="/stdout\..*/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 if (showLineNumbers) {
   [!stdout.write('${lineNumber++} ');!]
 }
 [!stdout.writeln(line);!]
-{% endprettify %}
+```
 
 The `write()` and `writeln()` methods take an object of any type,
 convert it to a string, and print it. The `writeln()` method
@@ -279,13 +279,13 @@ This code from `dcat` prints an error message if the user
 tries to list a directory.
 
 <?code-excerpt "misc/bin/dcat/dcat.dart (await FileSystemEntity)" replace="/stderr\..*/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 if (await FileSystemEntity.isDirectory(path)) {
   [!stderr.writeln('error: $path is a directory');!]
 } else {
   exitCode = 2;
 }
-{% endprettify %}
+```
 
 ### stdin
 
@@ -320,10 +320,10 @@ Because `pipe()` is asynchronous
 the code that calls it uses `await`.
 
 <?code-excerpt "misc/bin/dcat/dcat.dart (pipe)" replace="/pipe/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 
 await stdin.[!pipe!](stdout);
-{% endprettify %}
+```
 
 In this case, the user types in lines of text,
 and the program copies them to stdout.
@@ -355,13 +355,13 @@ Because the check is asynchronous, the code calls `isDirectory()`
 using `await`.
 
 <?code-excerpt "misc/bin/dcat/dcat.dart (await FileSystemEntity)" replace="/await.*path\)/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 if ([!await FileSystemEntity.isDirectory(path)!]) {
   stderr.writeln('error: $path is a directory');
 } else {
   exitCode = 2;
 }
-{% endprettify %}
+```
 
 Other interesting methods in the `FileSystemEntity` class
 include `isFile()`, `exists()`, `stat()`, `delete()`,
@@ -378,7 +378,7 @@ asynchronously. The data prints to stdout when it
 becomes available on the stream.
 
 <?code-excerpt "misc/bin/dcat/dcat.dart (for path)" remove="/^\s*\/\/!tip.*/" replace="/(    )((await for| *stdout| *if| *}).*)/$1[!$2!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 for (final path in paths) {
   var lineNumber = 1;
   final lines = utf8.decoder
@@ -395,7 +395,7 @@ for (final path in paths) {
     await _handleError(path);
   }
 }
-{% endprettify %}
+```
 
 The following shows the rest of the code, which uses two decoders that
 transform the data before making it available in the `await for` block.
@@ -403,7 +403,7 @@ The UTF8 decoder converts the data into Dart strings.
 `LineSplitter` splits the data at newlines.
 
 <?code-excerpt "misc/bin/dcat/dcat.dart (for path)" remove="/^\s*\/\/!tip.*/" replace="/utf8.decoder|LineSplitter()/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 for (final path in paths) {
   var lineNumber = 1;
   final lines = [!utf8.decoder!]
@@ -420,7 +420,7 @@ for (final path in paths) {
     await _handleError(path);
   }
 }
-{% endprettify %}
+```
 
 The dart:convert library contains these and other data converters,
 including one for JSON.
@@ -511,7 +511,7 @@ in the `_handleError()` function to indicate that an error
 occurred during execution.
 
 <?code-excerpt "misc/bin/dcat/dcat.dart (_handleError)" remove="/^\s*\/\/!tip.*/" replace="/exit.*;/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 Future<void> _handleError(String path) async {
   if (await FileSystemEntity.isDirectory(path)) {
     stderr.writeln('error: $path is a directory');
@@ -519,7 +519,7 @@ Future<void> _handleError(String path) async {
     [!exitCode = 2;!]
   }
 }
-{% endprettify %}
+```
 
 An exit code of 2 indicates that the program encountered an error.
 

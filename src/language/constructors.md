@@ -87,7 +87,7 @@ Use a named constructor to implement multiple constructors for a class
 or to provide extra clarity:
 
 <?code-excerpt "misc/lib/language_tour/classes/point.dart (named-constructor)" replace="/Point\.\S*/[!$&!]/g" plaster="none"?>
-{% prettify dart tag=pre+code %}
+```dart
 const double xOrigin = 0;
 const double yOrigin = 0;
 
@@ -102,7 +102,7 @@ class Point {
       : x = xOrigin,
         y = yOrigin;
 }
-{% endprettify %}
+```
 
 Remember that constructors are not inherited, which means that a
 superclass's named constructor is not inherited by a subclass. If you
@@ -258,11 +258,11 @@ During development, you can validate inputs by using `assert` in the
 initializer list.
 
 <?code-excerpt "misc/lib/language_tour/classes/point_alt.dart (initializer-list-with-assert)" replace="/assert\(.*?\)/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 Point.withAssert(this.x, this.y) : [!assert(x >= 0)!] {
   print('In Point.withAssert(): ($x, $y)');
 }
-{% endprettify %}
+```
 
 Initializer lists are handy when setting up final fields. The following example
 initializes three final fields in an initializer list. Click **Run** to execute

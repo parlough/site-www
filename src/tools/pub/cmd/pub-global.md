@@ -144,10 +144,10 @@ may vary for different versions of Windows.
 
 You can now directly invoke the command:
 
-{% prettify nocode tag=pre+code %}
+```nocode
 $ cd web_project
 $ [!webdev serve!]
-{% endprettify %}
+```
 
 If the script still fails to run from the command line, the
 package may not be [configured](#configuring-package-executables) for

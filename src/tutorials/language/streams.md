@@ -36,7 +36,7 @@ iterates over the events of a stream like the **for loop** iterates
 over an [Iterable][]. For example:
 
 <?code-excerpt "misc/lib/tutorial/sum_stream.dart (sumStream)" replace="/async|await for/[!$&!]/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 Future<int> sumStream(Stream<int> stream) [!async!] {
   var sum = 0;
   [!await for!] (final value in stream) {
@@ -44,7 +44,7 @@ Future<int> sumStream(Stream<int> stream) [!async!] {
   }
   return sum;
 }
-{% endprettify %}
+```
 
 This code simply receives each event of a stream of integer events,
 adds them up, and returns (a future of) the sum.

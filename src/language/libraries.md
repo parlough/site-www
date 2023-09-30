@@ -154,11 +154,11 @@ To specify library-level [doc comments][] or [metadata annotations][],
 attach them to a `library` declaration at the start of the file.
 
 <?code-excerpt "misc/lib/effective_dart/docs_good.dart (library-doc)"?>
-{% prettify dart tag=pre+code %}
+```dart
 /// A really great test library.
 @TestOn('browser')
 library;
-{% endprettify %}
+```
 
 ## Implementing libraries
 

@@ -150,18 +150,18 @@ Let's customize the app you just created.
  2. Add the `newLI()` function (as shown below).
     It creates a new `LIElement` containing the specified `String`.
 
-    {% prettify dart tag=pre+code %}
+    ```dart
     Iterable<String> thingsTodo() sync* { ... }
 
     [!LIElement newLI(String itemText) => LIElement()..text = itemText;!]
 
     void main() { ... }
-    {% endprettify %}
+    ```
 
  3. In the `main()` function, initialize the `output` element using
     `thingsTodo()`:
 
-    {% prettify dart tag=pre+code %}
+    ```dart
     Iterable<String> thingsTodo() sync* { ... }
 
     LIElement newLI(String itemText) => LIElement()..text = itemText;
@@ -169,7 +169,7 @@ Let's customize the app you just created.
     void main() {
       querySelector('#output')?[!.children.addAll(thingsTodo().map(newLI));!]
     }
-    {% endprettify %}
+    ```
 
  4. Save your changes.
 
@@ -182,12 +182,12 @@ Let's customize the app you just created.
  6. Optionally, improve the formatting by editing `web/styles.css`,
     then reload the app to check your changes.
 
-    {% prettify css tag=pre+code %}
+    ```css
     #output {
       padding: 20px;
       [!text-align: left;!]
     }
-    {% endprettify %}
+    ```
 
 
 ## 7. Use Dart DevTools to inspect the app

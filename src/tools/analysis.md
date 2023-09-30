@@ -30,12 +30,13 @@ made its way into an `if` statement:
 
 <blockquote class="ml-3" markdown="1">
 <?code-excerpt "analysis/lib/lint.dart (empty_statements)" replace="/(if .*?)(;)/$1[!$2!]/g"?>
-{% prettify dart class="linenums:8 analyzer"%}
+```dart
 void increment() {
   if (count < 10) [!;!]
   count++;
 }
-{% endprettify %}
+```
+{:.analyzer}
 
 If properly configured, the analyzer points to the semicolon and
 produces the following warning:
@@ -52,9 +53,10 @@ For example, perhaps you've forgotten to close a sink method:
 
 <blockquote class="ml-3" markdown="1">
 <?code-excerpt "analysis/lib/lint.dart (close_sinks)" replace="/(contr.*?)(;)/[!$1!]$2/g"?>
-{% prettify dart class="analyzer"%}
+```dart
 var [!controller = StreamController<String>()!];
-{% endprettify %}
+```
+{:.analyzer}
 
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="close_sinks" replace="/-(.*?):(.*?):(.*?)-/-/g"?>
@@ -178,7 +180,7 @@ You can use the modes together or separately; all default to `false`.
 
 {:.fails-sa}
 <?code-excerpt "analysis/lib/strict_modes.dart (strict-casts)" replace="/jsonDecode\(jsonText\)/[!$&!]/g"?>
-{% prettify dart class="analyzer" %}
+```dart
 void foo(List<String> lines) {
   ...
 }
@@ -186,7 +188,8 @@ void foo(List<String> lines) {
 void bar(String jsonText) {
   foo([!jsonDecode(jsonText)!]); // Implicit cast
 }
-{% endprettify %}
+```
+{:.analyzer}
 
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="The argument type 'dynamic' can't be assigned"  replace="/-(.*?):(.*?):(.*?)-/-/g"?>
@@ -215,13 +218,14 @@ error - The argument type 'dynamic' can't be assigned to the parameter type 'Lis
 
 {:.fails-sa}
 <?code-excerpt "analysis/lib/strict_modes.dart (strict-inference)" replace="/{}/[!$&!]/g"?>
-{% prettify dart class="analyzer" %}
+```dart
 final lines = [!{}!]; // Inference failure
 lines['Dart'] = 10000;
 lines['C++'] = 'one thousand';
 lines['Go'] = 2000;
 print('Lines: ${lines.values.reduce((a, b) => a + b)}'); // Runtime error
-{% endprettify %}
+```
+{:analyzer}
 
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="The type argument(s) of 'Map'"  replace="/. Use.*'Map'. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>
@@ -248,12 +252,13 @@ warning - The type argument(s) of 'Map' can't be inferred - inference_failure_on
 
 {:.fails-sa}
 <?code-excerpt "analysis/lib/strict_modes.dart (strict-raw-types)" replace="/List n/[!List!] n/g"?>
-{% prettify dart class="analyzer" %}
+```dart
 [!List!] numbers = [1, 2, 3]; // List with raw type
 for (final n in numbers) {
   print(n.length); // Runtime error
 }
-{% endprettify %}
+```
+{:.analyzer}
 
 {:.console-output}
 <?code-excerpt "analysis/analyzer-results-stable.txt" retain="The generic type" replace="/. Use explicit.*\. / /g; /-(.*?):(.*?):(.*?)-/-/g"?>

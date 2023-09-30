@@ -124,7 +124,7 @@ String _readFileSync() {
 Here's similar code, but with changes (highlighted) to make it asynchronous:
 
 <?code-excerpt "lib/async_number_of_keys.dart" replace="/async|await|readAsString\(\)/[!$&!]/g; /Future<\w+\W/[!$&!]/g;"?>
-{% prettify dart tag=pre+code %}
+```dart
 const String filename = 'with_keys.json';
 
 void main() [!async!] {
@@ -141,7 +141,7 @@ void main() [!async!] {
   final contents = [!await!] file.[!readAsString()!];
   return contents.trim();
 }
-{% endprettify %}
+```
 
 The `main()` function uses the `await` keyword in front of `_readFileAsync()`
 to let other Dart code (such as event handlers) use the CPU

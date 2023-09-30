@@ -336,12 +336,12 @@ from a web server. Use `await` with the `getString()` call
 to ensure that you have the data before continuing execution.
 
 <?code-excerpt "html/test/html_test.dart (getString)" plaster="none" replace="/await.*;/[!$&!]/g; /Future<\w+\W/void/g"?>
-{% prettify dart tag=pre+code %}
+```dart
 void main() async {
   String pageHtml = [!await HttpRequest.getString(url);!]
   // Do something with pageHtml...
 }
-{% endprettify %}
+```
 
 Use try-catch to specify an error handler:
 
