@@ -18,10 +18,10 @@ prevpage:
 </div>
 
 
-{{site.alert.note}}
+{% alert 'note' %}
     This page uses embedded DartPads to display runnable examples.
     {% include 'dartpads-embedded-troubleshooting.md' %}
-{{site.alert.end}}
+{% endalert %}
 
 This tutorial shows you how to delete elements from the DOM.
 A new and improved version of the todo app from

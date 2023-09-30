@@ -14,7 +14,7 @@ finds and fixes two types of issues:
 * Outdated API usages when updating to
   newer releases of the Dart and Flutter SDKs.
 
-{{site.alert.tip}}
+{% alert 'tip' %}
   To learn about `dart fix` in a video format,
   check out this deep dive on **Decoding Flutter**:
 
@@ -23,7 +23,7 @@ finds and fixes two types of issues:
   frameborder="0" 
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
   allowfullscreen></iframe>
-{{site.alert.end}}  
+{% endalert %}  
 
 ## Usage
 

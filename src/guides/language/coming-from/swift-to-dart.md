@@ -29,11 +29,11 @@ For more information, check out the [Dart overview][].
 
 [Dart overview]: /overview#native-platform
 
-{{site.alert.note}}
+{% alert 'note' %}
   Flutter uses the Dart language,
   so if you are coding Flutter, you might find
   [Flutter for iOS developers][] to be useful.
-{{site.alert.end}}
+{% endalert %}
 
 [Flutter for iOS developers]: {{site.flutter-docs}}/get-started/flutter-for/ios-devs
 
@@ -51,10 +51,10 @@ provide this functionality.)
 
 [Customizing static analysis]: /tools/analysis
 
-{{site.alert.secondary}}
+{% alert 'secondary' %}
   **Pro tip:** Dart provides [`dart fix`][],
   which finds and fixes errors found by the analyzer.
-{{site.alert.end}}
+{% endalert %}
 
 [`dart fix`]: /tools/dart-fix
 
@@ -63,7 +63,7 @@ which can automatically format any Dart project when
 running `dart format` from the command line
 or through the IDE.
 
-{{site.alert.secondary}}
+{% alert 'secondary' %}
   **Pro tip:** Dart supports optional trailing
   commas for any comma-separated values,
   such as function parameters or list items.
@@ -75,7 +75,7 @@ or through the IDE.
   For more information on using commas to make
   your code more readable, check out
   [Using trailing commas][] on docs.flutter.dev.
-{{site.alert.end}}
+{% endalert %}
 
 [Using trailing commas]: {{site.flutter-docs}}/development/tools/formatting#using-trailing-commas
 
@@ -897,12 +897,12 @@ needs a return statement for any value to be returned.
 }).toList(); // [2, 4, 6]
 ```
 
-{{site.alert.note}}
+{% alert 'note' %}
   As the map function used in the example returns
   an `Iterable<T`> rather than a `List<T>`,
   the `toList` function needs to be called on
   the returned `Iterator` to turn it back into a `List`. 
-{{site.alert.end}}
+{% endalert %}
 
 ```swift
   // Swift equivalent anonymous function
@@ -1122,7 +1122,7 @@ In Dart, `int x = 5/2,` results in a value of
 use Dart's truncating division operator (`~/`). 
 
 
-{{site.alert.secondary}}
+{% alert 'secondary' %}
   **Version note on the difference between web and mobile:**<br>
   On the web, an `integer` is also a `double`
   (because all numbers are),
@@ -1135,7 +1135,7 @@ use Dart's truncating division operator (`~/`).
   assert(25 == 50.6 ~/ 2);
   assert(25 == 51.6 ~/ 2);
   ```
-{{site.alert.end}}
+{% endalert %}
 
 While the `++` and `–` operators existed in
 earlier versions of Swift, they've been
@@ -1235,7 +1235,7 @@ if (!done && (col == 0 || col == 3)) {
 
 #### Bitwise and shift operators
 
-{{site.alert.secondary}}
+{% alert 'secondary' %}
   **Numbers on the web:** On the web,
   Dart uses JavaScript bitwise operations
   for better performance, but this can cause
@@ -1243,7 +1243,7 @@ if (!done && (col == 0 || col == 3)) {
   applications. For more information,
   see [Bitwise operations][] in the
   [Numbers in Dart][] page.
-{{site.alert.end}}
+{% endalert %}
 
 [Bitwise operations]: /guides/language/numbers#bitwise-operations
 [Numbers in Dart]: /guides/language/numbers
@@ -1452,14 +1452,14 @@ a hash code, while in Swift you need to explicitly
 apply the `Hashable` protocol before the object
 can be stored in a `Set`.
 
-{{site.alert.note}}
+{% alert 'note' %}
   In Dart, the `hashCode` inherited from the
   `Object` class is only based on the object's identity.
   If the `==` operator can make non-identical objects equal,
   the `hashCode` getter needs to be overridden to match
   the equality. For more information,
   check out the API page for the [`hashCode` property][].
-{{site.alert.end}}
+{% endalert %}
 
 The following code snippets show the differences
 between initializing a `Set` in Dart and Swift:
@@ -1512,14 +1512,14 @@ In Dart, every object contains a hash while in Swift
 you need to explicitly apply the `Hashable` protocol
 before the object can be stored in a `Dictionary`.
 
-{{site.alert.note}}
+{% alert 'note' %}
   In Dart, the `hashCode` inherited from the `Object`
   class is only based on the object's identity.
   If the `==` operator can make non-identical objects equal,
   the `hashCode` getter needs to be overridden
   to match the equality. For more information,
   check out the API page for the [`hashCode` property][].
-{{site.alert.end}}
+{% endalert %}
 
 [`hashCode` property]: {{site.dart-api}}/dart-core/Object/hashCode.html
 
@@ -2099,10 +2099,10 @@ mixin Walker {
 class Bat extends Walker {}
 ```
 
-{{site.alert.note}}
+{% alert 'note' %}
   The `extends` keyword is covered further in
   [Extending a class][] in the Dart language tour.
-{{site.alert.end}}
+{% endalert %}
 
 [Extending a class]: /language/generics#restricting-the-parameterized-type
 
@@ -2182,10 +2182,10 @@ overview.
 
 [Extension methods]: /language/extension-methods
 
-{{site.alert.note}}
+{% alert 'note' %}
   Dart doesn't support extending an existing type
   to make it adopt one or more protocols.
-{{site.alert.end}}
+{% endalert %}
 
 #### Named extensions
 

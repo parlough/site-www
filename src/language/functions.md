@@ -48,11 +48,11 @@ The <code>=> <em>expr</em></code> syntax is a shorthand for
 <code>{ return <em>expr</em>; }</code>. The `=>` notation
 is sometimes referred to as _arrow_ syntax.
 
-{{site.alert.note}}
+{% alert 'note' %}
   Only an *expression*—not a *statement*—can appear between the arrow (=\>) and
   the semicolon (;). For example, you can't put an [if statement][]
   there, but you can use a [conditional expression][].
-{{site.alert.end}}
+{% endalert %}
 
 ## Parameters
 
@@ -60,11 +60,11 @@ A function can have any number of *required positional* parameters. These can be
 followed either by *named* parameters or by *optional positional* parameters
 (but not both).
 
-{{site.alert.note}}
+{% alert 'note' %}
   Some APIs—notably [Flutter][] widget constructors—use only named
   parameters, even for parameters that are mandatory. See the next section for
   details.
-{{site.alert.end}}
+{% endalert %}
 
 You can use [trailing commas][] when you pass arguments to a function
 or when you define function parameters.
@@ -127,7 +127,7 @@ If someone tries to create a `Scrollbar`
 without specifying the `child` argument,
 then the analyzer reports an issue.
 
-{{site.alert.note}}
+{% alert 'note' %}
   A parameter marked as `required`
   can still be nullable:
 
@@ -135,7 +135,7 @@ then the analyzer reports an issue.
   ```dart
   const Scrollbar({super.key, required [!Widget?!] child});
   ```
-{{site.alert.end}}
+{% endalert %}
 
 You might want to place positional arguments first,
 but Dart doesn't require it.

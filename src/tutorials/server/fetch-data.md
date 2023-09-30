@@ -12,12 +12,12 @@ nextpage:
 
 <?code-excerpt path-base="fetch_data"?>
 
-{{site.why.learn}}
+{% WhyLearn %}
   * The basics of what HTTP requests and URIs are and what they are used for.
   * Making HTTP requests using `package:http`.
   * Decoding JSON strings into Dart objects with `dart:convert`.
   * Converting JSON objects into class-based structures.
-{{site.why.end}}
+{% endWhyLearn %}
 
 Most applications require some form of communication or
 data retrieval from the internet.
@@ -205,14 +205,14 @@ retrieve the mock JSON-formatted information
 about `package:http` as a string,
 then prints it out:
 
-{{site.alert.note}}
+{% alert 'note' %}
   Many functions in `package:http`, including `read`,
   access the network and perform potentially time-consuming operations,
   therefore they do so asynchronously and return a [`Future`][].
   If you haven't encountered futures yet,
   you can learn about them—as well as the `async` and `await` keywords—in the
   [asynchronous programming codelab](/codelabs/async-await).
-{{site.alert.end}}
+{% endalert %}
 
 <?code-excerpt "lib/fetch_data.dart (http-read)" replace="/readMain/main/g; /(http\.read)/[!$1!]/g"?>
 ```dart
@@ -609,10 +609,10 @@ class PackageRetrievalException implements Exception {
 }
 ```
 
-{{site.alert.flutter-note}}
+{% alert 'flutter-note' %}
   For another example that covers fetching then displaying data in Flutter,
   see the [Fetching data from the internet][] Flutter recipe.
-{{site.alert.end}}
+{% endalert %}
 
 [web]: /web
 [Flutter]: {{site.flutter}}

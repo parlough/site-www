@@ -73,12 +73,12 @@ a top-level variable or getter, or `this`.
 (Although promoting `this` would be sound,
 implementing it would be difficult and not very useful.)
 
-{{site.alert.tip}}
+{% alert 'tip' %}
   When creating a local variable to hold a field's value,
   **make the variable `final`**.
   That way, you can't accidentally update the local variable
   when you intend to update the field.
-{{site.alert.end}}
+{% endalert %}
 
 
 ## Other causes and workarounds
@@ -92,7 +92,7 @@ one or more of the following:
 * Add an explicit null check.
 * Use `!` or `as` if you're sure an expression can't be null.
 
-{{site.alert.note}}
+{% alert 'note' %}
   You can work around all of these non-promotion examples by adding
   a _redundant check_—code that confirms a
   condition that's already been checked.
@@ -108,7 +108,7 @@ one or more of the following:
   (giving you confidence that the code is correct)
   or to do a redundant check
   (which might introduce a bug if your reasoning is wrong).
-{{site.alert.end}}
+{% endalert %}
 
 
 ### Possibly written after promotion {:#write}

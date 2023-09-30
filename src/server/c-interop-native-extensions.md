@@ -4,7 +4,7 @@ description: The original way for command-line Dart apps to call C/C++ functions
 toc: false
 ---
 
-{{site.alert.note}}
+{% alert 'note' %}
   The extension mechanism that was previously discussed
   on this page—_native extensions_—was removed in Dart 2.15.
   
@@ -17,7 +17,7 @@ toc: false
   embedded as a library into another application. 
   For examples of how to use the Dart Embedding API, see
   [these examples maintained by the community][examples].
-{{site.alert.end}}
+{% endalert %}
 
 [`include/dart_api.h`]: https://github.com/dart-lang/sdk/blob/main/runtime/include/dart_api.h
 [examples]: https://github.com/fuzzybinary/dart_shared_libray

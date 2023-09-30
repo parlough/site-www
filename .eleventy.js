@@ -1,4 +1,5 @@
 const yaml = require('js-yaml');
+const markdownIt = require('markdown-it');
 const markdownItDefinitionList = require('markdown-it-deflist');
 const markdownItAnchor = require('markdown-it-anchor');
 const markdownItContainer = require('markdown-it-container');
@@ -8,9 +9,9 @@ const { markdownItTable } = require('markdown-it-table');
 const eleventySass = require('eleventy-sass');
 
 module.exports = function (eleventyConfig) {
-  eleventyConfig.addDataExtension('yml,yaml', contents => yaml.load(contents));
-  eleventyConfig.amendLibrary('md', mdLib => mdLib
-      .use(markdownItDefinitionList)
+  const markdown = markdownIt({
+    html: true,
+  }).use(markdownItDefinitionList)
       .use(markdownItAttrs, {
         leftDelimiter: '{:',
         rightDelimiter: '}',
@@ -25,7 +26,8 @@ module.exports = function (eleventyConfig) {
           class: 'heading-link',
         }),
       })
-      .use(markdownItTocDoneRight)
+      // .use(markdownItTocDoneRight)
+      // .use(markdownItTable) // TODO(parlough): Tables broken
       .use(markdownItContainer, 'version-note', {
         render: function (tokens, idx) {
           if (tokens[idx].nesting === 1) {
@@ -35,10 +37,12 @@ module.exports = function (eleventyConfig) {
             return '</aside>\n';
           }
         }
-      })
-      .use(markdownItTable) // TODO(parlough): Tables broken
-  );
+      });
 
+  eleventyConfig.setLibrary("md", markdown);
+  
+  eleventyConfig.addDataExtension('yml,yaml', contents => yaml.load(contents));
+  
   eleventyConfig.setLiquidOptions({
     cache: true,
     strictFilters: true,
@@ -60,9 +64,81 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addFilter('array_to_sentence_string', _arrayToSentenceString);
   
   eleventyConfig.addFilter('underscore_breaker', _underscoreBreaker);
-
+  
   eleventyConfig.addFilter('throw_error', function (error) {
     throw new Error(error);
+  });
+  
+  eleventyConfig.addPairedShortcode('WhyLearn', function(content) {
+    const renderedContent = markdown.render(content);
+    return `
+    <div class="mini-toc">
+      <h4 class="no_toc">What you'll learn</h4>
+      ${renderedContent}
+    </div>
+    `;
+  });
+
+  eleventyConfig.addPairedShortcode('WhyLearn', function(content) {
+    const renderedContent = markdown.render(content);
+    return `
+    <div class="mini-toc">
+      <h4 class="no_toc">What you'll learn</h4>
+      ${renderedContent}
+    </div>
+    `;
+  });
+
+  eleventyConfig.addPairedShortcode('alert', function(content, type) {
+    const renderedContent = markdown.renderInline(content);
+    switch (type) {
+      case 'important':
+        return `
+<aside class="alert alert-warning" role="alert">
+<i class="material-icons" aria-hidden="true">error</i> <strong>Important:</strong> ${renderedContent}
+</aside>`;
+      case 'note':
+        return `
+<aside class="alert alert-info" role="alert">
+<i class="material-icons" aria-hidden="true">info</i>${renderedContent}
+</aside>`;
+      case 'info':
+        return `
+<aside class="alert alert-info" role="alert">
+<i class="material-icons" aria-hidden="true">info</i> <strong>Note:</strong> ${renderedContent}
+</aside>`;
+      case 'flutter-note':
+        return `
+<aside class="alert alert-info" role="alert">
+<img src="/assets/img/shared/flutter/icon/64.png" width="24" alt="Flutter logo"> <strong>Flutter note</strong>
+${renderedContent}
+</aside>`;
+      case 'version-note':
+        return `
+<aside class="alert alert-info" role="alert">
+<i class="material-icons" aria-hidden="true">merge_type</i> <strong>Version note:</strong> ${renderedContent}
+</aside>`;
+      case 'secondary':
+        return `
+<aside class="alert alert-secondary" role="alert">${renderedContent}
+</aside>`;
+      case 'tip':
+        return `
+<aside class="alert alert-success" role="alert">
+<i class="material-icons" aria-hidden="true">tips_and_updates</i> <strong>Tip:</strong> ${renderedContent}
+</aside>`;
+      case 'warn':
+        return `
+<aside class="alert alert-warning" role="alert">
+<i class="material-icons" aria-hidden="true">report_problem</i>${renderedContent}
+</aside>`;
+      case 'warning':
+        return `
+<aside class="alert alert-warning" role="alert">
+<i class="material-icons" aria-hidden="true">report_problem</i> <strong>Warning:</strong> ${renderedContent}
+</aside>`;
+    }
+    throw new Error(`${type} is not supported by the alert shortcode!`);
   });
 
   eleventyConfig.addPlugin(eleventySass, {

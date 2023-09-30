@@ -147,10 +147,10 @@ don't include the section header.
 
 ## Released in 3.0.0
 
-{{site.alert.tip}}
+{% alert 'tip' %}
   The [Dart 3.0 migration guide][dart3] covers the complete details
   on all the changes in this section.
-{{site.alert.end}}
+{% endalert %}
 
 ### Language
 {: .no_toc}

@@ -4,10 +4,10 @@ This section gives tips for debugging production-compiled code
 in Chrome, Firefox, and Safari. You can only debug JavaScript code in
 browsers that support source maps such as Chrome.
 
-{{site.alert.tip}}
+{% alert 'tip' %}
   Whenever possible, instead of debugging production code,
   debug code using a development server such as provided by [`webdev`][].
-{{site.alert.end}}
+{% endalert %}
 
 [`webdev`]: /tools/webdev
 

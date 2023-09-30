@@ -31,10 +31,10 @@ This codelab covers the following material:
 
 Estimated time to complete this codelab: 60 minutes.
 
-{{site.alert.note}}
+{% alert 'note' %}
   This page uses embedded DartPads to display examples and exercises.
   {% include 'dartpads-embedded-troubleshooting.md' %}
-{{site.alert.end}}
+{% endalert %}
 
 ## What are collections?
 
@@ -128,21 +128,21 @@ void main() {
 }
 ```
 
-{{site.alert.info}}
+{% alert 'info' %}
   Behind the scenes, the `for-in` loop uses an _iterator._
   You rarely see the [Iterator API][iterator class] used directly, however,
   because `for-in` is easier to read and understand,
   and is less prone to errors.
-{{site.alert.end}}
+{% endalert %}
 
-{{site.alert.secondary}}
+{% alert 'secondary' %}
   **Key terms:**
   * **Iterable**: The Dart [Iterable][iterable class] class.
   * **Iterator**: An object used by `for-in` to read elements from
     an `Iterable` object.
   * **`for-in` loop**: An easy way to sequentially read elements from
     an `Iterable`.
-{{site.alert.end}}
+{% endalert %}
 
 ### Example: Using first and last
 
@@ -158,13 +158,13 @@ Also, with the `Iterable` class,
 you can't use the operator `[]` to access the last element,
 but you can use the `last` property.
 
-{{site.alert.warn}}
+{% alert 'warn' %}
   Because accessing the last element of an `Iterable` requires
   stepping through all the other elements,
   **`last` can be slow.**
   Using `first` or `last` on an **empty `Iterable`**
   results in a [StateError.][StateError class]
-{{site.alert.end}}
+{% endalert %}
 
 <?code-excerpt "iterables/test/iterables_test.dart (first-last)"?>
 ```dart:run-dartpad:ga_id-first_and_last
@@ -256,13 +256,13 @@ which provides an alternative when an element isn't found.
 In this case, the text `'None!'` is returned because
 no element satisfies the provided condition.
 
-{{site.alert.note}}
+{% alert 'note' %}
   If no element satisfies the test predicate and
   the `orElse` parameter isn't provided,
   then `firstWhere()` throws a [StateError.][StateError class]
-{{site.alert.end}}
+{% endalert %}
 
-{{site.alert.secondary}}
+{% alert 'secondary' %}
   **Quick review:**
   * The elements of an `Iterable` must be accessed sequentially.
   * The easiest way to iterate through all the elements is
@@ -276,7 +276,7 @@ no element satisfies the provided condition.
   **Key terms:**
   * **Predicate:**
     A function that returns `true` when a certain condition is satisfied.
-{{site.alert.end}}
+{% endalert %}
 
 ### Exercise: Practice writing a test predicate
 
@@ -293,11 +293,11 @@ If more than one or no element in the `Iterable`
 satisfies the predicate condition,
 then the method throws a [StateError][StateError class] exception.
 
-{{site.alert.warn}}
+{% alert 'warn' %}
   `singleWhere()` steps through the whole `Iterable` until the last element,
   which can cause problems if the `Iterable` is infinite or
   contains a large collection of elements.
-{{site.alert.end}}
+{% endalert %}
 
 Your goal is to implement the predicate for `singleWhere()` that
 satisfies the following conditions:
@@ -593,7 +593,7 @@ Use the methods `any()` and `every()` to compare the user age.
 {$ end hint.txt $}
 ```
 
-{{site.alert.secondary}}
+{% alert 'secondary' %}
   **Quick review:**
   * Although you can use `for-in` loops to check conditions,
     there are better ways to do that.
@@ -601,7 +601,7 @@ Use the methods `any()` and `every()` to compare the user age.
     any element satisfies a condition.
   * The method `every()` enables you to verify that
     all elements satisfy a condition.
-{{site.alert.end}}
+{% endalert %}
 
 ## Filtering
 
@@ -669,12 +669,12 @@ Later in the example, `where()` is used again to
 find all numbers larger than 1000.
 Because there are none, the result is an empty `Iterable`.
 
-{{site.alert.note}}
+{% alert 'note' %}
   If no element satisfies the predicate in `where()`,
   then the method returns an empty `Iterable`.
   Unlike `singleWhere()` or `firstWhere()`,
   `where()` doesn't throw a [StateError][StateError class] exception.
-{{site.alert.end}}
+{% endalert %}
 
 ### Example: Using takeWhile
 
@@ -821,14 +821,14 @@ Use the `where()` method to implement the filters.
 {$ end hint.txt $}
 ```
 
-{{site.alert.secondary}}
+{% alert 'secondary' %}
   **Quick review:**
   * Filter the elements of an `Iterable` with `where()`.
   * The output of `where()` is another `Iterable`.
   * Use `takeWhile()` and `skipWhile()` to obtain elements until or after
     a condition is met.
   * The output of these methods can be an empty `Iterable`.
-{{site.alert.end}} 
+{% endalert %} 
 
 ## Mapping
 
@@ -853,10 +853,10 @@ as you can see in the following example:
 Iterable<String> output = numbers.map((number) => number.toString());
 ```
 
-{{site.alert.note}}
+{% alert 'note' %}
   `map()` returns a _lazy_ `Iterable`, meaning that the supplied function
   is called only when the elements are iterated.
-{{site.alert.end}}
+{% endalert %}
 
 ### Example: Using map to change elements
 
@@ -955,12 +955,12 @@ Use `map()` to create a String with the values of `user.name` and `user.age`.
 {$ end hint.txt $}
 ```
 
-{{site.alert.secondary}}
+{% alert 'secondary' %}
   **Quick review:**
   * `map()` applies a function to all the elements of an `Iterable`.
   * The output of `map()` is another `Iterable`.
   * The function isn't evaluated until the `Iterable` is iterated.
-{{site.alert.end}} 
+{% endalert %} 
 
 ## Exercise: Putting it all together
 

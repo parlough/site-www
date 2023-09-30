@@ -241,10 +241,10 @@ extension on String {
 }
 ```
 
-{{site.alert.note}}
+{% alert 'note' %}
   You can invoke an unnamed extension's static members
   only within the extension declaration.
-{{site.alert.end}}
+{% endalert %}
 
 ## Implementing generic extensions
 

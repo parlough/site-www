@@ -58,11 +58,11 @@ _mini libraries_.
 In most cases, each class should be in its own mini library, unless
 you have a situation where two classes are tightly coupled.
 
-{{site.alert.note}}
+{% alert 'note' %}
   You may have heard of the `part` directive, which allows
   you to split a library into multiple Dart files. We recommend
   that you avoid using `part` and create mini libraries instead.
-{{site.alert.end}}
+{% endalert %}
 
 Create a "main" library file directly under lib,
 lib/_&lt;package-name&gt;_.dart, that
@@ -110,13 +110,13 @@ export 'src/server_handler.dart' show ServerHandler;
 The shelf package also contains a mini library: shelf_io.
 This adapter handles HttpRequest objects from `dart:io`.
 
-{{site.alert.tip}}
+{% alert 'tip' %}
   For the best performance when developing with the
   development JavaScript compiler through [`webdev serve`][],
   put [implementation files](/tools/pub/package-layout#implementation-files) 
   under `/lib/src`, instead of elsewhere under `/lib`.
   Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
-{{site.alert.end}}
+{% endalert %}
 
 [`webdev serve`]: /tools/webdev#serve
 
@@ -174,11 +174,11 @@ Here's what that code does:
 To conditionally import a file, use the same code as above,
 but change `export` to `import`.
 
-{{site.alert.note}}
+{% alert 'note' %}
   The conditional import or export checks only whether the library is
   _available for use_ on the current platform,
   not whether it's actually imported or used.
-{{site.alert.end}}
+{% endalert %}
 
 All of the conditionally exported libraries must implement the same API.
 For example, here's the `dart:io` implementation:

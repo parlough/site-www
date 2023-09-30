@@ -1549,7 +1549,7 @@ distinction is a little subtle. It's OK to allow inference to *propagate*
 you don't want it to inject a `dynamic` type annotation in a place where your
 code did not specify one.
 
-{{site.alert.info}}
+{% alert 'info' %}
   Before Dart 2, this guideline stated the exact opposite: 
   *don't* annotate with `dynamic` when it is implicit. 
   With the new stronger type system and type inference, 
@@ -1558,7 +1558,7 @@ code did not specify one.
   it is an unpleasant surprise to discover that
   a region of code has silently lost all of the
   safety and performance of static types.
-{{site.alert.end}}
+{% endalert %}
 
 **Exception**: Type annotations on unused parameters (`_`) can be omitted.
 

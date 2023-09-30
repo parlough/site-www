@@ -9,7 +9,7 @@ obsolete: true
 _Written by John Mccutchan <br>
 May 2013 (note added July 2018)_
 
-{{site.alert.warning}}
+{% alert 'warning' %}
   In Dart 2, arbitrary-precision integers were replaced with 64-bit
   signed, wrapping integers. The smi and mint representations still exist,
   but overflow now results in wrapping instead of automatic conversion to
@@ -19,7 +19,7 @@ May 2013 (note added July 2018)_
   Continue to avoid `BigInt` when possible. The VM has optimized code for
   `BigInt` arithmetic and modulus, but it never optimizes `BigInt` objects
   down to mints or smis that can be handled directly with CPU instructions. 
-{{site.alert.end}}
+{% endalert %}
 
 [`BigInt` class]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/BigInt-class.html
 
@@ -33,12 +33,12 @@ You'll learn about the four different number representations,
 how integer and floating-point numerical computation occurs,
 and how to pick the best container for your data.
 
-{{site.alert.note}}
+{% alert 'note' %}
   This article does not cover the SIMD types available in Dart,
   which enable operating on four floating-point numbers in parallel.
   To learn more, refer to the 
   [`dart:typed_data` documentation][dart-typed_data].
-{{site.alert.end}}
+{% endalert %}
 
 ## Overview
 

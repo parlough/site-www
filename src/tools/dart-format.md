@@ -29,9 +29,9 @@ plus one Dart file under the `bin` directory:
 $ dart format lib bin/updater.dart 
 ```
 
-{{site.alert.warn}}
+{% alert 'warn' %}
   By default, `dart format` **overwrites** the Dart files.
-{{site.alert.end}}
+{% endalert %}
 
 If you don't want to overwrite the files,
 add the `--output` or `-o` flag.

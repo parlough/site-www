@@ -8,11 +8,11 @@ It also allows you to share your packages with the world. If you have a useful
 project and you want others to be able to use it, use the `dart pub publish`
 command.
 
-{{site.alert.note}}
+{% alert 'note' %}
   To publish to a location other than pub.dev,
   or to prevent publication anywhere, use the `publish_to` field,
   as defined in the [pubspec][].
-{{site.alert.end}}
+{% endalert %}
 
 Watch the following video for an overview of building and publishing packages.
 
@@ -168,14 +168,14 @@ When you're ready to publish your package, remove the `--dry-run` argument:
 $ dart pub publish
 ```
 
-{{site.alert.note}}
+{% alert 'note' %}
   The pub command currently doesn't support publishing a new package directly to a
   verified publisher. As a temporary workaround, publish new packages to a Google Account,
   and then [transfer the package to a publisher](#transferring-a-package-to-a-verified-publisher).
 
   Once a package has been transferred to a publisher,
   you can update the package using `dart pub publish`.
-{{site.alert.end}}
+{% endalert %}
 
 After your package has been successfully uploaded to pub.dev, any pub user can
 download it or depend on it in their projects. For example, if you just
@@ -201,10 +201,10 @@ To transfer a package to a verified publisher,
 you must be an [uploader](#uploaders) for the package
 and an admin for the verified publisher.
 
-{{site.alert.note}}
+{% alert 'note' %}
   This process isn't reversible. Once you transfer a package to a publisher,
   you can't transfer it back to an individual account.
-{{site.alert.end}}
+{% endalert %}
 
 Here's how to transfer a package to a verified publisher:
 
@@ -244,11 +244,11 @@ follow these practices:
   `dart pub publish` says it's going to publish.
   Cancel the upload if any undesired files appear in that list.
 
-{{site.alert.note}}
+{% alert 'note' %}
   Most packages don't need a  `.pubignore` file.
   More information about useful scenarios for this
   can be found in this [StackOverflow answer][pubignore-when].
-{{site.alert.end}}
+{% endalert %}
 
 ## Platform support
 
@@ -303,10 +303,10 @@ might need to change their dependency constraints.
 For example, if a user wants to test prereleases of version 2.1, then
 instead of `^2.0.0` or `^2.1.0` they might specify `^2.1.0-dev.1`.
 
-{{site.alert.note}}
+{% alert 'note' %}
   If a stable package in the dependency graph depends on a prerelease,
   then pub chooses that prerelease instead of a stable release.
-{{site.alert.end}}
+{% endalert %}
 
 When a prerelease is published to pub.dev,
 the package page displays links to both the prerelease and the stable release.
@@ -393,10 +393,10 @@ description of the fixed bug in `CHANGELOG.md`
 helps users to understand what happened.
 And publishing a newer version is less disruptive to package users.
 
-{{site.alert.version-note}}
+{% alert 'version-note' %}
   Package retraction was introduced in Dart 2.15.
   In pre-2.15 SDKs, the pub version solver ignores the retracted status.
-{{site.alert.end}}
+{% endalert %}
 
 
 ### How to use a retracted package version

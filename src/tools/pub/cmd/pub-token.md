@@ -41,10 +41,10 @@ Enter secret token: <Type token on stdin>
  authenticated using the secret token.
 ```
 
-{{site.alert.note}}
+{% alert 'note' %}
   The token is input on stdin rather than as a command line option to avoid it
   ending up in the shell history such as `~/.bash_history`.
-{{site.alert.end}}
+{% endalert %}
 
 In a scripting situation you can store the secret in an environment variable and
  use `dart pub token add <hosted-url> --env-var <ENV_VAR_NAME>`.
@@ -94,7 +94,7 @@ pub-tokens.json is deleted.
 Removed 1 secret tokens.
 ```
 
-{{site.alert.info}}
+{% alert 'info' %}
   *Problems?*
   See [Troubleshooting Pub](/tools/pub/troubleshoot).
-{{site.alert.end}}
+{% endalert %}

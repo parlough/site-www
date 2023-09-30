@@ -40,13 +40,13 @@ You can implement many of these [operators as class members][].
 | assignment                              | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    <em>etc.</em>                                                                                                                              | Right         |
 {:.table .table-striped}
 
-{{site.alert.warning}}
+{% alert 'warning' %}
   The previous table should only be used as a helpful guide.
   The notion of operator precedence and associativity
   is an approximation of the truth found in the language grammar.
   You can find the authoritative behavior of Dart's operator relationships
   in the grammar defined in the [Dart language specification][].
-{{site.alert.end}}
+{% endalert %}
 
 When you use operators, you create expressions. Here are some examples
 of operator expressions:
@@ -80,11 +80,11 @@ if ((n % i == 0) && (d % i == 0)) ...
 if (n % i == 0 && d % i == 0) ...
 ```
 
-{{site.alert.warning}}
+{% alert 'warning' %}
   For operators that take two operands, the leftmost operand determines which
   method is used. For example, if you have a `Vector` object and
   a `Point` object, then `aVector + aPoint` uses `Vector` addition (`+`).
-{{site.alert.end}}
+{% endalert %}
 
 
 ## Arithmetic operators
@@ -230,10 +230,10 @@ if (employee is Person) {
 }
 ```
 
-{{site.alert.note}}
+{% alert 'note' %}
   The code isn't equivalent. If `employee` is null or not a `Person`, the
   first example throws an exception; the second does nothing.
-{{site.alert.end}}
+{% endalert %}
 
 ## Assignment operators
 
@@ -317,12 +317,12 @@ you'd use these bitwise and shift operators with integers.
 | `>>>`                       | Unsigned shift right
 {:.table .table-striped}
 
-{{site.alert.note}}
+{% alert 'note' %}
   The behavior of bitwise operations with large or negative operands
   might differ between platforms.
   To learn more, check out
   [Bitwise operations platform differences][].
-{{site.alert.end}}
+{% endalert %}
 
 Here's an example of using bitwise and shift operators:
 
@@ -347,10 +347,10 @@ assert((value >>> 4) == 0x02); // Unsigned shift right
 assert((-value >>> 4) > 0); // Unsigned shift right
 ```
 
-{{site.alert.version-note}}
+{% alert 'version-note' %}
   The `>>>` operator (known as _triple-shift_ or _unsigned shift_)
   requires a [language version][] of at least 2.14.
-{{site.alert.end}}
+{% endalert %}
 
 [Bitwise operations platform differences]: /guides/language/numbers#bitwise-operations
 
@@ -450,9 +450,9 @@ querySelector('#confirm') // Get an object.
   ..scrollIntoView();
 ```
 
-{{site.alert.version-note}}
+{% alert 'version-note' %}
   The `?..` syntax requires a [language version][] of at least 2.12.
-{{site.alert.end}}
+{% endalert %}
 
 The previous code is equivalent to the following:
 
@@ -492,10 +492,10 @@ sb.write('foo')
 The `sb.write()` call returns void,
 and you can't construct a cascade on `void`.
 
-{{site.alert.note}}
+{% alert 'note' %}
   Strictly speaking, the "double dot" notation for cascades isn't an operator.
   It's just part of the Dart syntax.
-{{site.alert.end}}
+{% endalert %}
 
 ## Other operators
 

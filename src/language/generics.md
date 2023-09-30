@@ -133,11 +133,11 @@ names.addAll(['Seth', 'Kathy', 'Lars']);
 print(names is List<String>); // true
 ```
 
-{{site.alert.note}}
+{% alert 'note' %}
   In contrast, generics in Java use *erasure*, which means that generic
   type parameters are removed at runtime. In Java, you can test whether
   an object is a List, but you can't test whether it's a `List<String>`.
-{{site.alert.end}}
+{% endalert %}
 
 
 ## Restricting the parameterized type

@@ -10,10 +10,10 @@ Android, Windows, macOS, and Linux can use [`package:jni`][jni-pkg]
 and [`package:jnigen`][jnigen-pkg]
 to call Java and Kotlin APIs.
 
-{{site.alert.note}}
+{% alert 'note' %}
   This interop feature is **experimental**,
   and [in active development](https://github.com/dart-lang/sdk/issues/49674).
-{{site.alert.end}}
+{% endalert %}
 
 `package:jni` allows Dart code to interact
 with Java through [JNI][jnidoc].

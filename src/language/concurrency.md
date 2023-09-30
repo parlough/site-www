@@ -150,10 +150,10 @@ Using `await` also has the effect of
 converting the `Future<String>` returned by `_readFileAsync()` into a `String`.
 As a result, the `contents` variable has the implicit type `String`.
 
-{{site.alert.note}}
+{% alert 'note' %}
   The `await` keyword works only in functions that
   have `async` before the function body.
-{{site.alert.end}}
+{% endalert %}
 
 As the following figure shows,
 the Dart code pauses while `readAsString()` executes non-Dart code,
@@ -193,12 +193,12 @@ using additional processor cores if they're available.
 Isolates are like threads or processes,
 but each isolate has its own memory and a single thread running an event loop.
 
-{{site.alert.info}}
+{% alert 'info' %}
   **Platform note:**
     Only the [Dart Native platform][] implements isolates.
     To learn more about the Dart Web platform,
     see the [Concurrency on the web](#concurrency-on-the-web) section.
-{{site.alert.end}}
+{% endalert %}
 
 [Dart Native platform]: /overview#platform
 
@@ -326,7 +326,7 @@ setting up and managing worker isolates:
 
 [`Isolate.run()`]: {{site.dart-api}}/dev/dart-isolate/Isolate/run.html
 
-{{site.alert.flutter-note}}
+{% alert 'flutter-note' %}
   If you're using Flutter,
   you can use [Flutter's `compute` function][]
   instead of `Isolate.run()`.
@@ -334,7 +334,7 @@ setting up and managing worker isolates:
   to running the specified function on the current event loop.
   Use `Isolate.run()` when targeting native platforms only,
   for a more ergonomic API.
-{{site.alert.end}}
+{% endalert %}
 
 [native and non-native platforms]: /overview#platform
 [Flutter's `compute` function]: {{site.flutter-api}}/flutter/foundation/compute.html
@@ -501,9 +501,9 @@ is slower when isolates are in different groups.
 
 [`Isolate.spawnUri()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/spawnUri.html
 
-{{site.alert.flutter-note}}
+{% alert 'flutter-note' %}
   Flutter doesn't support `Isolate.spawnUri()`.
-{{site.alert.end}}
+{% endalert %}
 
 <a id="web"></a>
 ## Concurrency on the web

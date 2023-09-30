@@ -21,10 +21,10 @@ prevpage:
   * Respond to user input with an `EventListener`.
 </div>
 
-{{site.alert.note}}
+{% alert 'note' %}
   This page uses embedded DartPads to display runnable examples.
   {% include 'dartpads-embedded-troubleshooting.md' %}
-{{site.alert.end}}
+{% endalert %}
 
 As you learned in the previous tutorial,
 the DOM represents the structure

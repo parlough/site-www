@@ -203,7 +203,7 @@ as in the following cases:
 * When generating Dart code that's parallel to Java code—for example, 
   in enumerated types generated from [protobufs.][]
 
-{{site.alert.note}}
+{% alert 'note' %}
   We initially used Java's `SCREAMING_CAPS` style for constants. We
   changed for a few reasons:
 
@@ -213,7 +213,7 @@ as in the following cases:
       necessitate a name change.
   *   The `values` property automatically defined on an enum type is const and
       lowercase.
-{{site.alert.end}}
+{% endalert %}
 
 [protobufs.]: {{site.pub-pkg}}/protobuf
 

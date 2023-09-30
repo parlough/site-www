@@ -155,14 +155,14 @@ or even insert an entire subtree of nodes.
 4. Select **HTML** (below **Dart**),
    so you can edit HTML and CSS in DartPad.
 
-{{site.alert.note}}
+{% alert 'note' %}
   These instructions feature DartPad,
   which hides some HTML boilerplate code.
   If you want to use any other editor,
   then we recommend starting with a small Dart web app sample
   and modifying the non-script tags inside the `<body>` section.
   [HTML and Dart connections](#connections) shows the full HTML code.
-{{site.alert.end}}
+{% endalert %}
 
 ## Edit the HTML source code {:#create-html}
 
@@ -191,10 +191,10 @@ You don't need surrounding tags such as `<html>` and `<body>`.
 Because DartPad knows where your Dart code is,
 you don't need a `<script>` tag.
 
-{{site.alert.info}}
+{% alert 'info' %}
   [HTML and Dart connections](#connections) shows the full HTML code
   that you need to run your web app outside DartPad.
-{{site.alert.end}}
+{% endalert %}
 
 The paragraph tag has the identifier `RipVanWinkle`.
 The Dart code you create in the next step uses this ID
@@ -480,7 +480,7 @@ Here are some examples of CSS selectors:
 | Attribute     | `input[type="button"]`           | Matches all button input elements            |
 {: .table}
 
-{{site.alert.tip}}
+{% alert 'tip' %}
   As you saw,
   the mini app used a CSS selector,
   the ID `RipVanWinkle`,
@@ -490,7 +490,7 @@ Here are some examples of CSS selectors:
   CSS selectors are established in the HTML file
   and used by the Dart program
   to select matching elements.
-{{site.alert.end}}
+{% endalert %}
 
 Let's look at the CSS code for the mini app.
 The CSS file for the mini app has one CSS rule in it.

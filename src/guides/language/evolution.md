@@ -27,12 +27,12 @@ environment:
 [SDK constraint]: /tools/pub/pubspec#sdk-constraints
 [language versioning section]: #language-versioning
 
-{{site.alert.tip}}
+{% alert 'tip' %}
   To review the features being discussed, investigated, and
   added to the Dart language,
   check out the [language funnel][] tracker
   on the Dart language GitHub repo.
-{{site.alert.end}}
+{% endalert %}
 
 
 ## Changes in each release
@@ -72,10 +72,10 @@ Dart 3.0 also introduced a few breaking language changes:
   label that is not attached to a
   loop statement (`for`, `do`, and `while`) or a `switch` member.
 
-{{site.alert.note}}
+{% alert 'note' %}
   The 3.0 release of the Dart SDK dropped support for
   [language versions][] before 2.12.
-{{site.alert.end}}
+{% endalert %}
 
 [Patterns]: /language/patterns
 [Records]: /language/records

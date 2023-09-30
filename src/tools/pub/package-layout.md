@@ -8,12 +8,12 @@ we encourage you to follow the conventions that this page describes.
 They describe how you organize the files and directories within your
 package, and how to name things.
 
-{{site.alert.flutter-note}}
+{% alert 'flutter-note' %}
   Flutter apps can use custom directories for their assets.
   For details, see
   [Adding assets and images]({{site.flutter-docs}}/development/ui/assets-and-images)
   on the [Flutter website.]({{site.flutter-docs}})
-{{site.alert.end}}
+{% endalert %}
 
 Here's what a complete package (named `enchilada`)
 that uses every corner of these guidelines
@@ -231,13 +231,13 @@ you will discover that any `package:` imports it contains don't
 resolve. Instead, your entrypoints should go in the appropriate
 [entrypoint directory](/tools/pub/glossary#entrypoint-directory).
 
-{{site.alert.info}}
+{% alert 'info' %}
   **Tip for web apps:**
   For the best performance when developing web apps,
   put [implementation files](#implementation-files) under `/lib/src`,
   instead of elsewhere under `/lib`.
   Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
-{{site.alert.end}}
+{% endalert %}
 
 For more information on packages, see
 [Creating packages](/guides/libraries/create-packages).
@@ -470,10 +470,10 @@ If you have any of these, place them in a directory called `tool`.
 
 ## Project-specific caching for tools
 
-{{site.alert.info}}
+{% alert 'info' %}
   Do not check the `.dart_tool/` directory into source control.
   Instead, keep `.dart_tool/` in `.gitignore`.
-{{site.alert.end}}
+{% endalert %}
 
 The `.dart_tool/` directory is created when you run `dart pub get`
 and might be deleted at any time. Various tools use this directory
@@ -508,7 +508,7 @@ framework for writing code generation steps.
 When running these build steps, files are cached in `.dart_tool/build/`.
 This helps speed-up future re-runs of the build steps.
 
-{{site.alert.warning}}
+{% alert 'warning' %}
   When developing a tool that wants to cache files in `.dart_tool/`,
   ensure the following:
   
@@ -516,7 +516,7 @@ This helps speed-up future re-runs of the build steps.
     (`.dart_tool/<my_tool_package_name>/`)
   * Your files don't belong under source control, 
     as `.dart_tool/` is generally listed in `.gitignore`
-{{site.alert.end}}
+{% endalert %}
 
 
 [Markdown]: {{site.pub-pkg}}/markdown

@@ -88,10 +88,10 @@ add static analysis to your tool, see the
 [analyzer package]({{site.pub-pkg}}/analyzer) docs and the
 [Analysis Server API Specification.](https://htmlpreview.github.io/?https://github.com/dart-lang/sdk/blob/main/pkg/analysis_server/doc/api.html)
 
-{{site.alert.note}}
+{% alert 'note' %}
   To view various analyzer diagnostics with explanations and common fixes,
   see [Diagnostic messages][diagnostics].
-{{site.alert.end}}
+{% endalert %}
 
 ## The analysis options file
 
@@ -130,11 +130,11 @@ The sample illustrates the most common top-level entries:
   [enabling experiments](/tools/experiment-flags#using-experiment-flags-with-the-dart-analyzer-command-line-and-ide).
 - Use the `linter:` entry to configure [linter rules](#enabling-linter-rules).
 
-{{site.alert.warn}}
+{% alert 'warn' %}
   **YAML is sensitive to whitespace.** 
   Don't use tabs in a YAML file,
   and use 2 spaces to denote each level of indentation.
-{{site.alert.end}}
+{% endalert %}
 
 If the analyzer can't find an analysis options file at the package root,
 it walks up the directory tree, looking for one.
@@ -197,7 +197,7 @@ void bar(String jsonText) {
 error - The argument type 'dynamic' can't be assigned to the parameter type 'List<String>'. - argument_type_not_assignable
 ```
 
-{{site.alert.version-note}}
+{% alert 'version-note' %}
   The `strict-casts` mode was introduced in Dart 2.16.
   To enable similar checks with earlier SDK releases,
   consider using the now deprecated `implicit-casts` option:
@@ -207,7 +207,7 @@ error - The argument type 'dynamic' can't be assigned to the parameter type 'Lis
     strong-mode:
       implicit-casts: false
   ```
-{{site.alert.end}}
+{% endalert %}
 
 `strict-inference: <bool>`
 : A value of `true` ensures that the type inference engine never chooses
@@ -233,13 +233,13 @@ print('Lines: ${lines.values.reduce((a, b) => a + b)}'); // Runtime error
 warning - The type argument(s) of 'Map' can't be inferred - inference_failure_on_collection_literal
 ```
 
-{{site.alert.info}}
+{% alert 'info' %}
   The `strict-inference` mode can identify many situations
   which result in an inference failure.
 
   See [Conditions for strict inference failure][] 
   for an exhaustive list of inference failure conditions.
-{{site.alert.end}}
+{% endalert %}
 
 [Conditions for strict inference failure]: https://github.com/dart-lang/language/blob/main/resources/type-system/strict-inference.md#conditions-for-strict-inference-failure
 
@@ -295,11 +295,11 @@ Recommended rules
   We recommend that all Dart code use these rules,
   which are a superset of the core rules.
 
-{{site.alert.tip}}
+{% alert 'tip' %}
   If you're working on Flutter code, then instead of using the `lints` package, 
   use [`flutter_lints`]({{site.pub-pkg}}/flutter_lints),
   which provides a superset of the recommended rules.
-{{site.alert.end}}
+{% endalert %}
 
 To enable either set of lints,
 add the [lints package][] as a dev dependency:
@@ -321,13 +321,13 @@ For example, you can include the recommended rule set like this:
 include: package:lints/recommended.yaml
 ```
 
-{{site.alert.important}}
+{% alert 'important' %}
   When a **new version of `lints`** is published,
   code that previously passed analysis might **start failing analysis.**
   We recommend updating your code to work with the new rules.
   Other options are to explicitly enable individual linter rules 
   or [disable individual rules][].
-{{site.alert.end}}
+{% endalert %}
 
 [lints package]: {{site.pub-pkg}}/lints
 
@@ -381,11 +381,11 @@ linter:
     await_only_futures: true
 ```
 
-{{site.alert.note}}
+{% alert 'note' %}
   Due to YAML restrictions,
   **you can't mix list and key-value syntax in the same `rules` entry.**
   You can use the other syntax for rules in an included file.
-{{site.alert.end}}
+{% endalert %}
 
 ## Enabling analyzer plugins (experimental) {:#plugins}
 
@@ -489,9 +489,9 @@ To suppress all linter rules, add a `type=lint` specifier:
 // ignore_for_file: type=lint
 ```
 
-{{site.alert.version-note}}
+{% alert 'version-note' %}
   Support for the `type=lint` specifier was added in Dart 2.15.
-{{site.alert.end}}
+{% endalert %}
 
 
 ### Suppressing rules for a line of code

@@ -21,11 +21,11 @@ environments where an identity service isn't present.
 Such exported service account keys are long-lived secrets, they might be easier
 to use in some environments, but also pose a larger risk if accidentally leaked.
 
-{{site.alert.note}}
+{% alert 'note' %}
   Today, you can only automate publishing of existing packages.
   To create a new package, you must publish the first version using
   `dart pub publish`.
-{{site.alert.end}}
+{% endalert %}
 
 ## Publishing packages using GitHub Actions
 
@@ -41,13 +41,13 @@ You can configure automated publishing using GitHub Actions. This involves:
 
 The following sections outline how to complete these steps.
 
-{{site.alert.note}}
+{% alert 'note' %}
   Pub.dev only allows automated publishing from GitHub Actions when the
   _workflow_ is triggered by pushing a git tag to GitHub.
   Pub.dev rejects publishing from GitHub Actions triggered without a tag.
   This ensures that new versions cannot be published by events that should
   never trigger publishing.
-{{site.alert.end}}
+{% endalert %}
 
 ### Configuring automated publishing from GitHub Actions on pub.dev
 
@@ -169,11 +169,11 @@ The workflow authenticates to `pub.dev` using a temporary
 `dart-lang/setup-dart` step.
 To publish to pub.dev, subsequent steps can run `dart pub publish --force`.
 
-{{site.alert.note}}
+{% alert 'note' %}
   At this point, anyone with push access to your repository can publish new versions
   of the package. Consider using [tag protection rules][sec-gh-tag-protection] or
   [GitHub deployment Environments][sec-gh-environment] to limit who can publish.
-{{site.alert.end}}
+{% endalert %}
 
 [sec-gh-tag-protection]: #hardening-security-with-tag-protection-rules-on-github
 [sec-gh-environment]: #hardening-security-with-github-deployment-environments
@@ -303,13 +303,13 @@ involves:
 
 The following sections outline how to complete these steps.
 
-{{site.alert.note}}
+{% alert 'note' %}
   When you enable automated publishing from a _service account_ you must carefully
   review who has the ability to impersonate this service account, either by
   calling through APIs, exporting service account keys, or through changing
   IAM permission in the cloud project.
   To learn more, check out [managing service account impersonation][11].
-{{site.alert.end}}
+{% endalert %}
 
 ### Creating a service account for publishing
 
@@ -347,11 +347,11 @@ publish new versions of the package. Make sure to review who has permissions to
 impersonate the service account and change permissions in the cloud project as
 needed.
 
-{{site.alert.note}}
+{% alert 'note' %}
   The _service account_ must be created in the same cloud project where you
   intend to run Cloud Build. If you need to impersonate across cloud projects,
   refer to [enabling service account impersonation across projects][27].
-{{site.alert.end}}
+{% endalert %}
 
 ### Granting Cloud Build permission to publish
 
@@ -455,7 +455,7 @@ Instead you'll want to use the default service account for Cloud Build.
 
 ![Configuration for trigger](/assets/img/tools/pub/gcb-trigger-configuration.png)
 
-{{site.alert.note}}
+{% alert 'note' %}
   You can configure the Cloud Build trigger to run under a custom
   _service account_. If you want to do this, create a new service
   account for this purpose. Allow this service account to impersonate
@@ -471,7 +471,7 @@ Instead you'll want to use the default service account for Cloud Build.
 
   To learn more about custom service accounts for running Cloud Builds,
   check out [Configuring user-specified service accounts][22].
-{{site.alert.end}}
+{% endalert %}
 
 When configuring your Cloud Build trigger, consider who can trigger the
 build. _Because triggering a build might publish a new version of your package_.
@@ -548,11 +548,11 @@ To learn more, check out how to
 
 1. Save the `key-file.json` file for later use.
 
-{{site.alert.warning}}
+{% alert 'warning' %}
   Treat the `key-file.json` like a password.
   Anyone who gains access to it can authenticate as the service account
   and publish your package.
-{{site.alert.end}}
+{% endalert %}
 
 #### Publish packages using exported service account keys
 
@@ -581,13 +581,13 @@ To publish a package using exported service account keys:
     $ dart pub publish --force
     ```
 
-{{site.alert.note}}
+{% alert 'note' %}
   Consider using [Workload Identity Federation][23], if possible. This
   avoids long-lived secrets. Relying on Workload Identity Federation
   allows you to use short-lived secrets that your cloud provider signs.
   Short-lived secrets greatly reduces the security risks if accidentally leaked
   in logs or similar ways.
-{{site.alert.end}}
+{% endalert %}
 
 [1]: https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/about-security-hardening-with-openid-connect
 [2]: https://cloud.google.com/iam/docs/service-accounts

@@ -17,13 +17,13 @@ which includes the full Dart SDK.
   Use [Chocolatey](https://chocolatey.org) to install a stable release of
   the Dart SDK.
 
-{{site.alert.important}}
+{% alert 'important' %}
   These commands require administrator privileges.
   If you need help on starting an administrator-level command prompt,
   try a search like
   <em><a href="https://www.google.com/search?q=cmd+admin"
   target="blank">cmd admin</a>.</em>
-{{site.alert.end}}
+{% endalert 'important' %}
 
 To install the Dart SDK:
 
@@ -60,7 +60,7 @@ To install the Dart SDK:
   ```
 </div>
 
-{{site.alert.important}}
+{% alert 'important' %}
   For more information, including how to **adjust your `PATH`**, see
   [Get the Dart SDK](/get-dart).
-{{site.alert.end}}
+{% endalert 'important' %}

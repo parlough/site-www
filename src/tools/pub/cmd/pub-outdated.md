@@ -67,13 +67,13 @@ The `path` and `meta` packages aren't the latest versions,
 but are the most current _resolvable_ versions,
 considering all the other dependencies.
 
-{{site.alert.tip}}
+{% alert 'tip' %}
   To see what changed in the new version of a package
   that's published on [pub.dev,]({{site.pub}})
   look at the changelog in the package page.
   For example, you can look at the **Changelog** tabs on the pages for the
   [`args`][] and [`http`][] packages.
-{{site.alert.end}}
+{% endalert %}
 
 To fix the first dependency (`args`),
 which is listed as upgradable,
@@ -147,10 +147,10 @@ which depends on old versions of `path` and `meta`.
 Once the `terminal_tools` package is updated,
 it should be possible to update this package.
 
-{{site.alert.important}}
+{% alert 'important' %}
   Test your code to verify that it still works as expected
   after updating the packages.
-{{site.alert.end}}
+{% endalert %}
 
 
 ## Output columns
@@ -234,10 +234,10 @@ are at the latest version (`--no-up-to-date`).
 To include up-to-date dependencies, use `--up-to-date`.
 
 
-{{site.alert.info}}
+{% alert 'info' %}
   *Problems?*
   See [Troubleshooting Pub](/tools/pub/troubleshoot).
-{{site.alert.end}}
+{% endalert %}
 
 [`args`]: {{site.pub-pkg}}/args
 [best practices]: /tools/pub/dependencies#best-practices

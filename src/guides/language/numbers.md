@@ -13,7 +13,7 @@ This page has details about the differences
 between native and web number implementations,
 and how to write code so that those differences don't matter.
 
-{{site.alert.secondary}}
+{% alert 'secondary' %}
   **Number implementations in Dart and other languages**
 
   Dart has always allowed platform-specific representations
@@ -27,7 +27,7 @@ and how to write code so that those differences don't matter.
   were originally designed to strictly follow IEEE 754 on all platforms,
   but this constraint was loosened almost immediately for efficiency reasons
   (`strictfp` is required for exact coherence).
-{{site.alert.end}}
+{% endalert %}
 
 
 ## Dart number representation
@@ -104,13 +104,13 @@ both `int` and `double`.
   alt="Implementation classes vary by platform; for JavaScript, the class that implements int also implements double">
 
 
-{{site.alert.note}}
+{% alert 'note' %}
   Dart represents `int` and `double` in
   a few different ways for efficiency,
   but these implementation classes (in blue, above) are hidden.
   In general, you can ignore the platform-specific types,
   and think of `int` and `double` as concrete types. 
-{{site.alert.end}}
+{% endalert %}
 
 An `int` on the web is represented as
 a double-precision floating-point value with no fractional part.
@@ -132,10 +132,10 @@ When arithmetic results differ, as described in this section,
 the behavior is **platform specific**
 and **subject to change**.
 
-{{site.alert.note}}
+{% alert 'note' %}
   Any platform-specific behavior that this page describes might change to be
   less surprising, more consistent, or more performant.
-{{site.alert.end}}
+{% endalert %}
 
 
 ### Precision

@@ -13,12 +13,12 @@ which can contain [Markdown][] formatting.
 For guidance on writing doc comments,
 see the [documentation part of Effective Dart][effective doc].
 
-{{site.alert.note}}
+{% alert 'note' %}
   To generate documentation, 
   you must first run [`dart pub get`](/tools/pub/cmd/pub-get)
   and your package must pass [`dart analyze`](/tools/dart-analyze)
   without errors.
-{{site.alert.end}}
+{% endalert %}
 
 Run `dart doc` from the root directory of your package. 
 For example:

@@ -13,13 +13,13 @@ such as `then()`, `catchError()`, and `whenComplete()`.
 This page can help you avoid some common pitfalls
 when using those Future methods.
 
-{{site.alert.warning}}
+{% alert 'warning' %}
   You don't need this page if your code uses
   the language's asynchrony support:
   `async`, `await`, and error handling using try-catch.
   For more information, see the
   [asynchronous programming codelab](/codelabs/async-await).
-{{site.alert.end}}
+{% endalert %}
 
 
 ## The Future API and callbacks

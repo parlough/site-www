@@ -17,9 +17,9 @@ and the [Dart API documentation.]({{site.dart-api}}/{{site.sdkInfo.channel}})
 Want to install Dart with your OS's package manager?
 [Get Dart.](/get-dart)
 
-{{site.alert.warn}}
+{% alert 'warn' %}
   {% include './_sdk-terms.md' %}
-{{site.alert.end}}
+{% endalert %}
 
 ## Stable channel
 
@@ -53,9 +53,9 @@ and they're likely to contain bugs.
 Main channel builds are suitable only for
 experimental development use, not for production use.
 
-{{site.alert.note}}
+{% alert 'note' %}
   Main channel builds are unsigned.
-{{site.alert.end}}
+{% endalert %}
 
 To download a main channel build, use a
 [main channel URL](#main-channel-url-scheme).
@@ -97,6 +97,6 @@ Example:
 https://storage.googleapis.com/dart-archive/channels/be/raw/latest/sdk/dartsdk-windows-x64-release.zip
 ```
 
-{{site.alert.note}}
+{% alert 'note' %}
   Main channel builds are unsigned.
-{{site.alert.end}}
+{% endalert %}

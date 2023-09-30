@@ -46,11 +46,11 @@ to reclaim extra disk space or remove problematic packages:
 $ dart pub cache clean
 ```
 
-{{site.alert.version-note}}
+{% alert 'version-note' %}
   The `clean` subcommand was introduced in Dart 2.14.
   To clear your system cache with an older SDK,
   you can manually delete the [`PUB_CACHE`][] folder.
-{{site.alert.end}}
+{% endalert %}
 
 [`PUB_CACHE`]: /tools/pub/environment-variables
 
@@ -76,7 +76,7 @@ $ dart pub cache add http --version "0.12.2"
 
 If `--version` is omitted, pub installs the best of all known versions.
 
-{{site.alert.info}}
+{% alert 'info' %}
   *Problems?*
   See [Troubleshooting Pub](/tools/pub/troubleshoot).
-{{site.alert.end}}
+{% endalert %}

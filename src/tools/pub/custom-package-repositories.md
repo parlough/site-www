@@ -61,10 +61,10 @@ should read the secret from the environment variable `$MY_SECRET_TOKEN`.
 This reduces the risk that secrets are accidentally leaked
 if the execution environment is shared between CI jobs.
 
-{{site.alert.note}}
+{% alert 'note' %}
   When the `dart pub` tool doesn't have a token for a given repository URL,
   it attempts to make requests without authentication.
-{{site.alert.end}}
+{% endalert %}
 
 
 ## Retrieving dependencies from a custom package repository
@@ -122,14 +122,14 @@ it's often necessary to mirror all dependencies
 and either update the `dependencies` section of each package, 
 or [override the default package repository](#default-override).
 
-{{site.alert.note}}
+{% alert 'note' %}
   To ensure that public packages are usable to everyone, 
   the official package repository, [pub.dev]({{site.pub}}),
   doesn't allow publication of packages
   with git-dependencies or hosted-dependencies from custom package repositories.
 
   However, such packages can be published to a custom package repository.
-{{site.alert.end}}
+{% endalert %}
 
 
 ## Publishing to a custom package repository
@@ -142,11 +142,11 @@ If authentication is enabled,
 publishing uses the same [token authentication](#token-authentication)
 as retrieving packages.
 
-{{site.alert.note}}
+{% alert 'note' %}
   To prevent accidental publication to [pub.dev]({{site.pub}})
   when working on a private package, 
   it's a good idea to specify this early in the development.
-{{site.alert.end}}
+{% endalert %}
 
 To prepare a package for publishing to `https://dart-packages.example.com`,
 your `pubspec.yaml` should look minimally like the following:
@@ -173,11 +173,11 @@ Publishing example_package 1.0.0 to https://dart-packages.example.com
 ...
 ```
 
-{{site.alert.note}}
+{% alert 'note' %}
   Even if you aren't using a private repository, 
   you can specify `publish_to: none` 
   which stops any accidental publication.
-{{site.alert.end}}
+{% endalert %}
 
 
 ### Overriding the default package repository {:#default-override}

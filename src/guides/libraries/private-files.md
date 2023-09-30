@@ -8,12 +8,12 @@ When you put Dart source code in a repository—using the
 or another source code management system—don't include most of the files
 that your IDE or code editor, the pub tool, and other tools generate.
 
-{{site.alert.note}}
+{% alert 'note' %}
   Except where noted, this page discusses only source code repositories,
   _not_ app deployment.
   Some files that you wouldn't normally put in a repository
   are useful or essential when you deploy an app.
-{{site.alert.end}}
+{% endalert %}
 
 ## The rules
 

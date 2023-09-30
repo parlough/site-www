@@ -13,11 +13,11 @@ or reporting a bug.
 
 {% include 'tools/dart-tool-note.md' %}
 
-{{site.alert.warning}}
+{% alert 'warning' %}
   If you are including the `dart info` output in a bug report,
   please review the output to ensure it only
   contains details you're comfortable posting publicly.
-{{site.alert.end}}
+{% endalert %}
 
 To output general information related to your system
 and your Dart installation, including running Dart processes,

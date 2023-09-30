@@ -14,7 +14,7 @@ Enumerated types, often called _enumerations_ or _enums_,
 are a special kind of class used to represent
 a fixed number of constant values.
 
-{{site.alert.note}}
+{% alert 'note' %}
   All enums automatically extend the [`Enum`][] class.
   They are also sealed,
   meaning they cannot be subclassed, implemented, mixed in,
@@ -23,7 +23,7 @@ a fixed number of constant values.
   Abstract classes and mixins can explicitly implement or extend `Enum`,
   but unless they are then implemented by or mixed into an enum declaration,
   no objects can actually implement the type of that class or mixin.
-{{site.alert.end}}
+{% endalert %}
 
 ## Declaring simple enums
 
@@ -36,10 +36,10 @@ list the values you want to be enumerated:
 enum Color { red, green, blue }
 ```
 
-{{site.alert.tip}}
+{% alert 'tip' %}
   You can also use [trailing commas][] when declaring an enumerated type
   to help prevent copy-paste errors.
-{{site.alert.end}}
+{% endalert %}
 
 ## Declaring enhanced enums
 
@@ -97,9 +97,9 @@ enum Vehicle implements Comparable<Vehicle> {
 }
 ```
 
-{{site.alert.version-note}}
+{% alert 'version-note' %}
   Enhanced enums require a [language version][] of at least 2.17.
-{{site.alert.end}}
+{% endalert %}
 
 ## Using enums
 

@@ -87,9 +87,9 @@ Because `SingerDancer` extends `Musician`,
 
 ## `class`, `mixin`, or `mixin class`?
 
-{{site.alert.version-note}}
+{% alert 'version-note' %}
   The `mixin class` declaration requires a [language version][] of at least 3.0.
-{{site.alert.end}}
+{% endalert %}
 
 A `mixin` declaration defines a mixin. A `class` declaration defines a [class][].
 A `mixin class` declaration defines a class that is usable as both a regular class

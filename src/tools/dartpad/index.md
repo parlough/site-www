@@ -10,12 +10,12 @@ Many pages in this site—especially [codelabs](/codelabs)—have
 To open DartPad as a standalone web page, visit 
 the [DartPad site (dartpad.dev)][DartPad]{:target="_blank" rel="noopener"}.
 
-{{site.alert.tip}}
+{% alert 'tip' %}
   If you're in China, try [dartpad.cn.](https://dartpad.cn)
 
   If you have issues using DartPad, see the [DartPad troubleshooting
   tips](/tools/dartpad/troubleshoot).
-{{site.alert.end}}
+{% endalert %}
 
 Here's what DartPad looks like when configured to run Dart:
 

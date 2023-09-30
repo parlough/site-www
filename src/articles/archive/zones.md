@@ -209,12 +209,12 @@ Errors on Future chains never cross the boundaries of error zones.
 If an error reaches an error zone boundary,
 it is treated as unhandled error at that point.
 
-{{site.alert.info}}
+{% alert 'info' %}
   **API note:**
   Handling uncaught errors doesn't *require* zones.
   The isolate API [`Isolate.run()`][] also handles 
   listening for uncaught errors.
-{{site.alert.end}}
+{% endalert %}
 
 [`Isolate.run()`]: {{site.dart-api}}/dev/dart-isolate/Isolate/run.html
 
@@ -301,10 +301,10 @@ with a value, nor with an error.
 The rule for zones and streams
 is simpler than for futures:
 
-{{site.alert.note}}
+{% alert 'note' %}
   Transformations and other callbacks execute in the zone
   where the stream is listened to.
-{{site.alert.end}}
+{% endalert %}
 
 This rule follows from the guideline that
 streams should have no side effect until listened to.
@@ -383,10 +383,10 @@ A zone inherits zone-local values from its parent zone,
 so adding nested zones doesn't accidentally drop existing values.
 Nested zones can, however, shadow parent values.
 
-{{site.alert.important}}
+{% alert 'important' %}
   Try to use unique objects for keys,
   so they're less likely to conflict with other libraries.
-{{site.alert.end}}
+{% endalert %}
 
 
 ### Example: Using a zone-local value for debug logs
@@ -586,14 +586,14 @@ and stopping the timer whenever the zone is left.
 Providing `run*` parameters to the ZoneSpecification
 lets you specify the code that the zone executes.
 
-{{site.alert.info}}
+{% alert 'info' %}
   **API note:**
   In the future, zones might provide a simpler alternative
   for the common case of sandwiching zone code:
   an onEnter/onLeave API.
   See [issue 17532](https://github.com/dart-lang/sdk/issues/17532)
   for details.
-{{site.alert.end}}
+{% endalert %}
 
 The `run*` parameters—`run`, `runUnary`, and `runBinary`—specify
 code to execute every time the zone is asked to execute code.

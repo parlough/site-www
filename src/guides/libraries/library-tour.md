@@ -43,10 +43,10 @@ You can find API documentation for all dart:* libraries in the
 [Dart API reference][Dart API] or, if you're using Flutter,
 the [Flutter API reference.][docs.flutter]
 
-{{site.alert.info}}
+{% alert 'info' %}
   **DartPad tip:** You can play with the code in this page by copying it into a
   [DartPad.]({{site.dartpad}})
-{{site.alert.end}}
+{% endalert %}
 
 
 ## dart:core - numbers, collections, strings, and more
@@ -199,7 +199,7 @@ var codeUnitList = 'Never odd or even'.codeUnits.toList();
 assert(codeUnitList[0] == 78);
 ```
 
-{{site.alert.note}}
+{% alert 'note' %}
   In many cases, you want to work with
   Unicode grapheme clusters
   as opposed to pure code units.
@@ -209,7 +209,7 @@ assert(codeUnitList[0] == 78);
   UTF-16 code units).
   For this, the Dart team provides the
   [`characters` package.]({{site.pub-pkg}}/characters)
-{{site.alert.end}}
+{% endalert %}
 
 #### Converting to uppercase or lowercase
 
@@ -225,10 +225,10 @@ assert('web apps'.toUpperCase() == 'WEB APPS');
 assert('WEB APPS'.toLowerCase() == 'web apps');
 ```
 
-{{site.alert.note}}
+{% alert 'note' %}
   These methods don't work for every language. For example, the Turkish
   alphabet's dotless *I* is converted incorrectly.
-{{site.alert.end}}
+{% endalert %}
 
 
 #### Trimming and empty strings
@@ -337,10 +337,10 @@ methods. Also see the API reference for [StringBuffer,][StringBuffer]
 Dart ships with a core collections API, which includes classes for
 lists, sets, and maps.
 
-{{site.alert.tip}}
+{% alert 'tip' %}
   To practice using APIs that are available to both lists and sets,
   follow the [Iterable collections codelab](/codelabs/iterables).
-{{site.alert.end}}
+{% endalert %}
 
 #### Lists
 
@@ -430,7 +430,7 @@ assert(fruit is String);
 fruits.add(5); // Error: 'int' can't be assigned to 'String'
 ```
 
-{{site.alert.note}}
+{% alert 'note' %}
   In many cases, you don't
   need to explicitly specify generic
   types, because Dart will
@@ -445,7 +445,7 @@ fruits.add(5); // Error: 'int' can't be assigned to 'String'
   combination of things.
   That's often not what you want, so you write `<String>[]`
   or `<Person>[]` or something similar.
-{{site.alert.end}}
+{% endalert %}
 
 Refer to the [List API reference][List] for a full list of methods.
 
@@ -610,10 +610,10 @@ List, Set, and Map share common functionality found in many collections.
 Some of this common functionality is defined by the Iterable class,
 which List and Set implement.
 
-{{site.alert.note}}
+{% alert 'note' %}
   Although Map doesn't implement Iterable, you can get Iterables from it using
   the Map `keys` and `values` properties.
-{{site.alert.end}}
+{% endalert %}
 
 Use `isEmpty` or `isNotEmpty` to check whether a list, set, or map has items:
 
@@ -658,10 +658,10 @@ var loudTeas = teas.map((tea) => tea.toUpperCase());
 loudTeas.forEach(print);
 ```
 
-{{site.alert.note}}
+{% alert 'note' %}
   The object returned by `map()` is an Iterable that's *lazily evaluated*: your
   function isn't called until you ask for an item from the returned object.
-{{site.alert.end}}
+{% endalert %}
 
 To force your function to be called immediately on each item, use
 `map().toList()` or `map().toSet()`:
@@ -839,9 +839,9 @@ y2k = DateTime.parse('2000-01-01T00:00:00Z');
 // Create a new DateTime from an existing one, adjusting just some properties:
 var sameTimeLastYear = now.copyWith(year: now.year - 1);
 ```
-{{site.alert.warning}}
+{% alert 'warning' %}
   `DateTime` operations might give unexpected results related to Daylight Savings Time and other non-standard time adjustments.  
-{{site.alert.end}}
+{% endalert %}
 The `millisecondsSinceEpoch` property of a date returns the number of
 milliseconds since the "Unix epoch"—January 1, 1970, UTC:
 
@@ -878,11 +878,11 @@ var duration = y2001.difference(y2k);
 assert(duration.inDays == 366); // y2k was a leap year.
 ```
 
-{{site.alert.warning}}
+{% alert 'warning' %}
   Using a Duration to shift a DateTime by days can be problematic, due to clock
   shifts (to daylight saving time, for example). Use UTC dates if you must shift
   days.
-{{site.alert.end}}
+{% endalert %}
 
 For a full list of methods,
 refer to the API reference for [DateTime][] and [Duration.][Duration]
@@ -926,7 +926,7 @@ also want to override the `==` operator. Objects that are equal (via
 `==`) must have identical hash codes. A hash code doesn't have to be
 unique, but it should be well distributed.
 
-{{site.alert.tip}}
+{% alert 'tip' %}
   To consistently and easily implement the `hashCode` getter,
   consider using the static hashing methods provided by the `Object` class.
 
@@ -935,7 +935,7 @@ unique, but it should be well distributed.
   To generate a hash code for a collection,
   you can use either [`Object.hashAll()`][] (if element order matters)
   or [`Object.hashAllUnordered()`][].
-{{site.alert.end}}
+{% endalert %}
 
 [`Object.hash()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Object/hash.html
 [`Object.hashAll()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Object/hashAll.html
@@ -1092,9 +1092,9 @@ When a local variable is Finalizable,
 it won't be garbage collected
 until the code block where it is declared has exited.
 
-{{site.alert.version-note}}
+{% alert 'version-note' %}
   Support for weak references and finalizers was added in Dart 2.17.
-{{site.alert.end}}
+{% endalert %}
 
 ## dart:async - asynchronous programming
 
@@ -1105,12 +1105,12 @@ future. A Stream is a way to get a sequence of values, such as events.
 Future, Stream, and more are in the
 dart:async library ([API reference][dart:async]).
 
-{{site.alert.note}}
+{% alert 'note' %}
   You don't always need to use the Future or Stream APIs directly. The Dart
   language supports asynchronous coding using keywords such as `async` and
   `await`. See the [asynchronous programming codelab](/codelabs/async-await) for
   details.
-{{site.alert.end}}
+{% endalert %}
 
 The dart:async library works in both web apps and command-line apps. To
 use it, import dart:async:
@@ -1120,10 +1120,10 @@ use it, import dart:async:
 import 'dart:async';
 ```
 
-{{site.alert.tip}}
+{% alert 'tip' %}
   You don't need to import dart:async to use the Future and
   Stream APIs, because dart:core exports those classes.
-{{site.alert.end}}
+{% endalert %}
 
 ### Future
 
@@ -1179,11 +1179,11 @@ try {
 }
 ```
 
-{{site.alert.important}}
+{% alert 'important' %}
   Async functions return Futures. If you don't want your function to return a
   future, then use a different solution. For example, you might call an `async`
   function from your function.
-{{site.alert.end}}
+{% endalert %}
 
 For more information on using `await` and related Dart language features,
 see the [asynchronous programming codelab](/codelabs/async-await).
@@ -1222,12 +1222,12 @@ HttpRequest.getString(url).then((String result) {
 The `then().catchError()` pattern is the asynchronous version of
 `try`-`catch`.
 
-{{site.alert.important}}
+{% alert 'important' %}
   Be sure to invoke `catchError()` on the result of `then()`—not on the result
   of the original Future. Otherwise, the `catchError()` can handle errors only
   from the original Future's computation, but not from the handler registered by
   `then()`.
-{{site.alert.end}}
+{% endalert %}
 
 
 #### Chaining multiple asynchronous methods
@@ -1420,13 +1420,13 @@ void main(List<String> arguments) async {
 }
 ```
 
-{{site.alert.important}}
+{% alert 'important' %}
   Before using `await for`, make sure that it makes the code clearer and that
   you really do want to wait for all of the stream's results. For example, you
   usually should **not** use `await for` for DOM event listeners, because the
   DOM sends endless streams of events. If you use `await for` to register two
   DOM event listeners in a row, then the second kind of event is never handled.
-{{site.alert.end}}
+{% endalert %}
 
 For more information on using `await` and related
 Dart language features, see the
@@ -1583,9 +1583,9 @@ var sinOf30degrees = sin(radians);
 assert((sinOf30degrees - 0.5).abs() < 0.01);
 ```
 
-{{site.alert.note}}
+{% alert 'note' %}
   These functions use radians, not degrees!
-{{site.alert.end}}
+{% endalert %}
 
 
 ### Maximum and minimum
@@ -1632,12 +1632,12 @@ var random = Random();
 random.nextBool(); // true or false
 ```
 
-{{site.alert.warning}}
+{% alert 'warning' %}
   The default implementation of `Random` supplies a stream of pseudorandom bits
   that are unsuitable for cryptographic purposes.
   To create a cryptographically secure random number generator,
   use the [`Random.secure()`][] constructor.
-{{site.alert.end}}
+{% endalert %}
 
 ### More information
 

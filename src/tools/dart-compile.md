@@ -48,14 +48,14 @@ $ dart compile exe --help
 The `dart compile` command replaces the
 `dart2native`, `dart2aot`, and `dart2js` commands.
 
-{{site.alert.note}}
+{% alert 'note' %}
   You don't need to compile Dart programs before running them.
   Instead, you can use the [`dart run` command][dart-run],
   which uses the Dart VM's JIT (just-in-time) compiler—a 
   feature that's especially useful during development.
   For more information on AOT and JIT compilation,
   see the [platforms discussion](/overview#platform).
-{{site.alert.end}}
+{% endalert %}
 
 Refer to the [native_app][] sample for a simple example of using `dart compile`
 to compile a native app, 
@@ -253,7 +253,7 @@ they can have much slower startup than architecture-specific AOT output formats.
 
 The `js` subcommand compiles Dart code to deployable JavaScript.
 
-{{site.alert.note}}
+{% alert 'note' %}
   Use the [`webdev` tool][webdev] rather than running the 
   Dart-to-JavaScript compiler.
 
@@ -261,7 +261,7 @@ The `js` subcommand compiles Dart code to deployable JavaScript.
 
   * The [`webdev serve`][] command, by default, produces JavaScript
     modules for running and debugging during development.
-{{site.alert.end}}
+{% endalert %}
 
 {% include 'tools/dart-compile-js-options.md' %}
 
@@ -286,13 +286,13 @@ improve JavaScript performance:
 * Be consistent with the types of arguments
   you pass into each function or method.
 
-{{site.alert.tip}}
+{% alert 'tip' %}
   Don't worry about the size of your app's included libraries. 
   The production compiler performs tree shaking to omit
   unused classes, functions, methods, and so on.
   Import the libraries you think you'll need, 
   and let the compiler get rid of what it doesn't need.
-{{site.alert.end}}
+{% endalert %}
 
 To learn more about building and deploying JavaScript applications,
 check out [Web deployment](/web/deployment).

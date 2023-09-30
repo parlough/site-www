@@ -6,11 +6,11 @@ description: Using experiment flags with Dart tools.
 The Dart SDK often contains experimental features,
 which you can try by passing flags to Dart tools.
 
-{{site.alert.warning}}
+{% alert 'warning' %}
   Don't use experiments for production code.
   Experiments might have breaking changes or be removed
   without notice.
-{{site.alert.end}}
+{% endalert %}
 
 
 ## Using experiment flags with command-line tools

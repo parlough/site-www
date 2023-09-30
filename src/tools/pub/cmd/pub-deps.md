@@ -77,7 +77,7 @@ Prints all available executables.
 
 Generates output in JSON format.
 
-{{site.alert.info}}
+{% alert 'info' %}
   *Problems?*
   See [Troubleshooting Pub](/tools/pub/troubleshoot).
-{{site.alert.end}}
+{% endalert %}

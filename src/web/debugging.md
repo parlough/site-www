@@ -83,11 +83,11 @@ but you'll need to adjust the instructions to match your app.
 1. Compile and serve the app in debug mode,
    using either your IDE or `webdev` at the command line.
 
-   {{site.alert.note}}
+   {% alert 'note' %}
      The first compilation takes the longest,
      because the entire app must be compiled.
      After that, refreshes are much faster.
-   {{site.alert.end}}
+   {% endalert %}
 
    If you're using webdev at the command line,
    the command to use depends on whether you want (or need) to
@@ -145,11 +145,11 @@ but you'll need to adjust the instructions to match your app.
 1. Try stepping through code line-by-line using the
    **Step In**, **Step Over**, and **Step Out** buttons.
 
-   {{site.alert.note}}
+   {% alert 'note' %}
      Dart DevTools doesn't step into SDK code.
      For example, if you press **Step In** at a call to `print()`,
      you go to the next line, not into the SDK code that implements `print()`.
-   {{site.alert.end}}
+   {% endalert %}
 
 1. Change your source code and reload the Chrome window that's running the app.
    The app quickly rebuilds and reloads.

@@ -11,12 +11,12 @@ this page can help. To learn more, read about
 [Dart's type system](/language/type-system),
 and see [these other resources](/language/type-system#other-resources).
 
-{{site.alert.info}}
+{% alert 'info' %}
   **Help us improve this page!** If you encounter a warning or error that isn't
   listed here, please file an issue by clicking the **bug icon** at the top
   right. Include the **warning or error message** and, if possible, the code for
   both a small reproducible case and its correct equivalent.
-{{site.alert.end}}
+{% endalert %}
 
 ## Troubleshooting
 
@@ -205,10 +205,10 @@ error - '...'  isn't a valid override of '...' - invalid_override
 These errors typically occur when a subclass tightens up a method's
 parameter types by specifying a subclass of the original class.
 
-{{site.alert.note}}
+{% alert 'note' %}
   This issue can also occur when a generic subclass neglects to specify a type.
   For more information, see [Missing type arguments](#missing-type-arguments).
-{{site.alert.end}}
+{% endalert %}
 
 #### Example
 
@@ -269,10 +269,10 @@ class MyAdder extends NumberAdder {
 For more information, see 
 [Use proper input parameter types when overriding methods](/language/type-system#use-proper-param-types).
 
-{{site.alert.note}}
+{% alert 'note' %}
   If you have a valid reason to use a subtype, you can use the
   [covariant keyword](#the-covariant-keyword).
-{{site.alert.end}}
+{% endalert %}
 
 <hr>
 

@@ -4,10 +4,10 @@ The [dart:io][] library provides APIs to deal with
 files, directories, processes, sockets, WebSockets, and HTTP
 clients and servers.
 
-{{site.alert.important}}
+{% alert 'important' %}
   Only non-web [Flutter apps,]({{site.flutter}}) command-line scripts, 
   and servers can import and use `dart:io`, not web apps.
-{{site.alert.end}}
+{% endalert %}
 
 In general, the dart:io library implements and promotes an asynchronous
 API. Synchronous methods can easily block an application, making it

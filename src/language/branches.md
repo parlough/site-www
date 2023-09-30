@@ -73,10 +73,10 @@ The if-case statement provides a way to match and
 [destructure][] against a _single_ pattern. 
 To test a value against _multiple_ patterns, use [switch](#switch).
 
-{{site.alert.version-note}}
+{% alert 'version-note' %}
   Case clauses in if statements require
   a [language version][] of at least 3.0.
-{{site.alert.end}}
+{% endalert %}
 
 <a id="switch"></a>
 ## Switch statements
@@ -198,9 +198,9 @@ The syntax of a `switch` expression differs from `switch` statement syntax:
 - Cases are separated by `,` (and an optional trailing `,` is allowed).
 - Default cases can _only_ use `_`, instead of allowing both `default` and `_`.
 
-{{site.alert.version-note}}
+{% alert 'version-note' %}
   Switch expressions require a [language version][] of at least 3.0.
-{{site.alert.end}}
+{% endalert %}
 
 ### Exhaustiveness checking
 

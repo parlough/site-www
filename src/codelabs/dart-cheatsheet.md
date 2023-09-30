@@ -21,10 +21,10 @@ To run the code formatter ([dart format](/tools/dart-format)), click **Format**.
 The **Reset** button erases your work and
 restores the editor to its original state.
 
-{{site.alert.note}}
+{% alert 'note' %}
   This page uses embedded DartPads to display runnable examples.
   {% include 'dartpads-embedded-troubleshooting.md' %}
-{{site.alert.end}}
+{% endalert %}
 
 ## String interpolation
 

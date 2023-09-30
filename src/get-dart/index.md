@@ -30,9 +30,9 @@ so it's easy to find (but not more tempting than package managers).
 and has Dart's [`dart`](/tools/dart-tool) command-line interface
 in its `bin` folder.
 
-{{site.alert.warn}}
+{% alert 'warn' %}
   {% include './archive/_sdk-terms.md' %}
-{{site.alert.end}}
+{% endalert %}
 
 <ul class="tabs__top-bar">
   <li class="tab-link current" data-tab="tab-sdk-install-windows">Windows</li>

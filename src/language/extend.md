@@ -83,11 +83,11 @@ in a parameter declaration.
 For details, see the 
 [Dart language specification][].
 
-{{site.alert.warning}}
+{% alert 'warning' %}
   If you override `==`, you should also override Object's `hashCode` getter.
   For an example of overriding `==` and `hashCode`, see
   [Implementing map keys](/guides/libraries/library-tour#implementing-map-keys).
-{{site.alert.end}}
+{% endalert %}
 
 ## noSuchMethod()
 

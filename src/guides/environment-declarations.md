@@ -11,12 +11,12 @@ Compilation environment declarations specify
 configuration options as key-value pairs
 that are accessed and evaluated at compile time.
 
-{{site.alert.note}}
+{% alert 'note' %}
   This page uses "environment" to refer
   to the Dart compilation environment. 
   The common use of the term instead refers
   to the operating system environment.
-{{site.alert.end}}
+{% endalert %}
 
 Your app can use the values of environment declarations
 to change its functionality or behavior.
@@ -59,11 +59,11 @@ Use [`bool.fromEnvironment`][bool-from] for `true` or `false` values,
 [`int.fromEnvironment`][int-from] for integer values,
 and [`String.fromEnvironment`][string-from] for anything else.
 
-{{site.alert.note}}
+{% alert 'note' %}
   The environment declaration constructors are only guaranteed
   to work when invoked as `const`.
   Most compilers must be able to evaluate their value at compile time.
-{{site.alert.end}}
+{% endalert %}
 
 Each of the `fromEnvironment` constructors require the
 name or key of the environment declaration.
@@ -111,13 +111,13 @@ if (const bool.hasEnvironment('DEBUG')) {
 
 ## Specifying environment declarations
 
-{{site.alert.warning}}
+{% alert 'warning' %}
   Dart tools and compilers currently do not
   consistently handle environment declarations
   with comma-separated values.
   To track standardization of this handling,
   reference [SDK issue 44995][].
-{{site.alert.end}}
+{% endalert %}
 
 [SDK issue 44995]: https://github.com/dart-lang/sdk/issues/44995
 

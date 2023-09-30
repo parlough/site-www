@@ -9,10 +9,10 @@ HTML5 (and dart:html) has many
 additional APIs that this section doesn't cover. Only web apps can use
 dart:html, not command-line apps.
 
-{{site.alert.note}}
+{% alert 'note' %}
   For larger applications or if you already have a Flutter application,
   consider using [Flutter for web.]({{site.flutter}}/web)
-{{site.alert.end}}
+{% endalert %}
 
 To use the HTML library in your web app, import dart:html:
 

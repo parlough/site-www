@@ -26,10 +26,10 @@ This codelab covers the following material:
 
 Estimated time to complete this codelab: 40-60 minutes.
 
-{{site.alert.note}}
+{% alert 'note' %}
   This page uses embedded DartPads to display examples and exercises.
   {% include 'dartpads-embedded-troubleshooting.md' %}
-{{site.alert.end}}
+{% endalert %}
 
 ## Why asynchronous code matters
 
@@ -103,7 +103,7 @@ In the next sections you'll learn about futures and about working with futures
 so that you'll be able to write the code necessary to make `fetchUserOrder()`
 print the desired value ("Large Latte") to the console.
 
-{{site.alert.secondary}}
+{% alert 'secondary' %}
   **Key terms:**
 
   * **synchronous operation**: A synchronous operation blocks other operations
@@ -114,7 +114,7 @@ print the desired value ("Large Latte") to the console.
     other operations to execute before it completes.
   * **asynchronous function**: An asynchronous function performs at least one
     asynchronous operation and can also perform _synchronous_ operations.
-{{site.alert.end}}
+{% endalert %}
 
 
 ## What is a future?
@@ -124,10 +124,10 @@ of the [Future][] (capitalized "F") class.
 A future represents the result of an asynchronous operation, 
 and can have two states: uncompleted or completed.
 
-{{site.alert.note}}
+{% alert 'note' %}
   _Uncompleted_ is a Dart term referring to the state of a future
   before it has produced a value.
-{{site.alert.end}}
+{% endalert %}
 
 ### Uncompleted
 
@@ -209,7 +209,7 @@ but how do you use the results of asynchronous functions?
 In the next section you'll learn how to get results
 with the `async` and `await` keywords.
 
-{{site.alert.secondary}}
+{% alert 'secondary' %}
   **Quick review:**
 
   * A [Future\<T\>][Future] instance produces a value of type `T`.
@@ -225,7 +225,7 @@ with the `async` and `await` keywords.
 
   * **Future**: the Dart [Future][] class.
   * **future**: an instance of the Dart `Future` class.
-{{site.alert.end}}
+{% endalert %}
 
 ## Working with futures: async and await
 
@@ -345,7 +345,7 @@ The asynchronous example is different in three ways:
 * The **`await`** keyword appears before calling the asynchronous functions
   `fetchUserOrder()` and `createOrderMessage()`.
 
-{{site.alert.secondary}}
+{% alert 'secondary' %}
   **Key terms:**
 
   * **async**: You can use the `async` keyword before a function's body to mark it as
@@ -354,7 +354,7 @@ The asynchronous example is different in three ways:
     keyword.
   * **await**: You can use the `await` keyword to get the completed result of an
     asynchronous expression. The `await` keyword only works within an `async` function.
-{{site.alert.end}}
+{% endalert %}
 
 ### Execution flow with async and await
 
@@ -599,10 +599,10 @@ Did you remember to use the await keyword before invoking fetchRole()?
 Remember: reportUserRole() needs to return a future!
 ```
 
-{{site.alert.note}}
+{% alert 'note' %}
   If your code passes the tests, you can ignore
   [info-level messages.](/tools/analysis#customizing-analysis-rules)
-{{site.alert.end}}
+{% endalert %}
 
 ## Handling errors
 

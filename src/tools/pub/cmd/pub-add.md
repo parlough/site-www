@@ -85,14 +85,14 @@ dependency_overrides:
 
 ## Source descriptor
 
-{{site.alert.version-note}}
+{% alert 'version-note' %}
   The YAML-formatted descriptor syntax was added in Dart 2.19.
   The descriptor replaces arguments like
   `--path`, `--sdk`, `--git-<option>`, etc.
   Pub still supports these arguments, but
   the recommended method is now the YAML-descriptor.
   The descriptor and the replaced arguments can't be used together.
-{{site.alert.end}}
+{% endalert %}
 
 The YAML descriptor syntax allows you to add 
 multiple packages from different sources, and 
@@ -193,7 +193,7 @@ $ dart pub add foo --sdk=flutter
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-{{site.alert.note}}
+{% alert 'note' %}
   The previous `pub add` syntax for options
   (without YAML descriptors) applies the
   specified options to all the packages
@@ -201,7 +201,7 @@ For options that apply to all pub commands, see
   For example, `dart pub add test http --dev`
   will add both the `test` and `http` packages
   as dev dependencies.
-{{site.alert.end}}
+{% endalert %}
 
 ### `--[no-]offline`
 
@@ -218,7 +218,7 @@ By default, pub precompiles executables
 in immediate dependencies (`--precompile`).
 To prevent precompilation, use `--no-precompile`.
 
-{{site.alert.info}}
+{% alert 'info' %}
   *Problems?*
   See [Troubleshooting Pub](/tools/pub/troubleshoot).
-{{site.alert.end}}
+{% endalert %}
