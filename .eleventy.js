@@ -2,16 +2,16 @@ const yaml = require('js-yaml');
 const markdownIt = require('markdown-it');
 const markdownItDefinitionList = require('markdown-it-deflist');
 const markdownItAnchor = require('markdown-it-anchor');
-const markdownItContainer = require('markdown-it-container');
 const markdownItAttrs = require('markdown-it-attrs');
 const { markdownItTable } = require('markdown-it-table');
 const eleventySass = require('eleventy-sass');
 const shiki = require('shiki');
+const htmlParser = require('htmlparser2');
+const {findAll, innerText} = require("domutils");
 
 module.exports = function (eleventyConfig) {
-  const markdown = markdownIt({
-    html: true,
-  }).use(markdownItDefinitionList)
+  const markdown = markdownIt({html: true})
+      .use(markdownItDefinitionList)
       .use(markdownItAttrs, {
         leftDelimiter: '{:',
         rightDelimiter: '}',
@@ -26,18 +26,8 @@ module.exports = function (eleventyConfig) {
           symbol: '#',
           class: 'heading-link',
         }),
-      })
-      // .use(markdownItTable) // TODO(parlough): Tables broken
-      .use(markdownItContainer, 'version-note', {
-        render: function (tokens, idx) {
-          if (tokens[idx].nesting === 1) {
-            return '<aside class="alert alert-info" role="alert">' +
-                '<i class="material-icons" aria-hidden="true">merge_type</i> <strong>Version note</strong>';
-          } else {
-            return '</aside>\n';
-          }
-        }
       });
+      // .use(markdownItTable) // TODO(parlough): Tables broken
 
   eleventyConfig.on('eleventy.before', async () => {
     const highlighter = await shiki.getHighlighter({ 
@@ -79,6 +69,50 @@ module.exports = function (eleventyConfig) {
   
   eleventyConfig.addFilter('throw_error', function (error) {
     throw new Error(error);
+  });
+  
+  eleventyConfig.addFilter('generate_toc', function (contents) {
+    const dom = htmlParser.parseDocument(contents);
+    const headers = findAll((e) =>
+        e.tagName === 'h2' || e.tagName === 'h3', dom.children);
+    let currentH2 = null;
+    const builtToc = [];
+    let count = 0;
+    for (const header of headers) {
+      const id = header.attribs.id;
+      // Header can't be linked to without an ID.
+      if (id === null || id === '') {
+        continue;
+      }
+      
+      // Don't include if no_toc is specified.
+      if (header.attribs.class?.includes('no_toc')) {
+        continue;
+      }
+      
+      // Remove # added by markdown-it-anchor.
+      const text = innerText(header)
+          .replace(/#$/, '').trim();
+      
+      if (header.tagName === 'h2') {
+        currentH2 = {text: text, id: `#${id}`, children: []};
+        builtToc.push(currentH2);
+        count += 1;
+      } else if (header.tagName === 'h3') {
+        // A h3 must be under a h2 header.
+        if (currentH2 === null) {
+          continue;
+        }
+        
+        currentH2.children.push({text: text, id: `#${id}`});
+        count += 1;
+      }
+    }
+    
+    return {
+      toc: builtToc,
+      count: count
+    };
   });
   
   eleventyConfig.addPairedShortcode('WhyLearn', function(content) {

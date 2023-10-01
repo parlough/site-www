@@ -7,7 +7,10 @@
     {% include 'page-header.html' %}
     {% include 'navigation-side.html' %}
     <main id="page-content">
-      {% include 'navigation-toc.html', id:'site-toc--side', extendToc:true %}
+      {% if toc != false -%}
+      {% assign tocContents = content | generate_toc %}
+      {% render 'navigation-toc-side.html', tocContents:tocContents %}
+      {% endif -%}
       <article>
         <div class="content">
           {% include 'navigation-sub.html' %}
@@ -22,7 +25,9 @@
               {% include 'breadcrumbs.html' %}
             {% endif -%}
           </div>
-          {% include 'navigation-toc.html', id:'site-toc--inline', collapsible:true %}
+          {% if toc != false -%}
+          {% render 'navigation-toc-top.html', tocContents:tocContents %}
+          {% endif -%}
           {{ content }}
           {% include 'navigation-sub.html' %}
         </div>
