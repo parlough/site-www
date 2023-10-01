@@ -157,17 +157,20 @@ ${renderedContent}
 
   eleventyConfig.addPlugin(eleventySass, {
     sass: {
-      style: 'compressed',
-      sourceMap: false,
+      style: isProduction() ? 'compressed' : 'expanded',
+      sourceMap: !isProduction(),
       quietDeps: true
-    }
+    },
+    compileOptions: {
+      cache: !isProduction(),
+    },
   });
 
   eleventyConfig.addPassthroughCopy('src/assets/dash');
   eleventyConfig.addPassthroughCopy('src/assets/js');
   eleventyConfig.addPassthroughCopy('src/assets/img',{ expand: true });
-  eleventyConfig.addPassthroughCopy('src/assets/shared',{ expand: true });
-  eleventyConfig.addPassthroughCopy('src/f');
+  eleventyConfig.addPassthroughCopy('src/assets/shared',{ expand: true, filter: /^(?!_).+/ });
+  eleventyConfig.addPassthroughCopy('src/f', { expand: true, filter: /^(?!_).+/ });
 
   return {
     htmlTemplateEngine: 'liquid',
@@ -284,3 +287,5 @@ function _parseAttributes(attributes) {
   
   return results;
 }
+
+function isProduction() { return process.env.PRODUCTION === 'true' }

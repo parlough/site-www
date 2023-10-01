@@ -7,6 +7,10 @@
     "type": "git",
     "url": "https://github.com/dart-lang/site-www.git"
   },
+  "scripts": {
+    "serve": "PRODUCTION=false npx @11ty/eleventy --serve --incremental",
+    "build": "PRODUCTION=true npx @11ty/eleventy"
+  },
   "dependencies": {
     "bootstrap-scss": "^4.6.2"
   },
@@ -21,7 +25,6 @@
     "markdown-it-deflist": "^2.1.0",
     "markdown-it-table": "^4.1.1",
     "markdown-it-toc-done-right": "^4.2.0",
-    "sass": "^1.68.0",
     "shiki": "^0.14.4"
   }
 }
