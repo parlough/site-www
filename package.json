@@ -24,7 +24,6 @@
     "markdown-it-container": "^3.0.0",
     "markdown-it-deflist": "^2.1.0",
     "markdown-it-table": "^4.1.1",
-    "markdown-it-toc-done-right": "^4.2.0",
     "shiki": "^0.14.4"
   }
 }

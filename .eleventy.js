@@ -3,7 +3,6 @@ const markdownIt = require('markdown-it');
 const markdownItDefinitionList = require('markdown-it-deflist');
 const markdownItAnchor = require('markdown-it-anchor');
 const markdownItContainer = require('markdown-it-container');
-const markdownItTocDoneRight = require('markdown-it-toc-done-right');
 const markdownItAttrs = require('markdown-it-attrs');
 const { markdownItTable } = require('markdown-it-table');
 const eleventySass = require('eleventy-sass');
@@ -28,7 +27,6 @@ module.exports = function (eleventyConfig) {
           class: 'heading-link',
         }),
       })
-      // .use(markdownItTocDoneRight)
       // .use(markdownItTable) // TODO(parlough): Tables broken
       .use(markdownItContainer, 'version-note', {
         render: function (tokens, idx) {
@@ -277,13 +275,15 @@ function _parseAttributes(attributes) {
     }
   }
   
-  results['highlight'] = [];
+  const highlights = [];
   
   const highlightPattern = /3/;
   let highlightMatch;
   while (highlightMatch = highlightPattern.exec(attributes) && highlightMatch) {
     
   }
+
+  results['highlight'] = highlights;
   
   return results;
 }
