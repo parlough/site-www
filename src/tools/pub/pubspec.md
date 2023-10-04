@@ -482,7 +482,7 @@ Omitting the SDK constraint is an error.
 When the pubspec has no SDK constraint,
 `dart pub get` fails with a message like the following:
 
-```
+```plaintext
 pubspec.yaml has no lower-bound SDK constraint.
 You should edit pubspec.yaml to contain an SDK constraint:
 

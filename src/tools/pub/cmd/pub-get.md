@@ -5,7 +5,7 @@ description: Use dart pub get to retrieve the dependencies used by your Dart app
 
 _Get_ is one of the commands of the [pub tool](/tools/pub/cmd).
 
-```
+```plaintext
 $ dart pub get [options]
 ```
 

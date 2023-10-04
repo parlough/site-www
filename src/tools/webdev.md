@@ -159,7 +159,7 @@ $ webdev build --output web:build
 
 Use the `build_runner test` command to run your app's component tests:
 
-```
+```bash
 $ dart run build_runner test [build_runner options] -- -p <platform> [test options]
 ```
 

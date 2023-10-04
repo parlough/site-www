@@ -11,7 +11,7 @@ and the Dart VM tool.
 To run a program from an arbitrary location,
 use the [pub global](/tools/pub/cmd/pub-global) command.
 
-```
+```plaintext
 dart run [options] [<DART_FILE> | <PACKAGE_TARGET>] [args]
 ```
 

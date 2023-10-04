@@ -146,7 +146,7 @@ including how the documentation tooling works.
 To access APIs defined in other libraries, use `import`.
 
 <?code-excerpt "misc/test/samples_test.dart (import)" plaster="none"?>
-```
+```dart
 // Importing core libraries
 import 'dart:math';
 
