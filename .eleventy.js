@@ -3,7 +3,7 @@ const markdownIt = require('markdown-it');
 const markdownItDefinitionList = require('markdown-it-deflist');
 const markdownItAnchor = require('markdown-it-anchor');
 const markdownItAttrs = require('markdown-it-attrs');
-const { markdownItTable } = require('markdown-it-table');
+const {markdownItTable} = require('markdown-it-table');
 const eleventySass = require('eleventy-sass');
 const htmlParser = require('htmlparser2');
 const {findAll, innerText} = require('domutils');
@@ -29,19 +29,33 @@ module.exports = function (eleventyConfig) {
   // .use(markdownItTable) // TODO(parlough): Tables broken
 
   eleventyConfig.on('eleventy.before', async () => {
-    const { getHighlighter } = await import('shikiji')
-    const { toHtml } = await import('hast-util-to-html');
-    const { toText } = await import('hast-util-to-text');
-    const highlighter = await getHighlighter({ 
-      themes: ['nord'],
+    const {getHighlighter} = await import('shikiji')
+    const {toHtml} = await import('hast-util-to-html');
+    const {toText} = await import('hast-util-to-text');
+    const highlighter = await getHighlighter({
       langs: ['dart', 'yaml', 'json', 'swift', 'css', 'html', 'xml',
         'js', 'objc', 'bash', 'kotlin', 'java', 'md', 'diff']
     });
 
-    markdown.set({
-      highlight: (str, lang, attrs) => 
-          _highlight(highlighter, toHtml, toText, str, lang, attrs),
-    });
+    await highlighter.loadTheme(import('./11ty/dash-light.json', {
+      assert: {type: 'json'}
+    }));
+
+    // markdown.set({
+    //   highlight: (str, lang, attrs) => 
+    //       _highlight(highlighter, toHtml, toText, str, lang, attrs),
+    // });
+
+    markdown.renderer.rules.fence = function (tokens, index, options, env, self) {
+      const token = tokens[index];
+
+      const splitTokenInfo = token.info.match(/(\S+)\s?(.*?)$/m);
+      const language = splitTokenInfo.length > 1 ? splitTokenInfo[1] : '';
+      const attributes = splitTokenInfo.length > 2 ? splitTokenInfo[2] : '';
+
+      return _highlight(highlighter, toHtml, toText, token.content, language, attributes);
+    };
+
   });
 
   eleventyConfig.setLibrary('md', markdown);
@@ -58,11 +72,11 @@ module.exports = function (eleventyConfig) {
 
   eleventyConfig.addTemplateFormats('scss');
 
-  eleventyConfig.addFilter('regex_replace', function(input, regex, replacement = '') {
+  eleventyConfig.addFilter('regex_replace', function (input, regex, replacement = '') {
     return input.toString().replace(new RegExp(regex), replacement);
   });
 
-  eleventyConfig.addFilter('active_nav_entry_index_array', function(navEntryTree, pageUrlPath = '') {
+  eleventyConfig.addFilter('active_nav_entry_index_array', function (navEntryTree, pageUrlPath = '') {
     const activeEntryIndexes = _getActiveNavEntries(navEntryTree, pageUrlPath);
     return activeEntryIndexes.length === 0 ? null : activeEntryIndexes;
   });
@@ -119,7 +133,7 @@ module.exports = function (eleventyConfig) {
     };
   });
 
-  eleventyConfig.addPairedShortcode('WhyLearn', function(content) {
+  eleventyConfig.addPairedShortcode('WhyLearn', function (content) {
     const renderedContent = markdown.render(content);
     return `
     <div class="mini-toc">
@@ -129,7 +143,7 @@ module.exports = function (eleventyConfig) {
     `;
   });
 
-  eleventyConfig.addPairedShortcode('WhyLearn', function(content) {
+  eleventyConfig.addPairedShortcode('WhyLearn', function (content) {
     const renderedContent = markdown.render(content);
     return `
     <div class="mini-toc">
@@ -139,7 +153,7 @@ module.exports = function (eleventyConfig) {
     `;
   });
 
-  eleventyConfig.addPairedShortcode('alert', function(content, type) {
+  eleventyConfig.addPairedShortcode('alert', function (content, type) {
     const renderedContent = markdown.renderInline(content);
     switch (type) {
       case 'important':
@@ -204,9 +218,9 @@ ${renderedContent}
 
   eleventyConfig.addPassthroughCopy('src/assets/dash');
   eleventyConfig.addPassthroughCopy('src/assets/js');
-  eleventyConfig.addPassthroughCopy('src/assets/img',{ expand: true });
-  eleventyConfig.addPassthroughCopy('src/assets/shared',{ expand: true, filter: /^(?!_).+/ });
-  eleventyConfig.addPassthroughCopy('src/f', { expand: true, filter: /^(?!_).+/ });
+  eleventyConfig.addPassthroughCopy('src/assets/img', {expand: true});
+  eleventyConfig.addPassthroughCopy('src/assets/shared', {expand: true, filter: /^(?!_).+/});
+  eleventyConfig.addPassthroughCopy('src/f', {expand: true, filter: /^(?!_).+/});
 
   return {
     htmlTemplateEngine: 'liquid',
@@ -290,57 +304,128 @@ function _highlight(highlighter, toHtml, toText, content, language, attributeStr
     return content; // TODO
   }
 
-  const attributes = _parseAttributes(attributeString);
+  const attributes = attributeString === '' ? {} : JSON.parse(attributeString);
 
-  const tree = highlighter.codeToHast(content, { lang: language, theme: 'nord' });
+  const tree = highlighter.codeToHast(content, {lang: language, theme: 'dash-light'});
 
-  if (attributeString.includes('blah')) {
-    _wrapTargetWord(tree, 'listen(', toText);
+  const pre = tree.children[0];
+  
+  // Remove hard coded background color and text color if present.
+  pre.properties['style'] = '';
 
-    // Convert the resulting AST back to HTML
-    //const html = resultAST.map(node => `<${node.type}>${node.content}</${node.type}>`).join('');
+  const highlightEntries = attributes['highlight'];
+  if (highlightEntries) {
+    for (const highlight of highlightEntries) {
+      _wrapTargetWord(tree, highlight, toText);
+    }
   }
+  
+  const blockBody = {
+    type: 'element',
+    tagName: 'div',
+    children: [
+      pre // pre with highlighted content
+    ],
+    properties: {
+      'class': 'code-block-body'
+    }
+  };
+
+  const wrapper = {
+    type: 'element',
+    tagName: 'div',
+    children: [
+      blockBody,
+    ],
+    properties: {
+      'class': 'code-block-wrapper'
+    }
+  };
+
+  // TODO: Don't support arbitrary tag, require a list
+  // Also support special "language" tag
+  const extraTag = attributes['tag'];
+  if (extraTag) {
+    blockBody.properties['class'] += ` ${extraTag.class}`;
+    
+    if (extraTag.text) {
+      const extraTagContent = {
+        type: 'element',
+        tagName: 'span',
+        children: [
+          {type: 'text', value: extraTag.text}
+        ],
+        properties: {
+          'class': 'code-block-tag'
+        }
+      };
+      
+      blockBody.children.unshift(extraTagContent);
+    }
+  }
+
+  const title = attributes['title'];
+  if (title && title !== '') {
+    const titleElement = {
+      type: 'element',
+      tagName: 'div',
+      children: [
+        {type: 'text', value: title}
+      ],
+      properties: {
+        'class': 'code-block-header'
+      }
+    };
+
+    wrapper.children.unshift(titleElement);
+  }
+
+  tree.children = [wrapper];
 
   return toHtml(tree);
 }
 
-function _wrapTargetWord(ast, targetWord, toText) {
+function _wrapTargetWord(ast, highlight, toText) {
+  /** @type {Array<number>} */
+  const instances = highlight['instances'];
+  /** @type {string} */
+  const targetWord = highlight['target'];
   const targetLength = targetWord.length;
-  
+
   if (targetLength < 1) {
     return;
   }
-  
+
   for (const line of ast.children[0].children[0].children) {
     const spans = line.children;
     if (!spans || spans.length < 1) continue;
-    
+
     const output = toText(line);
-    
-    const instances = getStartingIndices(output, targetWord); //[...output.matchAll(targetWord)].map(m => m.index);
-    
-    if (instances.length < 1) {
+
+    const startingIndices = getStartingIndices(output, targetWord);
+
+    if (startingIndices.length < 1) {
       continue;
     }
-    
+
     const newChildren = [];
-    
+
     let currentIndex = 0;
-    
+
     let wrapper;
 
     for (const span of spans) {
-      if (instances.length < 1) break;
-      const targetStartIndex = instances[0];
-      const targetEndIndex = instances[0] + targetLength;
-      
+      if (startingIndices.length < 1) break;
+      const targetStartIndex = startingIndices[0];
+      const targetEndIndex = startingIndices[0] + targetLength;
+
       const spanText = toText(span);
       const nextStartIndex = currentIndex + spanText.length;
-      
+
       // If wrapper is not null, at least start should be added to it.
       if (wrapper) {
         const extraCharacters = nextStartIndex - targetEndIndex;
-        
+
         if (extraCharacters === 0) {
           wrapper.children.push(span);
           newChildren.push(wrapper);
@@ -352,13 +437,13 @@ function _wrapTargetWord(ast, targetWord, toText) {
           const splitIndex = spanText.length - extraCharacters;
           const firstHalf = spanText.substring(0, splitIndex);
           const secondHalf = spanText.substring(splitIndex);
-          
+
           const firstSpan = structuredClone(span);
           firstSpan.children[0].value = firstHalf;
           wrapper.children.push(firstSpan);
-          
+
           newChildren.push(wrapper);
-          
+
           const secondSpan = structuredClone(span);
           secondSpan.children[0].value = secondHalf;
           newChildren.push(secondSpan);
@@ -368,9 +453,9 @@ function _wrapTargetWord(ast, targetWord, toText) {
       else if (targetStartIndex < nextStartIndex) {
         // Four cases: Whole, at beginning, in middle, or at end
         const extraCharacters = nextStartIndex - targetEndIndex;
-        
+
         const newWrapper = createWrapper();
-        
+
         // If whole is target:
         if (extraCharacters <= 0) {
           newWrapper.children.push(span);
@@ -384,13 +469,13 @@ function _wrapTargetWord(ast, targetWord, toText) {
           const firstSpan = structuredClone(span);
           firstSpan.children[0].value = firstHalf;
           newWrapper.children.push(firstSpan);
-          
+
           newChildren.push(newWrapper);
 
           const secondSpan = structuredClone(span);
           secondSpan.children[0].value = secondHalf;
           newChildren.push(secondSpan);
-        } 
+        }
         // If in middle and ends in span, split
         else if (extraCharacters > 0) {
           const beforeTarget = spanText.substring(0, targetStartIndex);
@@ -400,11 +485,11 @@ function _wrapTargetWord(ast, targetWord, toText) {
           const beforeSpan = structuredClone(span);
           beforeSpan.children[0].value = beforeTarget;
           newChildren.push(beforeSpan);
-          
+
           const duringTargetSpan = structuredClone(span);
           duringTargetSpan.children[0].value = duringTarget;
           newWrapper.children.push(duringTargetSpan);
-          
+
           newChildren.push(newWrapper);
 
           const afterSpan = structuredClone(span);
@@ -430,16 +515,16 @@ function _wrapTargetWord(ast, targetWord, toText) {
         // This span does not contain any part of the target word.
         newChildren.push(span);
       }
-      
+
       currentIndex = nextStartIndex;
 
       // If this instance of the target word is complete, move to the next one.
       if (targetEndIndex <= currentIndex) {
         wrapper = null;
-        instances.shift();
+        startingIndices.shift();
       }
     }
-    
+
     line.children = newChildren;
   }
 }
@@ -449,16 +534,16 @@ function getStartingIndices(source, target) {
   if (targetLength === 0) {
     return [];
   }
-  
+
   let initialIndex = 0;
   const result = [];
   let index;
-  
+
   while ((index = source.indexOf(target, initialIndex)) > -1) {
     result.push(index);
     initialIndex = index + targetLength;
   }
-  
+
   return result;
 }
 
@@ -497,4 +582,6 @@ function _parseAttributes(attributes) {
   return results;
 }
 
-function isProduction() { return process.env.PRODUCTION === 'true' }
+function isProduction() {
+  return process.env.PRODUCTION === 'true'
+}

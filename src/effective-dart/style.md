@@ -326,7 +326,6 @@ the main library file in question.
 {:.bad}
 <?code-excerpt "usage_bad.dart (library-dir)"?>
 ```dart
-
 library my_library;
 ```
 

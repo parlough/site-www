@@ -426,6 +426,7 @@ Flag addFlag(String name, String abbr) => ...
 
 ### DO put doc comments before metadata annotations
 
+
 {:.good}
 <?code-excerpt "docs_good.dart (doc-before-meta)"?>
 ```dart
@@ -456,7 +457,7 @@ universal popularity is why we chose it. Here's just a quick example to give you
 a flavor of what's supported:
 
 <?code-excerpt "docs_good.dart (markdown)"?>
-```dart
+````dart
 /// This is a paragraph of regular text.
 ///
 /// This sentence has *two* _emphasized_ words (italics) and **two**
@@ -507,7 +508,7 @@ a flavor of what's supported:
 /// ### A subsubheader
 ///
 /// #### If you need this many levels of headers, you're doing it wrong
-```
+````
 
 ### AVOID using markdown excessively
 
@@ -575,9 +576,8 @@ think.
 When documenting a member for a class, you often need to refer back to the
 object the member is being called on. Using "the" can be ambiguous.
 
-{:.good}
 <?code-excerpt "docs_good.dart (this)"?>
-```dart
+```dart {"tag":{"class":"good","text":"good"}}
 class Box {
   /// The value this wraps.
   Object? _value;

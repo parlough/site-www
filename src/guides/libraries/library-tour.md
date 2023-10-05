@@ -1380,8 +1380,8 @@ It uses Stream's `listen()` method
 to subscribe to a list of files,
 passing in a function literal that searches each file or directory.
 
-<?code-excerpt "misc/lib/library_tour/async/stream.dart (listen)" replace="/listen/[!$&!]/g"?>
-```dart blah
+<?code-excerpt "misc/lib/library_tour/async/stream.dart (listen)"?>
+```dart {"title": "test", "highlight": [{"target": "listen", "instances": [1]}]}
 void main(List<String> arguments) {
   // ...
   FileSystemEntity.isDirectory(searchPath).then((isDir) {

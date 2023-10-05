@@ -193,7 +193,7 @@ $ dart migrate
 If your package is ready to migrate,
 then the tool produces a line like the following:
 
-```bash
+```plaintext
 View the migration suggestions by visiting:
 
   http://127.0.0.1:60278/Users/you/project/mypkg.console-simple?authToken=Xfz0jvpyeMI%3D
