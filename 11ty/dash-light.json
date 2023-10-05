@@ -61,7 +61,6 @@
     },
     {
       "scope": [
-        "constant.language",
         "constant.other.placeholder",
         "constant.character.format.placeholder",
         "variable.language.this",
@@ -123,7 +122,8 @@
         "string.template",
         "string.unquoted.plain.out.yaml",
         "constant.numeric",
-        "keyword.other.template"
+        "keyword.other.template",
+        "constant.language"
       ],
       "settings": {
         "foreground": "#00677a"

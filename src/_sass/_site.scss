@@ -556,6 +556,12 @@ h3.popover-header {
   }
 }
 
+// If table head has empty children, just hide it
+// since markdown-it-table doesn't support headless tables.
+thead:has(th:empty) {
+  display: none;
+}
+
 .table-wrapper {
   overflow-x: auto;
 }

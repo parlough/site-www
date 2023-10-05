@@ -1,9 +1,10 @@
 ---
 title: Get the Dart SDK
-description: Get the libraries and command-line tools that you need to develop Dart web, command-line, and server apps.
+description: >-
+  Get the libraries and command-line tools that you need to develop 
+  Dart web, command-line, and server apps.
 js:
 - url: /assets/js/get-dart/install.js
-  defer: true
 ---
 
 This page describes how to download the Dart SDK.
@@ -40,13 +41,19 @@ in its `bin` folder.
   <li class="tab-link" data-tab="tab-sdk-install-mac">macOS</li>
 </ul>
 <div id="tab-sdk-install-windows" class="tabs__content current" markdown="1">
+
 {% include './_windows.md' %}
+
 </div>
 <div id="tab-sdk-install-linux" class="tabs__content" markdown="1">
+
 {% include './_linux.md' %}
+
 </div>
 <div id="tab-sdk-install-mac" class="tabs__content" markdown="1">
+
 {% include './_mac.md' %}
+
 </div>
 
 ## System requirements

@@ -3,13 +3,14 @@ const markdownIt = require('markdown-it');
 const markdownItDefinitionList = require('markdown-it-deflist');
 const markdownItAnchor = require('markdown-it-anchor');
 const markdownItAttrs = require('markdown-it-attrs');
-const {markdownItTable} = require('markdown-it-table');
+const { markdownItTable } = require('markdown-it-table');
 const eleventySass = require('eleventy-sass');
 const htmlParser = require('htmlparser2');
 const {findAll, innerText} = require('domutils');
 
 module.exports = function (eleventyConfig) {
   const markdown = markdownIt({html: true})
+      .use(markdownItTable)
       .use(markdownItDefinitionList)
       .use(markdownItAttrs, {
         leftDelimiter: '{:',
