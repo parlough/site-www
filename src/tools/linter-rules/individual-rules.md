@@ -3,6 +3,7 @@ pagination:
   data: linter_rules
   size: 1
   alias: lint
+  addAllPagesToCollections: true
 permalink: "/tools/linter-rules/{{lint.name}}"
 eleventyComputed:
   title: "{{ lint.name }}"

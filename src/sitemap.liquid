@@ -6,23 +6,24 @@ permalink: sitemap.xml
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-{% assign pages = pages | sort: 'url' -%}
+{% assign pages = collections.all | sort: 'url' %}
 
 {%- for page in pages -%}
 
-{%- unless page.sitemap == false -%}
+{%- unless page.data.sitemap == false -%}
 <url>
-  <loc>{{ site.url | append: page.url | regex_replace: '/index(\.html)?$|\.html$|/$' }}</loc>
+  <loc>{{ site.url }}{{ page.url | url | regex_replace: '/index(\.html)?$|\.html$|/$' }}</loc>
   <lastmod>
-    {%- if page.sitemap.lastmod -%}
-      {{ page.sitemap.lastmod | date: "%Y-%m-%d" }}
+    {%- if page.data.sitemap.lastmod -%}
+      {{ page.data.sitemap.lastmod | date: "%Y-%m-%d" }}
     {%- else -%}
-      {{ site.now | default: page.date | default: site.time }}
+      {% assign date = site.now | default: page.date | default: site.time -%}
+      {{ date | toISOString }}
     {%- endif -%}
   </lastmod>
-  <changefreq>{{ page.sitemap.changefreq | default: 'monthly' }}</changefreq>
-  {% if page.sitemap.priority -%}
-  <priority>{{ page.sitemap.priority }}</priority>
+  <changefreq>{{ page.data.sitemap.changefreq | default: 'monthly' }}</changefreq>
+  {% if page.data.sitemap.priority -%}
+  <priority>{{ page.data.sitemap.priority }}</priority>
   {%- endif -%}
 </url>
 {% endunless -%}
