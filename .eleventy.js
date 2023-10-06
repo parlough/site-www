@@ -7,6 +7,7 @@ const {markdownItTable} = require('markdown-it-table');
 const eleventySass = require('eleventy-sass');
 const htmlParser = require('htmlparser2');
 const {findAll, innerText} = require('domutils');
+const slugify = require('@sindresorhus/slugify');
 
 module.exports = function (eleventyConfig) {
   const markdown = markdownIt({html: true})
@@ -18,6 +19,7 @@ module.exports = function (eleventyConfig) {
         allowedAttributes: ['id', 'class', /^data-.*$/],
       })
       .use(markdownItAnchor, {
+        slugify: s => slugify(s),
         level: 2,
         tabIndex: false,
         permalink: markdownItAnchor.permalink.ariaHidden({

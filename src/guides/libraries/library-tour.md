@@ -12,25 +12,25 @@ Whenever you need more details about a class,
 consult the [Dart API reference.][Dart API]
 
 
-[dart:core](#dartcore---numbers-collections-strings-and-more)
+[dart:core](#dart-core)
 : Built-in types, collections, and other core functionality.
   This library is automatically imported into every Dart program.
 
-[dart:async](#dartasync---asynchronous-programming)
+[dart:async](#dart-async)
 : Support for asynchronous programming, with classes such as Future and Stream.
 
-[dart:math](#dartmath---math-and-random)
+[dart:math](#dart-math)
 : Mathematical constants and functions, plus a random number generator.
 
-[dart:convert](#dartconvert---decoding-and-encoding-json-utf-8-and-more)
+[dart:convert](#dart-convert)
 : Encoders and decoders for converting between different data representations, including JSON and UTF-8.
 
-[dart:html](#darthtml)
-: DOM and other APIs for browser-based apps.
-
-[dart:io](#dartio)
+[dart:io](#dart-io)
 : I/O for programs that can use the Dart VM,
   including Flutter apps, servers, and command-line scripts.
+
+[dart:html](#dart-html)
+: DOM and other APIs for browser-based apps.
 
 This page is just an overview;
 it covers only a few dart:* libraries
@@ -49,7 +49,7 @@ the [Flutter API reference.][docs.flutter]
 {% endalert %}
 
 
-## dart:core - numbers, collections, strings, and more
+## dart:core - numbers, collections, strings, and more {:#dart-core}
 
 The dart:core library ([API reference][dart:core])
 provides a small but critical set of built-in functionality.
@@ -1096,7 +1096,7 @@ until the code block where it is declared has exited.
   Support for weak references and finalizers was added in Dart 2.17.
 {% endalert %}
 
-## dart:async - asynchronous programming
+## dart:async - asynchronous programming {:#dart-async}
 
 Asynchronous programming often uses callback functions, but Dart
 provides alternatives: [Future][] and [Stream][] objects. A
@@ -1550,7 +1550,7 @@ Also see these articles, codelabs, and tutorials:
 -   [Dart asynchronous programming: Isolates and event loops](https://medium.com/dartlang/dart-asynchronous-programming-isolates-and-event-loops-bffc3e296a6a)
 
 
-## dart:math - math and random
+## dart:math - math and random {:#dart-math}
 
 The dart:math library ([API reference][dart:math])
 provides common functionality such as sine and cosine,
@@ -1645,7 +1645,7 @@ Refer to the [Math API reference][dart:math] for a full list of methods.
 Also see the API reference for [num,][num] [int,][int] and [double.][double]
 
 
-## dart:convert - decoding and encoding JSON, UTF-8, and more
+## dart:convert - decoding and encoding JSON, UTF-8, and more {:#dart-convert}
 
 The dart:convert library ([API reference][dart:convert])
 has converters for JSON and UTF-8, as well as support for creating
@@ -1773,14 +1773,14 @@ The dart:convert library also has converters for ASCII and ISO-8859-1
 (Latin1). For details, see the [API reference for the dart:convert library.][dart:convert]
 
 
-## dart:html - browser-based apps {:#darthtml}
+## dart:io - I/O for servers and command-line apps {:#dart-io}
 
-{% include './_dart-html-tour.md' %}
+{% render './_dart-io-tour.md' %}
 
 
-## dart:io - I/O for servers and command-line apps {:#dartio}
+## dart:html - browser-based apps {:#dart-html}
 
-{% include './_dart-io-tour.md' %}
+{% render './_dart-html-tour.md' %}
 
 
 ## Summary
