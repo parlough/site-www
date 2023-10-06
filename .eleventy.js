@@ -58,6 +58,8 @@ module.exports = function (eleventyConfig) {
     };
 
   });
+  
+  eleventyConfig.addGlobalData('isProduction', isProduction());
 
   eleventyConfig.setLibrary('md', markdown);
 
