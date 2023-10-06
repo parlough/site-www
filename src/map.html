@@ -8,7 +8,7 @@ toc: false
 <ul>
   
 {% for document in pages %}
-  {% if document.url and document.data.sitemap != false %}
+  {% if document.url and document.data.sitemap != false and document.data.title %}
   <li>
     <a href="{{document.url}}">{{ document.data.title }}</a><br>
     <small>{{document.url}}</small>

@@ -10,7 +10,7 @@ permalink: sitemap.xml
 
 {%- for page in pages -%}
 
-{%- unless page.data.sitemap == false -%}
+{%- if page.url and page.data.sitemap != false and page.data.title -%}
 <url>
   <loc>{{ site.url }}{{ page.url | url | regex_replace: '/index(\.html)?$|\.html$|/$' }}</loc>
   <lastmod>
@@ -26,7 +26,7 @@ permalink: sitemap.xml
   <priority>{{ page.data.sitemap.priority }}</priority>
   {%- endif -%}
 </url>
-{% endunless -%}
+{% endif -%}
 
 {%- endfor -%}
 </urlset>
