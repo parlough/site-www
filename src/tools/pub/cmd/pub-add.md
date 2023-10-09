@@ -85,14 +85,14 @@ dependency_overrides:
 
 ## Source descriptor
 
-{% alert 'version-note' %}
-  The YAML-formatted descriptor syntax was added in Dart 2.19.
-  The descriptor replaces arguments like
-  `--path`, `--sdk`, `--git-<option>`, etc.
-  Pub still supports these arguments, but
-  the recommended method is now the YAML-descriptor.
-  The descriptor and the replaced arguments can't be used together.
-{% endalert %}
+:::version-note
+The YAML-formatted descriptor syntax was added in Dart 2.19.
+The descriptor replaces arguments like
+`--path`, `--sdk`, `--git-<option>`, etc.
+Pub still supports these arguments, but
+the recommended method is now the YAML-descriptor.
+The descriptor and the replaced arguments can't be used together.
+:::
 
 The YAML descriptor syntax allows you to add 
 multiple packages from different sources, and 

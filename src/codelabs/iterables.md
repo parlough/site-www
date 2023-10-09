@@ -158,13 +158,13 @@ Also, with the `Iterable` class,
 you can't use the operator `[]` to access the last element,
 but you can use the `last` property.
 
-{% alert 'warn' %}
-  Because accessing the last element of an `Iterable` requires
-  stepping through all the other elements,
-  **`last` can be slow.**
-  Using `first` or `last` on an **empty `Iterable`**
-  results in a [StateError.][StateError class]
-{% endalert %}
+:::warn
+Because accessing the last element of an `Iterable` requires
+stepping through all the other elements,
+**`last` can be slow.**
+Using `first` or `last` on an **empty `Iterable`**
+results in a [StateError.][StateError class]
+:::
 
 <?code-excerpt "iterables/test/iterables_test.dart (first-last)"?>
 ```dart:run-dartpad:ga_id-first_and_last
@@ -293,11 +293,11 @@ If more than one or no element in the `Iterable`
 satisfies the predicate condition,
 then the method throws a [StateError][StateError class] exception.
 
-{% alert 'warn' %}
-  `singleWhere()` steps through the whole `Iterable` until the last element,
-  which can cause problems if the `Iterable` is infinite or
-  contains a large collection of elements.
-{% endalert %}
+:::warn
+`singleWhere()` steps through the whole `Iterable` until the last element,
+which can cause problems if the `Iterable` is infinite or
+contains a large collection of elements.
+:::
 
 Your goal is to implement the predicate for `singleWhere()` that
 satisfies the following conditions:

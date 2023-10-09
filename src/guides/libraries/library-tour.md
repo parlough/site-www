@@ -43,10 +43,10 @@ You can find API documentation for all dart:* libraries in the
 [Dart API reference][Dart API] or, if you're using Flutter,
 the [Flutter API reference.][docs.flutter]
 
-{% alert 'info' %}
-  **DartPad tip:** You can play with the code in this page by copying it into a
-  [DartPad.]({{site.dartpad}})
-{% endalert %}
+:::info
+**DartPad tip:** You can play with the code in this page by copying it into a
+[DartPad.]({{site.dartpad}})
+:::
 
 
 ## dart:core - numbers, collections, strings, and more {:#dart-core}
@@ -199,17 +199,17 @@ var codeUnitList = 'Never odd or even'.codeUnits.toList();
 assert(codeUnitList[0] == 78);
 ```
 
-{% alert 'note' %}
-  In many cases, you want to work with
-  Unicode grapheme clusters
-  as opposed to pure code units.
-  These are characters as they are perceived
-  by the user (for example, "🇬🇧" is one
-  user-perceived character but several
-  UTF-16 code units).
-  For this, the Dart team provides the
-  [`characters` package.]({{site.pub-pkg}}/characters)
-{% endalert %}
+:::note
+In many cases, you want to work with
+Unicode grapheme clusters
+as opposed to pure code units.
+These are characters as they are perceived
+by the user (for example, "🇬🇧" is one
+user-perceived character but several
+UTF-16 code units).
+For this, the Dart team provides the
+[`characters` package.]({{site.pub-pkg}}/characters)
+:::
 
 #### Converting to uppercase or lowercase
 
@@ -225,10 +225,10 @@ assert('web apps'.toUpperCase() == 'WEB APPS');
 assert('WEB APPS'.toLowerCase() == 'web apps');
 ```
 
-{% alert 'note' %}
-  These methods don't work for every language. For example, the Turkish
-  alphabet's dotless *I* is converted incorrectly.
-{% endalert %}
+:::note
+These methods don't work for every language. For example, the Turkish
+alphabet's dotless *I* is converted incorrectly.
+:::
 
 
 #### Trimming and empty strings
@@ -337,10 +337,10 @@ methods. Also see the API reference for [StringBuffer,][StringBuffer]
 Dart ships with a core collections API, which includes classes for
 lists, sets, and maps.
 
-{% alert 'tip' %}
-  To practice using APIs that are available to both lists and sets,
-  follow the [Iterable collections codelab](/codelabs/iterables).
-{% endalert %}
+:::tip
+To practice using APIs that are available to both lists and sets,
+follow the [Iterable collections codelab](/codelabs/iterables).
+:::
 
 #### Lists
 
@@ -430,22 +430,22 @@ assert(fruit is String);
 fruits.add(5); // Error: 'int' can't be assigned to 'String'
 ```
 
-{% alert 'note' %}
-  In many cases, you don't
-  need to explicitly specify generic
-  types, because Dart will
-  [infer](/language/type-system#type-inference)
-  them for you.
-  A list like `['Dash', 'Dart']` is understood
-  to be a `List<String>` (read: list of strings).
+:::note
+In many cases, you don't
+need to explicitly specify generic
+types, because Dart will
+[infer](/language/type-system#type-inference)
+them for you.
+A list like `['Dash', 'Dart']` is understood
+to be a `List<String>` (read: list of strings).
 
-  But there are times when you _should_ specify
-  the generic type. Like, for example, when Dart doesn't have
-  anything to infer from: `[]` could be a list of any
-  combination of things.
-  That's often not what you want, so you write `<String>[]`
-  or `<Person>[]` or something similar.
-{% endalert %}
+But there are times when you _should_ specify
+the generic type. Like, for example, when Dart doesn't have
+anything to infer from: `[]` could be a list of any
+combination of things.
+That's often not what you want, so you write `<String>[]`
+or `<Person>[]` or something similar.
+:::
 
 Refer to the [List API reference][List] for a full list of methods.
 
@@ -610,10 +610,10 @@ List, Set, and Map share common functionality found in many collections.
 Some of this common functionality is defined by the Iterable class,
 which List and Set implement.
 
-{% alert 'note' %}
-  Although Map doesn't implement Iterable, you can get Iterables from it using
-  the Map `keys` and `values` properties.
-{% endalert %}
+:::note
+Although Map doesn't implement Iterable, you can get Iterables from it using
+the Map `keys` and `values` properties.
+:::
 
 Use `isEmpty` or `isNotEmpty` to check whether a list, set, or map has items:
 
@@ -658,10 +658,10 @@ var loudTeas = teas.map((tea) => tea.toUpperCase());
 loudTeas.forEach(print);
 ```
 
-{% alert 'note' %}
-  The object returned by `map()` is an Iterable that's *lazily evaluated*: your
-  function isn't called until you ask for an item from the returned object.
-{% endalert %}
+:::note
+The object returned by `map()` is an Iterable that's *lazily evaluated*: your
+function isn't called until you ask for an item from the returned object.
+:::
 
 To force your function to be called immediately on each item, use
 `map().toList()` or `map().toSet()`:
@@ -839,9 +839,12 @@ y2k = DateTime.parse('2000-01-01T00:00:00Z');
 // Create a new DateTime from an existing one, adjusting just some properties:
 var sameTimeLastYear = now.copyWith(year: now.year - 1);
 ```
-{% alert 'warning' %}
-  `DateTime` operations might give unexpected results related to Daylight Savings Time and other non-standard time adjustments.  
-{% endalert %}
+
+:::warning
+`DateTime` operations might give unexpected results related to 
+Daylight Savings Time and other non-standard time adjustments.  
+:::
+
 The `millisecondsSinceEpoch` property of a date returns the number of
 milliseconds since the "Unix epoch"—January 1, 1970, UTC:
 
@@ -878,11 +881,11 @@ var duration = y2001.difference(y2k);
 assert(duration.inDays == 366); // y2k was a leap year.
 ```
 
-{% alert 'warning' %}
-  Using a Duration to shift a DateTime by days can be problematic, due to clock
-  shifts (to daylight saving time, for example). Use UTC dates if you must shift
-  days.
-{% endalert %}
+:::warning
+Using a Duration to shift a DateTime by days can be problematic, due to
+clock shifts (to daylight saving time, for example). 
+Use UTC dates if you must shift days.
+:::
 
 For a full list of methods,
 refer to the API reference for [DateTime][] and [Duration.][Duration]
@@ -926,16 +929,16 @@ also want to override the `==` operator. Objects that are equal (via
 `==`) must have identical hash codes. A hash code doesn't have to be
 unique, but it should be well distributed.
 
-{% alert 'tip' %}
-  To consistently and easily implement the `hashCode` getter,
-  consider using the static hashing methods provided by the `Object` class.
+:::tip
+To consistently and easily implement the `hashCode` getter,
+consider using the static hashing methods provided by the `Object` class.
 
-  To generate a single hash code for multiple properties of an object,
-  you can use [`Object.hash()`][].
-  To generate a hash code for a collection,
-  you can use either [`Object.hashAll()`][] (if element order matters)
-  or [`Object.hashAllUnordered()`][].
-{% endalert %}
+To generate a single hash code for multiple properties of an object,
+you can use [`Object.hash()`][].
+To generate a hash code for a collection,
+you can use either [`Object.hashAll()`][] (if element order matters)
+or [`Object.hashAllUnordered()`][].
+:::
 
 [`Object.hash()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Object/hash.html
 [`Object.hashAll()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/Object/hashAll.html
@@ -1092,9 +1095,9 @@ When a local variable is Finalizable,
 it won't be garbage collected
 until the code block where it is declared has exited.
 
-{% alert 'version-note' %}
-  Support for weak references and finalizers was added in Dart 2.17.
-{% endalert %}
+:::version-note
+Support for weak references and finalizers was added in Dart 2.17.
+:::
 
 ## dart:async - asynchronous programming {:#dart-async}
 
@@ -1105,12 +1108,13 @@ future. A Stream is a way to get a sequence of values, such as events.
 Future, Stream, and more are in the
 dart:async library ([API reference][dart:async]).
 
-{% alert 'note' %}
-  You don't always need to use the Future or Stream APIs directly. The Dart
-  language supports asynchronous coding using keywords such as `async` and
-  `await`. See the [asynchronous programming codelab](/codelabs/async-await) for
-  details.
-{% endalert %}
+:::note
+You don't always need to use the Future or Stream APIs directly. 
+The Dart language supports asynchronous coding using
+keywords such as `async` and `await`. 
+Check out the [asynchronous programming codelab](/codelabs/async-await)
+for details.
+:::
 
 The dart:async library works in both web apps and command-line apps. To
 use it, import dart:async:
@@ -1120,10 +1124,10 @@ use it, import dart:async:
 import 'dart:async';
 ```
 
-{% alert 'tip' %}
+:::tip
   You don't need to import dart:async to use the Future and
   Stream APIs, because dart:core exports those classes.
-{% endalert %}
+:::
 
 ### Future
 
@@ -1179,11 +1183,11 @@ try {
 }
 ```
 
-{% alert 'important' %}
-  Async functions return Futures. If you don't want your function to return a
-  future, then use a different solution. For example, you might call an `async`
-  function from your function.
-{% endalert %}
+:::important
+Async functions return Futures. If you don't want your function to return a
+future, then use a different solution. For example, you might call an `async`
+function from your function.
+:::
 
 For more information on using `await` and related Dart language features,
 see the [asynchronous programming codelab](/codelabs/async-await).
@@ -1222,12 +1226,12 @@ HttpRequest.getString(url).then((String result) {
 The `then().catchError()` pattern is the asynchronous version of
 `try`-`catch`.
 
-{% alert 'important' %}
-  Be sure to invoke `catchError()` on the result of `then()`—not on the result
-  of the original Future. Otherwise, the `catchError()` can handle errors only
-  from the original Future's computation, but not from the handler registered by
-  `then()`.
-{% endalert %}
+:::important
+Be sure to invoke `catchError()` on the result of `then()`—not on the result
+of the original Future. Otherwise, the `catchError()` can handle errors only
+from the original Future's computation, but not from the handler registered by
+`then()`.
+:::
 
 
 #### Chaining multiple asynchronous methods
@@ -1420,13 +1424,13 @@ void main(List<String> arguments) async {
 }
 ```
 
-{% alert 'important' %}
-  Before using `await for`, make sure that it makes the code clearer and that
-  you really do want to wait for all of the stream's results. For example, you
-  usually should **not** use `await for` for DOM event listeners, because the
-  DOM sends endless streams of events. If you use `await for` to register two
-  DOM event listeners in a row, then the second kind of event is never handled.
-{% endalert %}
+:::important
+Before using `await for`, make sure that it makes the code clearer and that
+you really do want to wait for all of the stream's results. For example, you
+usually should **not** use `await for` for DOM event listeners, because the
+DOM sends endless streams of events. If you use `await for` to register two
+DOM event listeners in a row, then the second kind of event is never handled.
+:::
 
 For more information on using `await` and related
 Dart language features, see the
@@ -1583,9 +1587,9 @@ var sinOf30degrees = sin(radians);
 assert((sinOf30degrees - 0.5).abs() < 0.01);
 ```
 
-{% alert 'note' %}
-  These functions use radians, not degrees!
-{% endalert %}
+:::note
+These functions use radians, not degrees!
+:::
 
 
 ### Maximum and minimum
@@ -1632,12 +1636,12 @@ var random = Random();
 random.nextBool(); // true or false
 ```
 
-{% alert 'warning' %}
-  The default implementation of `Random` supplies a stream of pseudorandom bits
-  that are unsuitable for cryptographic purposes.
-  To create a cryptographically secure random number generator,
-  use the [`Random.secure()`][] constructor.
-{% endalert %}
+:::warning
+The default implementation of `Random` supplies a stream of pseudorandom bits
+that are unsuitable for cryptographic purposes.
+To create a cryptographically secure random number generator,
+use the [`Random.secure()`][] constructor.
+:::
 
 ### More information
 

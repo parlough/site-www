@@ -9,9 +9,9 @@ nextpage:
   title: Collections
 ---
 
-{% alert 'version-note' %}
-  Records require a [language version][] of at least 3.0.
-{% endalert %}
+:::version-note
+Records require a [language version][] of at least 3.0.
+:::
 
 Records are an anonymous, immutable, aggregate type. Like other [collection types][], 
 they let you bundle multiple objects into a single object. Unlike other collection 

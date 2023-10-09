@@ -8,12 +8,12 @@ we encourage you to follow the conventions that this page describes.
 They describe how you organize the files and directories within your
 package, and how to name things.
 
-{% alert 'flutter-note' %}
-  Flutter apps can use custom directories for their assets.
-  For details, see
-  [Adding assets and images]({{site.flutter-docs}}/development/ui/assets-and-images)
-  on the [Flutter website.]({{site.flutter-docs}})
-{% endalert %}
+:::flutter-note
+Flutter apps can use custom directories for their assets.
+For details, see
+[Adding assets and images]({{site.flutter-docs}}/development/ui/assets-and-images)
+on the [Flutter website.]({{site.flutter-docs}})
+:::
 
 Here's what a complete package (named `enchilada`)
 that uses every corner of these guidelines
@@ -508,15 +508,15 @@ framework for writing code generation steps.
 When running these build steps, files are cached in `.dart_tool/build/`.
 This helps speed-up future re-runs of the build steps.
 
-{% alert 'warning' %}
+:::warning
   When developing a tool that wants to cache files in `.dart_tool/`,
   ensure the following:
   
-  * You are using a subdirectory named after a package you own
-    (`.dart_tool/<my_tool_package_name>/`)
-  * Your files don't belong under source control, 
-    as `.dart_tool/` is generally listed in `.gitignore`
-{% endalert %}
+* You are using a subdirectory named after a package you own
+  (`.dart_tool/<my_tool_package_name>/`)
+* Your files don't belong under source control, 
+  as `.dart_tool/` is generally listed in `.gitignore`
+:::
 
 
 [Markdown]: {{site.pub-pkg}}/markdown

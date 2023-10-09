@@ -301,10 +301,10 @@ with a value, nor with an error.
 The rule for zones and streams
 is simpler than for futures:
 
-{% alert 'note' %}
-  Transformations and other callbacks execute in the zone
-  where the stream is listened to.
-{% endalert %}
+:::note
+Transformations and other callbacks execute in the zone
+where the stream is listened to.
+:::
 
 This rule follows from the guideline that
 streams should have no side effect until listened to.

@@ -61,6 +61,7 @@ is responsible for a different aspect of the web app.
 | Dart     | Implements the interactivity and dynamic behavior of the web app                             |
 | HTML     | Describes the content of the web app's page (the elements in the document and the structure) |
 | CSS      | Governs the appearance of page elements                                                      |
+
 {: .table}
 
 A Dart program can
@@ -155,14 +156,14 @@ or even insert an entire subtree of nodes.
 4. Select **HTML** (below **Dart**),
    so you can edit HTML and CSS in DartPad.
 
-{% alert 'note' %}
-  These instructions feature DartPad,
-  which hides some HTML boilerplate code.
-  If you want to use any other editor,
-  then we recommend starting with a small Dart web app sample
-  and modifying the non-script tags inside the `<body>` section.
-  [HTML and Dart connections](#connections) shows the full HTML code.
-{% endalert %}
+:::note
+These instructions feature DartPad,
+which hides some HTML boilerplate code.
+If you want to use any other editor,
+then we recommend starting with a small Dart web app sample
+and modifying the non-script tags inside the `<body>` section.
+[HTML and Dart connections](#connections) shows the full HTML code.
+:::
 
 ## Edit the HTML source code {:#create-html}
 
@@ -191,10 +192,10 @@ You don't need surrounding tags such as `<html>` and `<body>`.
 Because DartPad knows where your Dart code is,
 you don't need a `<script>` tag.
 
-{% alert 'info' %}
-  [HTML and Dart connections](#connections) shows the full HTML code
-  that you need to run your web app outside DartPad.
-{% endalert %}
+:::info
+[HTML and Dart connections](#connections) shows the full HTML code
+that you need to run your web app outside DartPad.
+:::
 
 The paragraph tag has the identifier `RipVanWinkle`.
 The Dart code you create in the next step uses this ID
@@ -478,19 +479,20 @@ Here are some examples of CSS selectors:
 | Class         | <code>.<em>classname</em></code> | Matches all items with the class _classname_ |
 | Asterisk      | `*`                              | Matches all elements                         |
 | Attribute     | `input[type="button"]`           | Matches all button input elements            |
+
 {: .table}
 
-{% alert 'tip' %}
-  As you saw,
-  the mini app used a CSS selector,
-  the ID `RipVanWinkle`,
-  even when there was no CSS file.
-  You do not need a CSS file for a Dart program.
-  Nor do you need a CSS file to use CSS selectors.
-  CSS selectors are established in the HTML file
-  and used by the Dart program
-  to select matching elements.
-{% endalert %}
+:::tip
+As you saw,
+the mini app used a CSS selector,
+the ID `RipVanWinkle`,
+even when there was no CSS file.
+You do not need a CSS file for a Dart program.
+Nor do you need a CSS file to use CSS selectors.
+CSS selectors are established in the HTML file
+and used by the Dart program
+to select matching elements.
+:::
 
 Let's look at the CSS code for the mini app.
 The CSS file for the mini app has one CSS rule in it.

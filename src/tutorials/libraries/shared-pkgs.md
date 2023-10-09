@@ -34,13 +34,13 @@ just change the package name when you get to that step.
 This tutorial also describes some of the resources you can expect to find
 in a well-built package.
 
-{% alert 'flutter-note' %}
-  This page doesn't describe the tools you use with Flutter, but the
-  concepts are the same, and you can share packages between
-  your Flutter and web or server-side apps.
-  For more information, see the
-  [Flutter package documentation.]({{site.flutter-docs}}/development/packages-and-plugins/using-packages)
-{% endalert %}
+:::flutter-note
+This page doesn't describe the tools you use with Flutter, but the
+concepts are the same, and you can share packages between
+your Flutter and web or server-side apps.
+For more information, see the
+[Flutter package documentation.]({{site.flutter-docs}}/development/packages-and-plugins/using-packages)
+:::
 
 
 ## About the pubspec.yaml file

@@ -55,8 +55,8 @@ you see that non-nullability is retained at runtime; hence _sound_ null safety.
 The following code sample showcases several Dart language features,
 including libraries, async calls, nullable and non-nullable types,
 arrow syntax, generators, streams, and getters.
-To learn more about the language, take the [Dart language
-tour](/language).
+To learn more about the language, 
+check out the [Dart language tour](/language).
 
 <?code-excerpt "misc/lib/overview_pi.dart"?>
 ```dart:run-dartpad:ga_id-overview
@@ -107,12 +107,12 @@ class Point {
 }
 ```
 
-{% alert 'info' %}
-  This example is running in an embedded [DartPad](/tools/dartpad).
-  You can also
-  <a href="{{site.dartpad}}/bc63d212c3252e44058ff76f34ef5730"
-  target="_blank" rel="noopener">open this example in its own window</a>.
-{% endalert %}
+:::info
+This example is running in an embedded [DartPad](/tools/dartpad).
+You can also
+<a href="{{site.dartpad}}/bc63d212c3252e44058ff76f34ef5730"
+target="_blank" rel="noopener">open this example in its own window</a>.
+:::
 
 
 ## Dart: The libraries {:#libraries}

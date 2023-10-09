@@ -111,13 +111,13 @@ if (const bool.hasEnvironment('DEBUG')) {
 
 ## Specifying environment declarations
 
-{% alert 'warning' %}
-  Dart tools and compilers currently do not
-  consistently handle environment declarations
-  with comma-separated values.
-  To track standardization of this handling,
-  reference [SDK issue 44995][].
-{% endalert %}
+:::warning
+Dart tools and compilers currently do not
+consistently handle environment declarations
+with comma-separated values.
+To track standardization of this handling,
+reference [SDK issue 44995][].
+:::
 
 [SDK issue 44995]: https://github.com/dart-lang/sdk/issues/44995
 

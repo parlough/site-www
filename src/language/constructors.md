@@ -171,10 +171,10 @@ class Employee extends Person {
 }
 ```
 
-{% alert 'warning' %}
-  Arguments to the superclass constructor don't have access to `this`. For
-  example, arguments can call static methods but not instance methods.
-{% endalert %}
+:::warning
+Arguments to the superclass constructor don't have access to `this`. For
+example, arguments can call static methods but not instance methods.
+:::
 
 ### Super parameters
 
@@ -226,12 +226,12 @@ class Vector3d extends Vector2d {
 }
 ```
 
-{% alert 'version-note' %}
-  Using super-initializer parameters 
-  requires a [language version][] of at least 2.17.
-  If you're using an earlier language version,
-  you must manually pass in all super constructor parameters.
-{% endalert %}
+:::version-note
+Using super-initializer parameters 
+requires a [language version][] of at least 2.17.
+If you're using an earlier language version,
+you must manually pass in all super constructor parameters.
+:::
 
 ## Initializer list
 
@@ -250,9 +250,9 @@ Point.fromJson(Map<String, double> json)
 }
 ```
 
-{% alert 'warning' %}
-  The right-hand side of an initializer doesn't have access to `this`.
-{% endalert %}
+:::warning
+The right-hand side of an initializer doesn't have access to `this`.
+:::
 
 During development, you can validate inputs by using `assert` in the
 initializer list.

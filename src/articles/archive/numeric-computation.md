@@ -9,17 +9,17 @@ obsolete: true
 _Written by John Mccutchan <br>
 May 2013 (note added July 2018)_
 
-{% alert 'warning' %}
-  In Dart 2, arbitrary-precision integers were replaced with 64-bit
-  signed, wrapping integers. The smi and mint representations still exist,
-  but overflow now results in wrapping instead of automatic conversion to
-  bigint (`BigInt` objects). The [`BigInt` class][]
-  is now available as a separate type that doesn't implement `int`.
+:::warning
+In Dart 2, arbitrary-precision integers were replaced with 64-bit
+signed, wrapping integers. The smi and mint representations still exist,
+but overflow now results in wrapping instead of automatic conversion to
+bigint (`BigInt` objects). The [`BigInt` class][]
+is now available as a separate type that doesn't implement `int`.
 
-  Continue to avoid `BigInt` when possible. The VM has optimized code for
-  `BigInt` arithmetic and modulus, but it never optimizes `BigInt` objects
-  down to mints or smis that can be handled directly with CPU instructions. 
-{% endalert %}
+Continue to avoid `BigInt` when possible. The VM has optimized code for
+`BigInt` arithmetic and modulus, but it never optimizes `BigInt` objects
+down to mints or smis that can be handled directly with CPU instructions. 
+:::
 
 [`BigInt` class]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/BigInt-class.html
 

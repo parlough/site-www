@@ -483,10 +483,10 @@ keep these facts and concepts in mind:
     With the exception of `null` (if you enable [sound null safety][ns]),
     all objects inherit from the [`Object`][] class.
 
-    {% alert 'version-note' %}
-      [Null safety][ns] was introduced in Dart 2.12.
-      Using null safety requires a [language version][] of at least 2.12.
-    {% endalert %}
+    :::version-note
+    [Null safety][ns] was introduced in Dart 2.12.
+    Using null safety requires a [language version][] of at least 2.12.
+    :::
 
 -   Although Dart is strongly typed, type annotations are optional
     because Dart can infer types. In `var number = 101`, `number`

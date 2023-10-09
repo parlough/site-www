@@ -3,6 +3,7 @@ const markdownIt = require('markdown-it');
 const markdownItDefinitionList = require('markdown-it-deflist');
 const markdownItAnchor = require('markdown-it-anchor');
 const markdownItAttrs = require('markdown-it-attrs');
+const markdownItContainer = require('markdown-it-container');
 const {markdownItTable} = require('markdown-it-table');
 const eleventySass = require('eleventy-sass');
 const htmlParser = require('htmlparser2');
@@ -29,7 +30,8 @@ module.exports = function (eleventyConfig) {
           class: 'heading-link',
         }),
       });
-  // .use(markdownItTable) // TODO(parlough): Tables broken
+  
+  _registerAsides(markdown);
 
   eleventyConfig.on('eleventy.before', async () => {
     const {getHighlighter} = await import('shikiji')
@@ -564,35 +566,32 @@ function createWrapper() {
   return {type: 'element', tagName: 'mark', children: [], properties: {class: 'highlight'}};
 }
 
-function _parseAttributes(attributes) {
-  const results = {};
-
-  const titlePattern = /title:"([^"]+)"/;
-  const titleMatch = titlePattern.exec(attributes);
-  if (titleMatch) {
-    results['title'] = titleMatch[1];
-  }
-
-  const lineNumbersPattern = /lineNumbers(:(\d+))?/;
-  const lineNumbersMatch = lineNumbersPattern.exec(attributes);
-  if (lineNumbersMatch) {
-    results['lineNumbers'] = true;
-    if (lineNumbersMatch.length >= 3) {
-      results['lineNumbersStart'] = lineNumbersMatch[2];
+function _registerAside(markdown, id, text, icon, style) {
+  markdown.use(markdownItContainer, id, {
+    render: function (tokens, index) {
+      if (tokens[index].nesting === 1) {
+        return `<aside class="alert ${style}">
+${icon !== null ? `<i class="material-icons" aria-hidden="true">${icon}</i>` : ''}${text !== null ? ` <strong>${text}</strong>` : ''}
+<div class="alert-content">
+`;
+      } else {
+        return '</div></aside>\n';
+      }
     }
-  }
+  });
+}
 
-  const highlights = [];
+function _registerAsides(markdown) {
+  _registerAside(markdown, 'info', null, 'info', 'alert-info');
+  _registerAside(markdown, 'note', 'Note', 'info', 'alert-info');
+  _registerAside(markdown, 'flutter-note', 'Flutter note', 'smartphone', 'alert-info');
+  _registerAside(markdown, 'version-note', 'Version note', 'merge_type', 'alert-info');
+  _registerAside(markdown, 'tip', 'Tip', 'tips_and_updates', 'alert-success');
+  _registerAside(markdown, 'important', 'Important', 'error', 'alert-warning');
+  _registerAside(markdown, 'warn', null, 'report_problem', 'alert-warning');
+  _registerAside(markdown, 'warning', 'Warning', 'report_problem', 'alert-warning');
 
-  const highlightPattern = /3/;
-  let highlightMatch;
-  while (highlightMatch = highlightPattern.exec(attributes) && highlightMatch) {
-
-  }
-
-  results['highlight'] = highlights;
-
-  return results;
+  _registerAside(markdown, 'secondary', null, null, 'alert-secondary');
 }
 
 function isProduction() {

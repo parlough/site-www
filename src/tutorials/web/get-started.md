@@ -26,9 +26,9 @@ the UI output appears to the right of the code.
 Try editing the source code—perhaps you'd like to add "horses"
 to the list of pets. 
 
-{% alert 'note' %}
-  {% include 'dartpad-embedded-troubleshooting.md' %}
-{% endalert %}
+:::note
+{% include 'dartpad-embedded-troubleshooting.md' %}
+:::
 
 ```dart:run-dartpad:mode-html:ga_id-play_with_a_web_app
 {$ begin main.dart $}
@@ -78,7 +78,7 @@ More information:
 
 ## 2. Install Dart
 
-{% include 'get-sdk.md' %}
+{% render 'get-sdk.md' %}
 
 ## 3. Get CLI tools or an IDE (or both)
 
@@ -197,11 +197,11 @@ and step through your app's Dart code.
 For setup details and a walkthrough, see
 [Debugging Dart Web Apps][].
 
-{% alert 'info' %}
-  **Feeling lost? Don't worry!** This was a whirlwind introduction to Dart and
-  web programming that left out many details. For a gentler approach, try a
-  [low-level HTML tutorial for Dart][].
-{% endalert %}
+:::info
+**Feeling lost? Don't worry!** This was a whirlwind introduction to Dart and
+web programming that left out many details. For a gentler approach, try a
+[low-level HTML tutorial for Dart][].
+:::
 
 
 ## What next?

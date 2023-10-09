@@ -41,9 +41,9 @@ For example, here's the command to analyze the `bin` directory:
 $ dart analyze bin
 ```
 
-{% alert 'version-note' %}
-  Before Dart 2.13, `dart analyze` supported only directory arguments.
-{% endalert %}
+:::version-note
+Before Dart 2.13, `dart analyze` supported only directory arguments.
+:::
 
 To customize the analysis, use an analysis options file
 or special comments in Dart source code,

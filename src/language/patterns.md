@@ -9,9 +9,9 @@ nextpage:
   title: Pattern types
 ---
 
-{% alert 'version-note' %}
-  Patterns require a [language version][] of at least 3.0.
-{% endalert %}
+:::version-note
+Patterns require a [language version][] of at least 3.0.
+:::
 
 Patterns are a syntactic category in the Dart language, like statements and expressions.
 A pattern represents the shape of a set of values that it may match against actual

@@ -97,9 +97,9 @@ enum Vehicle implements Comparable<Vehicle> {
 }
 ```
 
-{% alert 'version-note' %}
-  Enhanced enums require a [language version][] of at least 2.17.
-{% endalert %}
+:::version-note
+Enhanced enums require a [language version][] of at least 2.17.
+:::
 
 ## Using enums
 

@@ -96,11 +96,11 @@ A pubspec can have the following fields:
 
 Pub ignores all other fields.
 
-{% alert 'flutter-note' %}
-  Pubspecs for [Flutter apps]({{site.flutter}}) can have
-  [additional fields]({{site.flutter-docs}}/development/tools/pubspec)
-  for configuring the environment and managing assets.
-{% endalert %}
+:::flutter-note
+Pubspecs for [Flutter apps]({{site.flutter}}) can have
+[additional fields]({{site.flutter-docs}}/development/tools/pubspec)
+for configuring the environment and managing assets.
+:::
 
 If you add a custom field, give it a unique name
 that won't clash with future pubspec fields.
@@ -294,14 +294,14 @@ platforms:
   macos:
 ```
 
-{% alert 'flutter-note' %}
-  Flutter plugins use [plugin declarations][]
-  instead of this field.
-{% endalert %}
+:::flutter-note
+Flutter plugins use [plugin declarations][]
+instead of this field.
+:::
 
-{% alert 'version-note' %}
-  Support for the `platforms` entry was added in Dart 2.16.
-{% endalert %}
+:::version-note
+Support for the `platforms` entry was added in Dart 2.16.
+:::
 
 [publish a package]: /tools/pub/publishing
 [plugin declarations]: {{site.flutter-docs}}/development/packages-and-plugins/developing-packages#plugin-platforms
@@ -368,18 +368,18 @@ false_secrets:
 Starting a `gitignore` pattern with slash (`/`) ensures that
 the pattern is considered relative to the package's root directory.
 
-{% alert 'warn' %}
-  **Don't rely on leak detection.**
-  It uses a limited set of patterns
-  to detect common mistakes.
-  You're responsible for managing your credentials,
-  preventing accidental leaks, and
-  revoking credentials that are accidentally leaked.
-{% endalert %}
+:::warning
+**Don't rely on leak detection.**
+It uses a limited set of patterns
+to detect common mistakes.
+You're responsible for managing your credentials,
+preventing accidental leaks, and
+revoking credentials that are accidentally leaked.
+:::
 
-{% alert 'version-note' %}
-  Dart 2.15 added support for the `false_secrets` field.
-{% endalert %}
+:::version-note
+Dart 2.15 added support for the `false_secrets` field.
+:::
 
 ### Screenshots
 
@@ -458,12 +458,12 @@ and uses the same
 [version constraint](/tools/pub/dependencies#version-constraints) syntax as
 dependencies.
 
-{% alert 'version-note' %}
-  For a package to use a feature introduced after 2.0,
-  its pubspec must have a lower constraint that's at least
-  the version when the feature was introduced.
-  For details, check out [Language versioning][].
-{% endalert %}
+:::version-note
+For a package to use a feature introduced after 2.0,
+its pubspec must have a lower constraint that's at least
+the version when the feature was introduced.
+For details, check out [Language versioning][].
+:::
 
 [Language versioning]: /guides/language/evolution#language-versioning
 
@@ -492,13 +492,13 @@ environment:
 See https://dart.dev/go/sdk-constraint
 ```
 
-{% alert 'version-note' %}
-  Before Dart 2.19, pub disallowed caret syntax in SDK constraints.
-  In earlier versions, provide a complete range,
-  such as `'>=2.12.0 <3.0.0'`.
-  For more information, check out
-  the [Caret syntax](/tools/pub/dependencies#caret-syntax) documentation.
-{% endalert %}
+:::version-note
+Before Dart 2.19, pub disallowed caret syntax in SDK constraints.
+In earlier versions, provide a complete range,
+such as `'>=2.12.0 <3.0.0'`.
+For more information, check out
+the [Caret syntax](/tools/pub/dependencies#caret-syntax) documentation.
+:::
 
 
 #### Flutter SDK constraints

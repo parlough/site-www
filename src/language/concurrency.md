@@ -326,15 +326,15 @@ setting up and managing worker isolates:
 
 [`Isolate.run()`]: {{site.dart-api}}/dev/dart-isolate/Isolate/run.html
 
-{% alert 'flutter-note' %}
-  If you're using Flutter,
-  you can use [Flutter's `compute` function][]
-  instead of `Isolate.run()`.
-  On the [web](#web), the `compute` function falls back
-  to running the specified function on the current event loop.
-  Use `Isolate.run()` when targeting native platforms only,
-  for a more ergonomic API.
-{% endalert %}
+:::flutter-note
+If you're using Flutter,
+you can use [Flutter's `compute` function][]
+instead of `Isolate.run()`.
+On the [web](#web), the `compute` function falls back
+to running the specified function on the current event loop.
+Use `Isolate.run()` when targeting native platforms only,
+for a more ergonomic API.
+:::
 
 [native and non-native platforms]: /overview#platform
 [Flutter's `compute` function]: {{site.flutter-api}}/flutter/foundation/compute.html
@@ -501,9 +501,9 @@ is slower when isolates are in different groups.
 
 [`Isolate.spawnUri()`]: {{site.dart-api}}/{{site.sdkInfo.channel}}/dart-isolate/Isolate/spawnUri.html
 
-{% alert 'flutter-note' %}
-  Flutter doesn't support `Isolate.spawnUri()`.
-{% endalert %}
+:::flutter-note
+Flutter doesn't support `Isolate.spawnUri()`.
+:::
 
 <a id="web"></a>
 ## Concurrency on the web

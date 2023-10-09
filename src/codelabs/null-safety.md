@@ -100,11 +100,11 @@ you assert two conditions to Dart about the expression:
 1. Its value doesn't equal `null`
 2. Dart can assign the value to a non-nullable variable
 
-{% alert 'warn' %}
-  If the expression does equal `null`, **Dart throws an exception at run-time**.
-  This makes the `!` operator _unsafe_.
-  Don't use it unless you have no doubt the expression can't equal `null`.
-{% endalert %}
+:::warn
+If the expression does equal `null`, **Dart throws an exception at run-time**.
+This makes the `!` operator _unsafe_.
+Don't use it unless you have no doubt the expression can't equal `null`.
+:::
 
 ### Exercise: Null assertion
 

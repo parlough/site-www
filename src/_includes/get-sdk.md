@@ -13,26 +13,29 @@ which includes the full Dart SDK.
   <li class="tab-link" data-tab="tab-sdk-install-mac">Mac</li>
 </ul>
 
-<div id="tab-sdk-install-windows" class="tabs__content current" markdown="1">
+<div id="tab-sdk-install-windows" class="tabs__content current">
+
   Use [Chocolatey](https://chocolatey.org) to install a stable release of
   the Dart SDK.
 
-{% alert 'important' %}
+  :::important
   These commands require administrator privileges.
   If you need help on starting an administrator-level command prompt,
   try a search like
   <em><a href="https://www.google.com/search?q=cmd+admin"
   target="blank">cmd admin</a>.</em>
-{% endalert 'important' %}
+  :::
 
-To install the Dart SDK:
+  To install the Dart SDK:
 
   ```bash
   C:\> choco install dart-sdk
   ```
+
 </div>
 
-<div id="tab-sdk-install-linux" class="tabs__content" markdown="1">
+<div id="tab-sdk-install-linux" class="tabs__content">
+
   You can use APT to install the Dart SDK on Linux.
 
   1. Perform the following one-time setup:
@@ -48,9 +51,11 @@ To install the Dart SDK:
      $ sudo apt-get update
      $ sudo apt-get install dart
      ```
+     
 </div>
 
-<div id="tab-sdk-install-mac" class="tabs__content" markdown="1">
+<div id="tab-sdk-install-mac" class="tabs__content">
+
   With [Homebrew,](https://brew.sh/)
   installing Dart is easy.
 
@@ -58,9 +63,10 @@ To install the Dart SDK:
   $ brew tap dart-lang/dart
   $ brew install dart
   ```
+
 </div>
 
-{% alert 'important' %}
+:::important
   For more information, including how to **adjust your `PATH`**, see
   [Get the Dart SDK](/get-dart).
-{% endalert 'important' %}
+:::

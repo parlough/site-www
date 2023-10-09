@@ -35,17 +35,17 @@ Common options include:
       those in the Dart VM when compiled with the development JavaScript compiler.
     {% endalert %}
   * `-O3`: Enables `-O2` optimizations, plus omits implicit type checks.
-    {% alert 'warning' %}
-      Omitting type checks can cause your app to crash due to type errors.
-      Before using `-O3`, **test using `-O2`** to ensure that your app
-      **never** throws a subtype of `Error` (such as `TypeError`).
-    {% endalert %}
+    :::warning
+    Omitting type checks can cause your app to crash due to type errors.
+    Before using `-O3`, **test using `-O2`** to ensure that your app
+    **never** throws a subtype of `Error` (such as `TypeError`).
+    :::
   * `-O4`: Enables more aggressive optimizations than `-O3`,
     but with the same assumptions.
-    {% alert 'warning' %}
-      The `-O4` optimizations are susceptible to variations in input data.
-      Before relying on `-O4`, **test for edge cases in user input**.
-    {% endalert %}
+    :::warning
+    The `-O4` optimizations are susceptible to variations in input data.
+    Before relying on `-O4`, **test for edge cases in user input**.
+    :::
 
 `--no-source-maps`
 : Do not generate a source map file.

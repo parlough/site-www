@@ -609,10 +609,10 @@ class PackageRetrievalException implements Exception {
 }
 ```
 
-{% alert 'flutter-note' %}
-  For another example that covers fetching then displaying data in Flutter,
-  see the [Fetching data from the internet][] Flutter recipe.
-{% endalert %}
+:::flutter-note
+For another example that covers fetching then displaying data in Flutter,
+see the [Fetching data from the internet][] Flutter recipe.
+:::
 
 [web]: /web
 [Flutter]: {{site.flutter}}

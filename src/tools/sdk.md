@@ -11,12 +11,12 @@ then you don't need to separately download the Dart SDK; just [install Flutter.]
 To learn about other tools you can use for Dart development, see
 the [Dart tools](/tools) page.
 
-{% alert 'version-note' %}
-  This site's documentation and examples use
-  {% if site.sdkInfo.channel == 'dev' %} the **dev channel** {% endif -%}
-  version [{{site.sdkInfo.version}}][site SDK version]{:.no-automatic-external}
-  of the **Dart SDK**.
-{% endalert %}
+:::version-note
+This site's documentation and examples use
+{% if site.sdkInfo.channel == 'dev' %} the **dev channel** {% endif -%}
+version [{{site.sdkInfo.version}}][site SDK version]{:.no-automatic-external}
+of the **Dart SDK**.
+:::
 
 {% comment %}
   IMPORTANT: After each release, EDIT src/_data/pkg-vers.json

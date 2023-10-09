@@ -67,13 +67,13 @@ The `path` and `meta` packages aren't the latest versions,
 but are the most current _resolvable_ versions,
 considering all the other dependencies.
 
-{% alert 'tip' %}
-  To see what changed in the new version of a package
-  that's published on [pub.dev,]({{site.pub}})
-  look at the changelog in the package page.
-  For example, you can look at the **Changelog** tabs on the pages for the
-  [`args`][] and [`http`][] packages.
-{% endalert %}
+:::tip
+To see what changed in the new version of a package
+that's published on [pub.dev,]({{site.pub}})
+look at the changelog in the package page.
+For example, you can look at the **Changelog** tabs on the pages for the
+[`args`][] and [`http`][] packages.
+:::
 
 To fix the first dependency (`args`),
 which is listed as upgradable,
@@ -147,10 +147,10 @@ which depends on old versions of `path` and `meta`.
 Once the `terminal_tools` package is updated,
 it should be possible to update this package.
 
-{% alert 'important' %}
-  Test your code to verify that it still works as expected
-  after updating the packages.
-{% endalert %}
+:::important
+Test your code to verify that it still works as expected
+after updating the packages.
+:::
 
 
 ## Output columns
@@ -234,10 +234,10 @@ are at the latest version (`--no-up-to-date`).
 To include up-to-date dependencies, use `--up-to-date`.
 
 
-{% alert 'info' %}
-  *Problems?*
-  See [Troubleshooting Pub](/tools/pub/troubleshoot).
-{% endalert %}
+:::info
+*Problems?*
+See [Troubleshooting Pub](/tools/pub/troubleshoot).
+:::
 
 [`args`]: {{site.pub-pkg}}/args
 [best practices]: /tools/pub/dependencies#best-practices

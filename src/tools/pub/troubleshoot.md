@@ -54,11 +54,11 @@ If you're using PowerShell:
 $ Remove-Item -Path "%APPDATA%\dart\pub-credentials.json"
 ```
 
-{% alert 'version-note' %}
-  In Dart 2.14 or earlier,
-  you should instead delete the `credentials.json` file
-  found in the [`PUB_CACHE`][] folder.
-{% endalert %}
+:::version-note
+In Dart 2.14 or earlier,
+you should instead delete the `credentials.json` file
+found in the [`PUB_CACHE`][] folder.
+:::
 
 [`PUB_CACHE`]: /tools/pub/environment-variables
 

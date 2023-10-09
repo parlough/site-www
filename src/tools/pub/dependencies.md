@@ -93,7 +93,7 @@ dependencies:
 The version constraint is optional but recommended. If no version constraint is
 given, `any` is assumed.
 
-{% alert 'version-note' %}
+:::version-note
 If your package has a [language version][] before 2.15,
 you must use a more verbose `hosted` format:
 
@@ -108,7 +108,7 @@ dependencies:
       [!url: https://some-package-server.com!]
     version: ^1.4.0
 ```
-{% endalert %}
+:::
 
 [language version]: /guides/language/evolution#language-versioning
 
@@ -291,12 +291,12 @@ For example, if you set the version value as `'>=1.2.3 <2.0.0'`,
 this combines the both limitations so the dependency can be any version
 from `1.2.3` to `2.0.0` excluding `2.0.0` itself.
 
-{% alert 'warning' %}
-  If you include the greater than (**>**) character in the version constraint,
-  **quote the entire constraint string**.
-  This prevents YAML from interpreting the character as YAML syntax.
-  For example: never use `>=1.2.3 <2.0.0`. Use `'>=1.2.3 <2.0.0'` or `^1.2.3`.
-{% endalert %}
+:::warning
+If you include the greater than (**>**) character in the version constraint,
+**quote the entire constraint string**.
+This prevents YAML from interpreting the character as YAML syntax.
+For example: never use `>=1.2.3 <2.0.0`. Use `'>=1.2.3 <2.0.0'` or `^1.2.3`.
+:::
 
 ### Caret syntax
 
@@ -398,13 +398,13 @@ dependency_overrides:
   transmogrify: '3.2.1'
 ```
 
-{% alert 'warning' %}
-  Using a dependency override involves some risk. For example,
-  using an override to specify a version outside the range that the
-  package claims to support, or using an override to specify
-  a local copy of a package that has unexpected behaviors,
-  may break your application.
-{% endalert %}
+:::warning
+Using a dependency override involves some risk. For example,
+using an override to specify a version outside the range that the
+package claims to support, or using an override to specify
+a local copy of a package that has unexpected behaviors,
+may break your application.
+:::
 
 Only the dependency overrides in a **package's own pubspec**
 are considered during package resolution. 

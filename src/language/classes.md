@@ -143,12 +143,12 @@ which returns a [`Type`][] object.
 print('The type of a is ${a.runtimeType}');
 ```
 
-{% alert 'warn' %}
-  Use a [type test operator][] rather than `runtimeType`
-  to test an object's type.
-  In production environments, the test `object is Type` is more stable
-  than the test `object.runtimeType == Type`.
-{% endalert %}
+:::warn
+Use a [type test operator][] rather than `runtimeType`
+to test an object's type.
+In production environments, the test `object is Type` is more stable
+than the test `object.runtimeType == Type`.
+:::
 
 Up to here, you've seen how to _use_ classes.
 The rest of this section shows how to _implement_ classes.

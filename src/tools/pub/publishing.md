@@ -393,10 +393,10 @@ description of the fixed bug in `CHANGELOG.md`
 helps users to understand what happened.
 And publishing a newer version is less disruptive to package users.
 
-{% alert 'version-note' %}
-  Package retraction was introduced in Dart 2.15.
-  In pre-2.15 SDKs, the pub version solver ignores the retracted status.
-{% endalert %}
+:::version-note
+Package retraction was introduced in Dart 2.15.
+In pre-2.15 SDKs, the pub version solver ignores the retracted status.
+:::
 
 
 ### How to use a retracted package version

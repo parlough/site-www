@@ -151,14 +151,14 @@ environment:
 
 ## Migrating existing code {:#migrate}
 
-{% alert 'warning' %}
-  Dart 3 removes the `dart migrate` tool.
-  If you need help migrating your code,
-  run the tool with the 2.19 SDK, then upgrade to Dart 3.
+:::warning
+Dart 3 removes the `dart migrate` tool.
+If you need help migrating your code,
+run the tool with the 2.19 SDK, then upgrade to Dart 3.
 
-  You can migrate without the tool, but it involves
-  hand editing code.
-{% endalert %}
+You can migrate without the tool, but it involves
+hand editing code.
+:::
 
 Dart code written without null safety support can be migrated to use null
 safety. We recommend using the `dart migrate` tool, included in the Dart SDK

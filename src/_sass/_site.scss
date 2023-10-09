@@ -616,6 +616,10 @@ thead:has(th:empty) {
     background-color: $gray-dark;
     color: $white-base;
   }
+  
+  .alert-content {
+    margin-top: 0.25rem;
+  }
 }
 
 /* Used for inlined icon markers, usually at the start of a paragraph */

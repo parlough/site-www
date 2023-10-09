@@ -9,13 +9,13 @@ also cover Dart.
 If you find another Dart book that might be helpful,
 [let us know.](https://github.com/dart-lang/site-www/issues)
 
-{% alert 'warning' %}
-  If you find a Dart book not listed on this page,
-  check for publication dates after June 2021.
-  Older books lack coverage of Dart 2 and 3 topics such as
-  strong typing, null safety, FFI, the `dart` command-line utility,
-  and new developer tools.
-{% endalert %}
+:::warning
+If you find a Dart book not listed on this page,
+check for publication dates after June 2021.
+Older books lack coverage of Dart 2 and 3 topics such as
+strong typing, null safety, FFI, the `dart` command-line utility,
+and new developer tools.
+:::
 
 
 {% for book in books-dart %}

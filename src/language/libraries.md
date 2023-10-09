@@ -102,13 +102,13 @@ Here are some cases when you might use deferred loading:
   alternative implementations of an algorithm, for example.
 * To load rarely used functionality, such as optional screens and dialogs.
 
-{% alert 'warn' %}
-  **Only `dart compile js` supports deferred loading.**
-  Flutter and the Dart VM don't support deferred loading.
-  To learn more, see
-  [issue #33118](https://github.com/dart-lang/sdk/issues/33118) and
-  [issue #27776.](https://github.com/dart-lang/sdk/issues/27776)
-{% endalert %}
+:::warn
+**Only `dart compile js` supports deferred loading.**
+Flutter and the Dart VM don't support deferred loading.
+To learn more, see
+[issue #33118](https://github.com/dart-lang/sdk/issues/33118) and
+[issue #27776.](https://github.com/dart-lang/sdk/issues/27776)
+:::
 
 To lazily load a library, you must first
 import it using `deferred as`.

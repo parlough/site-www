@@ -3,12 +3,12 @@ title: Unsound null safety
 description: Mixing language versions lets you migrate to null safety at your own pace, with some of the benefits of null safety.
 ---
 
-{% alert 'version-note' %}
+:::version-note
 Dart 3 and later does not support code without
 null safety or with unsound null safety.
 All code must be soundly null safe.
 To learn more, check out the [Dart 3 sound null safety tracking issue][].
-{% endalert %}
+:::
 
 A Dart program may contain some libraries that
 are [null safe][] and some that aren't.

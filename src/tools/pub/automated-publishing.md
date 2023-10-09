@@ -548,11 +548,11 @@ To learn more, check out how to
 
 1. Save the `key-file.json` file for later use.
 
-{% alert 'warning' %}
-  Treat the `key-file.json` like a password.
-  Anyone who gains access to it can authenticate as the service account
-  and publish your package.
-{% endalert %}
+:::warning
+Treat the `key-file.json` like a password.
+Anyone who gains access to it can authenticate as the service account
+and publish your package.
+:::
 
 #### Publish packages using exported service account keys
 

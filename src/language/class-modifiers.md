@@ -12,10 +12,10 @@ nextpage:
 
 <?code-excerpt replace="/ *\/\/\s+ignore_for_file:[^\n]+\n//g; /(^|\n) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1/g; /(\n[^\n]+) *\/\/\s+ignore: (stable|beta|dev)[^\n]+\n/$1\n/g; /. • (lib|test)\/\w+\.dart:\d+:\d+//g"?>
 
-{% alert 'version-note' %}
-  Class modifiers, besides `abstract`, require
-  a [language version][] of at least 3.0.
-{% endalert %}
+:::version-note
+Class modifiers, besides `abstract`, require
+a [language version][] of at least 3.0.
+:::
 
 Class modifiers control how a class or mixin can be used, both
 [from within its own library](#abstract), and from outside of the library where

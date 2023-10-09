@@ -40,13 +40,13 @@ You can implement many of these [operators as class members][].
 | assignment                              | `=`    `*=`    `/=`    `+=`    `-=`    `&=`    `^=`    <em>etc.</em>                                                                                                                              | Right         |
 {:.table .table-striped}
 
-{% alert 'warning' %}
-  The previous table should only be used as a helpful guide.
-  The notion of operator precedence and associativity
-  is an approximation of the truth found in the language grammar.
-  You can find the authoritative behavior of Dart's operator relationships
-  in the grammar defined in the [Dart language specification][].
-{% endalert %}
+:::warning
+The previous table should only be used as a helpful guide.
+The notion of operator precedence and associativity
+is an approximation of the truth found in the language grammar.
+You can find the authoritative behavior of Dart's operator relationships
+in the grammar defined in the [Dart language specification][].
+:::
 
 When you use operators, you create expressions. Here are some examples
 of operator expressions:
@@ -80,11 +80,11 @@ if ((n % i == 0) && (d % i == 0)) ...
 if (n % i == 0 && d % i == 0) ...
 ```
 
-{% alert 'warning' %}
-  For operators that take two operands, the leftmost operand determines which
-  method is used. For example, if you have a `Vector` object and
-  a `Point` object, then `aVector + aPoint` uses `Vector` addition (`+`).
-{% endalert %}
+:::warning
+For operators that take two operands, the leftmost operand determines which
+method is used. For example, if you have a `Vector` object and
+a `Point` object, then `aVector + aPoint` uses `Vector` addition (`+`).
+:::
 
 
 ## Arithmetic operators
@@ -347,10 +347,10 @@ assert((value >>> 4) == 0x02); // Unsigned shift right
 assert((-value >>> 4) > 0); // Unsigned shift right
 ```
 
-{% alert 'version-note' %}
-  The `>>>` operator (known as _triple-shift_ or _unsigned shift_)
-  requires a [language version][] of at least 2.14.
-{% endalert %}
+:::version-note
+The `>>>` operator (known as _triple-shift_ or _unsigned shift_)
+requires a [language version][] of at least 2.14.
+:::
 
 [Bitwise operations platform differences]: /guides/language/numbers#bitwise-operations
 
@@ -450,9 +450,9 @@ querySelector('#confirm') // Get an object.
   ..scrollIntoView();
 ```
 
-{% alert 'version-note' %}
+:::version-note
   The `?..` syntax requires a [language version][] of at least 2.12.
-{% endalert %}
+:::
 
 The previous code is equivalent to the following:
 

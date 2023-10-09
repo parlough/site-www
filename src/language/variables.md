@@ -174,10 +174,10 @@ void main() {
 }
 ```
 
-{% alert 'warn' %}
-  If you fail to initialize a `late` variable,
-  a runtime error occurs when the variable is used.
-{% endalert %}
+:::warn
+If you fail to initialize a `late` variable,
+a runtime error occurs when the variable is used.
+:::
 
 When you mark a variable as `late` but initialize it at its declaration,
 then the initializer runs the first time the variable is used.
