@@ -23,7 +23,7 @@ restores the editor to its original state.
 
 :::note
 This page uses embedded DartPads to display runnable examples.
-{% include 'dartpads-embedded-troubleshooting.md' %}
+{% render 'dartpads-embedded-troubleshooting.md' %}
 :::
 
 ## String interpolation

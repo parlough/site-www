@@ -205,7 +205,7 @@ as dev dependencies.
 
 ### `--[no-]offline`
 
-{% include 'tools/pub-option-no-offline.md' %}
+{% render 'tools/pub-option-no-offline.md' %}
 
 ### `-n, --dry-run`
 

@@ -23,7 +23,7 @@ prevpage:
 
 :::note
 This page uses embedded DartPads to display runnable examples.
-{% include 'dartpads-embedded-troubleshooting.md' %}
+{% render 'dartpads-embedded-troubleshooting.md' %}
 :::
 
 As you learned in the previous tutorial,

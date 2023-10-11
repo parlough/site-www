@@ -9,7 +9,7 @@ The output—which you specify using a subcommand—can
 either include a [Dart runtime][] or be a _module_
 (also known as a _snapshot_).
 
-{% include 'tools/dart-tool-note.md' %}
+{% render 'tools/dart-tool-note.md' %}
 
 Here's an example of using the `exe` subcommand
 to produce a self-contained executable file (`myapp.exe`):
@@ -172,7 +172,7 @@ see the platform documentation for those operating systems:
 
 The `exe` subcommand has some known limitations:
 
-{% include 'known-issues/compile-ki.md' %}
+{% render 'known-issues/compile-ki.md' %}
 
 ### AOT modules (aot-snapshot) {:#aot-snapshot}
 
@@ -193,7 +193,7 @@ $ dartaotruntime bin/myapp.aot
 
 The `aot-snapshot` subcommand has some known limitations.
 
-{% include 'known-issues/compile-ki.md' %}
+{% render 'known-issues/compile-ki.md' %}
 
 To learn more, see the
 [`dartaotruntime` documentation](/tools/dartaotruntime).
@@ -263,7 +263,7 @@ Dart-to-JavaScript compiler.
   modules for running and debugging during development.
 :::
 
-{% include 'tools/dart-compile-js-options.md' %}
+{% render 'tools/dart-compile-js-options.md' %}
 
 #### Compiling web app example
 

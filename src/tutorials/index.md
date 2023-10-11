@@ -36,11 +36,11 @@ which are fundamental to most Dart programs.
 
 ## Server-side Dart tutorials
 
-{% include 'server-tutorials.md' %}
+{% render 'server-tutorials.md' %}
 
 ## Web apps
 
-{% include 'web-tutorials.md' %}
+{% render 'web-tutorials.md' %}
 
 ## More tutorials
 

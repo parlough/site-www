@@ -27,7 +27,7 @@ Try editing the source code—perhaps you'd like to add "horses"
 to the list of pets. 
 
 :::note
-{% include 'dartpad-embedded-troubleshooting.md' %}
+{% render 'dartpad-embedded-troubleshooting.md' %}
 :::
 
 ```dart:run-dartpad:mode-html:ga_id-play_with_a_web_app

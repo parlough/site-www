@@ -12,6 +12,8 @@
 // Code-prettyprint overrides
 //
 pre {
+  margin-bottom: 1rem;
+  
   .highlight {
     background: #ffe600;
     padding: 2px;
@@ -24,8 +26,6 @@ pre {
       padding: 0;
     }
   }
-  
-  margin-bottom: 0;
   
   &:focus {
     outline: none;
@@ -59,6 +59,10 @@ pre {
   
   &:has(:focus-visible) {
     border-color: #1389FD;
+  }
+  
+  pre {
+    margin-bottom: 0;
   }
 }
 

@@ -4,6 +4,6 @@ description: Tutorials for writing Dart web apps.
 toc: false
 ---
 
-{% include 'web-tutorials.md' %}
+{% render 'web-tutorials.md' %}
 
 For more tutorials, see the [Dart tutorials page](/tutorials).

@@ -26,7 +26,7 @@ this codelab, you should have some knowledge of [basic Dart syntax](/language).
 
 :::note
 This page uses embedded DartPads to display exercises.
-{% include 'dartpads-embedded-troubleshooting.md' %}
+{% render 'dartpads-embedded-troubleshooting.md' %}
 :::
 
 
