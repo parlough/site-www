@@ -21,7 +21,7 @@
             {% else %}
             <h1>{{title }}</h1>
             {% endif -%}
-            {% if show_breadcrumbs -%}
+            {% if show_breadcrumbs == true -%}
               {% include 'breadcrumbs.html' %}
             {% endif -%}
           </div>

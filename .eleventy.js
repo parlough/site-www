@@ -32,6 +32,7 @@ module.exports = function (eleventyConfig) {
       });
   
   _registerAsides(markdown);
+  _registerContainers(markdown);
 
   eleventyConfig.on('eleventy.before', async () => {
     const {getHighlighter} = await import('shikiji')
@@ -146,26 +147,6 @@ module.exports = function (eleventyConfig) {
       toc: builtToc,
       count: count
     };
-  });
-
-  eleventyConfig.addPairedShortcode('WhyLearn', function (content) {
-    const renderedContent = markdown.render(content);
-    return `
-    <div class="mini-toc">
-      <h4 class="no_toc">What you'll learn</h4>
-      ${renderedContent}
-    </div>
-    `;
-  });
-
-  eleventyConfig.addPairedShortcode('WhyLearn', function (content) {
-    const renderedContent = markdown.render(content);
-    return `
-    <div class="mini-toc">
-      <h4 class="no_toc">What you'll learn</h4>
-      ${renderedContent}
-    </div>
-    `;
   });
 
   eleventyConfig.addPlugin(eleventySass, {
@@ -540,6 +521,21 @@ function _registerAsides(markdown) {
   _registerAside(markdown, 'warning', 'Warning', 'report_problem', 'alert-warning');
 
   _registerAside(markdown, 'secondary', null, null, 'alert-secondary');
+}
+
+function _registerContainers(markdown) {
+  markdown.use(markdownItContainer, 'mini-toc', {
+    render: function (tokens, index) {
+      if (tokens[index].nesting === 1) {
+        const header = /\s+(.*)/.exec(tokens[index].info)[1];
+        return `<div class="mini-toc">
+<h4 class="no_toc">${header}</h4>
+`;
+      } else {
+        return '</div>\n';
+      }
+    }
+  });
 }
 
 function isProduction() {

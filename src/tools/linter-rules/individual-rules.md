@@ -4,6 +4,7 @@ pagination:
   size: 1
   alias: lint
   addAllPagesToCollections: true
+  show_breadcrumbs: true
 permalink: "/tools/linter-rules/{{lint.name}}"
 eleventyComputed:
   title: "{{ lint.name }}"

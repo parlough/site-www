@@ -12,12 +12,12 @@ nextpage:
 
 <?code-excerpt path-base="fetch_data"?>
 
-{% WhyLearn %}
-  * The basics of what HTTP requests and URIs are and what they are used for.
-  * Making HTTP requests using `package:http`.
-  * Decoding JSON strings into Dart objects with `dart:convert`.
-  * Converting JSON objects into class-based structures.
-{% endWhyLearn %}
+:::mini-toc What you'll learn
+* The basics of what HTTP requests and URIs are and what they are used for.
+* Making HTTP requests using `package:http`.
+* Decoding JSON strings into Dart objects with `dart:convert`.
+* Converting JSON objects into class-based structures.
+:::
 
 Most applications require some form of communication or
 data retrieval from the internet.
