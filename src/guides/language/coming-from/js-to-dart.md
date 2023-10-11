@@ -992,6 +992,7 @@ are almost identical, as shown in the following table:
 | `x = x + 1` (expression value is `x`)             | `x++`               | `x++`         |
 | `x = x - 1` (expression value is `x - 1`)         | `--x`               | `--x`         |
 | `x = x - 1` (expression value is `x`)             | `x--`               | `x--`         |
+
 {:.table .table-striped}
 
 For example:
@@ -1046,6 +1047,7 @@ work in the same way:
 | Less than                 | `<`                 | `<`           |
 | Greater than or equal to  | `>=`                | `>=`          |
 | Less than or equal to     | `<=`                | `<=`          |
+
 {:.table .table-striped}
 
 The `==` and `!=` JavaScript operators have no equivalent.
@@ -1071,6 +1073,7 @@ different between the two languages:
 | Typecast                            |                     | `x as T`      |
 | True if object has specified type   | `x instanceof T`    | `x is T`      |
 | True if object lacks specified type | `!(x instanceof T)` | `x is! T`     |
+
 {:.table .table-striped}
 
 The result of `obj is T` is true if `obj`
@@ -1111,6 +1114,7 @@ of both languages are identical.
 | Inverts next expression (changes false to true and vice versa) | `!x`                | `!x`          |
 | Logical OR                                                     | `||`                | `||`          |
 | Logical AND                                                    | `&&`                | `&&`          |
+
 {:.table .table-striped}
 
 JavaScript allows any value to be used where you need a Boolean value.
@@ -1142,6 +1146,7 @@ as shown in the following table:
 | Shift left                                            | `<<`                | `<<`          |
 | Shift right                                           | `>>`                | `>>`          |
 | Unsigned shift right                                  | `>>>`               | `>>>`         |
+
 {:.table .table-striped}
 
 For example:
@@ -1217,6 +1222,7 @@ The following table lists these assignment operators:
 | `>>=`    | Right shift assignment          |
 | `&=`     | Bitwise AND assignment          |
 | `|=`     | Bitwise OR assignment           |
+
 {:.table .table-striped}
 
 JavaScript does not support the `~/=` assignment operator.

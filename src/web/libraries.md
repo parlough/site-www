@@ -41,13 +41,13 @@ in addition to mobile, desktop, and embedded device support.
 
 Here are a few packages that are web-specific:
 
-|--------------------+---------------------------------+--------------------------|
 | Library            | Package                         | Notes                    |
 |--------------------|---------------------------------|--------------------------|
 | JavaScript interop | [js][]                          | Support for calling JavaScript libraries from Dart code. More info: [JavaScript interoperability][] |
 | Material Design    | [mdc_web][]                     | Bindings for Material Components for the web. |
 | Mustache templates | [mustache_template][]           | Support for the Mustache templating language. |
 | React              | [react][]                       | Bindings for the ReactJS library. |
+
 {:.table .table-striped}
 
 

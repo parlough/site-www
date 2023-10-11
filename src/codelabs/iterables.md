@@ -972,13 +972,13 @@ which has a constructor that takes a string.
 Another provided function is `isValidEmailAddress()`,
 which tests whether an email address is valid.
 
-<div class="table-wrapper" markdown="1">
-|-----------------------+------------------------------------------+---------------------------------------------------------|
+<div class="table-wrapper">
+
 | Constructor/function  | Type signature                           | Description                                             |
 |-----------------------|------------------------------------------|---------------------------------------------------------|
 | EmailAddress()        | `EmailAddress(String address)`           | Creates an `EmailAddress` for the specified address.    | 
-| isValidEmailAddress() | `bool isValidEmailAddress(EmailAddress)` | Returns `true` if the provided `EmailAddress` is valid. | 
-|-----------------------+------------------------------------------+---------------------------------------------------------|
+| isValidEmailAddress() | `bool isValidEmailAddress(EmailAddress)` | Returns `true` if the provided `EmailAddress` is valid. |
+
 {:.table .table-striped}
 </div>
 

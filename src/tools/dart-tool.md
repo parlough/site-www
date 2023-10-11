@@ -35,7 +35,6 @@ you might use the [`flutter` tool][] instead.
 
 [`flutter` tool]: {{site.flutter-docs}}/reference/flutter-cli
 
-|-----------+-----------------------------------------+-----------------------------------|
 | Command   | Example of use                          | More information                  |
 |-----------|-----------------------------------------|-----------------------------------|
 | `analyze` | `dart analyze [<DIRECTORY|DART_FILE>]`  | Analyzes the project's Dart source code.<br>[Learn more.][analyze] |
@@ -49,6 +48,7 @@ you might use the [`flutter` tool][] instead.
 | `run`     | `dart run <DART_FILE>`                  | Runs a Dart program. <br>Replaces the pre-existing Dart VM command (`dart` with no command).<br>[Learn more.][run] | 
 | `test`    | `dart test [<DIRECTORY|DART_FILE>]`     | Runs tests in this package.<br>Replaces `pub run test`.<br>[Learn more.][test] |
 | _(none)_  | `dart <DART_FILE>`                      | Runs a Dart program; identical to the pre-existing Dart VM command.<br>Prefer [`dart run`][run]. |
+
 {:.table .table-striped .nowrap}
 
 [analyze]: /tools/dart-analyze

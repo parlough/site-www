@@ -45,6 +45,7 @@ The hello_world example has the following files:
 | [hello_library/hello.c]({{hw}}/hello_library/hello.c)               | A C file that imports `hello.h` and defines the `hello_world()` function.                        |
 | [hello_library/hello.def]({{hw}}/hello_library/hello.def)           | A module-definition file which specifies information used when building a DLL.                   |
 | [hello_library/CMakeLists.txt]({{hw}}/hello_library/CMakeLists.txt) | A CMake build file for compiling the C code into a dynamic library.                              |
+
 {:.table .table-striped }
 
 {% comment %}
@@ -188,12 +189,13 @@ while others (or their subtypes) can be instantiated.
 The following native types can be used as markers in type signatures
 and they (or their subtypes) can be instantiated in Dart code:
 
-| **Dart type**                                                                               | **Description**                                                  |
-|---------------------------------------------------------------------------------------------|------------------------------------------------------------------|
+| **Dart type**                                                                     | **Description**                                                  |
+|-----------------------------------------------------------------------------------|------------------------------------------------------------------|
 | [Array]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/Array-class.html)     | A fixed-sized array of items. Supertype of type specific arrays. |
 | [Pointer]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/Pointer-class.html) | Represents a pointer into native C memory.                       |
 | [Struct]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/Struct-class.html)   | The supertype of all FFI struct types.                           |
 | [Union]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/Union-class.html)     | The supertype of all FFI union types.                            |
+
 {:.table .table-striped }
 
 #### Purely marker native types
@@ -202,8 +204,8 @@ The following are platform-agnostic native types
 that are used only as markers in type signatures,
 and can't be instantiated in Dart code:
 
-| **Dart type**                                                                                             | **Description**                                   |
-|-----------------------------------------------------------------------------------------------------------|---------------------------------------------------|
+| **Dart type**                                                                                   | **Description**                                   |
+|-------------------------------------------------------------------------------------------------|---------------------------------------------------|
 | [Bool]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/Bool-class.html)                     | Represents a native bool in C.                    |
 | [Double]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/Double-class.html)                 | Represents a native 64 bit double in C.           |
 | [Float]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/Float-class.html)                   | Represents a native 32 bit float in C.            |
@@ -218,6 +220,7 @@ and can't be instantiated in Dart code:
 | [Uint32]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/Uint32-class.html)                 | Represents a native unsigned 32 bit integer in C. |
 | [Uint64]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/Uint64-class.html)                 | Represents a native unsigned 64 bit integer in C. |
 | [Void]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/Void-class.html)                     | Represents the `void` type in C.                  |
+
 {:.table .table-striped }
 
 There are also many [ABI][] specific marker native types
@@ -225,9 +228,9 @@ that extend [AbiSpecificInteger][].
 Refer to their linked API documentation for more information and
 a guideline on what types they map to on specific platforms:
 
-| **Dart type**                                                                                                 | **Description**                                                 |
-|---------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
-| [AbiSpecificInteger][]                                                                                        | The supertype of all ABI-specific integer types.                |
+| **Dart type**                                                                                       | **Description**                                                 |
+|-----------------------------------------------------------------------------------------------------|-----------------------------------------------------------------|
+| [AbiSpecificInteger][]                                                                              | The supertype of all ABI-specific integer types.                |
 | [Int]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/Int-class.html)                           | Represents the `int` type in C.                                 |
 | [IntPtr]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/IntPtr-class.html)                     | Represents the `intptr_t` type in C.                            |
 | [Long]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/Long-class.html)                         | Represents the `long int` (`long`) type in C.                   |
@@ -242,6 +245,7 @@ a guideline on what types they map to on specific platforms:
 | [UnsignedLongLong]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/UnsignedLongLong-class.html) | Represents the `unsigned long long` type in C.                  |
 | [UnsignedShort]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/UnsignedShort-class.html)       | Represents the `unsigned short` type in C.                      |
 | [WChar]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-ffi/WChar-class.html)                       | Represents the `wchar_t` type in C.                             |
+
 {:.table .table-striped }
 
 

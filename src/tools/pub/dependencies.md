@@ -284,6 +284,7 @@ of the following values:
 |  `>1.2.3` | Versions later than the given version   |    No    |                                                                                                                                                         |
 | `<=1.2.3` | Given version or earlier                |    No    |                                                                                                                                                         |
 |  `<1.2.3` | Versions earlier than the given version |    No    | Use this when you know an upper bound version that _doesn't_ work with your package. This version might be the first to introduce some breaking change. |
+
 {:.table}
 
 You can specify any combination of version values as their ranges intersect.
@@ -312,6 +313,7 @@ or the next minor version for any package version earlier than 1.0.
 |:-------------:|:---------------:|:------------:|:-------------------:|
 | >=1.0         | Next major      | `^1.3.0`     | `'>=1.3.0 <2.0.0'`  |
 | <1.0          | Next minor      | `^0.1.2 `    | `'>=0.1.2 <0.2.0' ` |
+
 {:.table}
 
 The following example shows caret syntax:

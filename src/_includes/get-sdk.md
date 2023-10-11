@@ -39,6 +39,7 @@ which includes the full Dart SDK.
   You can use APT to install the Dart SDK on Linux.
 
   1. Perform the following one-time setup:
+  
      ```bash
      $ sudo apt-get update
      $ sudo apt-get install apt-transport-https
@@ -47,6 +48,7 @@ which includes the full Dart SDK.
      ```
 
   2. Install the Dart SDK:
+  
      ```bash
      $ sudo apt-get update
      $ sudo apt-get install dart
@@ -67,6 +69,6 @@ which includes the full Dart SDK.
 </div>
 
 :::important
-  For more information, including how to **adjust your `PATH`**, see
-  [Get the Dart SDK](/get-dart).
+For more information, including how to **adjust your `PATH`**, see
+[Get the Dart SDK](/get-dart).
 :::

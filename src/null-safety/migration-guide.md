@@ -273,7 +273,6 @@ you can override its proposed edits by inserting temporary hint markers:
 The following table shows the hint markers that you can use
 to change the migration tool's proposed edits.
 
-|------------------+--------------------------------------------------------------------------|
 | Hint marker      | Effect on the migration tool                                             |
 |------------------|--------------------------------------------------------------------------|
 | <code><em>expression</em>&nbsp;/*!*/</code> | Adds a `!` to the migrated code, casting _expression_ to its underlying non-nullable type. |
@@ -282,6 +281,7 @@ to change the migration tool's proposed edits.
 | `/*late*/`       | Marks the variable declaration as `late`, indicating that it has late initialization. |
 | `/*late final*/` | Marks the variable declaration as `late final`, indicating that it has late, one-time initialization. |
 | `/*required*/`   | Marks the parameter as `required`.                                        |
+
 {:.table .table-striped}
 
 A single hint can have ripple effects elsewhere in the code.

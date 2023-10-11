@@ -32,17 +32,23 @@ Equivalent: `new Map<>();`
 
 ## Declaring fields
 
-| `var` | Generic `var` with type inference |
+|         |                                        |
+|---------|----------------------------------------|
+| `var`   | Generic `var` with type inference      |
 | `final` | Same as `var` but cannot be reassigned |
-| `const` | Compile-time constant |
+| `const` | Compile-time constant                  |
+
 {:.table}
 
 
 ## Checking types
 
-| `as` | Typecast |
-| `is` | instanceof |
+|       |             |
+|-------|-------------|
+| `as`  | Typecast    |
+| `is`  | instanceof  |
 | `is!` | !instanceof |
+
 {:.table}
 
 

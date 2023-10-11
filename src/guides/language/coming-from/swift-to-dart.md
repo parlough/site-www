@@ -1170,11 +1170,15 @@ different between the two languages.
 {% assign ckw = '&nbsp;<sup title="contextual keyword" alt="contextual keyword">1</sup>' %}
 {% assign bii = '&nbsp;<sup title="built-in-identifier" alt="built-in-identifier">2</sup>' %}
 {% assign lrw = '&nbsp;<sup title="limited reserved word" alt="limited reserved word">3</sup>' %}
+
 <div class="table-wrapper" markdown="1">
-| **Meaning** | **Dart operator** | **Swift equivalent** |
-| Typecast (description below)  | expr as T  | expr as! T<br>expr as? T |
-| True if the object has the specified type | expr is T | expr is T |
-| True if the object doesn't have the specified type | expr is! T | !(expr is T) |
+
+| **Meaning**                                        | **Dart operator** | **Swift equivalent**     |
+|----------------------------------------------------|-------------------|--------------------------|
+| Typecast (description below)                       | expr as T         | expr as! T<br>expr as? T |
+| True if the object has the specified type          | expr is T         | expr is T                |
+| True if the object doesn't have the specified type | expr is! T        | !(expr is T)             |
+
 {:.table .table-striped .nowrap}
 </div>
 

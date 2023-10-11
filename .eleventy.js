@@ -282,7 +282,7 @@ function _highlight(highlighter, toHtml, toText, content, language, attributeStr
       blockBody,
     ],
     properties: {
-      'class': 'code-block-wrapper'
+      'class': `code-block-wrapper language-${language}`
     }
   };
 

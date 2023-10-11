@@ -132,11 +132,11 @@ $ echo $PATH
 If this directory is missing from your `PATH`,
 locate the file for your platform and add it.
 
-|-------------------+---------------------------|
-|      Platform     |      Cache location       |
-|-------------------|---------------------------|
-| macOS or Linux | `$HOME/.pub-cache/bin`        |
+| Platform                             | Cache location                 |
+|--------------------------------------|--------------------------------|
+| macOS or Linux                       | `$HOME/.pub-cache/bin`         |
 | Windows<sup><strong>*</strong></sup> | `%LOCALAPPDATA%\Pub\Cache\bin` |
+
 {:.table .table-striped}
 
 <sup><strong>*</strong></sup> The exact location of the system cache
