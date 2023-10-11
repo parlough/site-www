@@ -24,10 +24,10 @@ Using embedded DartPad editors, you can test your knowledge by
 completing and running exercises. To get the most out of
 this codelab, you should have some knowledge of [basic Dart syntax](/language).
 
-{% alert 'note' %}
-  This page uses embedded DartPads to display exercises.
-  {% include 'dartpads-embedded-troubleshooting.md' %}
-{% endalert %}
+:::note
+This page uses embedded DartPads to display exercises.
+{% include 'dartpads-embedded-troubleshooting.md' %}
+:::
 
 
 ## Nullable and non-nullable types
@@ -529,14 +529,14 @@ void main() {
 }
 ```
 
-{% alert 'info' %}
-  **Fun fact:**
-  After you add `late` to the declaration of `_cache`,
-  if you move the   `_computeValue` function into the
-  `CachedValueProvider` class, the code still works!
-  Initialization expressions for `late` fields can use instance
-  methods in their initializers.
-{% endalert %}
+:::info
+**Fun fact:**
+After you add `late` to the declaration of `_cache`,
+if you move the   `_computeValue` function into the
+`CachedValueProvider` class, the code still works!
+Initialization expressions for `late` fields can use instance
+methods in their initializers.
+:::
 
 
 ## What's next?

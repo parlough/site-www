@@ -29,15 +29,15 @@ prevpage:
   * Most input and output requires the use of streams.
 </div>
 
-{% alert 'note' %}
-  This tutorial uses the `async` and `await` language features, which rely on
-  the [Future]({{_api}}/dart-async/Future-class.html) and
-  [Stream]({{_api}}/dart-async/Stream-class.html)
-  classes for asynchronous support.
-  To learn more about these features, see the
-  [asynchronous programming codelab](/codelabs/async-await) and the
-  [streams tutorial](/tutorials/language/streams).
-{% endalert %}
+:::note
+This tutorial uses the `async` and `await` language features, which rely on
+the [Future]({{_api}}/dart-async/Future-class.html) and
+[Stream]({{_api}}/dart-async/Stream-class.html)
+classes for asynchronous support.
+To learn more about these features, see the
+[asynchronous programming codelab](/codelabs/async-await) and the
+[streams tutorial](/tutorials/language/streams).
+:::
 
 This tutorial teaches you how to build command-line apps
 and shows you a few small command-line applications.
@@ -50,14 +50,14 @@ command-line arguments, files and directories, and more.
 To run a command-line app in the Dart VM, use `dart run`.
 The `dart` commands are included with the [Dart SDK](/tools/sdk).
 
-{% alert 'important' %}
-  The location of the SDK installation directory
-  (we'll call it _&lt;sdk-install-dir&gt;_) depends on your platform
-  and how you installed the SDK.
-  You can find `dart` in _&lt;sdk-install-dir&gt;_/bin.
-  By putting this directory in your PATH
-  you can refer to the `dart` command by name.
-{% endalert %}
+:::important
+The location of the SDK installation directory
+(we'll call it _&lt;sdk-install-dir&gt;_) depends on your platform
+and how you installed the SDK.
+You can find `dart` in _&lt;sdk-install-dir&gt;_/bin.
+By putting this directory in your PATH
+you can refer to the `dart` command by name.
+:::
 
 Let's run a small program.
 
@@ -123,11 +123,11 @@ with the [`dart create`](/tools/dart-create) command.
 
 4. Open the `bin/dcat.dart` file and copy the preceding code into it.
 
-{% alert 'note' %}
-  To learn more about using packages and organizing your code, see the
-  [package documentation](/guides/packages) and
-  [layout conventions](/tools/pub/package-layout).
-{% endalert %}
+:::note
+To learn more about using packages and organizing your code, see the
+[package documentation](/guides/packages) and
+[layout conventions](/tools/pub/package-layout).
+:::
 
 ### Running dcat
 
@@ -234,9 +234,9 @@ Import the dart:io library as follows:
 import 'dart:io';
 ```
 
-{% alert 'note' %}
-  Web apps (apps that depend on dart:html) can't use the dart:io library.
-{% endalert %}
+:::note
+Web apps (apps that depend on dart:html) can't use the dart:io library.
+:::
 
 ### stdout
 
@@ -530,11 +530,11 @@ instead of setting `exitCode` to 2,
 but `exit()` would quit the program
 and it might not process all of the files on the command line.
 
-{% alert 'info' %}
-  Generally speaking, you're better off using the `exitCode` property,
-  which sets the exit code but allows the program to continue through to its
-  natural completion.
-{% endalert %}
+:::info
+Generally speaking, you're better off using the `exitCode` property,
+which sets the exit code but allows the program to continue through to its
+natural completion.
+:::
 
 Although you can use any number for an exit code,
 by convention, the codes in the table below have the following meanings:
@@ -544,6 +544,7 @@ by convention, the codes in the table below have the following meanings:
 | 0 | Success |
 | 1 | Warnings |
 | 2 | Errors |
+
 {: .table }
 
 ## Summary
@@ -562,6 +563,7 @@ This tutorial described some basic API found in these classes from the dart:io l
 | [stdin]({{ioAPI}}/stdin.html) | The standard input stream |
 | [exitCode]({{ioAPI}}/exitCode.html) | Access and set the exit code |
 | [exit()]({{ioAPI}}/exit.html) | Sets the exit code and quits |
+
 {: .table }
 
 In addition, this tutorial covers two classes that help with command-line arguments:

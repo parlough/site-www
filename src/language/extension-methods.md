@@ -241,10 +241,10 @@ extension on String {
 }
 ```
 
-{% alert 'note' %}
-  You can invoke an unnamed extension's static members
-  only within the extension declaration.
-{% endalert %}
+:::note
+You can invoke an unnamed extension's static members
+only within the extension declaration.
+:::
 
 ## Implementing generic extensions
 

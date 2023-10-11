@@ -30,11 +30,13 @@ Common options include:
   * `-O2`: Enables `-O1` optimizations, plus additional ones
     (such as minification) that respect the language semantics and
     are safe for all programs.
-    {% alert 'note' %}
-      With `-O2`, string representations of types are no longer the same as
-      those in the Dart VM when compiled with the development JavaScript compiler.
-    {% endalert %}
+
+    :::note
+    With `-O2`, string representations of types are no longer the same as
+    those in the Dart VM when compiled with the development JavaScript compiler.
+    :::
   * `-O3`: Enables `-O2` optimizations, plus omits implicit type checks.
+    
     :::warning
     Omitting type checks can cause your app to crash due to type errors.
     Before using `-O3`, **test using `-O2`** to ensure that your app
@@ -42,6 +44,7 @@ Common options include:
     :::
   * `-O4`: Enables more aggressive optimizations than `-O3`,
     but with the same assumptions.
+    
     :::warning
     The `-O4` optimizations are susceptible to variations in input data.
     Before relying on `-O4`, **test for edge cases in user input**.

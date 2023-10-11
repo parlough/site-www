@@ -206,11 +206,11 @@ but other methods come with downsides.
 For example, creating a class is much more verbose, and using other collection
 types like `List` or `Map` loses type safety. 
 
-{% alert 'note' %}
-  Records' multiple-return and heterogeneous-type characteristics enable
-  parallelization of futures of different types, which you can read about in the
-  [Library tour][].
-{% endalert %}
+:::note
+Records' multiple-return and heterogeneous-type characteristics enable
+parallelization of futures of different types, which you can read about in the
+[Library tour][].
+:::
 
 [language version]: /guides/language/evolution#language-versioning
 [collection types]: /language/collections

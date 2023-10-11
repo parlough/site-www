@@ -842,9 +842,9 @@ We published the following articles on the [Dart blog:][Dart blog]
 We also improved the blog navigation,
 adding **announcement** and **archive** tabs, plus a link to dart.dev.
 
-{% alert 'tip' %}
-  All articles in the Dart blog are free to read.
-{% endalert %}
+:::tip
+All articles in the Dart blog are free to read.
+:::
 
 [Dart blog]: https://medium.com/dartlang
 [Exploring collections in Dart]: https://medium.com/dartlang/exploring-collections-in-dart-f66b6a02d0b1

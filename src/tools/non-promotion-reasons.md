@@ -73,12 +73,12 @@ a top-level variable or getter, or `this`.
 (Although promoting `this` would be sound,
 implementing it would be difficult and not very useful.)
 
-{% alert 'tip' %}
-  When creating a local variable to hold a field's value,
-  **make the variable `final`**.
-  That way, you can't accidentally update the local variable
-  when you intend to update the field.
-{% endalert %}
+:::tip
+When creating a local variable to hold a field's value,
+**make the variable `final`**.
+That way, you can't accidentally update the local variable
+when you intend to update the field.
+:::
 
 
 ## Other causes and workarounds
@@ -92,23 +92,23 @@ one or more of the following:
 * Add an explicit null check.
 * Use `!` or `as` if you're sure an expression can't be null.
 
-{% alert 'note' %}
-  You can work around all of these non-promotion examples by adding
-  a _redundant check_—code that confirms a
-  condition that's already been checked.
-  If the promotion that's failing is a null check, use `!`;
-  if it's a type check, you can use `as`.
+:::note
+You can work around all of these non-promotion examples by adding
+a _redundant check_—code that confirms a
+condition that's already been checked.
+If the promotion that's failing is a null check, use `!`;
+if it's a type check, you can use `as`.
 
-  Redundant checks are an easy but error-prone solution
-  to type promotion failures.
-  Because they overrule the compiler,
-  they can lead to mistakes in a way that other solutions don't.
+Redundant checks are an easy but error-prone solution
+to type promotion failures.
+Because they overrule the compiler,
+they can lead to mistakes in a way that other solutions don't.
 
-  It's up to you whether to do the extra work to get types to promote 
-  (giving you confidence that the code is correct)
-  or to do a redundant check
-  (which might introduce a bug if your reasoning is wrong).
-{% endalert %}
+It's up to you whether to do the extra work to get types to promote 
+(giving you confidence that the code is correct)
+or to do a redundant check
+(which might introduce a bug if your reasoning is wrong).
+:::
 
 
 ### Possibly written after promotion {:#write}

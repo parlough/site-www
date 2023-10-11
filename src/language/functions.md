@@ -48,11 +48,11 @@ The <code>=> <em>expr</em></code> syntax is a shorthand for
 <code>{ return <em>expr</em>; }</code>. The `=>` notation
 is sometimes referred to as _arrow_ syntax.
 
-{% alert 'note' %}
-  Only an *expression*—not a *statement*—can appear between the arrow (=\>) and
-  the semicolon (;). For example, you can't put an [if statement][]
-  there, but you can use a [conditional expression][].
-{% endalert %}
+:::note
+Only an *expression*—not a *statement*—can appear between the arrow (=\>) and
+the semicolon (;). For example, you can't put an [if statement][]
+there, but you can use a [conditional expression][].
+:::
 
 ## Parameters
 
@@ -60,11 +60,11 @@ A function can have any number of *required positional* parameters. These can be
 followed either by *named* parameters or by *optional positional* parameters
 (but not both).
 
-{% alert 'note' %}
-  Some APIs—notably [Flutter][] widget constructors—use only named
-  parameters, even for parameters that are mandatory. See the next section for
-  details.
-{% endalert %}
+:::note
+Some APIs—notably [Flutter][] widget constructors—use only named
+parameters, even for parameters that are mandatory. See the next section for
+details.
+:::
 
 You can use [trailing commas][] when you pass arguments to a function
 or when you define function parameters.
@@ -127,15 +127,14 @@ If someone tries to create a `Scrollbar`
 without specifying the `child` argument,
 then the analyzer reports an issue.
 
-{% alert 'note' %}
-  A parameter marked as `required`
-  can still be nullable:
+:::note
+A parameter marked as `required` can still be nullable:
 
-  <?code-excerpt "misc/lib/language_tour/functions.dart (required-named-parameters-nullable)" replace="/Widget\?/[!$&!]/g; /ScrollbarTwo/Scrollbar/g;"?>
-  ```dart
-  const Scrollbar({super.key, required [!Widget?!] child});
-  ```
-{% endalert %}
+<?code-excerpt "misc/lib/language_tour/functions.dart (required-named-parameters-nullable)" replace="/Widget\?/[!$&!]/g; /ScrollbarTwo/Scrollbar/g;"?>
+```dart
+const Scrollbar({super.key, required [!Widget?!] child});
+```
+:::
 
 You might want to place positional arguments first,
 but Dart doesn't require it.

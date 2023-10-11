@@ -267,10 +267,10 @@ with the same name. If you don't specify this flag,
 the preexisting executable will not be replaced.
 
 
-{% alert 'info' %}
-  *Problems?*
-  See [Troubleshooting Pub](/tools/pub/troubleshoot).
-{% endalert %}
+:::info
+*Problems?*
+See [Troubleshooting Pub](/tools/pub/troubleshoot).
+:::
 
 [system cache]: /tools/pub/glossary#system-cache
 [webdev]: /tools/webdev

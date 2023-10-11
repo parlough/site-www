@@ -31,10 +31,10 @@ This codelab covers the following material:
 
 Estimated time to complete this codelab: 60 minutes.
 
-{% alert 'note' %}
-  This page uses embedded DartPads to display examples and exercises.
-  {% include 'dartpads-embedded-troubleshooting.md' %}
-{% endalert %}
+:::note
+This page uses embedded DartPads to display examples and exercises.
+{% include 'dartpads-embedded-troubleshooting.md' %}
+:::
 
 ## What are collections?
 
@@ -128,21 +128,21 @@ void main() {
 }
 ```
 
-{% alert 'info' %}
-  Behind the scenes, the `for-in` loop uses an _iterator._
-  You rarely see the [Iterator API][iterator class] used directly, however,
-  because `for-in` is easier to read and understand,
-  and is less prone to errors.
-{% endalert %}
+:::info
+Behind the scenes, the `for-in` loop uses an _iterator._
+You rarely see the [Iterator API][iterator class] used directly, however,
+because `for-in` is easier to read and understand,
+and is less prone to errors.
+:::
 
-{% alert 'secondary' %}
-  **Key terms:**
-  * **Iterable**: The Dart [Iterable][iterable class] class.
-  * **Iterator**: An object used by `for-in` to read elements from
-    an `Iterable` object.
-  * **`for-in` loop**: An easy way to sequentially read elements from
-    an `Iterable`.
-{% endalert %}
+:::secondary
+**Key terms:**
+* **Iterable**: The Dart [Iterable][iterable class] class.
+* **Iterator**: An object used by `for-in` to read elements from
+  an `Iterable` object.
+* **`for-in` loop**: An easy way to sequentially read elements from
+  an `Iterable`.
+:::
 
 ### Example: Using first and last
 
@@ -256,27 +256,27 @@ which provides an alternative when an element isn't found.
 In this case, the text `'None!'` is returned because
 no element satisfies the provided condition.
 
-{% alert 'note' %}
-  If no element satisfies the test predicate and
-  the `orElse` parameter isn't provided,
-  then `firstWhere()` throws a [StateError.][StateError class]
-{% endalert %}
+:::note
+If no element satisfies the test predicate and
+the `orElse` parameter isn't provided,
+then `firstWhere()` throws a [StateError.][StateError class]
+:::
 
-{% alert 'secondary' %}
-  **Quick review:**
-  * The elements of an `Iterable` must be accessed sequentially.
-  * The easiest way to iterate through all the elements is
-    using a `for-in` loop.
-  * You can use the `first` and `last` getters to get
-    the first and last elements.
-  * You can also find the first element that
-    satisfies a condition with `firstWhere()`.
-  * You can write test predicates as expressions, blocks, or functions.
+:::secondary
+**Quick review:**
+* The elements of an `Iterable` must be accessed sequentially.
+* The easiest way to iterate through all the elements is
+  using a `for-in` loop.
+* You can use the `first` and `last` getters to get
+  the first and last elements.
+* You can also find the first element that
+  satisfies a condition with `firstWhere()`.
+* You can write test predicates as expressions, blocks, or functions.
 
   **Key terms:**
-  * **Predicate:**
-    A function that returns `true` when a certain condition is satisfied.
-{% endalert %}
+* **Predicate:**
+  A function that returns `true` when a certain condition is satisfied.
+:::
 
 ### Exercise: Practice writing a test predicate
 
@@ -593,15 +593,15 @@ Use the methods `any()` and `every()` to compare the user age.
 {$ end hint.txt $}
 ```
 
-{% alert 'secondary' %}
-  **Quick review:**
-  * Although you can use `for-in` loops to check conditions,
-    there are better ways to do that.
-  * The method `any()` enables you to check whether
-    any element satisfies a condition.
-  * The method `every()` enables you to verify that
-    all elements satisfy a condition.
-{% endalert %}
+:::secondary
+**Quick review:**
+* Although you can use `for-in` loops to check conditions,
+  there are better ways to do that.
+* The method `any()` enables you to check whether
+  any element satisfies a condition.
+* The method `every()` enables you to verify that
+  all elements satisfy a condition.
+:::
 
 ## Filtering
 
@@ -669,12 +669,12 @@ Later in the example, `where()` is used again to
 find all numbers larger than 1000.
 Because there are none, the result is an empty `Iterable`.
 
-{% alert 'note' %}
-  If no element satisfies the predicate in `where()`,
-  then the method returns an empty `Iterable`.
-  Unlike `singleWhere()` or `firstWhere()`,
-  `where()` doesn't throw a [StateError][StateError class] exception.
-{% endalert %}
+:::note
+If no element satisfies the predicate in `where()`,
+then the method returns an empty `Iterable`.
+Unlike `singleWhere()` or `firstWhere()`,
+`where()` doesn't throw a [StateError][StateError class] exception.
+:::
 
 ### Example: Using takeWhile
 
@@ -821,14 +821,14 @@ Use the `where()` method to implement the filters.
 {$ end hint.txt $}
 ```
 
-{% alert 'secondary' %}
-  **Quick review:**
-  * Filter the elements of an `Iterable` with `where()`.
-  * The output of `where()` is another `Iterable`.
-  * Use `takeWhile()` and `skipWhile()` to obtain elements until or after
-    a condition is met.
-  * The output of these methods can be an empty `Iterable`.
-{% endalert %} 
+:::secondary
+**Quick review:**
+* Filter the elements of an `Iterable` with `where()`.
+* The output of `where()` is another `Iterable`.
+* Use `takeWhile()` and `skipWhile()` to obtain elements until or after
+  a condition is met.
+* The output of these methods can be an empty `Iterable`.
+:::
 
 ## Mapping
 
@@ -853,10 +853,10 @@ as you can see in the following example:
 Iterable<String> output = numbers.map((number) => number.toString());
 ```
 
-{% alert 'note' %}
-  `map()` returns a _lazy_ `Iterable`, meaning that the supplied function
-  is called only when the elements are iterated.
-{% endalert %}
+:::note
+`map()` returns a _lazy_ `Iterable`, meaning that the supplied function
+is called only when the elements are iterated.
+:::
 
 ### Example: Using map to change elements
 
@@ -955,12 +955,13 @@ Use `map()` to create a String with the values of `user.name` and `user.age`.
 {$ end hint.txt $}
 ```
 
-{% alert 'secondary' %}
-  **Quick review:**
-  * `map()` applies a function to all the elements of an `Iterable`.
-  * The output of `map()` is another `Iterable`.
-  * The function isn't evaluated until the `Iterable` is iterated.
-{% endalert %} 
+:::secondary
+**Quick review:**
+
+* `map()` applies a function to all the elements of an `Iterable`.
+* The output of `map()` is another `Iterable`.
+* The function isn't evaluated until the `Iterable` is iterated.
+:::
 
 ## Exercise: Putting it all together
 

@@ -108,12 +108,12 @@ $ webdev serve
 The first `webdev serve` compiles slow. After the first compile, it caches
 assets on disk. This makes later builds compile faster.
 
-{% alert 'note' %}
-  The development compiler supports **only Chrome.**
-  To view your app in another browser,
-  use the production compiler.
-  For a list of supported browsers, [see the FAQ][supported browsers].
-{% endalert %}
+:::note
+The development compiler supports **only Chrome.**
+To view your app in another browser,
+use the production compiler.
+For a list of supported browsers, [see the FAQ][supported browsers].
+:::
 
 To enable [Dart DevTools][], add the `--debug` flag:
 
@@ -163,10 +163,10 @@ Use the `build_runner test` command to run your app's component tests:
 $ dart run build_runner test [build_runner options] -- -p <platform> [test options]
 ```
 
-{% alert 'tip' %}
-  If the command fails to load the test file,
-  make sure that your app's `pubspec` has a `dev_dependency` on `build_test`.
-{% endalert %}
+:::tip
+If the command fails to load the test file,
+make sure that your app's `pubspec` has a `dev_dependency` on `build_test`.
+:::
 
 For example, here's how to run all Chrome platform tests:
 

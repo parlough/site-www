@@ -233,13 +233,13 @@ you will discover that any `package:` imports it contains don't
 resolve. Instead, your entrypoints should go in the appropriate
 [entrypoint directory](/tools/pub/glossary#entrypoint-directory).
 
-{% alert 'info' %}
-  **Tip for web apps:**
-  For the best performance when developing web apps,
-  put [implementation files](#implementation-files) under `/lib/src`,
-  instead of elsewhere under `/lib`.
-  Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
-{% endalert %}
+:::info
+**Tip for web apps:**
+For the best performance when developing web apps,
+put [implementation files](#implementation-files) under `/lib/src`,
+instead of elsewhere under `/lib`.
+Also, avoid imports of <code>package:<em>package_name</em>/src/...</code>.
+:::
 
 For more information on packages, see
 [Creating packages](/guides/libraries/create-packages).
@@ -381,7 +381,7 @@ like) and have `_test` at the end of their file names.
 
 Typically, these use the [test]({{site.pub-pkg}}/test) package.
 
-```nocode
+```plaintext
 enchilada/
   integration_test/
     app_test.dart
@@ -486,10 +486,10 @@ If you have any of these, place them in a directory called `tool`.
 
 ## Project-specific caching for tools
 
-{% alert 'info' %}
-  Do not check the `.dart_tool/` directory into source control.
-  Instead, keep `.dart_tool/` in `.gitignore`.
-{% endalert %}
+:::info
+Do not check the `.dart_tool/` directory into source control.
+Instead, keep `.dart_tool/` in `.gitignore`.
+:::
 
 The `.dart_tool/` directory is created when you run `dart pub get`
 and might be deleted at any time. Various tools use this directory

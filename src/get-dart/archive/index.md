@@ -53,9 +53,9 @@ and they're likely to contain bugs.
 Main channel builds are suitable only for
 experimental development use, not for production use.
 
-{% alert 'note' %}
-  Main channel builds are unsigned.
-{% endalert %}
+:::note
+Main channel builds are unsigned.
+:::
 
 To download a main channel build, use a
 [main channel URL](#main-channel-url-scheme).
@@ -97,6 +97,6 @@ Example:
 https://storage.googleapis.com/dart-archive/channels/be/raw/latest/sdk/dartsdk-windows-x64-release.zip
 ```
 
-{% alert 'note' %}
-  Main channel builds are unsigned.
-{% endalert %}
+:::note
+Main channel builds are unsigned.
+:::

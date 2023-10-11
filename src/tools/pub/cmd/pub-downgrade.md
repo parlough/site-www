@@ -112,7 +112,7 @@ For options that apply to all pub commands, see
 Reports what dependencies would change but doesn't change any.
 
 
-{% alert 'info' %}
-  *Problems?*
-  See [Troubleshooting Pub](/tools/pub/troubleshoot).
-{% endalert %}
+:::info
+*Problems?*
+See [Troubleshooting Pub](/tools/pub/troubleshoot).
+:::

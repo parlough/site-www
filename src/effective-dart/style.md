@@ -203,17 +203,17 @@ as in the following cases:
 * When generating Dart code that's parallel to Java code—for example, 
   in enumerated types generated from [protobufs.][]
 
-{% alert 'note' %}
-  We initially used Java's `SCREAMING_CAPS` style for constants. We
-  changed for a few reasons:
+:::note
+We initially used Java's `SCREAMING_CAPS` style for constants. We
+changed for a few reasons:
 
-  *   `SCREAMING_CAPS` looks bad for many cases, particularly enum values for
-      things like CSS colors.
-  *   Constants are often changed to final non-const variables, which would
-      necessitate a name change.
-  *   The `values` property automatically defined on an enum type is const and
-      lowercase.
-{% endalert %}
+*   `SCREAMING_CAPS` looks bad for many cases, particularly enum values for
+    things like CSS colors.
+*   Constants are often changed to final non-const variables, which would
+    necessitate a name change.
+*   The `values` property automatically defined on an enum type is const and
+    lowercase.
+:::
 
 [protobufs.]: {{site.pub-pkg}}/protobuf
 

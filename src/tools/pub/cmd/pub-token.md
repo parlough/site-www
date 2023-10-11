@@ -41,13 +41,13 @@ Enter secret token: <Type token on stdin>
  authenticated using the secret token.
 ```
 
-{% alert 'note' %}
-  The token is input on stdin rather than as a command line option to avoid it
-  ending up in the shell history such as `~/.bash_history`.
-{% endalert %}
+:::note
+The token is input on stdin rather than as a command line option to avoid it
+ending up in the shell history such as `~/.bash_history`.
+:::
 
 In a scripting situation you can store the secret in an environment variable and
- use `dart pub token add <hosted-url> --env-var <ENV_VAR_NAME>`.
+use `dart pub token add <hosted-url> --env-var <ENV_VAR_NAME>`.
 
 ```bash
 $ dart pub token add https://other-package-repo.com/ --env-var TOKEN_VAR
@@ -94,7 +94,7 @@ pub-tokens.json is deleted.
 Removed 1 secret tokens.
 ```
 
-{% alert 'info' %}
-  *Problems?*
-  See [Troubleshooting Pub](/tools/pub/troubleshoot).
-{% endalert %}
+:::info
+*Problems?*
+See [Troubleshooting Pub](/tools/pub/troubleshoot).
+:::

@@ -39,7 +39,7 @@ By default, pub precompiles executables
 in immediate dependencies (`--precompile`).
 To prevent precompilation, use `--no-precompile`.
 
-{% alert 'info' %}
-  *Problems?*
-  See [Troubleshooting Pub](/tools/pub/troubleshoot).
-{% endalert %}
+:::info
+*Problems?*
+See [Troubleshooting Pub](/tools/pub/troubleshoot).
+:::

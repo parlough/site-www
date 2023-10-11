@@ -14,16 +14,16 @@ Enumerated types, often called _enumerations_ or _enums_,
 are a special kind of class used to represent
 a fixed number of constant values.
 
-{% alert 'note' %}
-  All enums automatically extend the [`Enum`][] class.
-  They are also sealed,
-  meaning they cannot be subclassed, implemented, mixed in,
-  or otherwise explicitly instantiated.
+:::note
+All enums automatically extend the [`Enum`][] class.
+They are also sealed,
+meaning they cannot be subclassed, implemented, mixed in,
+or otherwise explicitly instantiated.
 
-  Abstract classes and mixins can explicitly implement or extend `Enum`,
-  but unless they are then implemented by or mixed into an enum declaration,
-  no objects can actually implement the type of that class or mixin.
-{% endalert %}
+Abstract classes and mixins can explicitly implement or extend `Enum`,
+but unless they are then implemented by or mixed into an enum declaration,
+no objects can actually implement the type of that class or mixin.
+:::
 
 ## Declaring simple enums
 
@@ -36,10 +36,10 @@ list the values you want to be enumerated:
 enum Color { red, green, blue }
 ```
 
-{% alert 'tip' %}
-  You can also use [trailing commas][] when declaring an enumerated type
-  to help prevent copy-paste errors.
-{% endalert %}
+:::tip
+You can also use [trailing commas][] when declaring an enumerated type
+to help prevent copy-paste errors.
+:::
 
 ## Declaring enhanced enums
 

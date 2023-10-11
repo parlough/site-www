@@ -38,11 +38,11 @@ not apply to other declarations like `enum`, `typedef`, or `extension`.
 When deciding whether to use class modifiers, consider the intended uses of the
 class, and what behaviors the class needs to be able to rely on.
 
-{% alert 'note' %}
-  If you maintain a library, read the
-  [Class modifiers for API maintainers](/language/class-modifiers-for-apis)
-  page for guidance on how to navigate these changes for your libraries. 
-{% endalert %}
+:::note
+If you maintain a library, read the
+[Class modifiers for API maintainers](/language/class-modifiers-for-apis)
+page for guidance on how to navigate these changes for your libraries. 
+:::
 
 ## No modifier
 

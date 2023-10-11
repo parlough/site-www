@@ -292,11 +292,11 @@ void main() {
 
 Static variables aren't initialized until they're used.
 
-{% alert 'note' %}
-  This page follows the [style guide
-  recommendation](/effective-dart/style#identifiers)
-  of preferring `lowerCamelCase` for constant names.
-{% endalert %}
+:::note
+This page follows the
+[style guide recommendation](/effective-dart/style#identifiers)
+of preferring `lowerCamelCase` for constant names.
+:::
 
 ### Static methods
 
@@ -330,10 +330,10 @@ void main() {
 }
 ```
 
-{% alert 'note' %}
-  Consider using top-level functions, instead of static methods, for
-  common or widely used utilities and functionality.
-{% endalert %}
+:::note
+Consider using top-level functions, instead of static methods, for
+common or widely used utilities and functionality.
+:::
 
 You can use static methods as compile-time constants. For example, you
 can pass a static method as a parameter to a constant constructor.

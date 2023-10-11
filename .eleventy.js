@@ -168,58 +168,6 @@ module.exports = function (eleventyConfig) {
     `;
   });
 
-  eleventyConfig.addPairedShortcode('alert', function (content, type) {
-    const renderedContent = markdown.renderInline(content);
-    switch (type) {
-      case 'important':
-        return `
-<aside class="alert alert-warning">
-<i class="material-icons" aria-hidden="true">error</i> <strong>Important:</strong> ${renderedContent}
-</aside>`;
-      case 'note':
-        return `
-<aside class="alert alert-info">
-<i class="material-icons" aria-hidden="true">info</i>${renderedContent}
-</aside>`;
-      case 'info':
-        return `
-<aside class="alert alert-info">
-<i class="material-icons" aria-hidden="true">info</i> <strong>Note:</strong> ${renderedContent}
-</aside>`;
-      case 'flutter-note':
-        return `
-<aside class="alert alert-info">
-<img src="/assets/img/shared/flutter/icon/64.png" width="24" alt="Flutter logo"> <strong>Flutter note</strong>
-${renderedContent}
-</aside>`;
-      case 'version-note':
-        return `
-<aside class="alert alert-info">
-<i class="material-icons" aria-hidden="true">merge_type</i> <strong>Version note:</strong> ${renderedContent}
-</aside>`;
-      case 'secondary':
-        return `
-<aside class="alert alert-secondary">${renderedContent}
-</aside>`;
-      case 'tip':
-        return `
-<aside class="alert alert-success">
-<i class="material-icons" aria-hidden="true">tips_and_updates</i> <strong>Tip:</strong> ${renderedContent}
-</aside>`;
-      case 'warn':
-        return `
-<aside class="alert alert-warning">
-<i class="material-icons" aria-hidden="true">report_problem</i>${renderedContent}
-</aside>`;
-      case 'warning':
-        return `
-<aside class="alert alert-warning">
-<i class="material-icons" aria-hidden="true">report_problem</i> <strong>Warning:</strong> ${renderedContent}
-</aside>`;
-    }
-    throw new Error(`${type} is not supported by the alert shortcode!`);
-  });
-
   eleventyConfig.addPlugin(eleventySass, {
     sass: {
       style: isProduction() ? 'compressed' : 'expanded',

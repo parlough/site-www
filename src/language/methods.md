@@ -47,11 +47,11 @@ Dart allows you to define operators with the following names:
 `-`  | `%`  | `>>` | `==`
 {:.table}
 
-{% alert 'note' %}
-  You may have noticed that some [operators][], like `!=`, aren't in
-  the list of names. That's because they're just syntactic sugar. For example,
-  the expression `e1 != e2` is syntactic sugar for `!(e1 == e2)`.
-{% endalert %}
+:::note
+You may have noticed that some [operators][], like `!=`, aren't in
+the list of names. That's because they're just syntactic sugar. For example,
+the expression `e1 != e2` is syntactic sugar for `!(e1 == e2)`.
+:::
 
 {%- comment %}
   Internal note from https://github.com/dart-lang/site-www/pull/2691#discussion_r506184100:
@@ -124,12 +124,12 @@ void main() {
 With getters and setters, you can start with instance variables, later
 wrapping them with methods, all without changing client code.
 
-{% alert 'note' %}
-  Operators such as increment (++) work in the expected way, whether or
-  not a getter is explicitly defined. To avoid any unexpected side
-  effects, the operator calls the getter exactly once, saving its value
-  in a temporary variable.
-{% endalert %}
+:::note
+Operators such as increment (++) work in the expected way, whether or
+not a getter is explicitly defined. To avoid any unexpected side
+effects, the operator calls the getter exactly once, saving its value
+in a temporary variable.
+:::
 
 ## Abstract methods
 

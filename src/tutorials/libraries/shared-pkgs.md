@@ -277,10 +277,10 @@ use the `package:` prefix.
    docs]({{site.pub-api}}/vector_math/latest),
    which you can find from the pub.dev site entry.
 
-   {% alert 'note' %}
-     You specify a filename, not a library name,
-     when you import a library from a package.
-   {% endalert %}
+   :::note
+   You specify a filename, not a library name,
+   when you import a library from a package.
+   :::
 
 
 ## Other resources

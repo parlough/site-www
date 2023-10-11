@@ -46,11 +46,11 @@ quickly scan the README when deciding whether to try your package.
 A good README catches the reader's attention and
 shows that your package is worth trying.
 
-{% alert 'note' %}
-  The package README is used in multiple ways.
-  For example, its content appears not only in the package page on pub.dev,
-  but also in [`dart doc`][]-produced API reference documentation.
-{% endalert %}
+:::note
+The package README is used in multiple ways.
+For example, its content appears not only in the package page on pub.dev,
+but also in [`dart doc`][]-produced API reference documentation.
+:::
 
 Although this page features the [`in_app_purchase`][] package README,
 yours might not need to be as large or detailed.
@@ -83,10 +83,10 @@ at a glance.
 Spend some time to craft a short and sweet description and
 help the user to make decisions.
 
-{% alert 'tip' %}
-  Don't write the package name again at the top.
-  It's already visible in the pub.dev UI.
-{% endalert %}
+:::tip
+Don't write the package name again at the top.
+It's already visible in the pub.dev UI.
+:::
 
 Here are some examples of good descriptions:
 
@@ -125,11 +125,11 @@ videos (such as MOV or MP4 files)
 close to the beginning of the README,
 where users are likely to see them.
 
-{% alert 'tip' %}
-  Prefer animated GIFs and videos for UI-related content,
-  because most UIs aren't static,
-  and animation conveys more information about the UI's behavior.
-{% endalert %}
+:::tip
+Prefer animated GIFs and videos for UI-related content,
+because most UIs aren't static,
+and animation conveys more information about the UI's behavior.
+:::
 
 The screenshots below show how
 adding visual content made the `in_app_purchase` package page look informative at first glance.
@@ -140,14 +140,14 @@ adding visual content made the `in_app_purchase` package page look informative a
   alt="in_app_purchase readme without and with images" 
   class="screenshot">
 
-{% alert 'tip' %}
-  When adding visual content,
-  use absolute URLs for the files
-  to make the images reliably appear,
-  no matter where the README is published.
-  One place to host your images is in the repository itself,
-  like `in_app_purchase` does.
-{% endalert %}
+:::tip
+When adding visual content,
+use absolute URLs for the files
+to make the images reliably appear,
+no matter where the README is published.
+One place to host your images is in the repository itself,
+like `in_app_purchase` does.
+:::
 
 
 ### 3. Use lists to present important information {:#tip3}

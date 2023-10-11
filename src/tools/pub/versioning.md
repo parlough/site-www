@@ -159,13 +159,13 @@ dependencies:
   collection: ^2.3.5
 ```
 
-{% alert 'note' %}
-  This example uses _caret syntax_ to express a range of versions.
-  The string `^2.3.5` means 
-  "the range of all versions from 2.3.5 to 3.0.0, not including 3.0.0." 
-  For more information, 
-  see [Caret syntax](/tools/pub/dependencies#caret-syntax).
-{% endalert %}
+:::note
+This example uses _caret syntax_ to express a range of versions.
+The string `^2.3.5` means 
+"the range of all versions from 2.3.5 to 3.0.0, not including 3.0.0." 
+For more information, 
+see [Caret syntax](/tools/pub/dependencies#caret-syntax).
+:::
 
 To make this work, then, we need to come up with that set of promises.
 Fortunately, other smart people have done the work of figuring this all out and

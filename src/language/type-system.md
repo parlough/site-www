@@ -182,10 +182,10 @@ or a supertype of the corresponding parameter in the superclass.
 Don't "tighten" the parameter type by replacing the type with a
 subtype of the original parameter.
 
-{% alert 'note' %}
-  If you have a valid reason to use a subtype, you can use the
-  [`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword).
-{% endalert %}
+:::note
+If you have a valid reason to use a subtype, you can use the
+[`covariant` keyword](/guides/language/sound-problems#the-covariant-keyword).
+:::
 
 Consider the `chase(Animal)` method for the `Animal` class:
 

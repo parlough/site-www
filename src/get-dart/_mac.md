@@ -6,13 +6,13 @@ $ brew tap dart-lang/dart
 $ brew install dart
 ```
 
-{% alert 'important' %}
-  Make sure the **Homebrew `bin` directory is in your `PATH`**. 
-  Setting up the path correctly makes it easier to use Dart SDK commands
-  such as `dart run` and `dart format`. 
-  For help configuring your path, 
-  consult the [Homebrew FAQ.](https://docs.brew.sh/FAQ)
-{% endalert %}
+:::important
+Make sure the **Homebrew `bin` directory is in your `PATH`**. 
+Setting up the path correctly makes it easier to use Dart SDK commands
+such as `dart run` and `dart format`. 
+For help configuring your path, 
+consult the [Homebrew FAQ.](https://docs.brew.sh/FAQ)
+:::
 
 To upgrade when a new release of Dart is available:
 

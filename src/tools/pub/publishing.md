@@ -8,11 +8,11 @@ It also allows you to share your packages with the world. If you have a useful
 project and you want others to be able to use it, use the `dart pub publish`
 command.
 
-{% alert 'note' %}
-  To publish to a location other than pub.dev,
-  or to prevent publication anywhere, use the `publish_to` field,
-  as defined in the [pubspec][].
-{% endalert %}
+:::note
+To publish to a location other than pub.dev,
+or to prevent publication anywhere, use the `publish_to` field,
+as defined in the [pubspec][].
+:::
 
 Watch the following video for an overview of building and publishing packages.
 
@@ -168,14 +168,14 @@ When you're ready to publish your package, remove the `--dry-run` argument:
 $ dart pub publish
 ```
 
-{% alert 'note' %}
-  The pub command currently doesn't support publishing a new package directly to a
-  verified publisher. As a temporary workaround, publish new packages to a Google Account,
-  and then [transfer the package to a publisher](#transferring-a-package-to-a-verified-publisher).
+:::note
+The pub command currently doesn't support publishing a new package directly to a
+verified publisher. As a temporary workaround, publish new packages to a Google Account,
+and then [transfer the package to a publisher](#transferring-a-package-to-a-verified-publisher).
 
-  Once a package has been transferred to a publisher,
-  you can update the package using `dart pub publish`.
-{% endalert %}
+Once a package has been transferred to a publisher,
+you can update the package using `dart pub publish`.
+:::
 
 After your package has been successfully uploaded to pub.dev, any pub user can
 download it or depend on it in their projects. For example, if you just
@@ -201,10 +201,10 @@ To transfer a package to a verified publisher,
 you must be an [uploader](#uploaders) for the package
 and an admin for the verified publisher.
 
-{% alert 'note' %}
-  This process isn't reversible. Once you transfer a package to a publisher,
-  you can't transfer it back to an individual account.
-{% endalert %}
+:::note
+This process isn't reversible. Once you transfer a package to a publisher,
+you can't transfer it back to an individual account.
+:::
 
 Here's how to transfer a package to a verified publisher:
 
@@ -244,11 +244,11 @@ follow these practices:
   `dart pub publish` says it's going to publish.
   Cancel the upload if any undesired files appear in that list.
 
-{% alert 'note' %}
-  Most packages don't need a  `.pubignore` file.
-  More information about useful scenarios for this
-  can be found in this [StackOverflow answer][pubignore-when].
-{% endalert %}
+:::note
+Most packages don't need a  `.pubignore` file.
+More information about useful scenarios for this
+can be found in this [StackOverflow answer][pubignore-when].
+:::
 
 ## Platform support
 
@@ -303,10 +303,10 @@ might need to change their dependency constraints.
 For example, if a user wants to test prereleases of version 2.1, then
 instead of `^2.0.0` or `^2.1.0` they might specify `^2.1.0-dev.1`.
 
-{% alert 'note' %}
-  If a stable package in the dependency graph depends on a prerelease,
-  then pub chooses that prerelease instead of a stable release.
-{% endalert %}
+:::note
+If a stable package in the dependency graph depends on a prerelease,
+then pub chooses that prerelease instead of a stable release.
+:::
 
 When a prerelease is published to pub.dev,
 the package page displays links to both the prerelease and the stable release.

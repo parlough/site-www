@@ -26,9 +26,9 @@ small Hello World program. Click **Run** to run the app; output appears in the
 console view. Try editing the source code—perhaps you'd like to change the
 greeting to use another language.
 
-{% alert 'note' %}
-  {% include 'dartpad-embedded-troubleshooting.md' %}
-{% endalert %}
+:::note
+{% include 'dartpad-embedded-troubleshooting.md' %}
+:::
 
 <?code-excerpt "misc/test/samples_test.dart (hello-world)"?>
 ```dart:run-dartpad:ga_id-hello_world
@@ -66,12 +66,12 @@ This command creates a small Dart app that has the following:
   information about which [packages](/guides/packages) the app depends on
   and which versions of those packages are required.
 
-{% alert 'note' %}
-  Under the hood, `dart create` runs [`dart pub get`][], which
-  scans the generated pubspec file and downloads dependencies.
-  If you add other dependencies to your pubspec file,
-  then run `dart pub get` to download them.
-{% endalert %}
+:::note
+Under the hood, `dart create` runs [`dart pub get`][], which
+scans the generated pubspec file and downloads dependencies.
+If you add other dependencies to your pubspec file,
+then run `dart pub get` to download them.
+:::
 
 [`dart pub get`]: /tools/pub/cmd/pub-get
 

@@ -38,11 +38,11 @@ Another option is to explicitly declare the type that would be inferred:
 String name = 'Bob';
 ```
 
-{% alert 'note' %}
-  This page follows the
-  [style guide recommendation](/effective-dart/design#types)
-  of using `var`, rather than type annotations, for local variables.
-{% endalert %}
+:::note
+This page follows the
+[style guide recommendation](/effective-dart/design#types)
+of using `var`, rather than type annotations, for local variables.
+:::
 
 ## Null safety
 
@@ -108,11 +108,11 @@ int? lineCount;
 assert(lineCount == null);
 ```
 
-{% alert 'note' %}
-  Production code ignores the `assert()` call. During development, on the other
-  hand, <code>assert(<em>condition</em>)</code> throws an exception if
-  _condition_ is false. For details, check out [Assert][].
-{% endalert %}
+:::note
+Production code ignores the `assert()` call. During development, on the other
+hand, <code>assert(<em>condition</em>)</code> throws an exception if
+_condition_ is false. For details, check out [Assert][].
+:::
 
 With null safety, you must initialize the values
 of non-nullable variables before you use them:
@@ -206,9 +206,9 @@ instead of `var` or in addition to a type. A final variable can be set
 only once; a const variable is a compile-time constant. (Const variables
 are implicitly final.)
 
-{% alert 'note' %}
-  [Instance variables][] can be `final` but not `const`.
-{% endalert %}
+:::note
+[Instance variables][] can be `final` but not `const`.
+:::
 
 Here's an example of creating and setting a `final` variable:
 
@@ -282,12 +282,12 @@ const map = {if (i is int) i: 'int'}; // Use is and collection if.
 const set = {if (list is List<int>) ...list}; // ...and a spread.
 ```
 
-{% alert 'note' %}
-  Although a `final` object cannot be modified,
-  its fields can be changed. 
-  In comparison, a `const` object and its fields
-  cannot be changed: they're _immutable_.
-{% endalert %}
+:::note
+Although a `final` object cannot be modified,
+its fields can be changed. 
+In comparison, a `const` object and its fields
+cannot be changed: they're _immutable_.
+:::
 
 For more information on using `const` to create constant values, see
 [Lists][], [Maps][], and [Classes][].

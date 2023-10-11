@@ -222,6 +222,7 @@ you are sure that the object is of that type. Example:
 
 If you aren't sure that the object is of type `T`, then use `is T` to check the
 type before using the object.
+
 <?code-excerpt "misc/lib/language_tour/classes/employee.dart (emp is Person)"?>
 ```dart
 if (employee is Person) {
@@ -230,10 +231,10 @@ if (employee is Person) {
 }
 ```
 
-{% alert 'note' %}
-  The code isn't equivalent. If `employee` is null or not a `Person`, the
-  first example throws an exception; the second does nothing.
-{% endalert %}
+:::note
+The code isn't equivalent. If `employee` is null or not a `Person`, the
+first example throws an exception; the second does nothing.
+:::
 
 ## Assignment operators
 
@@ -317,12 +318,12 @@ you'd use these bitwise and shift operators with integers.
 | `>>>`                       | Unsigned shift right
 {:.table .table-striped}
 
-{% alert 'note' %}
-  The behavior of bitwise operations with large or negative operands
-  might differ between platforms.
-  To learn more, check out
-  [Bitwise operations platform differences][].
-{% endalert %}
+:::note
+The behavior of bitwise operations with large or negative operands
+might differ between platforms.
+To learn more, check out
+[Bitwise operations platform differences][].
+:::
 
 Here's an example of using bitwise and shift operators:
 
@@ -492,10 +493,10 @@ sb.write('foo')
 The `sb.write()` call returns void,
 and you can't construct a cascade on `void`.
 
-{% alert 'note' %}
-  Strictly speaking, the "double dot" notation for cascades isn't an operator.
-  It's just part of the Dart syntax.
-{% endalert %}
+:::note
+Strictly speaking, the "double dot" notation for cascades isn't an operator.
+It's just part of the Dart syntax.
+:::
 
 ## Other operators
 

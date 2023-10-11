@@ -10,10 +10,10 @@ This page explains how to use `build_runner`.
 To learn how to use build_runner with a specific package,
 see the documentation for that package.
 
-{% alert 'info' %}
-  **If you're a web developer**, use the [`webdev` tool][webdev] to
-  build and serve web apps.
-{% endalert %}
+:::info
+**If you're a web developer**, use the [`webdev` tool][webdev] to
+build and serve web apps.
+:::
 
 The build_runner commands work with _builders_—packages
 that use the [Dart build system][build]

@@ -56,14 +56,14 @@ Future<void> checkVersion() [!async!] {
 }
 ```
 
-{% alert 'note' %}
-  Although an `async` function might perform time-consuming operations, 
-  it doesn't wait for those operations. 
-  Instead, the `async` function executes only
-  until it encounters its first `await` expression.
-  Then it returns a `Future` object,
-  resuming execution only after the `await` expression completes.
-{% endalert %}
+:::note
+Although an `async` function might perform time-consuming operations, 
+it doesn't wait for those operations. 
+Instead, the `async` function executes only
+until it encounters its first `await` expression.
+Then it returns a `Future` object,
+resuming execution only after the `await` expression completes.
+:::
 
 Use `try`, `catch`, and `finally` to handle errors and cleanup
 in code that uses `await`:
@@ -108,13 +108,13 @@ void main() [!async!] {
 }
 ```
 
-{% alert 'note' %}
-  The preceding example uses an `async` function (`checkVersion()`)
-  without waiting for a result—a practice that can cause problems
-  if the code assumes that the function has finished executing.
-  To avoid this problem,
-  use the [unawaited_futures linter rule][].
-{% endalert %}
+:::note
+The preceding example uses an `async` function (`checkVersion()`)
+without waiting for a result—a practice that can cause problems
+if the code assumes that the function has finished executing.
+To avoid this problem,
+use the [unawaited_futures linter rule][].
+:::
 
 For an interactive introduction to using futures, `async`, and `await`,
 see the [asynchronous programming codelab](/codelabs/async-await).
@@ -165,12 +165,12 @@ you have two options:
 * Use the Stream API, as described
   [in the library tour](/guides/libraries/library-tour#stream).
 
-{% alert 'note' %}
-  Before using `await for`, be sure that it makes the code clearer and that you
-  really do want to wait for all of the stream's results. For example, you
-  usually should **not** use `await for` for UI event listeners, because UI
-  frameworks send endless streams of events.
-{% endalert %}
+:::note
+Before using `await for`, be sure that it makes the code clearer and that you
+really do want to wait for all of the stream's results. For example, you
+usually should **not** use `await for` for UI event listeners, because UI
+frameworks send endless streams of events.
+:::
 
 An asynchronous for loop has the following form:
 

@@ -61,14 +61,14 @@ benefit alone.
 
 JavaScript supports trailing commas in list and map literals only.
 
-{% alert 'secondary' %}
-  To learn more about:
+:::secondary
+To learn more about:
 
-  * Using commas to make your code read more like HTML, read
-    [Using trailing commas][] on flutter.dev.
-  * Linting Dart, read [Linter rules][].
-  * Writing good Dart code, read [Effective Dart][].
-{% endalert %}
+* Using commas to make your code read more like HTML, read
+  [Using trailing commas][] on flutter.dev.
+* Linting Dart, read [Linter rules][].
+* Writing good Dart code, read [Effective Dart][].
+:::
 
 [Customizing static analysis]: /tools/analysis
 [`dart fix`]: /tools/dart-fix
@@ -112,15 +112,15 @@ By contrast, Dart normalizes or _canonicalizes_ number, boolean
 and `null` values.
 This means only one `int` value with the numerical value `1` exists.
 
-{% alert 'note' %}
-  JavaScript has two equality operators, `==` and `===`.
-  The `==` operator performs the equality test after doing any necessary
-  type conversions on or to primitive values.
-  The `===` operator doesn't perform type conversions.
-  Dart uses the `identical` function to check if two values are the
-  same object, and the `==` operator to check whether the objects
-  consider themselves as equal.
-{% endalert %}
+:::note
+JavaScript has two equality operators, `==` and `===`.
+The `==` operator performs the equality test after doing any necessary
+type conversions on or to primitive values.
+The `===` operator doesn't perform type conversions.
+Dart uses the `identical` function to check if two values are the
+same object, and the `==` operator to check whether the objects
+consider themselves as equal.
+:::
 
 [Built-in types]: /language/built-in-types
 [Dart Language Tour]: /guides/language
@@ -208,11 +208,11 @@ final backslashEscape = 'The Dart string escape character is \\.';
 final unicode = '\u{1F60E}'; // 😎,  Unicode scalar U+1F60E
 ```
 
-{% alert 'note' %}
-  You can use four-digit hexadecimal characters with or without curly braces.
-  To learn more about working with unicode characters,
-  see [Runes and grapheme clusters][].
-{% endalert %}
+:::note
+You can use four-digit hexadecimal characters with or without curly braces.
+To learn more about working with unicode characters,
+see [Runes and grapheme clusters][].
+:::
 
 [Runes and grapheme clusters]: /language/built-in-types#runes-and-grapheme-clusters
 
@@ -403,13 +403,13 @@ if (useNickname) {
 print(name); // Properly initialized here.
 ```
 
-{% alert 'note' %}
+:::note
 When you create an object, the class constructor must initialize the
 `final` instance variables.
 This ensures that these variables have a value before anyone can read them.
 
 Learn more in the [Classes](#classes) section.
-{% endalert %}
+:::
 
 In Dart, _constant variables must contain constant values_.
 Non-constant variables can contain constant values that
@@ -793,20 +793,20 @@ var list2 = [1, 2, 3].map((e) {
 }).toList();
 ```
 
-{% alert 'note' %}
-  The `map` function in the previous examples returns
-  an `Iterable<T`>, rather than a `List<T>`.
-  The `toList` function converts the returned
-  `Iterable` back to a `List`.
+:::note
+The `map` function in the previous examples returns
+an `Iterable<T`>, rather than a `List<T>`.
+The `toList` function converts the returned
+`Iterable` back to a `List`.
 
-  A list literal could achieve the same goal.
+A list literal could achieve the same goal.
 
-  ```dart
-  // These two statements are equivalent:
-  print([for (var e in [1, 2, 3]) e + 3]);
-  print([1, 2, 3].map((e) => e + 3).toList());
-  ```
-{% endalert %}
+```dart
+// These two statements are equivalent:
+print([for (var e in [1, 2, 3]) e + 3]);
+print([1, 2, 3].map((e) => e + 3).toList());
+```
+:::
 
 ### Generator functions
 
@@ -924,14 +924,14 @@ for (final element in list) {
 
 #### Switch
 
-{% alert 'note' %}
-  One key difference with the `switch` statement
-  in JavaScript and Dart: when a case has no `break`,
-  `continue`, or `return` statement,
-  JavaScript allows execution to fall through and continue
-  with the next statement. However,
-  Dart only allows this when a case's body is empty.
-{% endalert %}
+:::note
+One key difference with the `switch` statement
+in JavaScript and Dart: when a case has no `break`,
+`continue`, or `return` statement,
+JavaScript allows execution to fall through and continue
+with the next statement. However,
+Dart only allows this when a case's body is empty.
+:::
 
 When using `continue` in a `switch` statement,
 you can combine it with a label that is put on a case:
@@ -1393,11 +1393,11 @@ Sets are unordered collections that only contain unique items.
 Dart enforces the uniqueness of these items using hash codes,
 meaning that objects need hash values to be stored in a `Set`.
 
-{% alert 'note' %}
-  In Dart, the hash value defaults to the instance of an object
-  but you can override it to use a set of properties.
-  To learn more, see the [`hashCode`][] property page.
-{% endalert %}
+:::note
+In Dart, the hash value defaults to the instance of an object
+but you can override it to use a set of properties.
+To learn more, see the [`hashCode`][] property page.
+:::
 
 [`hashCode`]: {{site.dart-api}}/dart-core/Object/hashCode.html
 
@@ -1477,12 +1477,12 @@ Dart bases the dictionary on a hash table.
 This means that keys need to be hashable.
 Every Dart object contains a hash.
 
-{% alert 'note' %}
+:::note
 In Dart, the hash value of an object defaults to a value derived from
 the object's identity, and being compatible with an equality where the
 object can only equal itself. To introduce an equality based on the
 _contents_ of the object, override `hashCode` and `operator==`.
-{% endalert %}
+:::
 
 Consider these simple `Map` examples, created using literals:
 
@@ -1510,9 +1510,9 @@ final gifts = {'first': 'partridge'};
 final gift = gifts['first'];
 ```
 
-{% alert 'note' %}
+:::note
 If the map does not include the lookup key, the index operator returns `null`.
-{% endalert %}
+:::
 
 Use the `containsKey` method to check if the `Map` includes a key.
 

@@ -294,11 +294,11 @@ bool get shouldConfirm => ...
 bool get canResize => ...
 ```
 
-{% alert 'note' %}
-  This guideline intentionally doesn't include using "Whether or not". In many
-  cases, usage of "or not" with "whether" is superfluous and can be omitted,
-  especially when used in this context.
-{% endalert %}
+:::note
+This guideline intentionally doesn't include using "Whether or not". In many
+cases, usage of "or not" with "whether" is superfluous and can be omitted,
+especially when used in this context.
+:::
 
 ### DON'T write documentation for both the getter and setter of a property
 

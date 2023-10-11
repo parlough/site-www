@@ -33,12 +33,12 @@ You'll learn about the four different number representations,
 how integer and floating-point numerical computation occurs,
 and how to pick the best container for your data.
 
-{% alert 'note' %}
-  This article does not cover the SIMD types available in Dart,
-  which enable operating on four floating-point numbers in parallel.
-  To learn more, refer to the 
-  [`dart:typed_data` documentation][dart-typed_data].
-{% endalert %}
+:::note
+This article does not cover the SIMD types available in Dart,
+which enable operating on four floating-point numbers in parallel.
+To learn more, refer to the 
+[`dart:typed_data` documentation][dart-typed_data].
+:::
 
 ## Overview
 

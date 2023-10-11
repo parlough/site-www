@@ -150,10 +150,10 @@ Using `await` also has the effect of
 converting the `Future<String>` returned by `_readFileAsync()` into a `String`.
 As a result, the `contents` variable has the implicit type `String`.
 
-{% alert 'note' %}
-  The `await` keyword works only in functions that
-  have `async` before the function body.
-{% endalert %}
+:::note
+The `await` keyword works only in functions that
+have `async` before the function body.
+:::
 
 As the following figure shows,
 the Dart code pauses while `readAsString()` executes non-Dart code,
@@ -193,12 +193,13 @@ using additional processor cores if they're available.
 Isolates are like threads or processes,
 but each isolate has its own memory and a single thread running an event loop.
 
-{% alert 'info' %}
-  **Platform note:**
-    Only the [Dart Native platform][] implements isolates.
-    To learn more about the Dart Web platform,
-    see the [Concurrency on the web](#concurrency-on-the-web) section.
-{% endalert %}
+:::info
+**Platform note:**
+
+Only the [Dart Native platform][] implements isolates.
+To learn more about the Dart Web platform,
+see the [Concurrency on the web](#concurrency-on-the-web) section.
+:::
 
 [Dart Native platform]: /overview#platform
 

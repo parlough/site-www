@@ -18,11 +18,11 @@ are visible only inside the library. *Every Dart file (plus its parts) is a
 
 Libraries can be distributed using [packages](/guides/packages).
 
-{% alert 'info' %}
-  If you're curious why Dart uses underscores instead of
-  access modifier keywords like `public` or `private`, see
-  [SDK issue 33383](https://github.com/dart-lang/sdk/issues/33383).
-{% endalert %}
+:::info
+If you're curious why Dart uses underscores instead of
+access modifier keywords like `public` or `private`, see
+[SDK issue 33383](https://github.com/dart-lang/sdk/issues/33383).
+:::
 
 [library]: /tools/pub/glossary#library
 
@@ -51,10 +51,10 @@ manager such as the pub tool. For example:
 import 'package:test/test.dart';
 ```
 
-{% alert 'note' %}
-  *URI* stands for uniform resource identifier.
-  *URLs* (uniform resource locators) are a common kind of URI.
-{% endalert %}
+:::note
+*URI* stands for uniform resource identifier.
+*URLs* (uniform resource locators) are a common kind of URI.
+:::
 
 ### Specifying a library prefix
 

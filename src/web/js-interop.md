@@ -23,10 +23,10 @@ For help using the `js` package, see the following:
 
 ## Next-generation JS interop preview
 
-{% alert 'note' %}
-  This interop feature is **experimental**,
-  and [in active development](https://github.com/dart-lang/sdk/issues/35084).
-{% endalert %}
+:::note
+This interop feature is **experimental**,
+and [in active development](https://github.com/dart-lang/sdk/issues/35084).
+:::
 
 Dart's JS interop story is currently evolving. 
 Many of the features that enable future JS interop

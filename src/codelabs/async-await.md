@@ -26,10 +26,10 @@ This codelab covers the following material:
 
 Estimated time to complete this codelab: 40-60 minutes.
 
-{% alert 'note' %}
-  This page uses embedded DartPads to display examples and exercises.
-  {% include 'dartpads-embedded-troubleshooting.md' %}
-{% endalert %}
+:::note
+This page uses embedded DartPads to display examples and exercises.
+{% include 'dartpads-embedded-troubleshooting.md' %}
+:::
 
 ## Why asynchronous code matters
 
@@ -103,18 +103,18 @@ In the next sections you'll learn about futures and about working with futures
 so that you'll be able to write the code necessary to make `fetchUserOrder()`
 print the desired value ("Large Latte") to the console.
 
-{% alert 'secondary' %}
-  **Key terms:**
+:::secondary
+**Key terms:**
 
-  * **synchronous operation**: A synchronous operation blocks other operations
-    from executing until it completes.
-  * **synchronous function**: A synchronous function only performs synchronous
-    operations.
-  * **asynchronous operation**: Once initiated, an asynchronous operation allows
-    other operations to execute before it completes.
-  * **asynchronous function**: An asynchronous function performs at least one
-    asynchronous operation and can also perform _synchronous_ operations.
-{% endalert %}
+* **synchronous operation**: A synchronous operation blocks other operations
+  from executing until it completes.
+* **synchronous function**: A synchronous function only performs synchronous
+  operations.
+* **asynchronous operation**: Once initiated, an asynchronous operation allows
+  other operations to execute before it completes.
+* **asynchronous function**: An asynchronous function performs at least one
+  asynchronous operation and can also perform _synchronous_ operations.
+:::
 
 
 ## What is a future?
@@ -124,10 +124,10 @@ of the [Future][] (capitalized "F") class.
 A future represents the result of an asynchronous operation, 
 and can have two states: uncompleted or completed.
 
-{% alert 'note' %}
-  _Uncompleted_ is a Dart term referring to the state of a future
-  before it has produced a value.
-{% endalert %}
+:::note
+_Uncompleted_ is a Dart term referring to the state of a future
+before it has produced a value.
+:::
 
 ### Uncompleted
 
@@ -209,23 +209,23 @@ but how do you use the results of asynchronous functions?
 In the next section you'll learn how to get results
 with the `async` and `await` keywords.
 
-{% alert 'secondary' %}
-  **Quick review:**
+:::secondary
+**Quick review:**
 
-  * A [Future\<T\>][Future] instance produces a value of type `T`.
-  * If a future doesn't produce a usable value, 
-    then the future's type is `Future<void>`.
-  * A future can be in one of two states: uncompleted or completed.
-  * When you call a function that returns a future, 
-    the function queues up work to be done and returns an uncompleted future.
-  * When a future's operation finishes, 
-    the future completes with a value or with an error.
+* A [Future\<T\>][Future] instance produces a value of type `T`.
+* If a future doesn't produce a usable value, 
+  then the future's type is `Future<void>`.
+* A future can be in one of two states: uncompleted or completed.
+* When you call a function that returns a future, 
+  the function queues up work to be done and returns an uncompleted future.
+* When a future's operation finishes, 
+  the future completes with a value or with an error.
 
-  **Key terms:**
+**Key terms:**
 
-  * **Future**: the Dart [Future][] class.
-  * **future**: an instance of the Dart `Future` class.
-{% endalert %}
+* **Future**: the Dart [Future][] class.
+* **future**: an instance of the Dart `Future` class.
+:::
 
 ## Working with futures: async and await
 
@@ -345,16 +345,16 @@ The asynchronous example is different in three ways:
 * The **`await`** keyword appears before calling the asynchronous functions
   `fetchUserOrder()` and `createOrderMessage()`.
 
-{% alert 'secondary' %}
-  **Key terms:**
+:::secondary
+**Key terms:**
 
-  * **async**: You can use the `async` keyword before a function's body to mark it as
-    asynchronous.
-  * **async function**:  An `async` function is a function labeled with the `async`
-    keyword.
-  * **await**: You can use the `await` keyword to get the completed result of an
-    asynchronous expression. The `await` keyword only works within an `async` function.
-{% endalert %}
+* **async**: You can use the `async` keyword before a function's body to mark it as
+  asynchronous.
+* **async function**:  An `async` function is a function labeled with the `async`
+  keyword.
+* **await**: You can use the `await` keyword to get the completed result of an
+  asynchronous expression. The `await` keyword only works within an `async` function.
+:::
 
 ### Execution flow with async and await
 
@@ -599,10 +599,10 @@ Did you remember to use the await keyword before invoking fetchRole()?
 Remember: reportUserRole() needs to return a future!
 ```
 
-{% alert 'note' %}
-  If your code passes the tests, you can ignore
-  [info-level messages.](/tools/analysis#customizing-analysis-rules)
-{% endalert %}
+:::note
+If your code passes the tests, you can ignore
+[info-level messages.](/tools/analysis#customizing-analysis-rules)
+:::
 
 ## Handling errors
 

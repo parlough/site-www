@@ -57,10 +57,10 @@ when using the **await for** loop.
 The following example tests the previous code by
 generating a simple stream of integers using an `async*` function:
 
-{% alert 'note' %}
-  This page uses embedded DartPads to display runnable examples.
-  {% include 'dartpads-embedded-troubleshooting.md' %}
-{% endalert %}
+:::note
+This page uses embedded DartPads to display runnable examples.
+{% include 'dartpads-embedded-troubleshooting.md' %}
+:::
 
 <?code-excerpt "misc/lib/tutorial/sum_stream.dart"?>
 ```dart:run-dartpad
@@ -85,9 +85,9 @@ void main() async {
 }
 ```
 
-{% alert 'note' %}
-  Click **Run** to see the result in the **Console**.
-{% endalert %}
+:::note
+Click **Run** to see the result in the **Console**.
+:::
 
 ## Error events
 
@@ -144,9 +144,9 @@ void main() async {
 }
 ```
 
-{% alert 'note' %}
-  Click **Run** to see the result in the **Console**.
-{% endalert %}
+:::note
+Click **Run** to see the result in the **Console**.
+:::
 
 
 ## Working with streams

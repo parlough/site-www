@@ -11,12 +11,12 @@ Compilation environment declarations specify
 configuration options as key-value pairs
 that are accessed and evaluated at compile time.
 
-{% alert 'note' %}
-  This page uses "environment" to refer
-  to the Dart compilation environment. 
-  The common use of the term instead refers
-  to the operating system environment.
-{% endalert %}
+:::note
+This page uses "environment" to refer
+to the Dart compilation environment. 
+The common use of the term instead refers
+to the operating system environment.
+:::
 
 Your app can use the values of environment declarations
 to change its functionality or behavior.
@@ -59,11 +59,11 @@ Use [`bool.fromEnvironment`][bool-from] for `true` or `false` values,
 [`int.fromEnvironment`][int-from] for integer values,
 and [`String.fromEnvironment`][string-from] for anything else.
 
-{% alert 'note' %}
-  The environment declaration constructors are only guaranteed
-  to work when invoked as `const`.
-  Most compilers must be able to evaluate their value at compile time.
-{% endalert %}
+:::note
+The environment declaration constructors are only guaranteed
+to work when invoked as `const`.
+Most compilers must be able to evaluate their value at compile time.
+:::
 
 Each of the `fromEnvironment` constructors require the
 name or key of the environment declaration.

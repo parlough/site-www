@@ -35,10 +35,10 @@ class Point {
 
 The `this` keyword refers to the current instance.
 
-{% alert 'note' %}
-  Use `this` only when there is a name conflict. 
-  Otherwise, Dart style omits the `this`.
-{% endalert %}
+:::note
+Use `this` only when there is a name conflict. 
+Otherwise, Dart style omits the `this`.
+:::
 
 
 ## Initializing formal parameters
@@ -344,10 +344,10 @@ Another use case for factory constructors is
 initializing a final variable using
 logic that can't be handled in the initializer list.
 
-{% alert 'tip' %}
-  Another way to handle late initialization of a final variable
-  is to [use `late final` (carefully!)][late-final-ivar].
-{% endalert %}
+:::tip
+Another way to handle late initialization of a final variable
+is to [use `late final` (carefully!)][late-final-ivar].
+:::
 
 In the following example,
 the `Logger` factory constructor returns objects from a cache,
@@ -380,9 +380,9 @@ class Logger {
 }
 ```
 
-{% alert 'note' %}
-  Factory constructors have no access to `this`.
-{% endalert %}
+:::note
+Factory constructors have no access to `this`.
+:::
 
 Invoke a factory constructor just like you would any other constructor:
 

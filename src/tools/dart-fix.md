@@ -14,16 +14,16 @@ finds and fixes two types of issues:
 * Outdated API usages when updating to
   newer releases of the Dart and Flutter SDKs.
 
-{% alert 'tip' %}
-  To learn about `dart fix` in a video format,
-  check out this deep dive on **Decoding Flutter**:
+:::tip
+To learn about `dart fix` in a video format,
+check out this deep dive on **Decoding Flutter**:
 
-  <iframe width="560" height="315" 
-  src="https://www.youtube.com/embed/OBIuSrg_Quo" title="Using 'dart fix' YouTube video" 
-  frameborder="0" 
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-  allowfullscreen></iframe>
-{% endalert %}  
+<iframe width="560" height="315" 
+src="https://www.youtube.com/embed/OBIuSrg_Quo" title="Using 'dart fix' YouTube video" 
+frameborder="0" 
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen></iframe>
+:::
 
 ## Usage
 

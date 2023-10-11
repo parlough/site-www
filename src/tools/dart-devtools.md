@@ -133,12 +133,12 @@ The Dart DevTools debugger and profiler is available at: http://127.0.0.1:8181/a
 Note the **Dart DevTools debugger and profiler** URL.
 You'll need it in the next step.
 
-{% alert 'important' %}
-  This URL contains a security token and
-  is different for each run of your app.
-  If you stop your app and rerun it,
-  then you need to connect to DevTools with the new URL.
-{% endalert %}
+:::important
+This URL contains a security token and
+is different for each run of your app.
+If you stop your app and rerun it,
+then you need to connect to DevTools with the new URL.
+:::
 
 ### 2. Open DevTools and connect to the target app
 

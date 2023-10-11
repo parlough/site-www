@@ -205,11 +205,11 @@ assert('That deserves all caps. '
         'STRING INTERPOLATION is very handy!');
 ```
 
-{% alert 'note' %}
-  The `==` operator tests whether two objects are equivalent. Two
-  strings are equivalent if they contain the same sequence of code
-  units.
-{% endalert %}
+:::note
+The `==` operator tests whether two objects are equivalent.
+Two strings are equivalent if they contain the
+same sequence of code units.
+:::
 
 You can concatenate strings using adjacent string literals or the `+`
 operator:

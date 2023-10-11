@@ -193,15 +193,15 @@ $ dart pub add foo --sdk=flutter
 For options that apply to all pub commands, see
 [Global options](/tools/pub/cmd#global-options).
 
-{% alert 'note' %}
-  The previous `pub add` syntax for options
-  (without YAML descriptors) applies the
-  specified options to all the packages
-  included in an invocation of the command.
-  For example, `dart pub add test http --dev`
-  will add both the `test` and `http` packages
-  as dev dependencies.
-{% endalert %}
+:::note
+The previous `pub add` syntax for options
+(without YAML descriptors) applies the
+specified options to all the packages
+included in an invocation of the command.
+For example, `dart pub add test http --dev`
+will add both the `test` and `http` packages
+as dev dependencies.
+:::
 
 ### `--[no-]offline`
 
@@ -218,7 +218,7 @@ By default, pub precompiles executables
 in immediate dependencies (`--precompile`).
 To prevent precompilation, use `--no-precompile`.
 
-{% alert 'info' %}
-  *Problems?*
-  See [Troubleshooting Pub](/tools/pub/troubleshoot).
-{% endalert %}
+:::info
+*Problems?*
+See [Troubleshooting Pub](/tools/pub/troubleshoot).
+:::

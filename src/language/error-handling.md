@@ -41,10 +41,10 @@ You can also throw arbitrary objects:
 throw 'Out of llamas!';
 ```
 
-{% alert 'note' %}
-  Production-quality code usually throws types that implement [`Error`][] or
-  [`Exception`][].
-{% endalert %}
+:::note
+Production-quality code usually throws types that 
+implement [`Error`][] or [`Exception`][].
+:::
 
 Because throwing an exception is an expression, you can throw exceptions
 in =\> statements, as well as anywhere else that allows expressions:

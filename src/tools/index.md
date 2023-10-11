@@ -18,9 +18,9 @@ type. If you aren't sure which tools you need, **get the Flutter SDK.**
 
 [General-purpose tools]: #general-purpose-tools
 
-{% alert 'note' %}
+:::note
   The Flutter SDK includes the full Dart SDK.
-{% endalert %}
+:::
 
 ## General-purpose tools
 
