@@ -150,6 +150,35 @@ module.exports = function (eleventyConfig) {
     };
   });
 
+  eleventyConfig.addFilter('breadcrumbsForPage', function(page) {
+    const breadcrumbs = [];
+    
+    let data = this.context.environments;
+
+    while (page) {
+      const urlSegments = page.url.split('/').filter(segment => segment.length > 0);
+
+      breadcrumbs.push({
+        title: data['breadcrumb'] ?? data['short-title'] ?? data.title,
+        url: page.url,
+      });
+      
+      if (urlSegments.length <= 1) {
+        // The root page, no more ancestors
+        break;
+      } else {
+        // Assume the last part is "index.html" and go to the parent directory
+        const parentUrl = `/${urlSegments.slice(0, -1).join('/')}/`;
+        // Continue with the parent page
+        const parentPage = getPage(this.context.environments.collections.all, parentUrl);
+        page = parentPage?.page;
+        data = parentPage?.data;
+      }
+    }
+    
+    return breadcrumbs.reverse();
+  });
+
   eleventyConfig.addPlugin(eleventySass, {
     sass: {
       style: isProduction() ? 'compressed' : 'expanded',
@@ -541,4 +570,12 @@ function _registerContainers(markdown) {
 
 function isProduction() {
   return process.env.PRODUCTION === 'true'
+}
+
+function getPage(pages, url) {
+  for (const page of pages) {
+    if (page.url === url) {
+      return page;
+    }
+  }
 }
