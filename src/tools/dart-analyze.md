@@ -13,7 +13,7 @@ that you get when you use an IDE or editor that has Dart support.
 Here's an example of performing static analysis over all the Dart files
 under the current directory:
 
-```bash
+```console
 $ dart analyze
 ```
 
@@ -25,19 +25,19 @@ You can customize this behavior using the
 For example, to make the analyzer fail when any issue is 
 the `--fatal-infos` flag:
 
-```bash
+```console
 $ dart analyze --fatal-infos
 ```
 
 You can add a directory or a single file argument:
 
-```bash
+```console
 $ dart analyze [<DIRECTORY> | <DART_FILE>]
 ```
 
 For example, here's the command to analyze the `bin` directory:
 
-```bash
+```console
 $ dart analyze bin
 ```
 
@@ -51,7 +51,7 @@ as described in [Customizing static analysis][static analysis].
 
 For information on command-line options, use the `--help` flag:
 
-```bash
+```console
 $ dart analyze --help
 ```
 

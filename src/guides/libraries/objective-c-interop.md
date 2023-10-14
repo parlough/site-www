@@ -36,7 +36,7 @@ that uses `package:ffigen` to generate bindings for
 This API requires at least macOS SDK 10.7,
 so check your version and update Xcode if necessary:
 
-```bash
+```console
 $ xcodebuild -showsdks
 ```
 
@@ -54,7 +54,7 @@ from the ffigen README for more details.
 
 First, add `package:ffigen` as a dev dependency:
 
-```bash
+```console
 $ dart pub add --dev ffigen
 ```
 
@@ -163,7 +163,7 @@ for a full list of configuration options.
 To generate the bindings, navigate to the example directory,
 and run ffigen:
 
-```bash
+```console
 $ dart run ffigen
 ```
 
@@ -171,7 +171,7 @@ This will search in the `pubspec.yaml` file for a top-level `ffigen` entry.
 If you chose to put the ffigen config in a separate file, use the
 `--config` option and specify that file:
 
-```bash
+```console
 $ dart run ffigen --config my_ffigen_config.yaml
 ```
 
@@ -385,7 +385,7 @@ You can do this using Xcode,
 or using the Swift command-line compiler, `swiftc`.
 This example uses the command line:
 
-```bash
+```console
 $ swiftc -c swift_api.swift             \
     -module-name swift_module           \
     -emit-objc-header-path swift_api.h  \
@@ -485,7 +485,7 @@ see it contains the module name and the class name:
 
 Swift can even demangle this name for us:
 
-```bash
+```console
 $ echo "_TtC12swift_module10SwiftClass" | swift demangle
 ```
 
@@ -496,7 +496,7 @@ This outputs `swift_module.SwiftClass`.
 As before, navigate to the example directory,
 and run ffigen:
 
-```bash
+```console
 $ dart run ffigen
 ```
 
@@ -528,7 +528,7 @@ to load the class from the dylib.
 
 Now you can run the example using:
 
-```bash
+```console
 $ dart run example.dart
 ```
 

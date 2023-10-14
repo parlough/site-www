@@ -23,7 +23,7 @@ To output general information related to your system
 and your Dart installation, including running Dart processes,
 run `dart info` from any directory:
 
-```bash
+```console
 $ dart info
 ```
 
@@ -61,6 +61,6 @@ To include file paths and path dependencies in
 the displayed project and process info,
 add the `--no-remove-file-paths` option:
 
-```bash
+```console
 $ dart info --no-remove-file-paths
 ```

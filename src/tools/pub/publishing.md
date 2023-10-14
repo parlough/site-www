@@ -131,7 +131,7 @@ or to update it to a new version.
 
 To test how `dart pub publish` will work, you can perform a dry run:
 
-```bash
+```console
 $ dart pub publish --dry-run
 ```
 
@@ -164,7 +164,7 @@ Package has 0 warnings.
 
 When you're ready to publish your package, remove the `--dry-run` argument:
 
-```bash
+```console
 $ dart pub publish
 ```
 

@@ -139,7 +139,7 @@ To add a dependency on `package:http`,
 run the following [`dart pub add`][] command
 from the top of your repo:
 
-```bash
+```console
 $ dart pub add http
 ```
 

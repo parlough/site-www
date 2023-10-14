@@ -14,7 +14,7 @@ either include a [Dart runtime][] or be a _module_
 Here's an example of using the `exe` subcommand
 to produce a self-contained executable file (`myapp.exe`):
 
-```bash
+```console
 $ dart compile exe bin/myapp.dart
 Generated: /Users/me/myapp/bin/myapp.exe
 ```
@@ -25,7 +25,7 @@ It then uses the [`dartaotruntime` command](/tools/dartaotruntime)
 (which provides a [Dart runtime][])
 to run the AOT module:
 
-```bash
+```console
 $ dart compile aot-snapshot bin/myapp.dart
 Generated: /Users/me/myapp/bin/myapp.aot
 $ dartaotruntime bin/myapp.aot
@@ -34,14 +34,14 @@ $ dartaotruntime bin/myapp.aot
 To specify the path to the output file,
 use the `-o` or `--output` option:
 
-```bash
+```console
 $ dart compile exe bin/myapp.dart -o bin/runme
 ```
 
 For more options and usage information,
 run `dart compile [<subcommand>] --help`:
 
-```bash
+```console
 $ dart compile exe --help
 ```
 
@@ -138,19 +138,21 @@ type checking and garbage collection.
 You can distribute and run the output file like you would
 any other executable file.
 
-Compile your app and set the output file.
+Compile your app and set the output file:
 
-```bash
+```console
 $ dart compile exe bin/myapp.dart -o /tmp/myapp
 ```
 
-When successful, this command returns the following.
-```bash
+When successful, this command outputs the following:
+
+```console
 Generated: /tmp/myapp
 ```
 
-Run your compiled app from the `/tmp` directory.
-```bash
+Run your compiled app from the `/tmp` directory:
+
+```console
 $ ./tmp/myapp
 ```
 
@@ -185,7 +187,7 @@ For example, if you use macOS to create a `.aot` file,
 then that file can run on macOS only.
 Dart supports AOT modules on Windows, macOS, and Linux.
 
-```bash
+```console
 $ dart compile aot-snapshot bin/myapp.dart
 Generated: /Users/me/myapp/bin/myapp.aot
 $ dartaotruntime bin/myapp.aot
@@ -209,7 +211,7 @@ To learn more, see the
 JIT modules include all the parsed classes and compiled code that's
 generated during a training run of a program.
 
-```bash
+```console
 $ dart compile jit-snapshot bin/myapp.dart
 Compiling bin/myapp.dart to jit-snapshot file bin/myapp.jit.
 Hello world!
@@ -237,7 +239,7 @@ A kernel module contains a binary form of the abstract syntax tree
 
 Here's an example of creating and running a kernel module:
 
-```bash
+```console
 $ dart compile kernel bin/myapp.dart
 Compiling bin/myapp.dart to kernel file bin/myapp.dill.
 $ dart run bin/myapp.dill
@@ -270,7 +272,7 @@ Dart-to-JavaScript compiler.
 For example, to compile a Dart application to optimized JavaScript, run
 the following command:
 
-```bash
+```console
 $ dart compile js -O2 -o out/main.js web/main.dart
 ```
 

@@ -14,7 +14,7 @@ To produce AOT snapshots, use the `aot-snapshot` subcommand of the
 
 Here's an example of creating and running an AOT snapshot:
 
-```bash
+```console
 $ dart compile aot-snapshot bin/myapp.dart
 Generated: /Users/me/simpleapp/bin/myapp.aot
 $ dartaotruntime bin/simpleapp.aot
@@ -22,7 +22,7 @@ $ dartaotruntime bin/simpleapp.aot
 
 For information on command-line options, use the `--help` flag:
 
-```bash
+```console
 $ dartaotruntime --help
 ```
 

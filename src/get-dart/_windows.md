@@ -12,13 +12,13 @@ that has admin rights:
 
 To install the Dart SDK:
 
-```bash
+```ps
 C:\> choco install dart-sdk
 ```
 
 To upgrade the Dart SDK:
 
-```bash
+```ps
 C:\> choco upgrade dart-sdk
 ```
 

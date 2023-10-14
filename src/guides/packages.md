@@ -58,7 +58,7 @@ To update the `pubspec.yaml` file, without manual editing,
 you can run `dart pub add` command.
 The following example adds a dependency on `vector_math`.
 
-```bash
+```console
 $ dart pub add vector_math
 Resolving dependencies... 
 + vector_math 2.1.3
@@ -75,7 +75,7 @@ and the documentation for the packages that you want to use.
 Once you have a pubspec, you can run [`dart pub get`][get] from the top 
 directory of your application:
 
-```bash
+```console
 $ cd <path-to-my_app>
 $ dart pub get
 ```
@@ -156,7 +156,7 @@ uses the same versions of code.
 When you're ready to upgrade your dependencies to the latest versions,
 use the [`dart pub upgrade`][upgrade] command:
 
-```bash
+```console
 $ dart pub upgrade
 ```
 
@@ -165,7 +165,7 @@ using the newest available versions of your package's dependencies.
 If you want to upgrade only one dependency,
 you can specify the package to upgrade:
 
-```bash
+```console
 $ dart pub upgrade transmogrify
 ```
 

@@ -24,19 +24,19 @@ by deleting the pub credentials file:
 
 If `$XDG_CONFIG_HOME` is defined:
 
-```bash
+```console
 $ rm $XDG_CONFIG_HOME/dart/pub-credentials.json
 ```
 
 Otherwise:
 
-```bash
+```console
 $ rm $HOME/.config/dart/pub-credentials.json
 ```
 
 #### macOS {:#pub-credentials-mac}
 
-```bash
+```console
 $ rm $HOME/Library/Application Support/dart/pub-credentials.json
 ```
 
@@ -44,13 +44,13 @@ $ rm $HOME/Library/Application Support/dart/pub-credentials.json
 
 If you're using Command Prompt:
 
-```bash
+```cmd
 $ del "%APPDATA%\dart\pub-credentials.json"
 ```
 
 If you're using PowerShell:
 
-```bash
+```ps
 $ Remove-Item -Path "%APPDATA%\dart\pub-credentials.json"
 ```
 
@@ -102,19 +102,19 @@ You can set the proxy server environment variable as follows.
 
 On Linux/macOS:
 
-```bash
+```console
 $ export https_proxy=hostname:port
 ```
 
 On Windows Command Prompt:
 
-```bash
+```cmd
 $ set https_proxy=hostname:port
 ```
 
 On Windows PowerShell:
 
-```bash
+```ps
 $ $Env:https_proxy="hostname:port"
 ```
 
@@ -122,19 +122,19 @@ If the proxy requires credentials, you can set them as follows.
 
 On Linux/macOS:
 
-```bash
+```console
 $ export https_proxy=username:password@hostname:port
 ```
 
 On Windows Command Prompt:
 
-```bash
+```cmd
 $ set https_proxy=username:password@hostname:port
 ```
 
 On Windows PowerShell:
 
-```bash
+```ps
 $ $Env:https_proxy="username:password@hostname:port"
 ```
 
@@ -159,7 +159,7 @@ Try this workaround, which uses the command line to complete sign-in:
    as the one where `dart pub publish` was called, use the `curl` command to
    complete sign-in using the _new localhost URL_:
 
-   ```bash
+   ```console
    $ curl 'http://localhost:<port>?code=...'
    ```
 

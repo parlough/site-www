@@ -84,7 +84,7 @@ This is included in the Flutter 3.7.12 SDK.
 
 Check that you have Dart 2.19.6:
 
-```bash
+```console
 $ dart --version
 Dart SDK version: 2.19.6
 ```
@@ -94,7 +94,7 @@ Dart SDK version: 2.19.6
 Get the migration state of your package's dependencies,
 using the following command:
 
-```bash
+```console
 $ dart pub outdated --mode=null-safety
 ```
 
@@ -186,7 +186,7 @@ Before starting the tool, make sure you're ready:
 Start the migration tool by running the `dart migrate` command
 in the directory that contains the package's `pubspec.yaml` file:
 
-```bash
+```console
 $ dart migrate
 ```
 
@@ -392,7 +392,7 @@ To migrate a package by hand, follow these steps:
 
 2. Regenerate the [package configuration file][]:
 
-   ```bash
+   ```console
    $ dart pub get
    ```
 
@@ -425,7 +425,7 @@ Update your packages
 Then use your IDE or the command line
 to perform [static analysis][] on your code:
 
-```bash
+```console
 $ dart pub get
 $ dart analyze     # or `flutter analyze`
 ```
@@ -437,7 +437,7 @@ $ dart analyze     # or `flutter analyze`
 
 If your code passes analysis, run tests:
 
-```bash
+```console
 $ dart test       # or `flutter test`
 ```
 
@@ -494,7 +494,7 @@ If all of the packages you depend on are migrated too,
 then your program is sound with respect to null-reference errors.
 You should see output like this when running or compiling your code:
 
-```bash
+```console
 Compiling with sound null safety
 ```
 

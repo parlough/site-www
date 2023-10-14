@@ -15,7 +15,7 @@ For example, the following command is equivalent to
 editing `pubspec.yaml` (removing `http` from `dependencies` or `dev_dependencies`)
 and then calling `dart pub get`:
 
-```bash
+```console
 $ dart pub remove http
 ```
 

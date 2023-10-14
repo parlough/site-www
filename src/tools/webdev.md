@@ -14,7 +14,7 @@ Before you can use `webdev`, Add dependencies to the [build_runner][]
 and [build_web_compilers][] packages to your app. The `build_runner`
 package adds scripting capabilities to `webdev`.
 
-```bash
+```console
 $ dart pub add build_runner build_web_compilers --dev
 ```
 
@@ -22,7 +22,7 @@ $ dart pub add build_runner build_web_compilers --dev
 
 Use `dart pub` to install `webdev` for [all users][].
 
-```bash
+```console
 $ dart pub global activate webdev
 ```
 
@@ -52,7 +52,7 @@ your app's `pubspec.yaml` file:
 As usual after `pubspec.yaml` changes, run `dart pub get` or 
 `dart pub upgrade`:
 
-```bash
+```console
 $ dart pub get
 ```
 
@@ -93,7 +93,7 @@ To learn more about build configuration files, see the
 To serve a development version of your web app, run the following
 command.
 
-```bash
+```plaintext
 $ webdev serve [--debug | --release] [ [<directory>[:<port>]] ... ]
 ```
 
@@ -101,7 +101,7 @@ This command launches a development server that serves your app and
 watches for source code changes. By default, this command serves the
  app at [localhost:8080](localhost:8080):
 
-```bash
+```console
 $ webdev serve
 ```
 
@@ -117,13 +117,13 @@ For a list of supported browsers, [see the FAQ][supported browsers].
 
 To enable [Dart DevTools][], add the `--debug` flag:
 
-```bash
+```console
 $ webdev serve --debug  # enables Dart DevTools
 ```
 
 To use production compiler instead of development compiler, add the `--release` flag:
 
-```bash
+```console
 $ webdev serve --release  # uses production compiler
 ```
 
@@ -132,7 +132,7 @@ You can specify different directory-port configurations.
 For example, the following command changes the test port from the
 default (8081) to 8083:
 
-```bash
+```console
 $ webdev serve web test:8083 # App: 8080; tests: 8083
 ```
 
@@ -140,7 +140,7 @@ $ webdev serve web test:8083 # App: 8080; tests: 8083
 
 Use the following command to build your app:
 
-```bash
+```plaintext
 $ webdev build [--no-release] --output [<dirname>:]<dirname>
 ```
 
@@ -150,7 +150,7 @@ The following command shows how to compile the project's top-level
 `web` folder into the `build` directory. This command uses the
 production JavaScript compiler by default.
 
-```bash
+```console
 $ webdev build --output web:build
 ```
 
@@ -159,7 +159,7 @@ $ webdev build --output web:build
 
 Use the `build_runner test` command to run your app's component tests:
 
-```bash
+```console
 $ dart run build_runner test [build_runner options] -- -p <platform> [test options]
 ```
 
@@ -170,13 +170,13 @@ make sure that your app's `pubspec` has a `dev_dependency` on `build_test`.
 
 For example, here's how to run all Chrome platform tests:
 
-```bash
+```console
 $ dart run build_runner test -- -p chrome
 ```
 
 To see all available build_runner options, use the `--help` or `-h` option:
 
-```bash
+```console
 $ dart run build_runner test -h
 ```
 
@@ -184,7 +184,7 @@ Dart passes arguments after the empty `--` argument directly to the
 [test package][] runner. To see all command-line options for the
 test package runner, use this command:
 
-```bash
+```console
 $ dart test -h
 ```
 

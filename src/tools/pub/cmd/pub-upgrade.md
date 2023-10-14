@@ -24,7 +24,7 @@ directory, as well as their [transitive
 dependencies](/tools/pub/glossary#transitive-dependency).
 For example:
 
-```bash
+```console
 $ dart pub upgrade
 Dependencies upgraded!
 ```
@@ -51,9 +51,9 @@ You can tell `dart pub upgrade` to upgrade specific dependencies to the
 latest version while leaving the rest of the dependencies alone as much as
 possible. For example:
 
-```bash
-  $ dart pub upgrade test args
-  Dependencies upgraded!
+```console
+$ dart pub upgrade test args
+Dependencies upgraded!
 ```
 
 Upgrading a dependency upgrades its transitive dependencies to their latest

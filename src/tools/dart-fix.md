@@ -29,13 +29,13 @@ allowfullscreen></iframe>
 
 To preview proposed changes, use the `--dry-run` flag:
 
-```bash
+```console
 $ dart fix --dry-run
 ```
 
 To apply the proposed changes, use the `--apply` flag:
 
-```bash
+```console
 $ dart fix --apply
 ```
 
@@ -101,7 +101,7 @@ environment:
 
 You should then see the following when viewing the proposed changes:
 
-```bash
+```console
 $ dart fix --dry-run
 Computing fixes in myapp (dry run)... 9.0s
 

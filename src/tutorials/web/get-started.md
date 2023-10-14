@@ -85,7 +85,7 @@ More information:
 <i class="material-icons">terminal</i>
 If you like to use the command line, install the [`webdev`][] package:
 
-```bash
+```console
 $ dart pub global activate webdev
 ```
 
@@ -100,7 +100,7 @@ For a list of available IDEs, see the
 <i class="material-icons">terminal</i>
 To create a web app from the command line, use these commands:
 
-```bash
+```console
 $ dart create -t web quickstart
 ```
 
@@ -115,7 +115,7 @@ create a project using the template named **Bare-bones Web App**.
 To run the app from the command line, 
 use [`webdev`][] to build and serve the app:
 
-```bash
+```console
 $ cd quickstart
 $ webdev serve
 ```

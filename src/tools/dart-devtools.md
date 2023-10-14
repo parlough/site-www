@@ -122,7 +122,7 @@ for the Dart command-line app that you want to debug or observe.
 Optionally add `--pause-isolates-on-start`,
 which automatically breaks execution at the start of the script.
 
-```bash
+```console
 $ cd path/to/dart/app
 $ dart run --pause-isolates-on-start --observe main.dart
 
@@ -163,7 +163,7 @@ For details on using DevTools with a Flutter app for any platform
 To launch a web app so that you can use Dart DevTools,
 use the `webdev serve` command with the `--debug` or `--debug-extension` flag:
 
-```bash
+```console
 $ webdev serve --debug
 ```
 

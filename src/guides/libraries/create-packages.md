@@ -15,7 +15,7 @@ To create the initial directory and structure for a package,
 use the [`dart create`](/tools/dart-create) command
 and the `package` template:
 
-```bash
+```console
 $ dart create -t package <PACKAGE_NAME>
 ```
 

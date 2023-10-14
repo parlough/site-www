@@ -15,7 +15,7 @@ directory, as well as their
 [transitive dependencies](/tools/pub/glossary#transitive-dependency).
 For example:
 
-```bash
+```console
 $ dart pub get
 Resolving dependencies...
 Got dependencies!

@@ -40,7 +40,8 @@ module.exports = function (eleventyConfig) {
     const {toText} = await import('hast-util-to-text');
     const highlighter = await getHighlighter({
       langs: ['dart', 'yaml', 'json', 'swift', 'css', 'html', 'xml',
-        'js', 'objc', 'bash', 'kotlin', 'java', 'md', 'diff']
+        'js', 'objc', 'bash', 'kotlin', 'java', 'md', 'diff', 'ps', 'console',
+      'cmd']
     });
 
     await highlighter.loadTheme(import('./11ty/dash-light.json', {

@@ -15,7 +15,7 @@ in the current working directory, as well as their [transitive
 dependencies](/tools/pub/glossary#transitive-dependency).
 For example:
 
-```bash
+```console
 $ dart pub downgrade
 Resolving dependencies... (1.2s)
 + barback 0.13.0
@@ -41,7 +41,7 @@ It's possible to tell `dart pub downgrade` to downgrade specific dependencies to
 lowest version while leaving the rest of the dependencies alone as much as
 possible. For example:
 
-```bash
+```console
 $ dart pub downgrade test
 Resolving dependencies...
   barback 0.15.2+2

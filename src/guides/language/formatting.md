@@ -17,7 +17,7 @@ perform most of the drudge work of formatting your code.
 For example, here's how to format all the Dart files
 under the current directory's `bin`, `lib`, and `test` directories:
 
-```bash
+```console
 $ dart format bin lib test
 ```
 

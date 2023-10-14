@@ -29,7 +29,7 @@ dependencies:
 
 Here's an example of the `dart pub deps` output for markdown_converter:
 
-```bash
+```console
 $ dart pub deps
 markdown_converter 0.0.0
 |-- barback 0.15.2+6

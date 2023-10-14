@@ -28,7 +28,7 @@ which includes the full Dart SDK.
 
   To install the Dart SDK:
 
-  ```bash
+  ```ps
   C:\> choco install dart-sdk
   ```
 
@@ -40,7 +40,7 @@ which includes the full Dart SDK.
 
   1. Perform the following one-time setup:
   
-     ```bash
+     ```console
      $ sudo apt-get update
      $ sudo apt-get install apt-transport-https
      $ wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/dart.gpg
@@ -49,7 +49,7 @@ which includes the full Dart SDK.
 
   2. Install the Dart SDK:
   
-     ```bash
+     ```console
      $ sudo apt-get update
      $ sudo apt-get install dart
      ```
@@ -61,7 +61,7 @@ which includes the full Dart SDK.
   With [Homebrew,](https://brew.sh/)
   installing Dart is easy.
 
-  ```bash
+  ```console
   $ brew tap dart-lang/dart
   $ brew install dart
   ```

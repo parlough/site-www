@@ -304,7 +304,7 @@ which provides a superset of the recommended rules.
 To enable either set of lints,
 add the [lints package][] as a dev dependency:
 
-```bash
+```console
 $ dart pub add --dev lints
 ```
 
@@ -409,7 +409,7 @@ To enable a plugin:
 
  1. Add the package containing the plugin as a dev dependency.
 
-    ```bash
+    ```console
     $ dart pub add --dev <your_favorite_analyzer_plugin_package>
     ```
 

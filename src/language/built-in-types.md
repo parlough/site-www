@@ -347,7 +347,7 @@ void main() {
 
 The output, depending on your environment, looks something like this:
 
-```bash
+```console
 $ dart run bin/main.dart
 Hi 🇩🇰
 The end of the string: ???

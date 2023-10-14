@@ -52,7 +52,7 @@ More information:
 Use the [`dart create`](/tools/dart-create) command
 and the `console` template to create a command-line app:
 
-```bash
+```console
 $ dart create -t console cli
 ```
 
@@ -80,7 +80,7 @@ then run `dart pub get` to download them.
 To run the app from the command line, use the Dart VM by running the
 [`dart run`](/tools/dart-run) command in the app's top directory:
 
-```bash
+```console
 $ cd cli
 $ dart run
 Hello world: 42!
@@ -107,7 +107,7 @@ Let's customize the app you just created.
 
  1. Rerun the main entrypoint of your app:
 
-    ```bash
+    ```console
     $ dart run
     Hello world: 21!
     ```
@@ -124,12 +124,12 @@ it's time to AOT compile your Dart code to optimized native machine code.
 
 Use the `dart compile` tool to AOT compile the program to machine code:
 
-```bash
+```console
 $ dart compile exe bin/cli.dart
 ```
 Notice how the compiled program starts instantly, completing quickly:
 
-```bash
+```console
 $ time bin/cli.exe
 Hello world: 21!
 

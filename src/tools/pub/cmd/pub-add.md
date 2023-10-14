@@ -16,7 +16,7 @@ The following example command is equivalent to
 editing `pubspec.yaml` to add the `http` package,
 and then calling `dart pub get`:
 
-```bash
+```console
 $ dart pub add http
 ```
 
@@ -31,7 +31,7 @@ under `dependencies` in your `pubspec.yaml`.
 
 You can also specify a constraint or constraint range:
 
-```bash
+```console
 $ dart pub add foo:2.0.0
 $ dart pub add foo:'^2.0.0'
 $ dart pub add foo:'>=2.0.0 <3.0.1'
@@ -48,7 +48,7 @@ instead of as a regular dependency.
 
 [dev dependency]: /tools/pub/dependencies#dev-dependencies
 
-```bash
+```console
 $ dart pub add dev:foo           # adds newest compatible stable version of foo
 $ dart pub add dev:foo:^2.0.0    # adds specified constraint of foo
 $ dart pub add foo dev:bar       # adds regular dependency foo and dev dependency bar simultaneously
@@ -56,7 +56,7 @@ $ dart pub add foo dev:bar       # adds regular dependency foo and dev dependenc
 
 _Previously the `-d, --dev` option_:
 
-```bash
+```console
 $ dart pub add --dev foo
 ```
 
@@ -72,7 +72,7 @@ include a [version constraint](#version-constraint) or
 to use version `1.0.0` of the package,
 run the following command:
 
-```bash
+```console
 $ dart pub add override:foo:1.0.0
 ```
 
@@ -112,14 +112,14 @@ The syntax reflects how dependencies are written in `pubspec.yaml`.
 
 Adds a [git dependency](/tools/pub/dependencies#git-packages).
 
-```bash
+```console
 $ dart pub add 'foo:{"git":"https://github.com/foo/foo"}'
 ```
 
 You can specify the repository, and the branch or commit, or exact location,
 within that repository:
 
-```bash
+```console
 $ dart pub add 'foo:{"git":{"url":"../foo.git","ref":"branch","path":"subdir"}}'
 ```
 
@@ -129,7 +129,7 @@ Depends on the package in the specified Git repository.
 
 _Previously the `--git-url=<git_repo_url>` option_:
 
-```bash
+```console
 $ dart pub add http --git-url=https://github.com/my/http.git
 ```
 
@@ -139,7 +139,7 @@ With `url`, depends on the specified branch or commit of a Git repo.
 
 _Previously the `--git-ref=<branch_or_commit>` option_:
 
-```bash
+```console
 $ dart pub add http --git-url=https://github.com/my/http.git --git-ref=tmpfixes
 ```
 
@@ -154,7 +154,7 @@ _Previously the `--git-path=<directory_path>` option_.
 Adds a [hosted dependency][] that depends on
 the package server at the specified URL.
 
-```bash
+```console
 $ dart pub add 'foo:{"hosted":"my-pub.dev"}'
 ```
 
@@ -166,7 +166,7 @@ _Previously the `--hosted-url=<package_server_url>` option_.
 
 Adds a [path dependency][] on a locally stored package.
 
-```bash
+```console
 $ dart pub add 'foo:{"path":"../foo"}'
 ```
 
@@ -178,13 +178,13 @@ _Previously the `--path=<directory_path>` option_.
 
 Adds a package from the specified SDK source.
 
-```bash
+```console
 $ dart pub add 'foo:{"sdk":"flutter"}'
 ```
 
 _Previously the `--sdk=<sdk_name>` option_:
 
-```bash
+```console
 $ dart pub add foo --sdk=flutter
 ```
 

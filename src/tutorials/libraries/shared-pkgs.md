@@ -58,7 +58,7 @@ such as IntelliJ or WebStorm.
 Run the `dart create` command with the `--help` flag
 to see what kinds of template files it can generate:
 
-```bash
+```console
 $ dart create --help
 ```
 
@@ -68,7 +68,7 @@ One of the templates is named **console**.
 Use the `dart create` command to
 generate a command-line app named `vector_victor`:
 
-```bash
+```console
 $ dart create -t console vector_victor 
 $ cd vector_victor
 ```
@@ -114,7 +114,7 @@ Run the [`dart pub add`](/tools/pub/cmd/pub-add) command
 and specify `vector_math`
 to add a dependency on the package:
 
-```bash
+```console
 $ dart pub add vector_math
 Resolving dependencies... 
 + vector_math 2.1.4
@@ -156,7 +156,7 @@ it might automatically install the packages your app depends on.
 If not, do it yourself by running
 [dart pub get](/tools/pub/cmd/pub-get):
 
-```bash
+```console
 $ dart pub get
 Resolving dependencies...
 + vector_math 2.1.4
