@@ -91,16 +91,16 @@ a `Point` object, then `aVector + aPoint` uses `Vector` addition (`+`).
 
 Dart supports the usual arithmetic operators, as shown in the following table.
 
-|-----------------------------+-------------------------------------------|
-| Operator                    | Meaning                                   |
-|-----------------------------+-------------------------------------------|
-| `+`                         | Add
-| `-`                         | Subtract
-| <code>-<em>expr</em></code> | Unary minus, also known as negation (reverse the sign of the expression)
-| `*`                         | Multiply
-| `/`                         | Divide
-| `~/`                        | Divide, returning an integer result
-| `%`                         | Get the remainder of an integer division (modulo)
+| Operator                    | Meaning                                                                  |
+|-----------------------------|--------------------------------------------------------------------------|
+| `+`                         | Add                                                                      |
+| `-`                         | Subtract                                                                 |
+| <code>-<em>expr</em></code> | Unary minus, also known as negation (reverse the sign of the expression) |
+| `*`                         | Multiply                                                                 |
+| `/`                         | Divide                                                                   |
+| `~/`                        | Divide, returning an integer result                                      |
+| `%`                         | Get the remainder of an integer division (modulo)                        |
+
 {:.table .table-striped}
 
 Example:
@@ -120,13 +120,13 @@ assert('5/2 = ${5 ~/ 2} r ${5 % 2}' == '5/2 = 2 r 1');
 Dart also supports both prefix and postfix increment and decrement
 operators.
 
-|-----------------------------+-------------------------------------------|
-| Operator                    | Meaning                                   |
-|-----------------------------+-------------------------------------------|
-| <code>++<em>var</em></code> | <code><em>var</em> = <em>var</em> + 1</code> (expression value is <code><em>var</em> + 1</code>)
-| <code><em>var</em>++</code> | <code><em>var</em> = <em>var</em> + 1</code> (expression value is <code><em>var</em></code>)
-| <code>--<em>var</em></code> | <code><em>var</em> = <em>var</em> - 1</code> (expression value is <code><em>var</em> - 1</code>)
-| <code><em>var</em>--</code> | <code><em>var</em> = <em>var</em> - 1</code> (expression value is <code><em>var</em></code>)
+| Operator                    | Meaning                                                                                          |
+|-----------------------------|--------------------------------------------------------------------------------------------------|
+| <code>++<em>var</em></code> | <code><em>var</em> = <em>var</em> + 1</code> (expression value is <code><em>var</em> + 1</code>) |
+| <code><em>var</em>++</code> | <code><em>var</em> = <em>var</em> + 1</code> (expression value is <code><em>var</em></code>)     |
+| <code>--<em>var</em></code> | <code><em>var</em> = <em>var</em> - 1</code> (expression value is <code><em>var</em> - 1</code>) |
+| <code><em>var</em>--</code> | <code><em>var</em> = <em>var</em> - 1</code> (expression value is <code><em>var</em></code>)     |
+
 {:.table .table-striped}
 
 Example:
@@ -158,15 +158,16 @@ assert(a != b); // -1 != 0
 
 The following table lists the meanings of equality and relational operators.
 
-|-----------+-------------------------------------------|
-| Operator  | Meaning                                   |
-|-----------+-------------------------------------------|
-| `==`      |       Equal; see discussion below
-| `!=`      |       Not equal
-| `>`       |       Greater than
-| `<`       |       Less than
-| `>=`      |       Greater than or equal to
-| `<=`      |       Less than or equal to
+
+| Operator | Meaning                     |
+|----------|-----------------------------|
+| `==`     | Equal; see discussion below |
+| `!=`     | Not equal                   | 
+| `>`      | Greater than                |
+| `<`      | Less than                   |
+| `>=`     | Greater than or equal to    |
+| `<=`     | Less than or equal to       |
+
 {:.table .table-striped}
 
 To test whether two objects x and y represent the same thing, use the
@@ -201,12 +202,12 @@ assert(2 <= 3);
 The `as`, `is`, and `is!` operators are handy for checking types at
 runtime.
 
-|-----------+-------------------------------------------|
-| Operator  | Meaning                                   |
-|-----------+-------------------------------------------|
-| `as`      | Typecast (also used to specify [library prefixes][])
-| `is`      | True if the object has the specified type
-| `is!`     | True if the object doesn't have the specified type
+| Operator  | Meaning                                              |
+|-----------|------------------------------------------------------|
+| `as`      | Typecast (also used to specify [library prefixes][]) |
+| `is`      | True if the object has the specified type            |
+| `is!`     | True if the object doesn't have the specified type   |
+
 {:.table .table-striped}
 
 The result of `obj is T` is true if `obj` implements the interface
@@ -253,18 +254,21 @@ b ??= value;
 Compound assignment operators such as `+=` combine
 an operation with an assignment.
 
-| `=`  | `*=`  | `%=`  | `>>>=` | `^=`
-| `+=` | `/=`  | `<<=` | `&=`   | `|=`
-| `-=` | `~/=` | `>>=`
+|      |       |       |        |                      |
+|------|-------|-------|--------|----------------------|
+| `=`  | `*=`  | `%=`  | `>>>=` | `^=`                 |
+| `+=` | `/=`  | `<<=` | `&=`   | <code>&#124;=</code> |  
+| `-=` | `~/=` | `>>=` |        |                      |
+
 {:.table}
 
 Here's how compound assignment operators work:
 
-|-----------+----------------------+-----------------------|
-|           | Compound assignment  | Equivalent expression |
-|-----------+----------------------+-----------------------|
-|**For an operator <em>op</em>:** | <code>a <em>op</em>= b</code> | <code>a = a <em>op</em> b</code>
-|**Example:**                     |`a += b`                       | `a = a + b`
+|                                  | Compound assignment           | Equivalent expression            |
+|----------------------------------|-------------------------------|----------------------------------|
+| **For an operator <em>op</em>:** | <code>a <em>op</em>= b</code> | <code>a = a <em>op</em> b</code> |
+| **Example:**                     | `a += b`                      | `a = a + b`                      |
+
 {:.table}
 
 The following example uses assignment and compound assignment
@@ -283,12 +287,12 @@ assert(a == 6);
 You can invert or combine boolean expressions using the logical
 operators.
 
-|-----------------------------+-------------------------------------------|
-| Operator                    | Meaning                                   |
-|-----------------------------+-------------------------------------------|
-| <code>!<em>expr</em></code> | inverts the following expression (changes false to true, and vice versa)
-| `||`                        | logical OR
-| `&&`                        | logical AND
+| Operator                    | Meaning                                                                  |
+|-----------------------------|--------------------------------------------------------------------------|
+| <code>!<em>expr</em></code> | inverts the following expression (changes false to true, and vice versa) |
+| <code>&#124;&#124;</code>   | logical OR                                                               |
+| `&&`                        | logical AND                                                              |
+
 {:.table .table-striped}
 
 Here's an example of using the logical operators:
@@ -306,16 +310,16 @@ if (!done && (col == 0 || col == 3)) {
 You can manipulate the individual bits of numbers in Dart. Usually,
 you'd use these bitwise and shift operators with integers.
 
-|-----------------------------+-------------------------------------------|
-| Operator                    | Meaning                                   |
-|-----------------------------+-------------------------------------------|
-| `&`                         | AND
-| `|`                         | OR
-| `^`                         | XOR
-| <code>~<em>expr</em></code> | Unary bitwise complement (0s become 1s; 1s become 0s)
-| `<<`                        | Shift left
-| `>>`                        | Shift right
-| `>>>`                       | Unsigned shift right
+| Operator                    | Meaning                                               |
+|-----------------------------|-------------------------------------------------------|
+| `&`                         | AND                                                   |
+| <code>&#124;</code>         | OR                                                    |
+| `^`                         | XOR                                                   |
+| <code>~<em>expr</em></code> | Unary bitwise complement (0s become 1s; 1s become 0s) |
+| `<<`                        | Shift left                                            |
+| `>>`                        | Shift right                                           |
+| `>>>`                       | Unsigned shift right                                  |
+
 {:.table .table-striped}
 
 :::note
@@ -452,7 +456,7 @@ querySelector('#confirm') // Get an object.
 ```
 
 :::version-note
-  The `?..` syntax requires a [language version][] of at least 2.12.
+The `?..` syntax requires a [language version][] of at least 2.12.
 :::
 
 The previous code is equivalent to the following:

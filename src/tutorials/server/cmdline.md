@@ -174,10 +174,11 @@ import 'package:args/args.dart';
 
 The `args` library contains these classes, among others:
 
-| Class | Description |
-|---|---|
-| [ArgParser]({{argsAPI}}/ArgParser-class.html) | A command-line argument parser. |
+| Class                                           | Description                                                     |
+|-------------------------------------------------|-----------------------------------------------------------------|
+| [ArgParser]({{argsAPI}}/ArgParser-class.html)   | A command-line argument parser.                                 |
 | [ArgResults]({{argsAPI}}/ArgResults-class.html) | The result of parsing command-line arguments using `ArgParser`. |
+
 {: .table }
 
 Here is the `dcat` code that uses these classes to parse and store command-line
@@ -220,11 +221,12 @@ Like other languages,
 Dart has standard output, standard error, and standard input streams.
 The standard I/O streams are defined at the top level of the dart:io library:
 
-| Stream | Description |
-|---|---|
+| Stream                          | Description         |
+|---------------------------------|---------------------|
 | [stdout]({{ioAPI}}/stdout.html) | The standard output |
-| [stderr]({{ioAPI}}/stderr.html) | The standard error |
-| [stdin]({{ioAPI}}/stdin.html) | The standard input |
+| [stderr]({{ioAPI}}/stderr.html) | The standard error  |
+| [stdin]({{ioAPI}}/stdin.html)   | The standard input  |
+
 {: .table }
 
 Import the dart:io library as follows:

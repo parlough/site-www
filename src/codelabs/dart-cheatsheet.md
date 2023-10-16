@@ -32,12 +32,13 @@ If the expression is an identifier, you can omit the `{}`.
 
 Here are some examples of using string interpolation:
 
-<div class="table-wrapper" markdown="1">
-| String                      | | Result |
-|-----------------------------+-+ -------|
-| `'${3 + 2}'`                | | `'5'` |
-| `'${"word".toUpperCase()}'` | | `'WORD'` |
-| `'$myObject'`               | | The value of `myObject.toString()` |
+<div class="table-wrapper">
+
+| String                      | Result                             |
+|-----------------------------|------------------------------------|
+| `'${3 + 2}'`                | `'5'`                              |
+| `'${"word".toUpperCase()}'` | `'WORD'`                           |
+| `'$myObject'`               | The value of `myObject.toString()` |
 
 </div>
 
@@ -973,11 +974,11 @@ Implement a function called `joinWithCommas()` that accepts one to
 five integers, then returns a string of those numbers separated by commas.
 Here are some examples of function calls and returned values:
 
-| Function call                   | | Returned value |
-|---------------------------------+-+----------------|
-| `joinWithCommas(1)`             | | `'1'`          |
-| `joinWithCommas(1, 2, 3)`       | | `'1,2,3'`      |
-| `joinWithCommas(1, 1, 1, 1, 1)` | | `'1,1,1,1,1'`  |
+| Function call                   | Returned value |
+|---------------------------------|----------------|
+| `joinWithCommas(1)`             | `'1'`          |
+| `joinWithCommas(1, 2, 3)`       | `'1,2,3'`      |
+| `joinWithCommas(1, 1, 1, 1, 1)` | `'1,1,1,1,1'`  |
 
 <br>
 

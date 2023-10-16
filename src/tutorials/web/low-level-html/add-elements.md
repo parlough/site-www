@@ -189,6 +189,7 @@ For example:
 | `List<String>`   | List of strings  |
 | `List<int>`      | List of integers |
 | `List<Element>`  | List of elements |
+
 {: .table}
 
 An `Element` maintains references to its child element in a `List<Element>`,
@@ -271,6 +272,7 @@ This program uses three:
 | `<input>` | [`InputElement`]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/InputElement-class.html){:target="_blank" rel="noopener"} |
 | `<ul>`    | [`UListElement`]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/UListElement-class.html){:target="_blank" rel="noopener"} |
 | `<li>`    | [`LIElement`]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/LIElement-class.html){:target="_blank" rel="noopener"}       |
+
 {: .table}
 
 ## Registering an event handler {:#event-handler}
