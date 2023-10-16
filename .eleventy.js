@@ -60,7 +60,7 @@ module.exports = function (eleventyConfig) {
       const language = splitTokenInfo.length > 1 ? splitTokenInfo[1] : '';
       const attributes = splitTokenInfo.length > 2 ? splitTokenInfo[2] : '';
 
-      return _highlight(highlighter, toHtml, toText, token.content, language, attributes);
+      return _highlight(markdown, highlighter, toHtml, toText, token.content, language, attributes);
     };
 
   });
@@ -278,10 +278,10 @@ function _arrayToSentenceString(list, joiner = 'and') {
   return result;
 }
 
-function _highlight(highlighter, toHtml, toText, content, language, attributeString) {
-  // Skip embedded DartPads.
+function _highlight(markdown, highlighter, toHtml, toText, content, language, attributeString) {
+  // Manually render DartPad snippets so that inject_embed can convert them.
   if (language.includes('-dartpad') || language.includes('file-')) {
-    return content; // TODO
+    return `<pre><code class="language-${language}">${markdown.utils.escapeHtml(content)}</code></pre>`;
   }
 
   const attributes = attributeString === '' ? {} : JSON.parse(attributeString);
