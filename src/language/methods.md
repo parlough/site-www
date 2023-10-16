@@ -137,7 +137,7 @@ Instance, getter, and setter methods can be abstract, defining an
 interface but leaving its implementation up to other classes.
 Abstract methods can only exist in [abstract classes][] or [mixins][].
 
-To make a method abstract, use a semicolon (;) instead of a method body:
+To make a method abstract, use a semicolon (`;`) instead of a method body:
 
 <?code-excerpt "misc/lib/language_tour/classes/doer.dart"?>
 ```dart

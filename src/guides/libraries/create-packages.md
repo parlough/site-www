@@ -154,12 +154,11 @@ Here's an example of conditional export code that
 checks for the presence of `dart:io` and `dart:html`:
 
 <?code-excerpt "create_libraries/lib/hw_mp.dart (export)"?>
-```dart
+```dart {"title":"lib/hw_mp.dart"}
 export 'src/hw_none.dart' // Stub implementation
     if (dart.library.io) 'src/hw_io.dart' // dart:io implementation
     if (dart.library.html) 'src/hw_html.dart'; // dart:html implementation
 ```
-<div class="prettify-filename">lib/hw_mp.dart</div>
 
 Here's what that code does:
 
@@ -184,7 +183,7 @@ All of the conditionally exported libraries must implement the same API.
 For example, here's the `dart:io` implementation:
 
 <?code-excerpt "create_libraries/lib/src/hw_io.dart"?>
-```dart
+```dart {"title":"lib/src/hw_io.dart"}
 import 'dart:io';
 
 void alarm([String? text]) {
@@ -193,18 +192,16 @@ void alarm([String? text]) {
 
 String get message => 'Hello World from the VM!';
 ```
-<div class="prettify-filename">lib/src/hw_io.dart</div>
 
 And here's the default implementation,
 which uses stubs that throw `UnsupportedError`:
 
 <?code-excerpt "create_libraries/lib/src/hw_none.dart"?>
-```dart
+```dart {"title":"lib/src/hw_none.dart"}
 void alarm([String? text]) => throw UnsupportedError('hw_none alarm');
 
 String get message => throw UnsupportedError('hw_none message');
 ```
-<div class="prettify-filename">lib/src/hw_none.dart</div>
 
 On any platform,
 you can import the library that has the conditional export code:

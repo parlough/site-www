@@ -21,69 +21,69 @@ you can use with common Dart app types.
   assign b = '<span class="material-icons" title="use browser tools instead">web</span>'
 {% endcomment %}
 
-<div class="table-wrapper" markdown="1">
-<table class="table table-striped" markdown="1">
+<div class="table-wrapper">
+<table class="table table-striped">
   <thead>
-    <tr markdown="1">
+    <tr>
       <th>&nbsp;</th>
-      <th scope="col" markdown="1">[Flutter mobile or desktop][Flutter devtools]</th>
-      <th scope="col" markdown="1">[Flutter web][Flutter devtools]</th>
-      <th scope="col" markdown="1">[Other web][]</th>
-      <th scope="col" markdown="1">[Command-line][]</th>
+      <th scope="col">[Flutter mobile or desktop][Flutter devtools]</th>
+      <th scope="col">[Flutter web][Flutter devtools]</th>
+      <th scope="col">[Other web][]</th>
+      <th scope="col">[Command-line][]</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row" markdown="1">[Debugger][]</th>
+      <th scope="row">[Debugger][]</th>
       <td>{{y}}</td> <!-- fma -->
       <td>{{y}}</td> <!-- fwa -->
       <td>{{y}}</td> <!-- owa -->
       <td>{{y}}</td> <!-- cla -->
     </tr>
     <tr>
-      <th scope="row" markdown="1">[Logging view][]</th>
+      <th scope="row">[Logging view][]</th>
       <td>{{y}}</td> <!-- fma -->
       <td>{{y}}</td> <!-- fwa -->
       <td>{{y}}</td> <!-- owa -->
       <td>{{y}}</td> <!-- cla -->
     </tr>
     <tr>
-      <th scope="row" markdown="1">[App size tool][]</th>
+      <th scope="row">[App size tool][]</th>
       <td>{{y}}</td> <!-- fma -->
       <td>{{b}}</td> <!-- fwa -->
       <td>{{b}}</td> <!-- owa -->
       <td>{{y}}</td> <!-- cla -->
     </tr>
     <tr>
-      <th scope="row" markdown="1">[CPU profiler][]</th>
+      <th scope="row">[CPU profiler][]</th>
       <td>{{y}}</td> <!-- fma -->
       <td>{{b}}</td> <!-- fwa -->
       <td>{{b}}</td> <!-- owa -->
       <td>{{y}}</td> <!-- cla -->
     </tr>
     <tr>
-      <th scope="row" markdown="1">[Memory view][]</th>
+      <th scope="row">[Memory view][]</th>
       <td>{{y}}</td> <!-- fma -->
       <td>{{b}}</td> <!-- fwa -->
       <td>{{b}}</td> <!-- owa -->
       <td>{{y}}</td> <!-- cla -->
     </tr>
     <tr>
-      <th scope="row" markdown="1">[Network view][]</th>
+      <th scope="row">[Network view][]</th>
       <td>{{y}}</td> <!-- fma -->
       <td>{{b}}</td> <!-- fwa -->
       <td>{{b}}</td> <!-- owa -->
       <td>{{y}}</td> <!-- cla -->
     </tr>
     <tr>
-      <th scope="row" markdown="1">[Performance view][]</th>
+      <th scope="row">[Performance view][]</th>
       <td>{{y}}</td> <!-- fma -->
       <td>{{b}}</td> <!-- fwa -->
       <td>{{b}}</td> <!-- owa -->
       <td>{{y}}</td> <!-- cla -->
     </tr>
     <tr>
-      <th scope="row" markdown="1">[Flutter inspector][]</th>
+      <th scope="row">[Flutter inspector][]</th>
       <td>{{y}}</td> <!-- fma -->
       <td>{{y}}</td> <!-- fwa -->
       <td>{{b}}</td> <!-- owa -->

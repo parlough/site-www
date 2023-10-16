@@ -60,7 +60,7 @@ Here's how you might implement the extension method `parseInt()`,
 using an extension (named `NumberParsing`) that operates on strings:
 
 <?code-excerpt "extension_methods/lib/string_extensions/string_apis.dart (parseInt)"?>
-```dart
+```dart {"title":"lib/string_apis.dart"}
 extension NumberParsing on String {
   int parseInt() {
     return int.parse(this);
@@ -68,7 +68,6 @@ extension NumberParsing on String {
   // ···
 }
 ```
-<div class="prettify-filename">lib/string_apis.dart</div>
 
 The next section describes how to _use_ extension methods.
 After that are sections about _implementing_ extension methods.
@@ -205,7 +204,7 @@ extension <extension name>? on <type> {
 For example, here's how you might implement an extension on the `String` class:
 
 <?code-excerpt "extension_methods/lib/string_extensions/string_apis.dart"?>
-```dart
+```dart {"title":"lib/string_apis.dart"}
 extension NumberParsing on String {
   int parseInt() {
     return int.parse(this);
@@ -216,7 +215,6 @@ extension NumberParsing on String {
   }
 }
 ```
-<div class="prettify-filename">lib/string_apis.dart</div>
 
 The members of an extension can be methods, getters, setters, or operators.
 Extensions can also have static fields and static helper methods.

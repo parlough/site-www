@@ -46,7 +46,8 @@ void _processSrc(_SrcAndTipPaths paths) {
 }
 
 class _SrcWithTips {
-  final HtmlEscape _htmlEscape = HtmlEscape(HtmlEscapeMode(escapeLtGt: true));
+  final HtmlEscape _htmlEscape =
+      const HtmlEscape(HtmlEscapeMode(escapeLtGt: true));
   final tipRegExp = RegExp(r'^(.*?) ?//!tip\("([^"]+)"\)$');
   final isNotBlankRegExp = RegExp(r'\S');
   final List<List<String>> tooltips;

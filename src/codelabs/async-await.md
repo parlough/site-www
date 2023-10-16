@@ -273,7 +273,8 @@ to the right of the synchronous example.
 
 <div class="container">
 <div class="row">
-<div class="col-sm" markdown="1">
+<div class="col-sm">
+
 #### Example: synchronous functions
 
 <?code-excerpt "async_await/bin/get_order_sync_bad.dart (no-warning)" replace="/(\s+\/\/ )(Imagine.*? is )(.*)/$1$2$1$3/g"?>
@@ -303,7 +304,8 @@ Fetching user order...
 Your order is: Instance of '_Future<String>'
 ```
 </div>
-<div class="col-sm" markdown="1">
+<div class="col-sm">
+
 #### Example: asynchronous functions
 
 <?code-excerpt "async_await/bin/get_order.dart" replace="/(\s+\/\/ )(Imagine.*? is )(.*)/$1$2$1$3/g; /async|await/[!$&!]/g; /(Future<\w+\W)( [^f])/[!$1!]$2/g; /4/2/g"?>

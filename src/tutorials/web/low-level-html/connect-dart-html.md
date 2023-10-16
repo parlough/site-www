@@ -244,16 +244,17 @@ This program imports Dart's HTML library,
 which contains key classes and functions for programming the DOM.
 Key classes include:
 
-| Dart class                                                                                                                               | Description                                               |
-|------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------|
-| <a href="{{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/Node-class.html" target="_blank" rel="noopener">Node</a>         | Implements a DOM node.                                    |
-| <a href="{{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/Element-class.html" target="_blank" rel="noopener">Element</a>   | A subclass of Node; implements a web page element.        |
-| <a href="{{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/Document-class.html" target="_blank" rel="noopener">Document</a> | Another subclass of Node; implements the document object. |
+| Dart class                                                                              | Description                                               |
+|-----------------------------------------------------------------------------------------|-----------------------------------------------------------|
+| [`Node`]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/Node-class.html)          | Implements a DOM node.                                    |
+| [`Element`]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/Element-class.html)    | A subclass of Node; implements a web page element.        |
+| [`Document`]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-html/Document-class.html)  | Another subclass of Node; implements the document object. |
+
 {: .table}
 
 The `dart:core` library, which is automatically imported,
 contains many other useful classes, such as:
-[`List`]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/List-class.html){:target="_blank" rel="noopener"},
+[`List`]({{site.dart-api}}/{{site.sdkInfo.channel}}/dart-core/List-class.html),
 a parameterized class that can specify the type of its members.
 An instance of `Element` keeps its list of child Element objects
 in a `List<Element>`.

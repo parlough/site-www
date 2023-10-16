@@ -17,7 +17,7 @@ or reporting a bug.
 If you are including the `dart info` output in a bug report,
 please review the output to ensure it only
 contains details you're comfortable posting publicly.
-:::warning
+:::
 
 To output general information related to your system
 and your Dart installation, including running Dart processes,
@@ -30,7 +30,7 @@ $ dart info
 For example, on macOS, 
 the output looks similar to the following:
 
-```plaintext
+```markdown
 #### General info
 
 - Dart 2.19.2 (stable) (Tue Feb 7 18:37:17 2023 +0000) on "macos_arm64"
