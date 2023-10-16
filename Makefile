@@ -19,8 +19,7 @@ DART_CHANNEL ?= stable
 DART_VERSION ?= latest
 FIREBASE_PROJECT ?= default
 FIREBASE_CHANNEL ?= dart
-JEKYLL_SITE_HOST ?= 0.0.0.0
-JEKYLL_SITE_PORT ?= 4000
+SITE_PORT ?= 4000
 
 # Here so Docker Compose does not complain, add any env 
 # overrides to this file. Blank is okay, it's ignored.
@@ -57,15 +56,9 @@ setup:
 	 --build-arg DART_VERSION=${DART_VERSION} \
 	 --build-arg DART_CHANNEL=${DART_CHANNEL}
 
-# Serve the Jekyll site with livereload and incremental builds
+# Serve the 11ty site with livereload and incremental builds
 serve:
-	bundle exec jekyll serve \
-		--host ${JEKYLL_SITE_HOST} \
-		--port ${JEKYLL_SITE_PORT} \
-		--config _config.yml,_config_dev.yml \
-		--livereload \
-		--incremental \
-		--trace
+	npm run serve -- --port=${SITE_PORT}
 
 # Run all tests inside a built container
 test:
@@ -87,7 +80,7 @@ build-image:
 		--build-arg DART_CHANNEL=${DART_CHANNEL} \
 		--build-arg BUILD_CONFIGS=${BUILD_CONFIGS} .
 
-# Build the Jekyll site via Docker and copy built site to local
+# Build the 11ty site via Docker and copy built site to local
 build:
 	make clean
 	make build-image

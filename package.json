@@ -19,6 +19,7 @@
     "@sindresorhus/slugify": "^1.1.2",
     "domutils": "^3.1.0",
     "eleventy-sass": "^2.2.3",
+    "firebase-tools": "^12.7.0",
     "hast-util-to-html": "^9.0.0",
     "hast-util-to-text": "^4.0.0",
     "htmlparser2": "^9.0.0",

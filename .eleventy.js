@@ -196,6 +196,12 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/assets/shared', {expand: true, filter: /^(?!_).+/});
   eleventyConfig.addPassthroughCopy('src/f', {expand: true, filter: /^(?!_).+/});
 
+  eleventyConfig.setQuietMode(true);
+  
+  eleventyConfig.setServerOptions({
+    port: 4000,
+  });
+  
   return {
     htmlTemplateEngine: 'liquid',
     dir: {

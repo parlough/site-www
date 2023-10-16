@@ -1,4 +1,4 @@
-FROM debian:bookworm-slim@sha256:24c92a69df28b21676d721fe18c0bf64138bfc69b486746ad935b49cc31b0b91 as base
+FROM debian:bookworm-slim@sha256:b55e2651b71408015f8068dd74e1d04404a8fa607dd2cfe284b4824c11f4d9bd as base
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=US/Pacific
@@ -11,7 +11,6 @@ RUN apt update && apt install -yq --no-install-recommends \
       lsof \
       make \
       unzip \
-      vim-nox \
     && rm -rf /var/lib/apt/lists/*
 
 RUN echo "alias lla='ls -lAhG --color=auto'" >> ~/.bashrc
@@ -80,7 +79,7 @@ FROM dart as node
 
 RUN mkdir -p /etc/apt/keyrings \
     && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg \
-    && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_18.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list \
+    && echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | tee /etc/apt/sources.list.d/nodesource.list \
     && apt-get update -yq \
     && apt-get install nodejs -yq \
     && npm install -g npm # Ensure latest npm
@@ -92,7 +91,6 @@ WORKDIR /app
 
 ENV NODE_ENV=development
 COPY package.json package-lock.json ./
-RUN npm install -g firebase-tools@12.5.4
 RUN npm install
 
 COPY ./ ./
@@ -105,8 +103,9 @@ RUN dart pub get
 ENV BASE_DIR=/app
 ENV TOOL_DIR=$BASE_DIR/tool
 
-# Jekyl
+# 11ty
 EXPOSE 4000
+EXPOSE 8080
 EXPOSE 35729
 
 # Firebase emulator port
@@ -119,7 +118,8 @@ ENV DEBIAN_FRONTEND=dialog
 
 # ============== FIREBASE EMULATE ==============
 FROM dev as emulate
-RUN bundle exec jekyll build --config _config.yml,_config_test.yml
+
+RUN npx run build
 CMD ["make", "emulate"]
 
 
@@ -127,11 +127,7 @@ CMD ["make", "emulate"]
 FROM node AS build
 WORKDIR /app
 
-ENV JEKYLL_ENV=production
-COPY Gemfile Gemfile.lock ./
-RUN gem update --system && gem install bundler
-RUN BUNDLE_WITHOUT="test development" bundle install --jobs=4 --retry=2 --quiet
-
+ENV PRODUCTION=true
 ENV NODE_ENV=production
 COPY package.json package-lock.json ./
 RUN npm install
@@ -143,14 +139,12 @@ RUN dart pub get
 ENV BASE_DIR=/app
 ENV TOOL_DIR=$BASE_DIR/tool
 
-ARG BUILD_CONFIGS=_config.yml
-ENV BUILD_CONFIGS=$BUILD_CONFIGS
-RUN bundle exec jekyll build --config $BUILD_CONFIGS
+RUN npm run build
 
 
 # ============== DEPLOY to FIREBASE ==============
 FROM build as deploy
-RUN npm install -g firebase-tools@12.5.4
+
 ARG FIREBASE_TOKEN
 ENV FIREBASE_TOKEN=$FIREBASE_TOKEN
 ARG FIREBASE_PROJECT=default
