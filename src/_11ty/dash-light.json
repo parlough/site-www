@@ -1,10 +1,6 @@
 {
   "name": "dash-light",
   "type": "light",
-  "colors": {
-    "diffEditor.removedTextBackground": "#e597af52",
-    "diffEditor.insertedTextBackground": "#b7e7a44b"
-  },
   "tokenColors": [
     {
       "settings": {
