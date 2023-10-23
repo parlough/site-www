@@ -234,10 +234,7 @@ are at the latest version (`--no-up-to-date`).
 To include up-to-date dependencies, use `--up-to-date`.
 
 
-:::info
-*Problems?*
-See [Troubleshooting Pub](/tools/pub/troubleshoot).
-:::
+{% render 'pub-problems.md' %}
 
 [`args`]: {{site.pub-pkg}}/args
 [best practices]: /tools/pub/dependencies#best-practices

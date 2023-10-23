@@ -112,7 +112,4 @@ For options that apply to all pub commands, see
 Reports what dependencies would change but doesn't change any.
 
 
-:::info
-*Problems?*
-See [Troubleshooting Pub](/tools/pub/troubleshoot).
-:::
+{% render 'pub-problems.md' %}

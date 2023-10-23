@@ -94,7 +94,5 @@ pub-tokens.json is deleted.
 Removed 1 secret tokens.
 ```
 
-:::info
-*Problems?*
-See [Troubleshooting Pub](/tools/pub/troubleshoot).
-:::
+
+{% render 'pub-problems.md' %}

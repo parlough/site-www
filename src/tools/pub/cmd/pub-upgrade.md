@@ -154,7 +154,4 @@ To check which dependencies will be upgraded,
 you can use `dart pub upgrade --major-versions --dry-run`.
 
 
-:::info
-*Problems?*
-See [Troubleshooting Pub](/tools/pub/troubleshoot).
-:::
+{% render 'pub-problems.md' %}

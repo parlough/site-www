@@ -153,7 +153,4 @@ Refuses to resolve dependencies with an error message
 if the `pubspec.lock` file deviates or is missing.
 
 
-:::info
-*Problems?*
-See [Troubleshooting Pub](/tools/pub/troubleshoot).
-:::
+{% render 'pub-problems.md' %}

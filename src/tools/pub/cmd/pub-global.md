@@ -267,10 +267,7 @@ with the same name. If you don't specify this flag,
 the preexisting executable will not be replaced.
 
 
-:::info
-*Problems?*
-See [Troubleshooting Pub](/tools/pub/troubleshoot).
-:::
+{% render 'pub-problems.md' %}
 
 [system cache]: /tools/pub/glossary#system-cache
 [webdev]: /tools/webdev

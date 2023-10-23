@@ -36,7 +36,5 @@ In the event of warnings, your package *is* uploaded.
 To ensure that your package has no warnings before uploading,
 either don't use `--force`, or use `--dry-run` first.
 
-:::info
-*Problems?*
-See [Troubleshooting Pub](/tools/pub/troubleshoot).
-:::
+
+{% render 'pub-problems.md' %}

@@ -218,7 +218,5 @@ By default, pub precompiles executables
 in immediate dependencies (`--precompile`).
 To prevent precompilation, use `--no-precompile`.
 
-:::info
-*Problems?*
-See [Troubleshooting Pub](/tools/pub/troubleshoot).
-:::
+
+{% render 'pub-problems.md' %}

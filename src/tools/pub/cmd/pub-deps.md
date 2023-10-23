@@ -77,7 +77,5 @@ Prints all available executables.
 
 Generates output in JSON format.
 
-:::info
-*Problems?*
-See [Troubleshooting Pub](/tools/pub/troubleshoot).
-:::
+
+{% render 'pub-problems.md' %}
