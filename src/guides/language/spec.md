@@ -29,7 +29,7 @@ informal language feature specifications in the [dart-lang/language][] repo:
 [Accepted informal proposals]: https://github.com/dart-lang/language/tree/main/accepted
 [Drafts of potential features]: https://github.com/dart-lang/language/tree/main/working
 
-:::info
+:::version-note
 Dart 3 changed the Dart language in a few ways,
 primarily requiring [sound null safety](/null-safety).
 :::

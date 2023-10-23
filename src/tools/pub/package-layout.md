@@ -233,7 +233,7 @@ you will discover that any `package:` imports it contains don't
 resolve. Instead, your entrypoints should go in the appropriate
 [entrypoint directory](/tools/pub/glossary#entrypoint-directory).
 
-:::info Tip for web apps
+:::note Tip for web apps
 For the best performance when developing web apps,
 put [implementation files](#implementation-files) under `/lib/src`,
 instead of elsewhere under `/lib`.
@@ -485,7 +485,7 @@ If you have any of these, place them in a directory called `tool`.
 
 ## Project-specific caching for tools
 
-:::info
+:::note
 Do not check the `.dart_tool/` directory into source control.
 Instead, keep `.dart_tool/` in `.gitignore`.
 :::
@@ -524,8 +524,8 @@ When running these build steps, files are cached in `.dart_tool/build/`.
 This helps speed-up future re-runs of the build steps.
 
 :::warning
-  When developing a tool that wants to cache files in `.dart_tool/`,
-  ensure the following:
+When developing a tool that wants to cache files in `.dart_tool/`,
+ensure the following:
   
 * You are using a subdirectory named after a package you own
   (`.dart_tool/<my_tool_package_name>/`)

@@ -106,8 +106,8 @@ var names = <String>{};
 // var names = {}; // Creates a map, not a set.
 ```
 
-:::info
-**Set or map?** The syntax for map literals is similar to that for set
+:::note Set or map?
+The syntax for map literals is similar to that for set
 literals. Because map literals came first, `{}` defaults to the `Map` type. If
 you forget the type annotation on `{}` or the variable it's assigned to, then
 Dart creates an object of type `Map<dynamic, dynamic>`.

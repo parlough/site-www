@@ -31,7 +31,7 @@ so it's easy to find (but not more tempting than package managers).
 and has Dart's [`dart`](/tools/dart-tool) command-line interface
 in its `bin` folder.
 
-:::warn
+:::warning Notice
 {% render './archive/_sdk-terms.md' %}
 :::
 

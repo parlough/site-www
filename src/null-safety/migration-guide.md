@@ -30,7 +30,7 @@ If your application or library is large, check out
 [Gradual null safety migration for large Dart projects][].
 :::
 
-:::info
+:::note
 **Migrating an app is technically the same as migrating a package.**
 Before migrating an app,
 make sure that all of your dependencies are ready.
@@ -60,7 +60,7 @@ For example, if you predict that a function will take a nullable parameter but
 the package migrates it to be non-nullable,
 then passing a nullable argument becomes a compile error.
 
-:::info
+:::note
 **You can—and should—migrate your package before
 packages that depend on it are migrated.**
 Your null-safe package is usable by packages and apps that
@@ -103,8 +103,7 @@ then you can start migrating.
 Otherwise, use the **Resolvable** column to find
 null-safe releases, if they exist.
 
-:::info
-**Why do all dependencies need to support null safety?**
+:::note Why do all dependencies need to support null safety?
 When all of an app's direct dependencies support null safety,
 you can _run the app_ with sound null safety.
 When all the dev dependencies support null safety,

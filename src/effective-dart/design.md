@@ -1549,11 +1549,9 @@ distinction is a little subtle. It's OK to allow inference to *propagate*
 you don't want it to inject a `dynamic` type annotation in a place where your
 code did not specify one.
 
-:::info
-Before Dart 2, this guideline stated the exact opposite: 
-*don't* annotate with `dynamic` when it is implicit. 
-With the new stronger type system and type inference, 
-users now expect Dart to behave like an inferred statically-typed language. 
+:::note
+With Dart's strong type system and type inference, 
+users expect Dart to behave like an inferred statically-typed language. 
 With that mental model, 
 it is an unpleasant surprise to discover that
 a region of code has silently lost all of the

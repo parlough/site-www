@@ -143,7 +143,7 @@ which returns a [`Type`][] object.
 print('The type of a is ${a.runtimeType}');
 ```
 
-:::warn
+:::warning
 Use a [type test operator][] rather than `runtimeType`
 to test an object's type.
 In production environments, the test `object is Type` is more stable

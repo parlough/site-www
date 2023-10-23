@@ -128,7 +128,7 @@ void main() {
 }
 ```
 
-:::info
+:::note Details
 Behind the scenes, the `for-in` loop uses an _iterator._
 You rarely see the [Iterator API][iterator class] used directly, however,
 because `for-in` is easier to read and understand,
@@ -158,7 +158,7 @@ Also, with the `Iterable` class,
 you can't use the operator `[]` to access the last element,
 but you can use the `last` property.
 
-:::warn
+:::warning
 Because accessing the last element of an `Iterable` requires
 stepping through all the other elements,
 **`last` can be slow.**
@@ -293,7 +293,7 @@ If more than one or no element in the `Iterable`
 satisfies the predicate condition,
 then the method throws a [StateError][StateError class] exception.
 
-:::warn
+:::warning
 `singleWhere()` steps through the whole `Iterable` until the last element,
 which can cause problems if the `Iterable` is infinite or
 contains a large collection of elements.

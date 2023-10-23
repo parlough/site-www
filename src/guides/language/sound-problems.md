@@ -11,8 +11,8 @@ this page can help. To learn more, read about
 [Dart's type system](/language/type-system),
 and see [these other resources](/language/type-system#other-resources).
 
-:::info
-**Help us improve this page!** If you encounter a warning or error that isn't
+:::note Help us improve this page!
+If you encounter a warning or error that isn't
 listed here, please file an issue by clicking the **bug icon** at the top
 right. Include the **warning or error message** and, if possible, the code for
 both a small reproducible case and its correct equivalent.

@@ -107,7 +107,7 @@ class Point {
 }
 ```
 
-:::info
+:::note
 This example is running in an embedded [DartPad](/tools/dartpad).
 You can also
 <a href="{{site.dartpad}}/bc63d212c3252e44058ff76f34ef5730"

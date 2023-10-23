@@ -76,8 +76,8 @@ $ dart run hello.dart
 Hello World
 ```
 
-:::info
-**On macOS,** executables, including the Dart VM (`dart`),
+:::note
+On macOS, executables, including the Dart VM (`dart`),
 can load only **signed libraries.**
 For more information on signing libraries, 
 see Apple's [Code Signing Guide.][codesign]

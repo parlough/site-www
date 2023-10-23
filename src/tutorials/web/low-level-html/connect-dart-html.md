@@ -191,7 +191,7 @@ You don't need surrounding tags such as `<html>` and `<body>`.
 Because DartPad knows where your Dart code is,
 you don't need a `<script>` tag.
 
-:::info
+:::note
 [HTML and Dart connections](#connections) shows the full HTML code
 that you need to run your web app outside DartPad.
 :::

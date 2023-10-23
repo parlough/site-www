@@ -18,7 +18,7 @@ are visible only inside the library. *Every Dart file (plus its parts) is a
 
 Libraries can be distributed using [packages](/guides/packages).
 
-:::info
+:::note
 If you're curious why Dart uses underscores instead of
 access modifier keywords like `public` or `private`, see
 [SDK issue 33383](https://github.com/dart-lang/sdk/issues/33383).
@@ -102,7 +102,7 @@ Here are some cases when you might use deferred loading:
   alternative implementations of an algorithm, for example.
 * To load rarely used functionality, such as optional screens and dialogs.
 
-:::warn
+:::warning
 **Only `dart compile js` supports deferred loading.**
 Flutter and the Dart VM don't support deferred loading.
 To learn more, see

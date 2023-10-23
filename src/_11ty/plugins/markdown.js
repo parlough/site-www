@@ -33,12 +33,12 @@ const markdown = (() => {
   return markdown;
 })();
 
-function _registerAside(markdown, id, text, icon, style) {
+function _registerAside(markdown, id, defaultTitle, icon, style) {
   markdown.use(markdownItContainer, id, {
     render: function (tokens, index) {
       if (tokens[index].nesting === 1) {
         const parsedArgs = /\s+(.*)/.exec(tokens[index].info);
-        const title = parsedArgs?.[1] ?? text;
+        const title = parsedArgs?.[1] ?? defaultTitle;
         return `<aside class="alert ${style}">
 ${icon !== null ? `<i class="material-icons" aria-hidden="true">${icon}</i>` : ''}${title !== null ? ` <strong>${title}</strong>` : ''}
 <div class="alert-content">
@@ -51,13 +51,11 @@ ${icon !== null ? `<i class="material-icons" aria-hidden="true">${icon}</i>` : '
 }
 
 function _registerAsides(markdown) {
-  _registerAside(markdown, 'info', null, 'info', 'alert-info');
   _registerAside(markdown, 'note', 'Note', 'info', 'alert-info');
   _registerAside(markdown, 'flutter-note', 'Flutter note', 'smartphone', 'alert-info');
   _registerAside(markdown, 'version-note', 'Version note', 'merge_type', 'alert-info');
   _registerAside(markdown, 'tip', 'Tip', 'tips_and_updates', 'alert-success');
   _registerAside(markdown, 'important', 'Important', 'error', 'alert-warning');
-  _registerAside(markdown, 'warn', null, 'report_problem', 'alert-warning');
   _registerAside(markdown, 'warning', 'Warning', 'report_problem', 'alert-warning');
 
   _registerAside(markdown, 'secondary', null, null, 'alert-secondary');

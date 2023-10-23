@@ -29,7 +29,7 @@ plus one Dart file under the `bin` directory:
 $ dart format lib bin/updater.dart 
 ```
 
-:::warn
+:::warning Notice
 By default, `dart format` **overwrites** the Dart files.
 :::
 

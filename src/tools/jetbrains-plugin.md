@@ -122,9 +122,9 @@ Here's one way to configure Dart support:
     <li>Pick your desired template.</li>
   </ol>
 
-  :::info
-    The provided templates are supplied and created
-    by [`dart create`](/tools/dart-create).
+  :::note
+  The provided templates are supplied and created
+  by [`dart create`](/tools/dart-create).
   :::
 </li>
 

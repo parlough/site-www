@@ -10,8 +10,8 @@ This page explains how to use `build_runner`.
 To learn how to use build_runner with a specific package,
 see the documentation for that package.
 
-:::info
-**If you're a web developer**, use the [`webdev` tool][webdev] to
+:::note
+If you're a web developer, use the [`webdev` tool][webdev] to
 build and serve web apps.
 :::
 

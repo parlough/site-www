@@ -209,8 +209,7 @@ Errors on Future chains never cross the boundaries of error zones.
 If an error reaches an error zone boundary,
 it is treated as unhandled error at that point.
 
-:::info
-**API note:**
+:::note API note
 Handling uncaught errors doesn't *require* zones.
 The isolate API [`Isolate.run()`][] also handles 
 listening for uncaught errors.
@@ -586,8 +585,7 @@ and stopping the timer whenever the zone is left.
 Providing `run*` parameters to the ZoneSpecification
 lets you specify the code that the zone executes.
 
-:::info
-**API note:**
+:::note API note
 In the future, zones might provide a simpler alternative
 for the common case of sandwiching zone code:
 an onEnter/onLeave API.

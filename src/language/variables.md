@@ -174,7 +174,7 @@ void main() {
 }
 ```
 
-:::warn
+:::warning Notice
 If you fail to initialize a `late` variable,
 a runtime error occurs when the variable is used.
 :::

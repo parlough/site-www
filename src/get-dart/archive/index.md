@@ -17,7 +17,7 @@ and the [Dart API documentation.]({{site.dart-api}}/{{site.sdkInfo.channel}})
 Want to install Dart with your OS's package manager?
 [Get Dart.](/get-dart)
 
-:::warn
+:::warning Notice
 {% render './_sdk-terms.md' %}
 :::
 

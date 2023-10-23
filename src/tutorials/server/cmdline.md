@@ -579,7 +579,7 @@ instead of setting `exitCode` to 2,
 but `exit()` would quit the program
 and it might not process all of the files on the command line.
 
-:::info
+:::note
 Generally speaking, you're better off using the `exitCode` property,
 which sets the exit code but allows the program to continue through to its
 natural completion.

@@ -193,9 +193,7 @@ using additional processor cores if they're available.
 Isolates are like threads or processes,
 but each isolate has its own memory and a single thread running an event loop.
 
-:::info
-**Platform note:**
-
+:::note Platform note
 Only the [Dart Native platform][] implements isolates.
 To learn more about the Dart Web platform,
 see the [Concurrency on the web](#concurrency-on-the-web) section.

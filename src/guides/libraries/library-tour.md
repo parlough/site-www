@@ -43,8 +43,8 @@ You can find API documentation for all dart:* libraries in the
 [Dart API reference][Dart API] or, if you're using Flutter,
 the [Flutter API reference.][docs.flutter]
 
-:::info
-**DartPad tip:** You can play with the code in this page by copying it into a
+:::note DartPad tip
+You can play with the code on this page by copying it into a
 [DartPad.]({{site.dartpad}})
 :::
 
