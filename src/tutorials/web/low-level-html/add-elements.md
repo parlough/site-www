@@ -11,15 +11,13 @@ prevpage:
   title: Connect Dart and HTML
 ---
 
-<div class="mini-toc" markdown="1">
-  <h4>What's the point?</h4>
-
-  * In Dart, page elements are of type `Element`.
-  * An `Element` knows its parent.
-  * An `Element` keeps its children in a `List<Element>`.
-  * Change the DOM by adding or removing children of elements.
-  * Respond to user input with an `EventListener`.
-</div>
+:::mini-toc What's the point?
+* In Dart, page elements are of type `Element`.
+* An `Element` knows its parent.
+* An `Element` keeps its children in a `List<Element>`.
+* Change the DOM by adding or removing children of elements.
+* Respond to user input with an `EventListener`.
+:::
 
 :::note
 This page uses embedded DartPads to display runnable examples.

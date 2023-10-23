@@ -4,15 +4,14 @@ description: Learn how to consume single-subscriber and broadcast streams.
 js: [{url: 'https://dartpad.dev/inject_embed.dart.js', defer: true}]
 ---
 
-<div class="mini-toc" markdown="1">
-  <h4>What's the point?</h4>
-
-  * Streams provide an asynchronous sequence of data.
-  * Data sequences include user-generated events and data read from files.
-  * You can process a stream using either **await for** or `listen()` from the Stream API.
-  * Streams provide a way to respond to errors.
-  * There are two kinds of streams: single subscription or broadcast.
-</div>
+:::mini-toc What's the point?
+* Streams provide an asynchronous sequence of data.
+* Data sequences include user-generated events and data read from files.
+* You can process a stream using either **await for** or
+  `listen()` from the Stream API.
+* Streams provide a way to respond to errors.
+* There are two kinds of streams: single subscription or broadcast.
+:::
 
 Asynchronous programming in Dart is characterized by the
 [Future][] and [Stream][] classes.

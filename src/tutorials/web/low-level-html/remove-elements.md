@@ -8,14 +8,12 @@ prevpage:
   title: Add elements to the DOM
 ---
 
-<div class="mini-toc" markdown="1">
-  <h4>What's the point?</h4>
-
-  * Use `element.remove()` to remove an element from the DOM.
-  * Remove all children from an element with `element.children.clear()`.
-  * Function expressions are a convenient way to define single-use functions.
-  * `=>` is a shorthand syntax for defining functions that contain just one expression.
-</div>
+:::mini-toc What's the point?
+* Use `element.remove()` to remove an element from the DOM.
+* Remove all children from an element with `element.children.clear()`.
+* Function expressions are a convenient way to define single-use functions.
+* `=>` is a shorthand syntax for defining functions that contain just one expression.
+:::
 
 
 :::note

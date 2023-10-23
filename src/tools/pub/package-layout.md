@@ -233,8 +233,7 @@ you will discover that any `package:` imports it contains don't
 resolve. Instead, your entrypoints should go in the appropriate
 [entrypoint directory](/tools/pub/glossary#entrypoint-directory).
 
-:::info
-**Tip for web apps:**
+:::info Tip for web apps
 For the best performance when developing web apps,
 put [implementation files](#implementation-files) under `/lib/src`,
 instead of elsewhere under `/lib`.

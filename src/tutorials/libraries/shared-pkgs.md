@@ -1,23 +1,23 @@
 ---
 title: Install shared packages
-description: Packages are bundles of source code, tools, and resources that help you to organize and share code
+description: >-
+  Packages are bundles of source code, tools, and
+  resources that help you to organize and share code.
 ---
 
-### Borrow and share code.
+## Borrow and share code
 
-<div class="mini-toc" markdown="1">
-  <h4>What's the point?</h4>
-
-  * The [pub.dev site]({{site.pub}}) is the primary public repository for Dart
-    packages.
-  * Following a few conventions, such as having a valid pubspec.yaml file,
-    makes your app a package.
-  * If you're developing a web or server-side app,
-    use `dart create` to generate starting files.
-  * If you're developing a web or server-side app,
-    use `dart pub get` to download packages.
-  * If you're developing a mobile app, use Flutter's tools.
-</div>
+:::mini-toc What's the point?
+* The [pub.dev site]({{site.pub}}) is the primary public repository for Dart
+  packages.
+* Following a few conventions, such as having a valid `pubspec.yaml` file,
+  makes your app a package.
+* If you're developing a web or server-side app,
+  use `dart create` to generate starting files.
+* If you're developing a web or server-side app,
+  use `dart pub get` to download packages.
+* If you're developing a mobile app, use Flutter's tools.
+:::
 
 Once you can create and run a Dart app,
 you're ready to leverage code written by other programmers.
