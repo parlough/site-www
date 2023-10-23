@@ -5,12 +5,14 @@ async function configureHighlighting(markdown) {
   const {toHtml} = await import('hast-util-to-html');
   const {toText} = await import('hast-util-to-text');
   const highlighter = await getHighlighter({
-    langs: ['dart', 'yaml', 'json', 'swift', 'css', 'html', 'xml', 'js', 'objc', 'bash', 'kotlin', 'java', 'md', 'diff', 'ps', 'console', 'cmd']
+    langs: ['dart', 'yaml', 'json', 'swift', 'css', 'html', 'xml', 'js', 'objc', 'bash', 'kotlin', 'java', 'md', 'diff', 'ps', 'console', 'cmd'],
+    themes: ['min-light'],
   });
 
-  await highlighter.loadTheme(import('../dash-light.json', {
-    assert: {type: 'json'}
-  }));
+  // TODO(parlough): Implement custom dash light theme
+  // await highlighter.loadTheme(import('../dash-light.json', {
+  //   assert: {type: 'json'}
+  // }));
 
   markdown.renderer.rules.fence = function (tokens, index, options, env, self) {
     const token = tokens[index];
@@ -31,7 +33,7 @@ function _highlight(markdown, highlighter, toHtml, toText, content, language, at
 
   const attributes = attributeString === '' ? {} : JSON.parse(attributeString);
 
-  const tree = highlighter.codeToHast(content, {lang: language, theme: 'dash-light'});
+  const tree = highlighter.codeToHast(content, {lang: language, theme: 'min-light'});
 
   const pre = tree.children[0];
 
