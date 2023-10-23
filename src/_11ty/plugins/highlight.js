@@ -48,16 +48,21 @@ function _highlight(markdown, highlighter, toHtml, toText, content, language, at
   // }
 
   const blockBody = {
-    type: 'element', tagName: 'div', children: [pre // pre with highlighted content
-    ], properties: {
+    type: 'element',
+    tagName: 'div', 
+    children: [pre], 
+    properties: {
       'class': 'code-block-body'
     }
   };
 
   const wrapper = {
-    type: 'element', tagName: 'div', children: [blockBody,], properties: {
+    type: 'element', 
+    tagName: 'div', 
+    children: [blockBody,], 
+    properties: {
       'class': `code-block-wrapper language-${language}`
-    }
+    },
   };
 
   // TODO: Don't support arbitrary tag, require a list
@@ -68,9 +73,12 @@ function _highlight(markdown, highlighter, toHtml, toText, content, language, at
 
     if (extraTag.text) {
       const extraTagContent = {
-        type: 'element', tagName: 'span', children: [{type: 'text', value: extraTag.text}], properties: {
+        type: 'element',
+        tagName: 'span', 
+        children: [{type: 'text', value: extraTag.text}], 
+        properties: {
           'class': 'code-block-tag'
-        }
+        },
       };
 
       blockBody.children.unshift(extraTagContent);
@@ -80,9 +88,12 @@ function _highlight(markdown, highlighter, toHtml, toText, content, language, at
   const title = attributes['title'];
   if (title && title !== '') {
     const titleElement = {
-      type: 'element', tagName: 'div', children: [{type: 'text', value: title}], properties: {
+      type: 'element',
+      tagName: 'div',
+      children: [{type: 'text', value: title}],
+      properties: {
         'class': 'code-block-header'
-      }
+      },
     };
 
     wrapper.children.unshift(titleElement);
