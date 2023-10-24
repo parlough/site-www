@@ -48,9 +48,9 @@ The `dart` commands are included with the [Dart SDK](/tools/sdk).
 
 :::important
 The location of the SDK installation directory
-(we'll call it _&lt;sdk-install-dir&gt;_) depends on your platform
+(we'll call it `<sdk-install-dir>`) depends on your platform
 and how you installed the SDK.
-You can find `dart` in `_&lt;sdk-install-dir&gt;_/bin`.
+You can find `dart` in `<sdk-install-dir>/bin`.
 By putting this directory in your PATH
 you can refer to the `dart` command by name.
 :::
