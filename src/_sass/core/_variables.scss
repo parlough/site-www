@@ -68,9 +68,6 @@ $site-color-card-link: #40C4FF;
 $site-font-size-header: 16px;
 $site-color-primary: $brand-primary;
 
-// Sidenav, toc, and footer
-$font-size-small:         14px;
-
 // Spacing
 $live-content-width:      1280px;
 $content-padding:         32px;
@@ -87,7 +84,10 @@ $site-font-icon: 24px/1 $site-font-family-icon;
 
 // Typography
 $font-size-base: 1.0rem; // 16px
+$font-size-lg: $font-size-base * 1.25;
+$font-size-small: $font-size-base * .875;
 $font-size-base-weight: 400;
+$font-size-bold-weight: 500;
 $font-family-base: $site-font-family-base;
 $font-family-monospace: $site-font-family-monospace;
 
@@ -124,3 +124,7 @@ $dash-off-black: #12202f;
 $dark-darker-black: #0d1520;
 $dash-header-bg: #17212f;
 $dash-dartpad-border: #293542;
+
+@function get-spacer($multiplier: 3) {
+  @return $site-spacer * ($multiplier / 4);
+}

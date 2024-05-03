@@ -9,7 +9,7 @@
   z-index: $site-z-header;
 
   .navbar {
-    font-size: bootstrap.$font-size-lg;
+    font-size: $font-size-lg;
     min-height: $site-header-height;
 
     @include bootstrap.media-breakpoint-up(md) {
@@ -18,7 +18,7 @@
 
     .navbar-toggler {
       color: $site-color-body;
-      margin-right: bootstrap.bs-spacer(4);
+      margin-right: get-spacer(4);
       padding: 0;
 
       .material-symbols {
@@ -32,11 +32,11 @@
 
     .nav-link {
       color: $site-color-nav-links;
-      padding: bootstrap.bs-spacer(5) 0;
+      padding: get-spacer(5) 0;
       position: relative;
 
       @include bootstrap.media-breakpoint-up(md) {
-        padding: 0 bootstrap.bs-spacer(4);
+        padding: 0 get-spacer(4);
       }
 
       &.active {
@@ -91,7 +91,7 @@
       }
 
       .navbar-nav {
-        margin-bottom: bootstrap.bs-spacer(5);
+        margin-bottom: get-spacer(5);
         overflow-y: auto;
         overscroll-behavior: contain;
       }
@@ -143,8 +143,8 @@
   }
 
   &__cta {
-    margin-left: bootstrap.bs-spacer(2);
-    padding: bootstrap.bs-spacer(2) bootstrap.bs-spacer(4) !important;
+    margin-left: get-spacer(2);
+    padding: get-spacer(2) get-spacer(4) !important;
 
     @include bootstrap.media-breakpoint-down(sm) {
       display: none;
@@ -159,7 +159,7 @@
       font: $site-font-icon;
       pointer-events: none;
       position: absolute;
-      left: bootstrap.bs-spacer(1);
+      left: get-spacer(1);
     }
 
     @include bootstrap.media-breakpoint-down(sm) {
@@ -175,17 +175,17 @@
     }
 
     @include bootstrap.media-breakpoint-up(md) {
-      margin-left: bootstrap.bs-spacer(4);
+      margin-left: get-spacer(4);
     }
   }
 
   &__searchfield {
     border: 0;
-    font-size: bootstrap.$font-size-sm;
-    padding-left: bootstrap.bs-spacer(8);
+    font-size: $font-size-small;
+    padding-left: get-spacer(8);
 
     @include bootstrap.media-breakpoint-down(sm) {
-      font-size: bootstrap.$font-size-lg;
+      font-size: $font-size-lg;
       height: 66px;
       width: 100%;
     }
@@ -202,10 +202,10 @@
 
   &__social {
     .nav-item.nav-link {
-      padding: 0 bootstrap.bs-spacer(2);
+      padding: 0 get-spacer(2);
 
       @include bootstrap.media-breakpoint-down(sm) {
-        padding: 0 bootstrap.bs-spacer(1);
+        padding: 0 get-spacer(1);
         font-size: smaller;
       }
     }

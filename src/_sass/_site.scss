@@ -1,8 +1,6 @@
 @use 'core/variables' as *;
-@use 'core/colors';
 @use 'core/mixins' as *;
 
-@use 'core/bootstrap';
 @use 'core/base';
 
 @use 'components/banner';
@@ -21,8 +19,7 @@
 @use 'dash';
 
 // Extra variables (defined in terms of bootstrap and other defaults)
-$font-color: bootstrap.$body-color;
-$font-weight-light-bold: (bootstrap.$font-weight-normal + bootstrap.$font-weight-bold) * 0.5;
+$font-weight-light-bold: ($font-size-base-weight + $font-size-bold-weight) * 0.5;
 
 
 /* -----------------------------------------
@@ -64,7 +61,7 @@ $font-weight-light-bold: (bootstrap.$font-weight-normal + bootstrap.$font-weight
 }
 
 #site-content-title {
-  margin-bottom: bootstrap.bs-spacer(6);
+  margin-bottom: get-spacer(6);
 }
 
 #page-footer {
@@ -388,7 +385,7 @@ main .content {
   }
 
   h3 {
-    font-size: bootstrap.$h2-font-size;
+    font-size: 24px;
   }
 
   a {
@@ -462,7 +459,10 @@ li.card {
 
 .table {
   width: 100%;
-  @extend .table-striped;
+
+  tbody tr:nth-of-type(odd) {
+    background-color: $google-gray-lighter;
+  }
 
   // override .table-striped macro, remove top border
   td {
@@ -599,7 +599,7 @@ thead:has(th:empty) {
   }
 
   &.active a {
-    color: bootstrap.$breadcrumb-active-color;
+    color: $google-gray-light;
     cursor: default; // Disable interactive cursor if already active
   }
 }
@@ -629,7 +629,7 @@ ul.nav-list {
 
   .btn {
     color: $site-color-body;
-    $padding-x: bootstrap.$btn-padding-x * 0.5;
+    $padding-x: 0.75rem * 0.5;
     padding-left: $padding-x;
     padding-right: $padding-x;
     border: none;

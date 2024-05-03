@@ -12,7 +12,7 @@
   &__title {
     font-family: $site-font-family-alt;
     font-size: 18px;
-    margin-bottom: bootstrap.bs-spacer(2);
+    margin-bottom: get-spacer(2);
   }
 }
 
@@ -35,8 +35,8 @@
   }
 
   .toc-entry {
-    padding-bottom: bootstrap.bs-spacer(2);
-    font-size: bootstrap.$font-size-sm;
+    padding-bottom: get-spacer(2);
+    font-size: $font-size-small;
 
     // Indent subsequent lines.
     margin-left: 1rem;

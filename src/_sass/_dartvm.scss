@@ -1,11 +1,11 @@
-@use 'core/bootstrap';
+@use 'core/mixins' as *;
 
 #stable,
 #beta,
 #dev {
   tbody {
     tr {
-      @include bootstrap.transition();
+      @include transition();
 
       &.hidden {
         display: none;
