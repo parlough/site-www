@@ -9,6 +9,7 @@ dependencies:
   jaspr: ^0.19.0
   jaspr_content: ^0.1.1
   jaspr_router: ^0.7.0
+  markdown: ^7.3.0
   meta: ^1.17.0
 
 dev_dependencies:
@@ -18,7 +19,8 @@ dev_dependencies:
   jaspr_cli: ^0.19.0
   jaspr_lints: ^0.3.1
   lints: ^6.0.0
-  sass_builder: ^2.1.4
+  sass: ^1.89.2
+  sass_builder: ^2.2.1
 
 jaspr:
   mode: static

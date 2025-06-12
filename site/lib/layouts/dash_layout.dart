@@ -1,4 +1,3 @@
-import 'package:dart_dev_site/components/banner.dart';
 import 'package:dart_dev_site/components/footer.dart';
 import 'package:dart_dev_site/components/header.dart';
 import 'package:dart_dev_site/components/notice.dart';
@@ -184,7 +183,6 @@ ga('send', 'pageview');
           [text('Skip to main content')],
         ),
         DashCookieNotice(),
-        DashBanner(),
         DashHeader(),
         div(id: 'site-below-header', [
           div(id: 'site-main-row', [

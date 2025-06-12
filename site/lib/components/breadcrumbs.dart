@@ -1,12 +1,8 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
-/// Represents a single breadcrumb item
 class BreadcrumbItem {
-  const BreadcrumbItem({
-    required this.title,
-    required this.url,
-  });
+  const BreadcrumbItem({required this.title, required this.url});
 
   final String title;
   final String url;
@@ -18,10 +14,7 @@ class BreadcrumbItem {
 /// - https://schema.org/BreadcrumbList
 /// - https://www.w3.org/TR/wai-aria-practices/examples/breadcrumb/index.html
 class Breadcrumbs extends StatelessComponent {
-  const Breadcrumbs({
-    super.key,
-    this.breadcrumbs,
-  });
+  const Breadcrumbs({super.key, this.breadcrumbs});
 
   final List<BreadcrumbItem>? breadcrumbs;
 
@@ -29,18 +22,20 @@ class Breadcrumbs extends StatelessComponent {
   Iterable<Component> build(BuildContext context) sync* {
     final page = context.page;
     final pageUrl = page.url;
-    
-    // Clean up the URL by removing trailing index files and slashes
-    final cleanUrl = pageUrl.replaceAll(RegExp(r'/index$|/index\.html$|/$'), '');
-    
-    // Only show breadcrumbs if we have a non-empty URL
+
+    final cleanUrl = pageUrl.replaceAll(
+      RegExp(r'/index$|/index\.html$|/$'),
+      '',
+    );
+
+    // Only show breadcrumbs if we have a non-empty URL.
     if (cleanUrl.isEmpty) return;
-    
-    // Get breadcrumbs from page data or use provided breadcrumbs
+
+    // Get breadcrumbs from page data or use provided breadcrumbs.
     final crumbs = breadcrumbs ?? _getBreadcrumbsFromPage(page);
-    
+
     if (crumbs.isEmpty) return;
-    
+
     yield nav(
       classes: 'breadcrumbs',
       attributes: {'aria-label': 'breadcrumb'},
@@ -53,54 +48,13 @@ class Breadcrumbs extends StatelessComponent {
           },
           [
             for (int i = 0; i < crumbs.length; i++)
-              _buildBreadcrumbItem(crumbs[i], i, i == crumbs.length - 1),
+              _BreadcrumbItemComponent(
+                crumb: crumbs[i],
+                index: i,
+                isLast: i == crumbs.length - 1,
+              ),
           ],
         ),
-      ],
-    );
-  }
-
-  Component _buildBreadcrumbItem(BreadcrumbItem crumb, int index, bool isLast) {
-    final cleanUrl = crumb.url.replaceAll(RegExp(r'/index$|/index\.html$|/$'), '');
-    
-    final classes = [
-      'breadcrumb-item',
-      if (isLast) 'active',
-    ].where((c) => c.isNotEmpty).join(' ');
-    
-    return li(
-      classes: classes,
-      attributes: {
-        'property': 'itemListElement',
-        'typeof': 'ListItem',
-        if (isLast) 'aria-current': 'page',
-      },
-      [
-        a(
-          href: cleanUrl,
-          attributes: {
-            'property': 'item',
-            'typeof': 'WebPage',
-          },
-          [
-            span(
-              attributes: {'property': 'name'},
-              [text(crumb.title)],
-            ),
-          ],
-        ),
-        meta(
-          attributes: {
-            'property': 'position',
-            'content': index.toString(),
-          },
-        ),
-        if (!isLast)
-          span(
-            classes: 'material-symbols child-icon',
-            attributes: {'aria-hidden': 'true'},
-            [text('chevron_right')],
-          ),
       ],
     );
   }
@@ -112,21 +66,74 @@ class Breadcrumbs extends StatelessComponent {
     // In the original template, this uses: {% assign breadcrumbs = page | breadcrumbsForPage -%}
     // This would need to be implemented based on your site's structure
     // For now, we'll return an empty list and expect breadcrumbs to be passed in
-    
+
     // You could implement logic here to generate breadcrumbs based on:
     // - page.url path segments
     // - page.data navigation structure
     // - site configuration
-    
-    final breadcrumbsData = page.data['breadcrumbs'] as List<dynamic>?;
+
+    final breadcrumbsData = page.data['breadcrumbs'] as List<Object?>?;
     if (breadcrumbsData == null) return [];
-    
+
     return breadcrumbsData
-        .cast<Map<String, dynamic>>()
-        .map((crumb) => BreadcrumbItem(
-              title: crumb['title'] as String,
-              url: crumb['url'] as String,
-            ))
+        .cast<Map<String, Object?>>()
+        .map(
+          (crumb) => BreadcrumbItem(
+            title: crumb['title'] as String,
+            url: crumb['url'] as String,
+          ),
+        )
         .toList();
+  }
+}
+
+/// Private stateless component for rendering individual breadcrumb items
+class _BreadcrumbItemComponent extends StatelessComponent {
+  const _BreadcrumbItemComponent({
+    required this.crumb,
+    required this.index,
+    required this.isLast,
+  });
+
+  final BreadcrumbItem crumb;
+  final int index;
+  final bool isLast;
+
+  @override
+  Iterable<Component> build(BuildContext context) sync* {
+    final cleanUrl = crumb.url.replaceAll(
+      RegExp(r'/index$|/index\.html$|/$'),
+      '',
+    );
+
+    final classes = [
+      'breadcrumb-item',
+      if (isLast) 'active',
+    ].where((c) => c.isNotEmpty).join(' ');
+
+    yield li(
+      classes: classes,
+      attributes: {
+        'property': 'itemListElement',
+        'typeof': 'ListItem',
+        if (isLast) 'aria-current': 'page',
+      },
+      [
+        a(
+          href: cleanUrl,
+          attributes: {'property': 'item', 'typeof': 'WebPage'},
+          [
+            span(attributes: {'property': 'name'}, [text(crumb.title)]),
+          ],
+        ),
+        meta(attributes: {'property': 'position', 'content': index.toString()}),
+        if (!isLast)
+          span(
+            classes: 'material-symbols child-icon',
+            attributes: {'aria-hidden': 'true'},
+            [text('chevron_right')],
+          ),
+      ],
+    );
   }
 }
