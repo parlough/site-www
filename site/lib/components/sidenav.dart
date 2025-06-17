@@ -292,54 +292,56 @@ class SideNav extends StatelessComponent {
   final String baseId;
 
   @override
-  Iterable<Component> build(BuildContext context) sync* {
-    yield form(action: '/search/', classes: 'site-header-search form-inline', [
-      input(
-        classes: 'site-header-searchfield search-field',
-        type: InputType.search,
-        name: 'q',
-        id: 'search-side',
-        attributes: {
-          'autocomplete': 'off',
-          'placeholder': 'Search',
-          'aria-label': 'Search',
-        },
-        [],
-      ),
-    ]);
-
-    yield ul(classes: 'navbar-nav', [
-      li(
-        attributes: {'aria-hidden': 'true'},
-        [div(classes: 'sidenav-divider', [])],
-      ),
-      li(classes: 'nav-item', [
-        a(href: '/overview', classes: 'nav-link', [text('Overview')]),
-      ]),
-      li(classes: 'nav-item', [
-        a(href: '/community', classes: 'nav-link', [text('Community')]),
-      ]),
-      li(classes: 'nav-item', [
-        a(href: 'https://dartpad.dev', classes: 'nav-link', [text('Try Dart')]),
-      ]),
-      li(classes: 'nav-item', [
-        a(href: '/get-dart', classes: 'nav-link', [text('Get Dart')]),
-      ]),
-      li(classes: 'nav-item', [
-        a(href: '/docs', classes: 'nav-link', [text('Docs')]),
-      ]),
-      li(
-        attributes: {'aria-hidden': 'true'},
-        [div(classes: 'sidenav-divider', [])],
-      ),
-    ]);
-
+  Iterable<Component> build(BuildContext context) {
     // Calculate active entries based on current page URL.
     final activeEntries = _calculateActiveEntries(pageUrlPath, nav);
 
-    yield div(id: 'sidenav', [
-      ul(classes: 'nav', _buildNavLevel(nav, activeEntries, baseId, 0)),
-    ]);
+    return [
+      div(id: 'sidenav', [
+        form(action: '/search/', classes: 'site-header-search form-inline', [
+          input(
+            classes: 'site-header-searchfield search-field',
+            type: InputType.search,
+            name: 'q',
+            id: 'search-side',
+            attributes: {
+              'autocomplete': 'off',
+              'placeholder': 'Search',
+              'aria-label': 'Search',
+            },
+            [],
+          ),
+        ]),
+        ul(classes: 'navbar-nav', [
+          li(
+            attributes: {'aria-hidden': 'true'},
+            [div(classes: 'sidenav-divider', [])],
+          ),
+          li(classes: 'nav-item', [
+            a(href: '/overview', classes: 'nav-link', [text('Overview')]),
+          ]),
+          li(classes: 'nav-item', [
+            a(href: '/community', classes: 'nav-link', [text('Community')]),
+          ]),
+          li(classes: 'nav-item', [
+            a(href: 'https://dartpad.dev', classes: 'nav-link', [
+              text('Try Dart'),
+            ]),
+          ]),
+          li(classes: 'nav-item', [
+            a(href: '/get-dart', classes: 'nav-link', [text('Get Dart')]),
+          ]),
+          li(classes: 'nav-item', [
+            a(href: '/docs', classes: 'nav-link', [text('Docs')]),
+          ]),
+          li(
+            attributes: {'aria-hidden': 'true'},
+            [div(classes: 'sidenav-divider', [])],
+          ),
+        ]),
+        ul(classes: 'nav', _buildNavLevel(nav, activeEntries, baseId, 0)),
+      ]),
+    ];
   }
 
   List<Component> _buildNavLevel(

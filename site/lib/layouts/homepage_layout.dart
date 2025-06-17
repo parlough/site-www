@@ -11,7 +11,6 @@ class HomepageLayout extends DashLayout {
   @override
   Component buildBody(Page page, Component child) {
     return Fragment(children: [
-      Document.body(attributes: {'class': 'homepage'}),
       super.buildBody(page, child),
     ]);
   }
