@@ -14,6 +14,8 @@ dependencies:
   meta: ^1.17.0
 
 dev_dependencies:
+  analysis_defaults:
+    path: ../site-shared/pkgs/analysis_defaults
   build_runner: ^2.5.2
   build_web_compilers: ^4.1.5
   jaspr_builder: ^0.19.1

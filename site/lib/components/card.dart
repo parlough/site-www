@@ -2,7 +2,12 @@ import 'package:jaspr/jaspr.dart';
 
 /// A card component that displays content with an optional title and link.
 class ContentCard extends StatelessComponent {
-  const ContentCard({super.key, required this.title, required this.child, this.link});
+  const ContentCard({
+    super.key,
+    required this.title,
+    required this.child,
+    this.link,
+  });
 
   final String title;
   final Component child;

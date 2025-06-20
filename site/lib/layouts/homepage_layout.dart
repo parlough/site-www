@@ -1,6 +1,7 @@
-import 'package:dart_dev_site/layouts/dash_layout.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
+
+import 'dash_layout.dart';
 
 class HomepageLayout extends DashLayout {
   const HomepageLayout();
@@ -10,8 +11,6 @@ class HomepageLayout extends DashLayout {
 
   @override
   Component buildBody(Page page, Component child) {
-    return Fragment(children: [
-      super.buildBody(page, child),
-    ]);
+    return Fragment(children: [super.buildBody(page, child)]);
   }
 }

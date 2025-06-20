@@ -352,7 +352,7 @@ class SideNav extends StatelessComponent {
   ) {
     final components = <Component>[];
 
-    for (int i = 0; i < entries.length; i++) {
+    for (var i = 0; i < entries.length; i++) {
       final entry = entries[i];
       final isActive = _isEntryActive(activeEntries, currentLevel, i);
       final id = '$parentId-${i + 1}';
@@ -493,7 +493,7 @@ class SideNav extends StatelessComponent {
     String path,
     List<int> activeEntries,
   ) {
-    for (int i = 0; i < entries.length; i++) {
+    for (var i = 0; i < entries.length; i++) {
       final entry = entries[i];
 
       if (_entryMatchesPath(entry, path)) {
@@ -522,7 +522,6 @@ class SideNav extends StatelessComponent {
   bool _entryMatchesPath(NavEntry entry, String path) {
     if (entry.permalink == null) return false;
 
-    // Simple path matching - you might want to implement more sophisticated logic
     return path.startsWith(entry.permalink!) || entry.permalink == path;
   }
 }

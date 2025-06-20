@@ -1,11 +1,10 @@
-import 'dart:convert';
-
-import 'package:dart_dev_site/components/footer.dart';
-import 'package:dart_dev_site/components/header.dart';
-import 'package:dart_dev_site/components/notice.dart';
-import 'package:dart_dev_site/components/sidenav.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
+
+import '../components/footer.dart';
+import '../components/header.dart';
+import '../components/notice.dart';
+import '../components/sidenav.dart';
 
 abstract class DashLayout extends PageLayoutBase {
   const DashLayout();
@@ -13,7 +12,7 @@ abstract class DashLayout extends PageLayoutBase {
   @override
   String get name;
 
-  @override 
+  @override
   @mustCallSuper
   Iterable<Component> buildHead(Page page) sync* {
     final pageData = page.data['page'] as Map<String, Object?>? ?? {};
@@ -66,7 +65,7 @@ abstract class DashLayout extends PageLayoutBase {
     // Customize the card rendered by Twitter.
     yield meta(name: 'twitter:card', content: 'summary');
     yield meta(name: 'twitter:site', content: '@dart_lang');
-    yield meta(name: 'twitter:title', content: '$pageTitle');
+    yield meta(name: 'twitter:title', content: pageTitle);
     yield meta(
       name: 'twitter:description',
       content: '${pageData['description']}',
@@ -171,7 +170,7 @@ ga('send', 'pageview');
 
   @override
   Component buildBody(Page page, Component child) {
-    final pageData = page.data['page']!;
+    final pageData = page.data['page'] as Map<String, Object?>;
     final bodyClass = pageData['bodyClass'] as String?;
 
     return Fragment(
@@ -188,8 +187,8 @@ ga('send', 'pageview');
           attributes: {'tabindex': '1'},
           [text('Skip to main content')],
         ),
-        DashCookieNotice(),
-        DashHeader(),
+        const DashCookieNotice(),
+        const DashHeader(),
         div(id: 'site-below-header', [
           div(id: 'site-main-row', [
             SideNav(nav: defaultNav, pageUrlPath: page.path),
@@ -201,7 +200,7 @@ ga('send', 'pageview');
               [child],
             ),
           ]),
-          DashFooter(),
+          const DashFooter(),
         ]),
       ],
     );

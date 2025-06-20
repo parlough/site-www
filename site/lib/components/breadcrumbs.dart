@@ -8,7 +8,9 @@ class BreadcrumbItem {
   final String url;
 }
 
-/// Breadcrumbs navigation component that follows ARIA guidelines and includes RDFa markup
+/// Breadcrumbs navigation component that
+/// follows ARIA guidelines and includes RDFa markup.
+///
 /// References:
 /// - https://developers.google.com/search/docs/data-types/breadcrumb
 /// - https://schema.org/BreadcrumbList
@@ -59,13 +61,15 @@ class Breadcrumbs extends StatelessComponent {
     );
   }
 
-  /// Extract breadcrumbs from page data
-  /// This would typically call a custom filter or function to generate breadcrumbs
-  /// based on the page's position in the site hierarchy
+  /// Extract breadcrumbs from page data.
+  ///
+  /// This would typically call a custom filter or function to
+  /// generate breadcrumbs based on the page's position in the site hierarchy
   List<BreadcrumbItem> _getBreadcrumbsFromPage(Page page) {
-    // In the original template, this uses: {% assign breadcrumbs = page | breadcrumbsForPage -%}
+    // In the original template, this uses:
+    //   {% assign breadcrumbs = page | breadcrumbsForPage -%}
     // This would need to be implemented based on your site's structure
-    // For now, we'll return an empty list and expect breadcrumbs to be passed in
+    // For now, we'll return an empty list and expect breadcrumbs to pass in.
 
     // You could implement logic here to generate breadcrumbs based on:
     // - page.url path segments

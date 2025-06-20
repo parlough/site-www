@@ -30,7 +30,7 @@ final class DashFooter extends StatelessComponent {
               },
               [
                 svg([
-                  DomComponent(
+                  const DomComponent(
                     tag: 'use',
                     attributes: {
                       'href': '/assets/img/social/medium.svg#medium',
@@ -48,7 +48,7 @@ final class DashFooter extends StatelessComponent {
               },
               [
                 svg([
-                  DomComponent(
+                  const DomComponent(
                     tag: 'use',
                     attributes: {
                       'href': '/assets/img/social/github.svg#github',
@@ -66,7 +66,7 @@ final class DashFooter extends StatelessComponent {
               },
               [
                 svg([
-                  DomComponent(
+                  const DomComponent(
                     tag: 'use',
                     attributes: {
                       'href': '/assets/img/social/bluesky.svg#bluesky',
@@ -84,7 +84,7 @@ final class DashFooter extends StatelessComponent {
               },
               [
                 svg([
-                  DomComponent(
+                  const DomComponent(
                     tag: 'use',
                     attributes: {'href': '/assets/img/social/x.svg#x'},
                   ),

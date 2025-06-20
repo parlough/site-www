@@ -110,7 +110,7 @@ class DefinitionListSyntax extends md.BlockSyntax {
             break;
           } else {
             // Remove leading indentation (2 spaces or 1 tab)
-            String line = parser.current.content;
+            var line = parser.current.content;
             if (line.startsWith('  ')) {
               line = line.substring(2);
             } else if (line.startsWith('\t')) {

@@ -1,6 +1,7 @@
-import 'package:dart_dev_site/components/banner.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
+
+import 'banner.dart';
 
 class DashHeader extends StatelessComponent {
   const DashHeader({super.key});
@@ -15,7 +16,7 @@ class DashHeader extends StatelessComponent {
     final obsolete = siteData['obsolete'] == true;
 
     if (showBanner) {
-      yield DashBanner();
+      yield const DashBanner();
     }
 
     yield header(id: 'site-header', [

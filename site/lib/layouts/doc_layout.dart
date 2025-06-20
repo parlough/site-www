@@ -1,10 +1,10 @@
-import 'package:dart_dev_site/components/breadcrumbs.dart';
-import 'package:dart_dev_site/components/prev_next.dart';
-import 'package:dart_dev_site/components/trailing_content.dart';
-import 'package:dart_dev_site/layouts/dash_layout.dart';
-import 'package:dart_dev_site/util.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
+
+import '../components/breadcrumbs.dart';
+import '../components/trailing_content.dart';
+import '../util.dart';
+import 'dash_layout.dart';
 
 class DocLayout extends DashLayout {
   const DocLayout();
@@ -14,7 +14,7 @@ class DocLayout extends DashLayout {
 
   @override
   Component buildBody(Page page, Component child) {
-    final pageData = page.data['page']!;
+    final pageData = page.data['page'] as Map<String, Object?>;
     final pageTitle = pageData['title'] as String;
 
     if (pageData['toc'] != false) {
@@ -32,7 +32,7 @@ class DocLayout extends DashLayout {
               else
                 text(pageTitle),
             ]),
-            if (pageData['show_breadcrumbs'] == true) Breadcrumbs(),
+            if (pageData['show_breadcrumbs'] == true) const Breadcrumbs(),
           ]),
           // if (pageData['toc'] != false)
           //   NavigationTocTop(tocContents: page.data['tocContents']),
@@ -45,7 +45,7 @@ class DocLayout extends DashLayout {
           //   prevPage: pageData['prevpage'],
           //   nextPage: pageData['nextpage'],
           // ),
-          TrailingContent(),
+          const TrailingContent(),
         ]),
       ]),
     );

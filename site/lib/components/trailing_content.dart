@@ -96,7 +96,8 @@ class TrailingContent extends StatelessComponent {
           div(classes: 'feedback bad-feedback', [
             div([
               text(
-                'Thank you for your feedback! Please let us know what we can do to improve.',
+                'Thank you for your feedback!'
+                'Please let us know what we can do to improve.',
               ),
             ]),
             a(
@@ -122,7 +123,9 @@ class TrailingContent extends StatelessComponent {
         p(id: 'page-github-links', [
           span([
             text(
-              'Unless stated otherwise, the documentation on this site reflects Dart $currentSdkVersion. Page last updated on $pageDate. ',
+              'Unless stated otherwise, the documentation on '
+              'this site reflects Dart $currentSdkVersion. '
+              'Page last updated on $pageDate. ',
             ),
           ]),
           a(

@@ -1,6 +1,7 @@
-import 'package:dart_dev_site/util.dart';
 import 'package:jaspr/server.dart';
 import 'package:jaspr_content/jaspr_content.dart';
+
+import '../util.dart';
 
 class RobotsTxtOutput extends SecondaryOutput {
   @override

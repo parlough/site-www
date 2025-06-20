@@ -1,19 +1,17 @@
-import 'package:dart_dev_site/components/card.dart';
-import 'package:dart_dev_site/layouts/doc_layout.dart';
-import 'package:dart_dev_site/layouts/homepage_layout.dart';
-import 'package:dart_dev_site/liquid/comment_tag.dart';
-import 'package:dart_dev_site/markdown/alert_syntax.dart';
-import 'package:dart_dev_site/markdown/definition_list_syntax.dart';
-import 'package:dart_dev_site/pages/robots_txt.dart';
 import 'package:jaspr/server.dart';
-
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:jaspr_content/theme.dart';
-import 'package:liquify/liquify.dart';
 import 'package:markdown/markdown.dart' as md;
+
+import 'components/card.dart';
 
 // This file is generated automatically by Jaspr, do not remove or edit.
 import 'jaspr_options.dart';
+import 'layouts/doc_layout.dart';
+import 'layouts/homepage_layout.dart';
+import 'markdown/alert_syntax.dart';
+import 'markdown/definition_list_syntax.dart';
+import 'pages/robots_txt.dart';
 
 void main() {
   // Initializes the server environment with the generated default options.
@@ -63,15 +61,18 @@ void main() {
       ],
       configResolver: PageConfig.all(
         dataLoaders: [FilesystemDataLoader('data')],
-        templateEngine: LiquidTemplateEngine(
+        templateEngine: const LiquidTemplateEngine(
           includesPath: 'content/_includes/',
         ),
         parsers: [
           MarkdownParser(documentBuilder: (_) => markdownDocumentBuilder),
-          HtmlParser(),
+          const HtmlParser(),
         ],
         rawOutputPattern: RegExp(r'.*\.txt$'),
-        extensions: [HeadingAnchorsExtension(), TableOfContentsExtension()],
+        extensions: [
+          HeadingAnchorsExtension(),
+          const TableOfContentsExtension(),
+        ],
         components: [
           CustomComponent(
             pattern: 'card',
@@ -84,7 +85,7 @@ void main() {
             },
           ),
         ],
-        layouts: [DocLayout(), HomepageLayout()],
+        layouts: [const DocLayout(), const HomepageLayout()],
         theme: const ContentTheme.none(),
         secondaryOutputs: [RobotsTxtOutput()],
       ),

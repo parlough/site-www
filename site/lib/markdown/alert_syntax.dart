@@ -1,11 +1,13 @@
 import 'package:markdown/markdown.dart' as md;
 
-/// A custom Markdown block syntax for alerts that are opened and closed with `:::`.
+/// A custom Markdown block syntax for alerts that are
+/// opened and closed with `:::`.
 ///
 /// Example:
+///
 /// ```md
 /// :::important The title of my alert
-/// The content of my alert
+/// The content of my alert.
 /// :::
 /// ```
 ///
