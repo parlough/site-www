@@ -16,7 +16,6 @@ class DocLayout extends DashLayout {
   Component buildBody(Page page, Component child) {
     final pageData = page.data['page']!;
     final pageTitle = pageData['title'] as String;
-    final bodyClass = pageData['bodyClass'] as String?;
 
     if (pageData['toc'] != false) {
       //NavigationTocSide(tocContents: page.data['tocContents'])
@@ -25,7 +24,6 @@ class DocLayout extends DashLayout {
     return super.buildBody(
       page,
       article([
-        Document.body(attributes: {if (bodyClass != null) 'class': bodyClass}),
         div(classes: 'content', [
           div(id: 'site-content-title', [
             h1([

@@ -30,12 +30,6 @@ void main() {
     extensionSet: md.ExtensionSet.gitHubWeb,
   );
 
-  // TODO(parlough): Liquify should support comment tags itself.
-  TagRegistry.register(
-    'comment',
-    (template, filters) => CommentTag(template, filters),
-  );
-
   // FilterRegistry.register('sum', (value, args, namedArgs) {
   //   if (value is! List) {
   //     return value;
@@ -91,9 +85,6 @@ void main() {
           ),
         ],
         layouts: [DocLayout(), HomepageLayout()],
-        // Don't apply default theming and styles.
-        // TODO(parlough): This seems to not work,
-        //  still applies typography styles.
         theme: const ContentTheme.none(),
         secondaryOutputs: [RobotsTxtOutput()],
       ),

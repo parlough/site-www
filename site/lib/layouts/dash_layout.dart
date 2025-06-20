@@ -171,8 +171,12 @@ ga('send', 'pageview');
 
   @override
   Component buildBody(Page page, Component child) {
+    final pageData = page.data['page']!;
+    final bodyClass = pageData['bodyClass'] as String?;
+
     return Fragment(
       children: [
+        Document.body(attributes: {if (bodyClass != null) 'class': bodyClass}),
         raw('''
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VSZM5J"
  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
