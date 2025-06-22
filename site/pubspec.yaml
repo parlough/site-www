@@ -6,6 +6,7 @@ environment:
   sdk: ^3.8.0
 
 dependencies:
+  html: ^0.15.6
   jaspr: ^0.19.1
   jaspr_content: ^0.2.0
   jaspr_router: ^0.7.0

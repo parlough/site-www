@@ -195,7 +195,7 @@ ga('send', 'pageview');
             main_(
               id: 'page-content',
               classes: [
-                if (page.data['layout'] == 'homepage') 'focused',
+                if (pageData['focusedLayout'] == true) 'focused',
               ].join(' '),
               [child],
             ),
