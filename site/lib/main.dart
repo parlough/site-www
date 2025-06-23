@@ -1,7 +1,7 @@
 import 'package:jaspr/server.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:jaspr_content/theme.dart';
-import 'package:liquify/liquify.dart' show FilterRegistry;
+import 'package:liquify/liquify.dart' show FilterRegistry, TagRegistry;
 
 import 'components/card.dart';
 
@@ -39,13 +39,39 @@ void main() {
         ],
         components: [
           CustomComponent(
-            pattern: 'card',
+            pattern: 'Card',
             builder: (name, attributes, child) {
               return ContentCard(
                 title: attributes['title']!,
                 link: attributes['link'],
                 child: child!,
               );
+            },
+          ),
+          CustomComponent(
+            pattern: 'YouTubeEmbed',
+            builder: (name, attributes, child) {
+              final rawVideoId = attributes['id'] as String;
+              final videoTitle = attributes['title'] as String;
+              final playlistId = attributes['playlist'];
+
+              final String videoId;
+              final int startTime;
+              if (rawVideoId.contains('?')) {
+                videoId = rawVideoId.split('?')[0];
+
+                final idAndStartTime = videoId.split('start=');
+                startTime = int.parse(idAndStartTime[1]);
+              } else {
+                startTime = 0;
+                videoId = rawVideoId;
+              }
+
+              return raw('''
+<lite-youtube videoid="$videoId" videotitle="$videoTitle" videoStartAt="$startTime" ${playlistId != null ? 'playlistid="$playlistId"' : ''}>
+  <p><a class="lite-youtube-fallback" href="https://www.youtube.com/watch/$videoId" target="_blank" rel="noopener">Watch on YouTube in a new tab: "${videoId}"</a></p>
+</lite-youtube>`
+''');
             },
           ),
         ],
