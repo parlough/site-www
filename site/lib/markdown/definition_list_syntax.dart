@@ -65,11 +65,8 @@ class DefinitionListSyntax extends md.BlockSyntax {
         final termContent = parser.current.content.trim();
         if (termContent.isEmpty) break;
 
-        // Parse the term content as inline Markdown
-        final termDocument = md.Document(
-          extensionSet: md.ExtensionSet.gitHubWeb,
-        );
-        final termNodes = termDocument.parseInline(termContent);
+        // Parse the term content as inline Markdown with document context
+        final termNodes = parser.document.parseInline(termContent);
 
         final dtElement = md.Element('dt', []);
         dtElement.children!.addAll(termNodes);
@@ -121,14 +118,16 @@ class DefinitionListSyntax extends md.BlockSyntax {
           }
         }
 
-        // Parse the definition content as Markdown
-        final definitionMarkdown = definitionLines.join('\n').trim();
-        final definitionDocument = md.Document(
-          extensionSet: md.ExtensionSet.gitHubWeb,
-        );
-        final definitionNodes = definitionDocument.parseLines(
-          definitionMarkdown.split('\n'),
-        );
+        // Parse the definition content as Markdown with document context
+        // Create Line objects from the definition content
+        final childLines = definitionLines.map(md.Line.new).toList();
+
+        // Create a new BlockParser with the same document context
+        // This preserves link references and other document-level state
+        final definitionNodes = md.BlockParser(
+          childLines,
+          parser.document,
+        ).parseLines(parentSyntax: this);
 
         final ddElement = md.Element('dd', []);
         ddElement.children!.addAll(definitionNodes);

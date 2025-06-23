@@ -1,6 +1,7 @@
 import 'package:jaspr/server.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:jaspr_content/theme.dart';
+import 'package:liquify/liquify.dart' show FilterRegistry;
 
 import 'components/card.dart';
 
@@ -13,6 +14,12 @@ import 'pages/robots_txt.dart';
 void main() {
   // Initializes the server environment with the generated default options.
   Jaspr.initializeApp(options: defaultJasprOptions);
+
+  FilterRegistry.register('underscoreBreaker', (value, _, _) {
+    if (value is! String) return value;
+
+    return value.replaceAll('_', '_<wbr>');
+  });
 
   runApp(
     ContentApp.custom(
