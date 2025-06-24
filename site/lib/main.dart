@@ -24,11 +24,11 @@ void main() {
   runApp(
     ContentApp.custom(
       eagerlyLoadAllPages: true,
-      loaders: [FilesystemLoader('content')],
+      loaders: [FilesystemLoader('../src/content')],
       configResolver: PageConfig.all(
-        dataLoaders: [FilesystemDataLoader('data')],
+        dataLoaders: [FilesystemDataLoader('../src/data')],
         templateEngine: const LiquidTemplateEngine(
-          includesPath: 'content/_includes/',
+          includesPath: '../src/content/_includes/',
         ),
         parsers: [const DashMarkdownParser(), const HtmlParser()],
         rawOutputPattern: RegExp(r'.*\.txt$'),
