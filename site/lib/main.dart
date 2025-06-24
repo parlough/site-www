@@ -1,7 +1,7 @@
 import 'package:jaspr/server.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:jaspr_content/theme.dart';
-import 'package:liquify/liquify.dart' show FilterRegistry, TagRegistry;
+import 'package:liquify/liquify.dart' show FilterRegistry;
 
 import 'components/card.dart';
 
@@ -69,7 +69,7 @@ void main() {
 
               return raw('''
 <lite-youtube videoid="$videoId" videotitle="$videoTitle" videoStartAt="$startTime" ${playlistId != null ? 'playlistid="$playlistId"' : ''}>
-  <p><a class="lite-youtube-fallback" href="https://www.youtube.com/watch/$videoId" target="_blank" rel="noopener">Watch on YouTube in a new tab: "${videoId}"</a></p>
+  <p><a class="lite-youtube-fallback" href="https://www.youtube.com/watch/$videoId" target="_blank" rel="noopener">Watch on YouTube in a new tab: "$videoId"</a></p>
 </lite-youtube>`
 ''');
             },
