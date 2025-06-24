@@ -11,7 +11,7 @@ prevpage:
   url: /get-started/add-commands
   title: Make your program interactive
 nextpage:
-  url: /get-started
+  url: /get-started/packages-libs
   title: Packages and librarires
 ---
 
@@ -61,7 +61,7 @@ dependency to your project.
     ```
 
 1.  Save the `pubspec.yaml` file.
-1.  Run `dart pub get` in your terminal from the `dartpedia` directory. This
+1.  Run `dart pub get` in your terminal from the `dartpedia/cli` directory. This
     command fetches the newly added dependency and makes it available for
     use in your project.
 
@@ -197,7 +197,9 @@ the core logic for handling the `wikipedia` command.
         articleTitle = arguments.join(' ');
       }
 
-      // ... rest of the function
+      print('Looking up articles about "$articleTitle". Please wait.');
+      print('Here ya go!');
+      print('(Pretend this is an article about "$articleTitle")');
     }
 
     // ... (your existing printUsage() function)
@@ -231,7 +233,9 @@ the core logic for handling the `wikipedia` command.
         articleTitle = arguments.join(' ');
       }
 
-      // ... rest of the function
+      print('Looking up articles about "$articleTitle". Please wait.');
+      print('Here ya go!');
+      print('(Pretend this is an article about "$articleTitle")');
     }
     ```
 
@@ -331,7 +335,7 @@ application, test it out.
     article from the Wikipedia API and print the raw JSON response to the
     console. You might see something like:
 
-    ```json
+    ```bash
     Looking up articles about "Dart_(programming_language)". Please wait.
     {
       "type": "standard",
@@ -341,7 +345,9 @@ application, test it out.
           "id": 0,
           "text": ""
         }
+
       // ... (rest of the JSON output will be present but truncated here)
+
     }
     ```
 1.  Next, try running without arguments (type or paste in "Flutter_(software)"
@@ -363,6 +369,9 @@ application, test it out.
           "id": 0,
           "text": ""
       }
+
+    // ... (rest of the JSON output will be present but truncated here)
+
     }
     ```
     You have now successfully implemented the basic `wikipedia` command that
