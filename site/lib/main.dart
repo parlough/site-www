@@ -32,14 +32,10 @@ void main() {
         ),
         parsers: [const DashMarkdownParser(), const HtmlParser()],
         rawOutputPattern: RegExp(r'.*\.txt$'),
-        extensions: [
-          //AttributeProcessor(),
-          //HeadingAnchorsExtension(),
-          //const TableOfContentsExtension(),
-        ],
+        extensions: [],
         components: [
           CustomComponent(
-            pattern: 'Card',
+            pattern: 'card',
             builder: (name, attributes, child) {
               return ContentCard(
                 title: attributes['title']!,
