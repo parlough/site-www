@@ -2,6 +2,7 @@ import 'package:jaspr/server.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:jaspr_content/theme.dart';
 import 'package:liquify/liquify.dart' show FilterRegistry;
+import 'package:path/path.dart' as path;
 
 import 'components/card.dart';
 
@@ -21,14 +22,16 @@ void main() {
     return value.replaceAll('_', '_<wbr>');
   });
 
+  final siteSrcPath = path.join('..', 'src');
+
   runApp(
     ContentApp.custom(
       eagerlyLoadAllPages: true,
-      loaders: [FilesystemLoader('../src/content')],
+      loaders: [FilesystemLoader(path.join(siteSrcPath, 'content'))],
       configResolver: PageConfig.all(
-        dataLoaders: [FilesystemDataLoader('../src/data')],
-        templateEngine: const LiquidTemplateEngine(
-          includesPath: '../src/content/_includes/',
+        dataLoaders: [FilesystemDataLoader(path.join(siteSrcPath, 'data'))],
+        templateEngine: LiquidTemplateEngine(
+          includesPath: path.join(siteSrcPath, 'content', '_includes'),
         ),
         parsers: [const DashMarkdownParser(), const HtmlParser()],
         rawOutputPattern: RegExp(r'.*\.txt$'),
