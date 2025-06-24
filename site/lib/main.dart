@@ -31,7 +31,13 @@ void main() {
       configResolver: PageConfig.all(
         dataLoaders: [FilesystemDataLoader(path.join(siteSrcPath, 'data'))],
         templateEngine: LiquidTemplateEngine(
-          includesPath: path.join(siteSrcPath, 'content', '_includes'),
+          includesPath: path.join(
+            siteSrcPath,
+            // TODO(parlough): Figure out why liquid is going back a directory,
+            //  requiring this to be duplicated.
+            '_includes',
+            '_includes',
+          ),
         ),
         parsers: [const DashMarkdownParser(), const HtmlParser()],
         rawOutputPattern: RegExp(r'.*\.txt$'),
