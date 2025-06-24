@@ -6,6 +6,7 @@ import 'package:path/path.dart' as path;
 
 import 'components/card.dart';
 
+import 'extensions/header_processor.dart';
 import 'jaspr_options.dart'; // Generated. Do not remove or edit.
 import 'layouts/doc_layout.dart';
 import 'layouts/homepage_layout.dart';
@@ -41,7 +42,7 @@ void main() {
         ),
         parsers: [const DashMarkdownParser(), const HtmlParser()],
         rawOutputPattern: RegExp(r'.*\.txt$'),
-        extensions: [],
+        extensions: [const HeaderWrapperExtension()],
         components: [
           CustomComponent(
             pattern: 'card',
