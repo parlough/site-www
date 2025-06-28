@@ -10,13 +10,15 @@ class DashHeader extends StatelessComponent {
   Iterable<Component> build(BuildContext context) sync* {
     final page = context.page;
     final pageUrlPath = page.url;
+    final pageData = page.data['page'] as Map<String, Object?>;
     final siteData = page.data['site'] as Map<String, Object?>;
     final siteTitle = siteData['title'] as String;
-    final showBanner = siteData['showBanner'] == true;
-    final obsolete = siteData['obsolete'] == true;
+    final obsolete = pageData['obsolete'] == true;
 
-    if (showBanner) {
-      yield const DashBanner();
+    if (siteData['showBanner'] != false && pageData['showBanner'] != false) {
+      yield DashBanner(
+        BannerContent.fromMap(page.data['banner'] as Map<String, Object?>),
+      );
     }
 
     yield header(id: 'site-header', [

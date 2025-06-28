@@ -1,7 +1,39 @@
 import 'package:jaspr/jaspr.dart';
 
+@immutable
+final class BannerContent {
+  final String text;
+  final String linkText;
+  final String linkUri;
+  final bool newTab;
+
+  const BannerContent({
+    required this.text,
+    required this.linkText,
+    required this.linkUri,
+    this.newTab = false,
+  });
+
+  factory BannerContent.fromMap(Map<String, Object?> bannerData) {
+    final text = bannerData['text'] as String;
+    final link = bannerData['link'] as Map<Object?, Object?>;
+    final linkText = link['text'] as String;
+    final linkUri = link['url'] as String;
+    final newTab = link['newTab'] as bool? ?? false;
+
+    return BannerContent(
+      text: text,
+      linkText: linkText,
+      linkUri: linkUri,
+      newTab: newTab,
+    );
+  }
+}
+
 class DashBanner extends StatelessComponent {
-  const DashBanner({super.key});
+  const DashBanner(this.content, {super.key});
+
+  final BannerContent content;
 
   @override
   Iterable<Component> build(BuildContext context) {
@@ -11,14 +43,13 @@ class DashBanner extends StatelessComponent {
         attributes: {'role': 'alert'},
         [
           p([
-            text('Dart and Flutter are back at Google I/O!'),
+            text(content.text),
+            text(' '),
             a(
-              href:
-                  'https://io.google/2025/?utm_source=flutter&utm_medium=embedded_marketing&utm_campaign=hpp_livestream_banner&utm_content=',
-              target: Target.blank,
-              [text('Watch live keynotes & sessions')],
+              href: content.linkUri,
+              target: content.newTab ? Target.blank : null,
+              [text(content.linkText)],
             ),
-            br(),
           ]),
         ],
       ),
