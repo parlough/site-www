@@ -196,7 +196,11 @@ ga('send', 'pageview');
         const DashHeader(),
         div(id: 'site-below-header', [
           div(id: 'site-main-row', [
-            SideNav(nav: defaultNav, pageUrlPath: page.path),
+            if (page.data['sidenav'] case final List<Object?> sidenavData)
+              SideNav(
+                nav: SideNav.navEntriesFromData(sidenavData),
+                pageUrlPath: page.path,
+              ),
             main_(
               id: 'page-content',
               classes: [
