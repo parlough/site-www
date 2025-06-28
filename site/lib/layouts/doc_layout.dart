@@ -2,6 +2,7 @@ import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
 import '../components/breadcrumbs.dart';
+import '../components/prev_next.dart';
 import '../components/trailing_content.dart';
 import '../util.dart';
 import 'dash_layout.dart';
@@ -34,20 +35,29 @@ class DocLayout extends DashLayout {
             ]),
             if (pageData['show_breadcrumbs'] != false) const PageBreadcrumbs(),
           ]),
+
           // if (pageData['toc'] != false)
           //   NavigationTocTop(tocContents: page.data['tocContents']),
-
-          // Main content
           child,
 
-          // Navigation between pages
-          // PrevNext(
-          //   prevPage: pageData['prevpage'],
-          //   nextPage: pageData['nextpage'],
-          // ),
+          PrevNext(
+            previousPage: _pageInfoFromObject(pageData['prevpage']),
+            nextPage: _pageInfoFromObject(pageData['nextpage']),
+          ),
           const TrailingContent(),
         ]),
       ]),
     );
   }
+}
+
+({String url, String title})? _pageInfoFromObject(Object? data) {
+  if (data case {
+    'url': final String pageUrl,
+    'title': final String pageTitle,
+  }) {
+    return (url: pageUrl, title: pageTitle);
+  }
+
+  return null;
 }
