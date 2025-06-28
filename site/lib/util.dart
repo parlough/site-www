@@ -19,3 +19,15 @@ List<Component> underscoreBreaker(String sourceString) {
 
   return result;
 }
+
+String slugify(String text) {
+  if (text.isEmpty) return text;
+
+  return text
+      .toLowerCase()
+      .trim()
+      .replaceAll(RegExp(r'[:.]'), '-')
+      .replaceAll(RegExp(r'[^\p{L}\p{N}\s:._-]', unicode: true), '')
+      .replaceAll(RegExp(r'[\s-]+'), '-')
+      .replaceAll(RegExp(r'^-+|-+$'), '');
+}

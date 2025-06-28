@@ -6,6 +6,7 @@ import 'package:path/path.dart' as path;
 
 import 'components/card.dart';
 
+import 'components/glossary.dart';
 import 'extensions/header_processor.dart';
 import 'extensions/table_processor.dart';
 import 'jaspr_options.dart'; // Generated. Do not remove or edit.
@@ -49,13 +50,19 @@ void main() {
         ],
         components: [
           CustomComponent(
-            pattern: 'Card',
+            pattern: RegExp('Card', caseSensitive: false),
             builder: (name, attributes, child) {
               return ContentCard(
                 title: attributes['title']!,
                 link: attributes['link'],
                 child: child!,
               );
+            },
+          ),
+          CustomComponent(
+            pattern: RegExp('Glossary', caseSensitive: false),
+            builder: (_, _, _) {
+              return const GlossaryIndex();
             },
           ),
           CustomComponent(

@@ -6,18 +6,24 @@ import 'alert_syntax.dart';
 import 'attribute_syntax.dart';
 import 'definition_list_syntax.dart';
 
-class DashMarkdownParser implements PageParser {
-  static final _markdownDocument = md.Document(
-    blockSyntaxes: const [
-      AttributeBlockSyntax(),
-      CustomHtmlSyntax(),
-      AlertBlockSyntax(),
-      DefinitionListSyntax(),
-      md.FootnoteDefSyntax(),
-    ],
-    extensionSet: md.ExtensionSet.gitHubWeb,
-  );
+final md.Document _sharedMarkdownDocument = md.Document(
+  blockSyntaxes: const [
+    AttributeBlockSyntax(),
+    CustomHtmlSyntax(),
+    AlertBlockSyntax(),
+    DefinitionListSyntax(),
+    md.FootnoteDefSyntax(),
+  ],
+  extensionSet: md.ExtensionSet.gitHubWeb,
+);
 
+String parseMarkdownToHtml(String markdown) {
+  final nodes = _sharedMarkdownDocument.parse(markdown);
+  final renderer = md.HtmlRenderer();
+  return renderer.render(nodes);
+}
+
+class DashMarkdownParser implements PageParser {
   static final _attributePostProcessor = AttributePostProcessor();
 
   const DashMarkdownParser();
@@ -27,7 +33,7 @@ class DashMarkdownParser implements PageParser {
 
   @override
   List<Node> parsePage(Page page) {
-    final markdownNodes = _markdownDocument.parse(page.content);
+    final markdownNodes = _sharedMarkdownDocument.parse(page.content);
 
     final tempElement = md.Element('temp-dash-document', markdownNodes);
     tempElement.accept(_attributePostProcessor);
