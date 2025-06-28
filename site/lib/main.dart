@@ -49,7 +49,7 @@ void main() {
         ],
         components: [
           CustomComponent(
-            pattern: 'card',
+            pattern: 'Card',
             builder: (name, attributes, child) {
               return ContentCard(
                 title: attributes['title']!,

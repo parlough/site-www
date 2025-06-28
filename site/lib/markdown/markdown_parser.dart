@@ -10,11 +10,10 @@ class DashMarkdownParser implements PageParser {
   static final _markdownDocument = md.Document(
     blockSyntaxes: const [
       AttributeBlockSyntax(),
-      ComponentBlockSyntax(),
+      CustomHtmlSyntax(),
       AlertBlockSyntax(),
       DefinitionListSyntax(),
       md.FootnoteDefSyntax(),
-      md.HtmlBlockSyntax(),
     ],
     extensionSet: md.ExtensionSet.gitHubWeb,
   );
