@@ -2,7 +2,7 @@
 title: Glossary
 description: A glossary reference for terminology used across dart.dev.
 bodyClass: glossary-page
-toc: false
+showToc: false
 js: [{url: '/assets/js/glossary.js', defer: true}]
 ---
 

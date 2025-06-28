@@ -1,7 +1,7 @@
 ---
 title: Resources
 description: Landing page for Dart language resources.
-toc: false
+showToc: false
 ---
 
 Check out the following Dart language resources:

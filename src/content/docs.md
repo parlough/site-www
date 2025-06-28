@@ -1,7 +1,7 @@
 ---
 title: Dart documentation
 description: Learn to use the Dart language and libraries.
-toc: false
+showToc: false
 show_breadcrumbs: false
 ---
 

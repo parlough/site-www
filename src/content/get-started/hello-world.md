@@ -5,7 +5,7 @@ description: >-
   Create, run, and make your first change to a Dart command-line program.
 sitemap: false
 noindex: true
-toc: false
+showToc: false
 show_breadcrumbs: true
 prevpage:
   url: /get-started

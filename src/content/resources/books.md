@@ -1,7 +1,7 @@
 ---
 title: Books about Dart
 description: Read all about it! Here's a collection of books about Dart.
-toc: false
+showToc: false
 ---
 
 This page covers a collection of books about the Dart language.

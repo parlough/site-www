@@ -45,6 +45,7 @@ void main() {
         parsers: [const DashMarkdownParser(), const HtmlParser()],
         rawOutputPattern: RegExp(r'.*\.txt$'),
         extensions: [
+          const TableOfContentsExtension(maxHeaderDepth: 3),
           const HeaderWrapperExtension(),
           const TableWrapperExtension(),
         ],

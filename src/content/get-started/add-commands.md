@@ -6,7 +6,7 @@ description: >-
   syntax including control flow, collections, variables, functions, and more.
 sitemap: false
 noindex: true
-toc: false
+showToc: false
 show_breadcrumbs: true
 prevpage:
   url: /get-started/hello-world

@@ -5,7 +5,7 @@ description: >-
   Learn how to organize your Dart code into reusable libraries and packages.
 sitemap: false
 noindex: true
-toc: false
+showToc: false
 show_breadcrumbs: true
 prevpage:
   url: /get-started/async

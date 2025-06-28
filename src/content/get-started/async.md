@@ -5,7 +5,7 @@ description: >-
   Learn about asynchronous programming in Dart and how to make HTTP requests.
 sitemap: false
 noindex: true
-toc: false
+showToc: false
 show_breadcrumbs: true
 prevpage:
   url: /get-started/add-commands
