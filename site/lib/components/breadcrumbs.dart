@@ -1,12 +1,6 @@
+import 'package:collection/collection.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
-
-class BreadcrumbItem {
-  const BreadcrumbItem({required this.title, required this.url});
-
-  final String title;
-  final String url;
-}
 
 /// Breadcrumbs navigation component that
 /// follows ARIA guidelines and includes RDFa markup.
@@ -15,28 +9,13 @@ class BreadcrumbItem {
 /// - https://developers.google.com/search/docs/data-types/breadcrumb
 /// - https://schema.org/BreadcrumbList
 /// - https://www.w3.org/TR/wai-aria-practices/examples/breadcrumb/index.html
-class Breadcrumbs extends StatelessComponent {
-  const Breadcrumbs({super.key, this.breadcrumbs});
-
-  final List<BreadcrumbItem>? breadcrumbs;
+class PageBreadcrumbs extends StatelessComponent {
+  const PageBreadcrumbs({super.key});
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    final page = context.page;
-    final pageUrl = page.url;
-
-    final cleanUrl = pageUrl.replaceAll(
-      RegExp(r'/index$|/index\.html$|/$'),
-      '',
-    );
-
-    // Only show breadcrumbs if we have a non-empty URL.
-    if (cleanUrl.isEmpty) return;
-
-    // Get breadcrumbs from page data or use provided breadcrumbs.
-    final crumbs = breadcrumbs ?? _getBreadcrumbsFromPage(page);
-
-    if (crumbs.isEmpty) return;
+    final crumbs = _breadcrumbsForPage(context.pages, context.page);
+    if (crumbs == null || crumbs.isEmpty) return;
 
     yield nav(
       classes: 'breadcrumbs',
@@ -45,11 +24,11 @@ class Breadcrumbs extends StatelessComponent {
         ol(
           classes: 'breadcrumb-list',
           attributes: {
-            'vocab': 'http://schema.org/',
+            'vocab': 'https://schema.org/',
             'typeof': 'BreadcrumbList',
           },
           [
-            for (int i = 0; i < crumbs.length; i++)
+            for (var i = 0; i < crumbs.length; i++)
               _BreadcrumbItemComponent(
                 crumb: crumbs[i],
                 index: i,
@@ -63,60 +42,106 @@ class Breadcrumbs extends StatelessComponent {
 
   /// Extract breadcrumbs from page data.
   ///
-  /// This would typically call a custom filter or function to
-  /// generate breadcrumbs based on the page's position in the site hierarchy
-  List<BreadcrumbItem> _getBreadcrumbsFromPage(Page page) {
-    // In the original template, this uses:
-    //   {% assign breadcrumbs = page | breadcrumbsForPage -%}
-    // This would need to be implemented based on your site's structure
-    // For now, we'll return an empty list and expect breadcrumbs to pass in.
+  /// Uses page metadata to generate breadcrumb titles with priority:
+  /// breadcrumb > short-title > title
+  List<_BreadcrumbItem>? _breadcrumbsForPage(List<Page> pages, Page page) {
+    final pageUrl = page.url;
 
-    // You could implement logic here to generate breadcrumbs based on:
-    // - page.url path segments
-    // - page.data navigation structure
-    // - site configuration
+    // Only show breadcrumbs if we have a non-empty URL.
+    if (pageUrl.isEmpty || pageUrl == '/') return null;
 
-    final breadcrumbsData = page.data['breadcrumbs'] as List<Object?>?;
-    if (breadcrumbsData == null) return [];
+    final pageData = page.data['page'] as Map<String, Object?>?;
+    if (pageData == null) {
+      return null;
+    }
 
-    return breadcrumbsData
-        .cast<Map<String, Object?>>()
-        .map(
-          (crumb) => BreadcrumbItem(
-            title: crumb['title'] as String,
-            url: crumb['url'] as String,
-          ),
-        )
-        .toList();
+    final displayTitle =
+        pageData['breadcrumb'] ?? pageData['short-title'] ?? pageData['title'];
+    if (displayTitle is! String || displayTitle.isEmpty) {
+      return null;
+    }
+
+    final segments = pageUrl
+        .split('/')
+        .where((s) => s.isNotEmpty)
+        .toList(growable: false);
+    if (segments.isEmpty) return null;
+
+    final breadcrumbs = <_BreadcrumbItem>[];
+    var currentPath = '';
+
+    // Build breadcrumbs for each segment except the current page.
+    for (var i = 0; i < segments.length - 1; i++) {
+      currentPath += '/${segments[i]}';
+
+      // Try to find the index page for this directory.
+      final indexPage = pages.firstWhereOrNull(
+        (p) => p.url == currentPath,
+      );
+
+      // Skip if no index page found.
+      if (indexPage == null) continue;
+
+      final indexPageData = indexPage.data['page'] as Map<String, Object?>?;
+      if (indexPageData != null) {
+        final indexTitle =
+            indexPageData['breadcrumb'] ??
+            indexPageData['short-title'] ??
+            indexPageData['title'];
+        if (indexTitle is String && indexTitle.isNotEmpty) {
+          breadcrumbs.add(
+            _BreadcrumbItem(
+              title: indexTitle,
+              url: indexPage.url,
+            ),
+          );
+        }
+      }
+    }
+
+    // If there are no parent breadcrumbs and this isn't a top-level doc,
+    // don't render the single one.
+    if (breadcrumbs.isEmpty && segments.length > 1) {
+      return null;
+    }
+
+    // Add the current page as the last breadcrumb.
+    breadcrumbs.add(
+      _BreadcrumbItem(
+        title: displayTitle,
+        url: pageUrl,
+      ),
+    );
+
+    return breadcrumbs;
   }
 }
 
-/// Private stateless component for rendering individual breadcrumb items
-class _BreadcrumbItemComponent extends StatelessComponent {
+final class _BreadcrumbItem {
+  const _BreadcrumbItem({required this.title, required this.url});
+
+  final String title;
+  final String url;
+}
+
+final class _BreadcrumbItemComponent extends StatelessComponent {
   const _BreadcrumbItemComponent({
     required this.crumb,
     required this.index,
     required this.isLast,
   });
 
-  final BreadcrumbItem crumb;
+  final _BreadcrumbItem crumb;
   final int index;
   final bool isLast;
 
   @override
   Iterable<Component> build(BuildContext context) sync* {
-    final cleanUrl = crumb.url.replaceAll(
-      RegExp(r'/index$|/index\.html$|/$'),
-      '',
-    );
-
-    final classes = [
-      'breadcrumb-item',
-      if (isLast) 'active',
-    ].where((c) => c.isNotEmpty).join(' ');
-
     yield li(
-      classes: classes,
+      classes: [
+        'breadcrumb-item',
+        if (isLast) 'active',
+      ].join(' '),
       attributes: {
         'property': 'itemListElement',
         'typeof': 'ListItem',
@@ -124,7 +149,7 @@ class _BreadcrumbItemComponent extends StatelessComponent {
       },
       [
         a(
-          href: cleanUrl,
+          href: crumb.url,
           attributes: {'property': 'item', 'typeof': 'WebPage'},
           [
             span(attributes: {'property': 'name'}, [text(crumb.title)]),

@@ -32,7 +32,7 @@ class DocLayout extends DashLayout {
               else
                 text(pageTitle),
             ]),
-            if (pageData['show_breadcrumbs'] == true) const Breadcrumbs(),
+            if (pageData['show_breadcrumbs'] != false) const PageBreadcrumbs(),
           ]),
           // if (pageData['toc'] != false)
           //   NavigationTocTop(tocContents: page.data['tocContents']),
