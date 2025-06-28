@@ -177,6 +177,13 @@ ga('send', 'pageview');
   Component buildBody(Page page, Component child) {
     final pageData = page.data['page'] as Map<String, Object?>;
     final bodyClass = pageData['bodyClass'] as String?;
+    final pageUrl = page.url.startsWith('/') ? page.url : '/${page.url}';
+    final sideNavEntries = switch (page.data['sidenav']) {
+      final List<Object?> sidenavData => SideNav.navEntriesFromData(
+        sidenavData,
+      ),
+      _ => null,
+    };
 
     return Fragment(
       children: [
@@ -196,10 +203,10 @@ ga('send', 'pageview');
         const DashHeader(),
         div(id: 'site-below-header', [
           div(id: 'site-main-row', [
-            if (page.data['sidenav'] case final List<Object?> sidenavData)
+            if (sideNavEntries != null)
               SideNav(
-                nav: SideNav.navEntriesFromData(sidenavData),
-                pageUrlPath: page.path,
+                navEntries: sideNavEntries,
+                currentPageUrl: pageUrl,
               ),
             main_(
               id: 'page-content',

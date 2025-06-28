@@ -1,52 +1,113 @@
 import 'package:jaspr/jaspr.dart';
 
-class NavEntry {
-  final String? title;
-  final String? permalink;
-  final List<NavEntry>? children;
-  final bool expanded;
-  final bool header;
-  final bool divider;
+sealed class NavEntry {
+  const NavEntry();
 
-  const NavEntry({
-    this.title,
-    this.permalink,
-    this.children,
-    this.expanded = false,
-    this.header = false,
-    this.divider = false,
-  });
-
-  factory NavEntry.header(String title) => NavEntry(title: title, header: true);
-  factory NavEntry.divider() => const NavEntry(divider: true);
-  factory NavEntry.link(String title, String permalink) =>
-      NavEntry(title: title, permalink: permalink);
-  factory NavEntry.section(
+  const factory NavEntry.header(String title) = _NavHeader;
+  const factory NavEntry.divider() = _NavDivider;
+  const factory NavEntry.link(String title, String permalink) = _NavLink;
+  const factory NavEntry.section(
     String title,
     List<NavEntry> children, {
-    bool expanded = false,
-  }) => NavEntry(title: title, children: children, expanded: expanded);
+    bool expanded,
+  }) = _NavSection;
 }
 
-class SideNav extends StatelessComponent {
-  const SideNav({
+final class _NavHeader extends NavEntry {
+  final String title;
+
+  const _NavHeader(this.title);
+}
+
+final class _NavDivider extends NavEntry {
+  const _NavDivider();
+}
+
+final class _NavLink extends NavEntry {
+  final String title;
+  final String permalink;
+
+  const _NavLink(this.title, this.permalink);
+}
+
+final class _NavSection extends NavEntry {
+  final String title;
+  final List<NavEntry> children;
+  final bool expanded;
+
+  const _NavSection(
+    this.title,
+    this.children, {
+    this.expanded = false,
+  });
+}
+
+final class SideNav extends StatelessComponent {
+  SideNav({
     super.key,
-    required this.nav,
-    required this.pageUrlPath,
-    this.baseId = 'docs',
+    required this.navEntries,
+    required this.currentPageUrl,
   });
 
-  final List<NavEntry> nav;
-  final String pageUrlPath;
-  final String baseId;
+  final List<NavEntry> navEntries;
+  final String currentPageUrl;
+
+  late final List<int> activeIndices = () {
+    void visitPermalinks(
+      List<NavEntry> entries,
+      String targetUrl,
+      List<int> currentPath,
+      Map<String, List<int>> results,
+    ) {
+      for (var i = 0; i < entries.length; i++) {
+        final entry = entries[i];
+        late final newPath = [...currentPath, i];
+
+        switch (entry) {
+          case _NavDivider() || _NavHeader():
+            // Skip dividers and headers
+            continue;
+          case _NavLink(:final permalink) when !permalink.contains('://'):
+            // Add internal links to results
+            final normalizedPermalink = permalink.startsWith('/')
+                ? permalink
+                : '/$permalink';
+            results[normalizedPermalink] = newPath;
+          case _NavSection(:final children):
+            // Recursively visit children
+            visitPermalinks(children, targetUrl, newPath, results);
+          case _NavLink():
+            // External link, skip
+            continue;
+        }
+      }
+    }
+
+    final results = <String, List<int>>{};
+    visitPermalinks(navEntries, currentPageUrl, [], results);
+
+    // Find the best match (longest/most specific).
+    ({String permalink, List<int> result})? bestMatch;
+    for (final MapEntry(key: permalink, value: result) in results.entries) {
+      if (currentPageUrl == permalink ||
+          currentPageUrl.startsWith('$permalink/')) {
+        if (bestMatch == null ||
+            permalink.length > bestMatch.permalink.length) {
+          bestMatch = (permalink: permalink, result: result);
+        }
+      }
+    }
+
+    return bestMatch?.result ?? const [];
+  }();
 
   /// Builds a navigation structure from YAML/JSON data.
   ///
-  /// Expects data in the format used by src/data/sidenav.yml
+  /// Expects data in the format used by `sidenav.yml`.
   static List<NavEntry> navEntriesFromData(List<Object?> data) => data
       .map(
         (item) => switch (item) {
-          'divider' => NavEntry.divider(),
+          'divider' => const NavEntry.divider(),
           Map<String, Object?>() => _buildNavEntry(item),
           _ => throw ArgumentError('Invalid nav entry format: $item'),
         },
@@ -88,9 +149,6 @@ class SideNav extends StatelessComponent {
 
   @override
   Iterable<Component> build(BuildContext context) {
-    // Calculate active entries based on current page URL.
-    final activeEntries = _calculateActiveEntries(pageUrlPath, nav);
-
     return [
       div(id: 'sidenav', [
         form(action: '/search/', classes: 'site-header-search form-inline', [
@@ -134,40 +192,53 @@ class SideNav extends StatelessComponent {
             [div(classes: 'sidenav-divider', [])],
           ),
         ]),
-        ul(classes: 'nav', _buildNavLevel(nav, activeEntries, baseId, 0)),
+        ul(
+          classes: 'nav',
+          _buildNavLevel(navEntries, 'docs', 0, possiblyActive: true),
+        ),
       ]),
     ];
   }
 
   List<Component> _buildNavLevel(
     List<NavEntry> entries,
-    List<int> activeEntries,
     String parentId,
-    int currentLevel,
-  ) {
+    int currentLevel, {
+    required bool possiblyActive,
+  }) {
     final components = <Component>[];
 
     for (var i = 0; i < entries.length; i++) {
       final entry = entries[i];
-      final isActive = _isEntryActive(activeEntries, currentLevel, i);
       final id = '$parentId-${i + 1}';
 
-      if (entry.divider) {
-        components.add(_buildDivider(currentLevel));
-      } else if (entry.header) {
-        components.add(_buildHeader(entry.title!));
-      } else if (entry.children != null) {
-        components.add(
-          _buildCollapsibleSection(
-            entry,
-            id,
-            isActive,
-            activeEntries,
-            currentLevel,
-          ),
-        );
-      } else if (entry.permalink != null) {
-        components.add(_buildLink(entry, isActive));
+      // Check if this entry is in the active path.
+      final isInActivePath =
+          currentLevel < activeIndices.length &&
+          activeIndices[currentLevel] == i;
+
+      // Check if this is the actual active page.
+      final isActivePage =
+          possiblyActive &&
+          isInActivePath &&
+          currentLevel == activeIndices.length - 1;
+
+      switch (entry) {
+        case _NavDivider():
+          components.add(_buildDivider(currentLevel));
+        case _NavHeader(:final title):
+          components.add(_buildHeader(title));
+        case final _NavSection section:
+          components.add(
+            _buildCollapsibleSection(
+              section,
+              id,
+              isInActivePath,
+              currentLevel,
+            ),
+          );
+        case final _NavLink link:
+          components.add(_buildLink(link, isActivePage));
       }
     }
 
@@ -190,15 +261,19 @@ class SideNav extends StatelessComponent {
   }
 
   Component _buildCollapsibleSection(
-    NavEntry entry,
+    _NavSection section,
     String id,
-    bool isActive,
-    List<int> activeEntries,
+    bool isInActivePath,
     int currentLevel,
   ) {
-    final expanded = isActive || entry.expanded;
-    final classes = ['nav-link', if (isActive) 'active', 'collapsible'];
-    if (!expanded) classes.add('collapsed');
+    // Expand if this section is in the active path or marked as expanded.
+    final expanded = isInActivePath || section.expanded;
+    final classes = [
+      'nav-link',
+      if (isInActivePath) 'active',
+      'collapsible',
+      if (!expanded) 'collapsed',
+    ];
 
     return li(classes: 'nav-item', [
       button(
@@ -211,7 +286,7 @@ class SideNav extends StatelessComponent {
           'aria-controls': id,
         },
         [
-          span([text(entry.title!)]),
+          span([text(section.title)]),
           span(
             classes: 'material-symbols expander',
             attributes: {'aria-hidden': 'true'},
@@ -226,24 +301,29 @@ class SideNav extends StatelessComponent {
           if (expanded) 'show',
         ].where((c) => c.isNotEmpty).join(' '),
         id: id,
-        _buildNavLevel(entry.children!, activeEntries, id, currentLevel + 1),
+        _buildNavLevel(
+          section.children,
+          id,
+          currentLevel + 1,
+          possiblyActive: isInActivePath,
+        ),
       ),
     ]);
   }
 
-  Component _buildLink(NavEntry entry, bool isActive) {
-    final isExternal = entry.permalink!.contains('://');
+  Component _buildLink(_NavLink link, bool isActive) {
+    final isExternal = link.permalink.contains('://');
     final classes = ['nav-link', if (isActive) 'active'];
 
     return li(classes: 'nav-item', [
       a(
         classes: classes.join(' '),
-        href: entry.permalink!,
+        href: link.permalink,
         target: isExternal ? Target.blank : null,
         attributes: isExternal ? {'rel': 'noopener'} : null,
         [
           div([
-            span([text(entry.title!)]),
+            span([text(link.title)]),
             if (isExternal)
               span(
                 classes: 'material-symbols',
@@ -254,69 +334,5 @@ class SideNav extends StatelessComponent {
         ],
       ),
     ]);
-  }
-
-  bool _isEntryActive(
-    List<int> activeEntries,
-    int currentLevel,
-    int entryIndex,
-  ) {
-    if (activeEntries.length <= currentLevel) return false;
-    return activeEntries[currentLevel] == entryIndex + 1;
-  }
-
-  // Calculate which navigation entries should be active based on current URL
-  List<int> _calculateActiveEntries(String pageUrlPath, List<NavEntry> nav) {
-    // Remove trailing slashes and index files for comparison
-    final cleanPath = pageUrlPath.replaceAll(
-      RegExp(r'/index$|/index\.html$|\.html$|/$'),
-      '',
-    );
-
-    // This is a simplified version - in a real implementation, you'd want to
-    // implement the same logic as the Liquid template's activeNavForPage filter
-    final activeEntries = <int>[];
-
-    // Find matching navigation entry and build active path
-    _findActiveEntries(nav, cleanPath, activeEntries);
-
-    return activeEntries;
-  }
-
-  bool _findActiveEntries(
-    List<NavEntry> entries,
-    String path,
-    List<int> activeEntries,
-  ) {
-    for (var i = 0; i < entries.length; i++) {
-      final entry = entries[i];
-
-      if (_entryMatchesPath(entry, path)) {
-        activeEntries.add(i + 1);
-
-        // If this entry has children, search them too
-        if (entry.children != null) {
-          _findActiveEntries(entry.children!, path, activeEntries);
-        }
-        return true;
-      }
-
-      // If this entry has children, search them recursively
-      if (entry.children != null) {
-        final childActiveEntries = <int>[];
-        if (_findActiveEntries(entry.children!, path, childActiveEntries)) {
-          activeEntries.add(i + 1);
-          activeEntries.addAll(childActiveEntries);
-          return true;
-        }
-      }
-    }
-    return false;
-  }
-
-  bool _entryMatchesPath(NavEntry entry, String path) {
-    if (entry.permalink == null) return false;
-
-    return path.startsWith(entry.permalink!) || entry.permalink == path;
   }
 }
