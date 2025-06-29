@@ -17,15 +17,49 @@ import 'loaders/data_processor.dart';
 import 'markdown/markdown_parser.dart';
 import 'pages/lint_rule_pages.dart';
 import 'pages/robots_txt.dart';
+import 'util.dart';
 
 void main() {
   // Initializes the server environment with the generated default options.
   Jaspr.initializeApp(options: defaultJasprOptions);
 
+  // TODO(parlough): Eventually migrate away from
+  //   the remaining Liquid filter usages.
   FilterRegistry.register('underscoreBreaker', (value, _, _) {
     if (value is! String) return value;
 
     return value.replaceAll('_', '_<wbr>');
+  });
+
+  FilterRegistry.register('slugify', (value, _, _) {
+    if (value is! String) return value;
+
+    return slugify(value);
+  });
+
+  FilterRegistry.register('arrayToSentenceString', (value, _, _) {
+    if (value is! List) return value;
+
+    if (value.isEmpty) {
+      return '';
+    }
+
+    if (value.length == 1) {
+      return value[0];
+    }
+
+    final result = StringBuffer();
+
+    for (var i = 0; i < value.length; i++) {
+      final item = value[i].toString();
+      if (i == value.length - 1) {
+        result.write('and $item');
+      } else {
+        result.write('$item, ');
+      }
+    }
+
+    return result.toString();
   });
 
   final siteSrcPath = path.join('..', 'src');
