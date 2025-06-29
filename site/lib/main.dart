@@ -12,7 +12,9 @@ import 'extensions/table_processor.dart';
 import 'jaspr_options.dart'; // Generated. Do not remove or edit.
 import 'layouts/doc_layout.dart';
 import 'layouts/homepage_layout.dart';
+import 'loaders/data_processor.dart';
 import 'markdown/markdown_parser.dart';
+import 'pages/lint_rule_pages.dart';
 import 'pages/robots_txt.dart';
 
 void main() {
@@ -30,9 +32,15 @@ void main() {
   runApp(
     ContentApp.custom(
       eagerlyLoadAllPages: true,
-      loaders: [FilesystemLoader(path.join(siteSrcPath, 'content'))],
+      loaders: [
+        FilesystemLoader(path.join(siteSrcPath, 'content')),
+        LintLoader(),
+      ],
       configResolver: PageConfig.all(
-        dataLoaders: [FilesystemDataLoader(path.join(siteSrcPath, 'data'))],
+        dataLoaders: [
+          FilesystemDataLoader(path.join(siteSrcPath, 'data')),
+          DataProcessor(),
+        ],
         templateEngine: LiquidTemplateEngine(
           includesPath: path.join(
             siteSrcPath,

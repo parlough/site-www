@@ -50,10 +50,6 @@ class DashMarkdownParser implements PageParser {
         );
       } else if (node is md.Element) {
         final nodeChildren = node.children;
-        if (node.tag.contains('details')) {
-          print(nodeChildren?.length);
-          print(nodeChildren);
-        }
         final children = nodeChildren != null
             ? _buildNodes(nodeChildren)
             : null;
