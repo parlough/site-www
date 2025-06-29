@@ -242,7 +242,7 @@ class GlossaryCard extends StatelessComponent {
         ]),
 
         div(classes: 'initial-content', [
-          text(entry.shortDescription),
+          raw(parseMarkdownToHtml(entry.shortDescription, inline: true)),
         ]),
 
         div(

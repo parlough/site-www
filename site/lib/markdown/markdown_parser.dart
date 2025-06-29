@@ -25,8 +25,10 @@ final md.Document _sharedMarkdownDocument = md.Document(
   ],
 );
 
-String parseMarkdownToHtml(String markdown) {
-  final nodes = _sharedMarkdownDocument.parse(markdown);
+String parseMarkdownToHtml(String markdown, {bool inline = false}) {
+  final nodes = inline
+      ? _sharedMarkdownDocument.parseInline(markdown)
+      : _sharedMarkdownDocument.parse(markdown);
   final renderer = md.HtmlRenderer();
   return renderer.render(nodes);
 }
@@ -40,10 +42,12 @@ class DashMarkdownParser implements PageParser {
   Pattern get pattern => RegExp(r'.*\.md?$');
 
   @override
-  List<Node> parsePage(Page page) {
-    final pageContent = _removeProcessingInstructions(page.content);
+  List<Node> parsePage(Page page) => _parseContent(page.content);
 
-    final markdownNodes = _sharedMarkdownDocument.parse(pageContent);
+  static List<Node> _parseContent(String content) {
+    final filteredContent = _removeProcessingInstructions(content);
+
+    final markdownNodes = _sharedMarkdownDocument.parse(filteredContent);
 
     final tempElement = md.Element('temp-dash-document', markdownNodes);
     tempElement.accept(_attributePostProcessor);
@@ -63,7 +67,7 @@ class DashMarkdownParser implements PageParser {
     return filteredLines.join('\n');
   }
 
-  List<Node> _buildNodes(Iterable<md.Node> markdownNodes) {
+  static List<Node> _buildNodes(Iterable<md.Node> markdownNodes) {
     final nodes = <Node>[];
     for (final node in markdownNodes) {
       if (node is md.Text) {
