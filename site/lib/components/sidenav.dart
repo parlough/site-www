@@ -53,6 +53,8 @@ final class SideNav extends StatelessComponent {
   final String currentPageUrl;
 
   late final List<int> activeIndices = () {
+    // TODO(parlough): This was directly converted from the JS implementation.
+    //   When reworking sidenav, rewrite this or at least make functions pure.
     void visitPermalinks(
       List<NavEntry> entries,
       String targetUrl,
@@ -65,19 +67,18 @@ final class SideNav extends StatelessComponent {
 
         switch (entry) {
           case _NavDivider() || _NavHeader():
-            // Skip dividers and headers
+            // Skip dividers and headers.
             continue;
           case _NavLink(:final permalink) when !permalink.contains('://'):
-            // Add internal links to results
+            // Add internal links to results.
             final normalizedPermalink = permalink.startsWith('/')
                 ? permalink
                 : '/$permalink';
             results[normalizedPermalink] = newPath;
           case _NavSection(:final children):
-            // Recursively visit children
             visitPermalinks(children, targetUrl, newPath, results);
           case _NavLink():
-            // External link, skip
+            // Ignore non-internal links.
             continue;
         }
       }
@@ -223,42 +224,31 @@ final class SideNav extends StatelessComponent {
           isInActivePath &&
           currentLevel == activeIndices.length - 1;
 
-      switch (entry) {
-        case _NavDivider():
-          components.add(_buildDivider(currentLevel));
-        case _NavHeader(:final title):
-          components.add(_buildHeader(title));
-        case final _NavSection section:
-          components.add(
-            _buildCollapsibleSection(
-              section,
-              id,
-              isInActivePath,
-              currentLevel,
-            ),
-          );
-        case final _NavLink link:
-          components.add(_buildLink(link, isActivePage));
-      }
+      components.add(switch (entry) {
+        _NavDivider() => _buildDivider(currentLevel),
+        _NavHeader(:final title) => _buildHeader(title),
+        _NavSection() => _buildCollapsibleSection(
+          entry,
+          id,
+          isInActivePath,
+          currentLevel,
+        ),
+        _NavLink() => _buildLink(entry, isActivePage),
+      });
     }
 
     return components;
   }
 
-  Component _buildDivider(int level) {
-    if (level == 0) {
-      return li(
-        attributes: {'aria-hidden': 'true'},
-        [div(classes: 'sidenav-divider', [])],
-      );
-    } else {
-      return div(classes: 'sidenav-divider', []);
-    }
-  }
+  Component _buildDivider(int level) => level == 0
+      ? li(
+          attributes: {'aria-hidden': 'true'},
+          [div(classes: 'sidenav-divider', [])],
+        )
+      : div(classes: 'sidenav-divider', []);
 
-  Component _buildHeader(String title) {
-    return li(classes: 'nav-header', [text(title)]);
-  }
+  Component _buildHeader(String title) =>
+      li(classes: 'nav-header', [text(title)]);
 
   Component _buildCollapsibleSection(
     _NavSection section,

@@ -38,13 +38,16 @@ class _LintRulePageSource extends PageSource {
   @override
   Future<Page> buildPage() async {
     final buffer = StringBuffer();
+    // TODO(parlough): Migrate the following to one or more Jaspr components.
 
     buffer.writeln('<div class="tags">');
 
     if (lint.sinceDartSdk == 'Unreleased' ||
         lint.sinceDartSdk.contains('-wip')) {
       buffer.writeln(
-        '<div class="tag-label orange" title="Lint is unreleased or work in progress." aria-label="Lint is unreleased or work in progress.">',
+        '<div class="tag-label orange" '
+        'title="Lint is unreleased or work in progress." '
+        'aria-label="Lint is unreleased or work in progress.">',
       );
       buffer.writeln(
         '<span class="material-symbols" aria-hidden="true">pending</span>',
@@ -53,7 +56,9 @@ class _LintRulePageSource extends PageSource {
       buffer.writeln('</div>');
     } else if (lint.state == 'experimental') {
       buffer.writeln(
-        '<div class="tag-label orange" title="Lint is experimental." aria-label="Lint is experimental.">',
+        '<div class="tag-label orange" '
+        'title="Lint is experimental." '
+        'aria-label="Lint is experimental.">',
       );
       buffer.writeln(
         '<span class="material-symbols" aria-hidden="true">science</span>',
@@ -62,7 +67,9 @@ class _LintRulePageSource extends PageSource {
       buffer.writeln('</div>');
     } else if (lint.state == 'deprecated') {
       buffer.writeln(
-        '<div class="tag-label orange" title="Lint is deprecated." aria-label="Lint is deprecated.">',
+        '<div class="tag-label orange" '
+        'title="Lint is deprecated." '
+        'aria-label="Lint is deprecated.">',
       );
       buffer.writeln(
         '<span class="material-symbols" aria-hidden="true">report</span>',
@@ -71,7 +78,9 @@ class _LintRulePageSource extends PageSource {
       buffer.writeln('</div>');
     } else if (lint.state == 'removed') {
       buffer.writeln(
-        '<div class="tag-label red" title="Lint has been removed." aria-label="Lint has been removed.">',
+        '<div class="tag-label red" '
+        'title="Lint has been removed." '
+        'aria-label="Lint has been removed.">',
       );
       buffer.writeln(
         '<span class="material-symbols" aria-hidden="true">error</span>',
@@ -80,7 +89,9 @@ class _LintRulePageSource extends PageSource {
       buffer.writeln('</div>');
     } else {
       buffer.writeln(
-        '<div class="tag-label green" title="Lint is stable." aria-label="Lint is stable.">',
+        '<div class="tag-label green" '
+        'title="Lint is stable." '
+        'aria-label="Lint is stable.">',
       );
       buffer.writeln(
         '<span class="material-symbols" aria-hidden="true">verified_user</span>',
@@ -91,7 +102,9 @@ class _LintRulePageSource extends PageSource {
 
     if (lint.lintSets.contains('core')) {
       buffer.writeln(
-        '<div class="tag-label" title="Lint is included in the core set of rules." aria-label="Lint is included in the core set of rules.">',
+        '<div class="tag-label" '
+        'title="Lint is included in the core set of rules." '
+        'aria-label="Lint is included in the core set of rules.">',
       );
       buffer.writeln(
         '<span class="material-symbols" aria-hidden="true">circles</span>',
@@ -100,7 +113,9 @@ class _LintRulePageSource extends PageSource {
       buffer.writeln('</div>');
     } else if (lint.lintSets.contains('recommended')) {
       buffer.writeln(
-        '<div class="tag-label" title="Lint is included in the recommended set of rules." aria-label="Lint is included in the recommended set of rules.">',
+        '<div class="tag-label" '
+        'title="Lint is included in the recommended set of rules." '
+        'aria-label="Lint is included in the recommended set of rules.">',
       );
       buffer.writeln(
         '<span class="material-symbols" aria-hidden="true">thumb_up</span>',
@@ -109,7 +124,9 @@ class _LintRulePageSource extends PageSource {
       buffer.writeln('</div>');
     } else if (lint.lintSets.contains('flutter')) {
       buffer.writeln(
-        '<div class="tag-label" title="Lint is included in the Flutter set of rules." aria-label="Lint is included in the Flutter set of rules.">',
+        '<div class="tag-label" '
+        'title="Lint is included in the Flutter set of rules." '
+        'aria-label="Lint is included in the Flutter set of rules.">',
       );
       buffer.writeln(
         '<span class="material-symbols" aria-hidden="true">flutter</span>',
@@ -118,10 +135,11 @@ class _LintRulePageSource extends PageSource {
       buffer.writeln('</div>');
     }
 
-    // Fix status tag
     if (lint.fixStatus == 'hasFix') {
       buffer.writeln(
-        '<div class="tag-label" title="Lint has one or more quick fixes available." aria-label="Lint has one or more quick fixes available.">',
+        '<div class="tag-label" '
+        'title="Lint has one or more quick fixes available." '
+        'aria-label="Lint has one or more quick fixes available.">',
       );
       buffer.writeln(
         '<span class="material-symbols" aria-hidden="true">build</span>',

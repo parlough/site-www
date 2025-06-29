@@ -3,17 +3,15 @@ import 'package:jaspr_content/jaspr_content.dart';
 
 import '../util.dart';
 
-class RobotsTxtOutput extends SecondaryOutput {
+final class RobotsTxtOutput extends SecondaryOutput {
   @override
   final Pattern pattern = RegExp(r'/?index\..*');
 
   @override
-  String createRoute(String route) {
-    return '/robots.txt';
-  }
+  String createRoute(String _) => '/robots.txt';
 
   @override
-  Component build(Page page) {
+  Component build(Page _) {
     return Builder(
       builder: (context) sync* {
         context.setHeader('Content-Type', 'text/plain; charset=utf-8');

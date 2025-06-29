@@ -3,7 +3,7 @@ import 'package:jaspr_content/jaspr_content.dart';
 
 import '../lints.dart';
 
-class DataProcessor implements DataLoader {
+final class DataProcessor implements DataLoader {
   @override
   Future<void> loadData(Page page) async {
     final pageData = page.data['page'] as Map<String, Object?>;

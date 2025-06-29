@@ -1,4 +1,3 @@
-import 'package:jaspr/jaspr.dart';
 import 'package:jaspr/server.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:syntax_highlight_lite/syntax_highlight_lite.dart' hide Color;
@@ -21,29 +20,34 @@ class DashCodeBlockComponent implements CustomComponent {
 
   @override
   Component? create(Node node, NodesBuilder builder) {
-    // Match various code block patterns
     if (node case ElementNode(
-    tag: 'pre',
-        :final children,
-        :final attributes,
+      tag: 'pre',
+      :final children,
+      :final attributes,
     )) {
       // Extract attributes
-      final language = (attributes['language'] ??
-          attributes['lang'] ??
-          _extractLanguageFromClass(attributes['class'])) as String;
+      final language =
+          (attributes['language'] ??
+                  attributes['lang'] ??
+                  _extractLanguageFromClass(attributes['class']))
+              as String;
 
       final title = attributes['title'];
-      final showLineNumbers = attributes['showLineNumbers'] == 'true' ||
+      final showLineNumbers =
+          attributes['showLineNumbers'] == 'true' ||
           attributes['show-line-numbers'] == 'true';
-      final lineNumberStart = int.tryParse(
-          attributes['lineNumberStart'] ??
-              attributes['line-number-start'] ??
-              '1'
-      ) ?? 1;
-      final highlightLines = attributes['highlightLines'] ??
-          attributes['highlight-lines'];
+      final lineNumberStart =
+          int.tryParse(
+            attributes['lineNumberStart'] ??
+                attributes['line-number-start'] ??
+                '1',
+          ) ??
+          1;
+      final highlightLines =
+          attributes['highlightLines'] ?? attributes['highlight-lines'];
       final tag = attributes['tag'];
-      final noHighlight = attributes['noHighlight'] == 'true' ||
+      final noHighlight =
+          attributes['noHighlight'] == 'true' ||
           attributes['no-highlight'] == 'true';
 
       // Handle nested code element in pre
@@ -64,28 +68,32 @@ class DashCodeBlockComponent implements CustomComponent {
         _initialized = true;
       }
 
-      return AsyncBuilder(builder: (context) async* {
-        Highlighter? highlighter;
+      return AsyncBuilder(
+        builder: (context) async* {
+          Highlighter? highlighter;
 
-        if (!noHighlight && _isSupportedLanguage(language)) {
-          highlighter = Highlighter(
+          if (!noHighlight && _isSupportedLanguage(language)) {
+            highlighter = Highlighter(
+              language: language,
+              theme:
+                  theme ??
+                  (_defaultTheme ??= await HighlighterTheme.loadDarkTheme()),
+            );
+          }
+
+          yield DashCodeBlock(
+            source: source,
             language: language,
-            theme: theme ?? (_defaultTheme ??= await HighlighterTheme.loadDarkTheme()),
+            title: title,
+            showLineNumbers: showLineNumbers,
+            lineNumberStart: lineNumberStart,
+            highlightLines: highlightLines,
+            tag: tag,
+            noHighlight: noHighlight,
+            highlighter: highlighter,
           );
-        }
-
-        yield DashCodeBlock(
-          source: source,
-          language: language,
-          title: title,
-          showLineNumbers: showLineNumbers,
-          lineNumberStart: lineNumberStart,
-          highlightLines: highlightLines,
-          tag: tag,
-          noHighlight: noHighlight,
-          highlighter: highlighter,
-        );
-      });
+        },
+      );
     }
 
     return null;
@@ -101,10 +109,29 @@ class DashCodeBlockComponent implements CustomComponent {
   bool _isSupportedLanguage(String language) {
     // List of commonly supported languages
     const supportedLanguages = {
-      'dart', 'yaml', 'json', 'swift', 'css', 'html', 'xml',
-      'js', 'javascript', 'objc', 'bash', 'sh', 'kotlin',
-      'java', 'md', 'markdown', 'diff', 'ps', 'powershell',
-      'console', 'cmd', 'plaintext', 'text',
+      'dart',
+      'yaml',
+      'json',
+      'swift',
+      'css',
+      'html',
+      'xml',
+      'js',
+      'javascript',
+      'objc',
+      'bash',
+      'sh',
+      'kotlin',
+      'java',
+      'md',
+      'markdown',
+      'diff',
+      'ps',
+      'powershell',
+      'console',
+      'cmd',
+      'plaintext',
+      'text',
     };
 
     return supportedLanguages.contains(language.toLowerCase()) ||
@@ -228,13 +255,15 @@ class DashCodeBlock extends StatelessComponent {
     for (var i = 0; i < lines.length; i++) {
       final lineNum = lineNumberStart + i;
       final isHighlighted = highlightedLines.contains(lineNum);
-      
-      components.add(_buildLine(
-        lines[i],
-        lineNum,
-        isHighlighted,
-        isPlain: true,
-      ));
+
+      components.add(
+        _buildLine(
+          lines[i],
+          lineNum,
+          isHighlighted,
+          isPlain: true,
+        ),
+      );
 
       if (i < lines.length - 1) {
         components.add(text('\n'));
@@ -251,7 +280,7 @@ class DashCodeBlock extends StatelessComponent {
 
     // Get highlighted spans
     final highlighted = highlighter!.highlight(code);
-    
+
     // Split into lines while preserving highlighting
     final lines = _splitHighlightedIntoLines(highlighted);
     final components = <Component>[];
@@ -259,13 +288,15 @@ class DashCodeBlock extends StatelessComponent {
     for (var i = 0; i < lines.length; i++) {
       final lineNum = lineNumberStart + i;
       final isHighlighted = highlightedLines.contains(lineNum);
-      
-      components.add(_buildLine(
-        '',
-        lineNum,
-        isHighlighted,
-        spans: lines[i],
-      ));
+
+      components.add(
+        _buildLine(
+          '',
+          lineNum,
+          isHighlighted,
+          spans: lines[i],
+        ),
+      );
 
       if (i < lines.length - 1) {
         components.add(text('\n'));
@@ -384,8 +415,7 @@ class DashCodeBlock extends StatelessComponent {
 
     void processSpan(TextSpan span) {
       final text = span.text ?? '';
-      final style = span.style;
-      
+
       if (text.contains('\n')) {
         final parts = text.split('\n');
         for (var i = 0; i < parts.length; i++) {
@@ -407,45 +437,11 @@ class DashCodeBlock extends StatelessComponent {
     }
 
     processSpan(span);
-    
+
     if (currentLine.isNotEmpty) {
       lines.add(currentLine);
     }
 
     return lines;
   }
-
-  // Component _buildStyledSpan(String spanText, SyntaxStyle? style) {
-  //   if (style == null) {
-  //     return _processLineForMarking(spanText).length == 1
-  //         ? _processLineForMarking(spanText).first
-  //         : Fragment(children: _processLineForMarking(spanText));
-  //   }
-  //
-  //   final styles = Styles(
-  //     color: Color.hex(style.foreground.hex),
-  //     fontWeight: style.bold ? FontWeight.bold : null,
-  //     fontStyle: style.italic ? FontStyle.italic : null,
-  //     textDecoration: style.underline
-  //         ? TextDecoration(line: TextDecorationLine.underline)
-  //         : null,
-  //   );
-  //
-  //   // Check if text contains marking
-  //   final markingComponents = _processLineForMarking(spanText);
-  //   if (markingComponents.length > 1) {
-  //     // Apply style to each component
-  //     return Fragment(
-  //       children: markingComponents.map((c) {
-  //         if (c is DomComponent && c.tag == 'span' && c.classes?.contains('marked-text') == true) {
-  //           // Keep marked text styling
-  //           return c;
-  //         }
-  //         return span(styles: styles, [c]);
-  //       }).toList(),
-  //     );
-  //   }
-  //
-  //   return span(styles: styles, [text(spanText)]);
-  // }
 }

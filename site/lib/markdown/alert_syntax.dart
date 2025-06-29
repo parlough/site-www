@@ -13,7 +13,7 @@ import 'package:markdown/markdown.dart' as md;
 ///
 /// This renders as HTML similar to:
 /// ```html
-/// <aside class="alert important">
+/// <aside class="alert alert-important">
 ///   <div class="alert-header">
 ///     <span class="material-symbols" aria-hidden="true">important_icon</span>
 ///     <span>The title of my alert</span>
@@ -23,7 +23,7 @@ import 'package:markdown/markdown.dart' as md;
 ///   </div>
 /// </aside>
 /// ```
-class AlertBlockSyntax extends md.BlockSyntax {
+final class AlertBlockSyntax extends md.BlockSyntax {
   @override
   RegExp get pattern => RegExp(r'^:::([a-zA-Z-]+)(?:\s+(.*))?$');
 
@@ -39,93 +39,87 @@ class AlertBlockSyntax extends md.BlockSyntax {
     final match = pattern.firstMatch(parser.current.content);
     if (match == null) return null;
 
-    final alertType = match.group(1)!;
+    final alertType = match.group(1)!.toLowerCase();
     var title = match.group(2)?.trim();
 
-    // Use default title if not provided
     if (title == null || title.isEmpty) {
-      title = _getDefaultTitle(alertType);
+      title = _defaultTitleForType(alertType);
     }
 
-    // Advance past the opening line
+    // Advance past the opening line.
     parser.advance();
 
-    // Collect content lines until we find the closing :::
+    // Collect content lines until we find the closing :::.
     final contentLines = <String>[];
     while (!parser.isDone) {
       final line = parser.current.content;
       if (line.trim() == ':::') {
-        parser.advance(); // Consume the closing line
+        // Consume the closing line.
+        parser.advance();
         break;
       }
       contentLines.add(line);
       parser.advance();
     }
 
-    // Parse the content as Markdown
-    // Create Line objects from the content
-    final childLines = contentLines.map(md.Line.new).toList();
-
-    // Create a new BlockParser with the same document context
-    // This preserves link references and other document-level state
+    // Create a new BlockParser with the same document context.
+    // This preserves link references and other document-level state.
     final contentNodes = md.BlockParser(
-      childLines,
+      contentLines.map(md.Line.new).toList(),
       parser.document,
     ).parseLines(parentSyntax: this);
 
-    // Create the alert structure
-    final alertElement = md.Element('aside', []);
-    final alertClass = _getAlertClass(alertType);
-    alertElement.attributes['class'] = 'alert $alertType $alertClass';
+    final alertChildren = <md.Node>[];
 
-    // Create header if title is provided
+    // If title is provided, create and add a header.
     if (title != null && title.isNotEmpty) {
       final headerElement = md.Element('div', []);
       headerElement.attributes['class'] = 'alert-header';
+      final headerChildren = <md.Node>[];
 
-      // Add icon (except for secondary type)
-      if (alertType.toLowerCase() != 'secondary') {
-        final iconElement = md.Element('span', [
-          md.Text(_getIconForAlertType(alertType)),
-        ]);
-        iconElement.attributes['class'] = 'material-symbols';
-        iconElement.attributes['aria-hidden'] = 'true';
-        headerElement.children!.add(iconElement);
+      // If the type is any but 'secondary', add an icon.
+      if (alertType != 'secondary') {
+        final iconElement =
+            md.Element('span', [md.Text(_iconIdForType(alertType))])
+              ..attributes['class'] = 'material-symbols'
+              ..attributes['aria-hidden'] = 'true';
+        headerChildren.add(iconElement);
       }
 
-      // Add title
       // Parse the title as inline Markdown to support links, emphasis, etc.
       final titleNodes = parser.document.parseInline(title);
-      final titleElement = md.Element('span', titleNodes);
-      headerElement.children!.add(titleElement);
+      headerChildren.add(md.Element('span', titleNodes));
 
-      alertElement.children!.add(headerElement);
+      alertChildren.add(
+        md.Element('div', headerChildren)..attributes['class'] = 'alert-header',
+      );
     }
 
-    // Create content div
-    final contentElement = md.Element('div', contentNodes);
-    contentElement.attributes['class'] = 'alert-content';
-    alertElement.children!.add(contentElement);
+    final contentElement = md.Element('div', contentNodes)
+      ..attributes['class'] = 'alert-content';
+    alertChildren.add(contentElement);
+
+    final alertElement = md.Element('aside', alertChildren)
+      ..attributes['class'] = 'alert ${_cssClassForType(alertType)}';
 
     return alertElement;
   }
 
-  /// Returns the default title for the given alert type.
-  String? _getDefaultTitle(String alertType) =>
-      switch (alertType.toLowerCase()) {
-        'note' => 'Note',
-        'flutter-note' => 'Flutter note',
-        'version-note' => 'Version note',
-        'tip' => 'Tip',
-        'recommend' => 'Recommended',
-        'important' => 'Important',
-        'warning' => 'Warning',
-        'caution' => 'Caution',
-        'secondary' || _ => null,
-      };
+  /// Returns the default title for the given [alertType].
+  String? _defaultTitleForType(String alertType) => switch (alertType) {
+    'note' => 'Note',
+    'flutter-note' => 'Flutter note',
+    'version-note' => 'Version note',
+    'tip' => 'Tip',
+    'recommend' => 'Recommended',
+    'important' => 'Important',
+    'warning' => 'Warning',
+    'caution' => 'Caution',
+    'secondary' || _ => null,
+  };
 
-  /// Returns the appropriate CSS class for the given alert type.
-  String _getAlertClass(String alertType) => switch (alertType.toLowerCase()) {
+  /// Returns the appropriate CSS class for the given [alertType].
+  String _cssClassForType(String alertType) => switch (alertType) {
     'note' || 'version-note' || 'flutter-note' => 'alert-info',
     'tip' || 'recommend' => 'alert-success',
     'important' => 'alert-important',
@@ -134,17 +128,16 @@ class AlertBlockSyntax extends md.BlockSyntax {
     _ => 'alert-secondary',
   };
 
-  /// Returns the appropriate icon name for the given alert type.
-  String _getIconForAlertType(String alertType) =>
-      switch (alertType.toLowerCase()) {
-        'note' => 'info',
-        'flutter-note' => 'flutter',
-        'version_note' => 'merge_type',
-        'tip' => 'lightbulb',
-        'recommend' => 'bolt',
-        'important' => 'feedback',
-        'warning' => 'warning',
-        'caution' => 'error',
-        _ => 'info',
-      };
+  /// Returns the appropriate icon name for the given [alertType].
+  String _iconIdForType(String alertType) => switch (alertType) {
+    'note' => 'info',
+    'flutter-note' => 'flutter',
+    'version_note' => 'merge_type',
+    'tip' => 'lightbulb',
+    'recommend' => 'bolt',
+    'important' => 'feedback',
+    'warning' => 'warning',
+    'caution' => 'error',
+    _ => 'info',
+  };
 }
