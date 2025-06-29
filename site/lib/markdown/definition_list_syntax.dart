@@ -6,7 +6,8 @@ import 'package:markdown/markdown.dart' as md;
 /// Terms are written on their own lines, and definitions are written
 /// on the following lines, starting with a colon and a space.
 ///
-/// Example:
+/// For example:
+///
 /// ```md
 /// First Term
 /// : This is the definition of the first term.
@@ -16,7 +17,8 @@ import 'package:markdown/markdown.dart' as md;
 /// : This is another definition of the second term.
 /// ```
 ///
-/// This renders as HTML:
+/// Renders as HTML:
+///
 /// ```html
 /// <dl>
 ///   <dt>First Term</dt>
@@ -26,139 +28,153 @@ import 'package:markdown/markdown.dart' as md;
 ///   <dd>This is another definition of the second term.</dd>
 /// </dl>
 /// ```
-class DefinitionListSyntax extends md.BlockSyntax {
+final class DefinitionListSyntax extends md.BlockSyntax {
+  static final _definitionPattern = RegExp(r'^\s*:\s+(.*)$');
+
   @override
-  RegExp get pattern => RegExp(r'^\s*:\s+(.*)$');
+  RegExp get pattern => _definitionPattern;
 
   const DefinitionListSyntax();
 
   @override
   bool canParse(md.BlockParser parser) {
-    final currentLineContent = parser.current.content;
-    // Check if current line is a definition (starts with ': ').
-    if (pattern.hasMatch(currentLineContent)) {
-      return true;
-    }
-
-    // Check if current line is a term followed by a definition
-    if (currentLineContent.trim().isNotEmpty &&
-        !currentLineContent.startsWith(' ') &&
-        !currentLineContent.startsWith('\t')) {
-      // Look ahead to see if next line is a definition.
-      final nextLine = parser.peek(1);
-      if (nextLine != null) {
-        return pattern.hasMatch(nextLine.content);
-      }
-    }
-
-    return false;
+    return _isDefinitionListStart(parser);
   }
 
   @override
   md.Node? parse(md.BlockParser parser) {
-    final termElements = <md.Element>[];
+    final elements = <md.Element>[];
 
-    while (!parser.isDone && _isPartOfDefinitionList(parser)) {
-      // Parse potential terms in a definition list.
-      while (!parser.isDone &&
-          parser.current.content.trim().isNotEmpty &&
-          !pattern.hasMatch(parser.current.content)) {
-        final termContent = parser.current.content.trim();
-        if (termContent.isEmpty) break;
-
-        // Parse the term content as inline Markdown with document context.
-        final termNodes = parser.document.parseInline(termContent);
-
-        final dtElement = md.Element('dt', termNodes);
-        termElements.add(dtElement);
-
-        parser.advance();
-      }
-
-      // Parse definitions of the terms.
-      while (!parser.isDone && pattern.hasMatch(parser.current.content)) {
-        final match = pattern.firstMatch(parser.current.content);
-        if (match == null) break;
-
-        final definitionContent = match.group(1)!;
-
-        // Collect multi-line definition content.
-        final definitionLines = <String>[definitionContent];
-        parser.advance();
-
-        // Continue collecting lines that are part of this definition.
-        while (!parser.isDone &&
-            !pattern.hasMatch(parser.current.content) &&
-            (parser.current.content.trim().isEmpty ||
-                parser.current.content.startsWith('  ') ||
-                parser.current.content.startsWith('\t'))) {
-          if (parser.current.content.trim().isEmpty) {
-            // Empty line - check if next line continues the definition
-            final nextLine = parser.peek(1);
-            if (nextLine != null) {
-              if (nextLine.content.startsWith('  ') ||
-                  nextLine.content.startsWith('\t') ||
-                  pattern.hasMatch(nextLine.content)) {
-                definitionLines.add('');
-                parser.advance();
-                continue;
-              }
-            }
-            break;
-          } else {
-            // Remove leading indentation (2 spaces or 1 tab).
-            var line = parser.current.content;
-            if (line.startsWith('  ')) {
-              line = line.substring(2);
-            } else if (line.startsWith('\t')) {
-              line = line.substring(1);
-            }
-            definitionLines.add(line);
-            parser.advance();
-          }
-        }
-
-        // Create a new BlockParser with the same document context.
-        // This preserves link references and other document-level state.
-        final definitionNodes = md.BlockParser(
-          definitionLines.map(md.Line.new).toList(growable: false),
-          parser.document,
-        ).parseLines(parentSyntax: this);
-
-        termElements.add(md.Element('dd', definitionNodes));
-      }
-
-      // Skip empty lines between definition list items.
-      while (!parser.isDone && parser.current.content.trim().isEmpty) {
-        parser.advance();
-      }
+    while (!parser.isDone && _isDefinitionListStart(parser)) {
+      _parseTermsAndDefinitions(parser, elements);
+      _skipEmptyLines(parser);
     }
 
-    return termElements.isNotEmpty ? md.Element('dl', termElements) : null;
+    return elements.isNotEmpty ? md.Element('dl', elements) : null;
   }
 
-  /// Checks if the current position is part of a definition list
-  bool _isPartOfDefinitionList(md.BlockParser parser) {
-    if (parser.isDone) return false;
-
-    final currentLine = parser.current.content;
-
-    // Current line is a definition
-    if (pattern.hasMatch(currentLine)) {
-      return true;
+  void _parseTermsAndDefinitions(
+    md.BlockParser parser,
+    List<md.Element> elements,
+  ) {
+    // Parse all consecutive terms.
+    while (!parser.isDone && _isTerm(parser)) {
+      final termNodes = parser.document.parseInline(parser.current.content);
+      elements.add(md.Element('dt', termNodes));
+      parser.advance();
     }
 
-    // Current line is a term (non-empty, not indented)
-    if (currentLine.trim().isNotEmpty &&
-        !currentLine.startsWith(' ') &&
-        !currentLine.startsWith('\t')) {
-      // Look ahead to see if next line is a definition
-      final nextLine = parser.peek(1);
-      if (nextLine != null) {
-        return pattern.hasMatch(nextLine.content);
+    // Parse all consecutive definitions.
+    while (!parser.isDone && _isDefinition(parser)) {
+      final definitionElement = _parseDefinition(parser);
+      if (definitionElement != null) {
+        elements.add(definitionElement);
       }
+    }
+  }
+
+  md.Element? _parseDefinition(md.BlockParser parser) {
+    final match = pattern.firstMatch(parser.current.content);
+    if (match == null) return null;
+
+    final lines = <String>[match.group(1)!];
+    parser.advance();
+
+    // Collect continuation lines.
+    while (!parser.isDone && _isDefinitionContinuation(parser)) {
+      final line = parser.current.content;
+      if (line.trim().isEmpty) {
+        // Check if empty line should be included.
+        if (_shouldIncludeEmptyLine(parser)) {
+          lines.add('');
+          parser.advance();
+        } else {
+          break;
+        }
+      } else {
+        lines.add(_removeIndentation(line));
+        parser.advance();
+      }
+    }
+
+    // Check if this is a simple single-paragraph definition.
+    if (_isSimpleDefinition(lines)) {
+      // Parse as inline content without wrapping in paragraph.
+      final inlineContent = lines.join('\n');
+      final inlineNodes = parser.document.parseInline(inlineContent);
+      return md.Element('dd', inlineNodes);
+    } else {
+      // Parse as blocks for multi-paragraph content.
+      final nodes = md.BlockParser(
+        lines.map(md.Line.new).toList(growable: false),
+        parser.document,
+      ).parseLines(parentSyntax: this);
+      return md.Element('dd', nodes);
+    }
+  }
+
+  bool _isDefinitionListStart(md.BlockParser parser) {
+    if (parser.isDone) return false;
+
+    // Check if current line is a definition.
+    if (_isDefinition(parser)) return true;
+
+    // Check if current line is a term followed by a definition.
+    if (_isTerm(parser)) {
+      final nextLine = parser.peek(1);
+      return nextLine != null && pattern.hasMatch(nextLine.content);
     }
 
     return false;
+  }
+
+  bool _isTerm(md.BlockParser parser) {
+    final content = parser.current.content;
+    return content.trim().isNotEmpty &&
+        !content.startsWith(' ') &&
+        !content.startsWith('\t') &&
+        !pattern.hasMatch(content);
+  }
+
+  bool _isDefinition(md.BlockParser parser) {
+    return pattern.hasMatch(parser.current.content);
+  }
+
+  bool _isDefinitionContinuation(md.BlockParser parser) {
+    final content = parser.current.content;
+    return !pattern.hasMatch(content) &&
+        (content.trim().isEmpty ||
+            content.startsWith('  ') ||
+            content.startsWith('\t'));
+  }
+
+  bool _shouldIncludeEmptyLine(md.BlockParser parser) {
+    final nextLine = parser.peek(1);
+    if (nextLine == null) return false;
+
+    return nextLine.content.startsWith('  ') ||
+        nextLine.content.startsWith('\t') ||
+        pattern.hasMatch(nextLine.content);
+  }
+
+  String _removeIndentation(String line) {
+    if (line.startsWith('  ')) {
+      return line.substring(2);
+    } else if (line.startsWith('\t')) {
+      return line.substring(1);
+    }
+    return line;
+  }
+
+  void _skipEmptyLines(md.BlockParser parser) {
+    while (!parser.isDone && parser.current.content.trim().isEmpty) {
+      parser.advance();
+    }
+  }
+
+  bool _isSimpleDefinition(List<String> lines) {
+    // A simple definition has no empty lines and
+    // should result in a single paragraph.
+    return !lines.contains('');
   }
 }
