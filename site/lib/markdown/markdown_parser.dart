@@ -5,16 +5,22 @@ import 'package:markdown/markdown.dart' as md;
 import 'alert_syntax.dart';
 import 'attribute_syntax.dart';
 import 'definition_list_syntax.dart';
+import 'fenced_code_block_syntax.dart';
 
 final md.Document _sharedMarkdownDocument = md.Document(
   blockSyntaxes: const [
-    AttributeBlockSyntax(),
     CustomHtmlSyntax(),
+    CustomFencedCodeBlockSyntax(),
+    AttributeBlockSyntax(),
     AlertBlockSyntax(),
     DefinitionListSyntax(),
+    md.HeaderWithIdSyntax(),
+    md.TableSyntax(),
     md.FootnoteDefSyntax(),
   ],
-  extensionSet: md.ExtensionSet.gitHubWeb,
+  inlineSyntaxes: [
+    md.InlineHtmlSyntax(),
+  ],
 );
 
 String parseMarkdownToHtml(String markdown) {

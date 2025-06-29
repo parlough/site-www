@@ -47,7 +47,7 @@ pre {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
     width: 100%;
-    display: inline-block;
+    display: block;
     min-width: 100%;
     border-left: 2px solid rgba(0, 0, 0, 0);
 
@@ -76,6 +76,7 @@ pre {
 
 .code-copy-button {
   position: absolute;
+  user-select: none;
   top: 6px;
   right: 6px;
   z-index: 10;

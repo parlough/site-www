@@ -7,6 +7,7 @@ import 'package:path/path.dart' as path;
 import 'components/card.dart';
 
 import 'components/glossary.dart';
+import 'extensions/code_block_processor.dart';
 import 'extensions/header_processor.dart';
 import 'extensions/table_processor.dart';
 import 'jaspr_options.dart'; // Generated. Do not remove or edit.
@@ -56,6 +57,7 @@ void main() {
           const TableOfContentsExtension(maxHeaderDepth: 3),
           const HeaderWrapperExtension(),
           const TableWrapperExtension(),
+          const CodeBlockProcessor(),
         ],
         components: [
           CustomComponent(
