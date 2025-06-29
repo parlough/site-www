@@ -79,6 +79,7 @@ void main() {
           CustomComponent(
             pattern: 'YouTubeEmbed',
             builder: (name, attributes, child) {
+              // TODO(parlough): This likely shouldn't be implemented here.
               final rawVideoId = attributes['id'] as String;
               final videoTitle = attributes['title'] as String;
               final playlistId = attributes['playlist'];

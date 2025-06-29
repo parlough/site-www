@@ -34,16 +34,17 @@ class DefinitionListSyntax extends md.BlockSyntax {
 
   @override
   bool canParse(md.BlockParser parser) {
-    // Check if current line is a definition (starts with ': ')
-    if (pattern.hasMatch(parser.current.content)) {
+    final currentLineContent = parser.current.content;
+    // Check if current line is a definition (starts with ': ').
+    if (pattern.hasMatch(currentLineContent)) {
       return true;
     }
 
     // Check if current line is a term followed by a definition
-    if (parser.current.content.trim().isNotEmpty &&
-        !parser.current.content.startsWith(' ') &&
-        !parser.current.content.startsWith('\t')) {
-      // Look ahead to see if next line is a definition
+    if (currentLineContent.trim().isNotEmpty &&
+        !currentLineContent.startsWith(' ') &&
+        !currentLineContent.startsWith('\t')) {
+      // Look ahead to see if next line is a definition.
       final nextLine = parser.peek(1);
       if (nextLine != null) {
         return pattern.hasMatch(nextLine.content);
@@ -55,38 +56,37 @@ class DefinitionListSyntax extends md.BlockSyntax {
 
   @override
   md.Node? parse(md.BlockParser parser) {
-    final dlElement = md.Element('dl', []);
+    final termElements = <md.Element>[];
 
     while (!parser.isDone && _isPartOfDefinitionList(parser)) {
-      // Parse term(s)
+      // Parse potential terms in a definition list.
       while (!parser.isDone &&
           parser.current.content.trim().isNotEmpty &&
           !pattern.hasMatch(parser.current.content)) {
         final termContent = parser.current.content.trim();
         if (termContent.isEmpty) break;
 
-        // Parse the term content as inline Markdown with document context
+        // Parse the term content as inline Markdown with document context.
         final termNodes = parser.document.parseInline(termContent);
 
-        final dtElement = md.Element('dt', []);
-        dtElement.children!.addAll(termNodes);
-        dlElement.children!.add(dtElement);
+        final dtElement = md.Element('dt', termNodes);
+        termElements.add(dtElement);
 
         parser.advance();
       }
 
-      // Parse definition(s)
+      // Parse definitions of the terms.
       while (!parser.isDone && pattern.hasMatch(parser.current.content)) {
         final match = pattern.firstMatch(parser.current.content);
         if (match == null) break;
 
         final definitionContent = match.group(1)!;
 
-        // Collect multi-line definition content
+        // Collect multi-line definition content.
         final definitionLines = <String>[definitionContent];
         parser.advance();
 
-        // Continue collecting lines that are part of this definition
+        // Continue collecting lines that are part of this definition.
         while (!parser.isDone &&
             !pattern.hasMatch(parser.current.content) &&
             (parser.current.content.trim().isEmpty ||
@@ -106,7 +106,7 @@ class DefinitionListSyntax extends md.BlockSyntax {
             }
             break;
           } else {
-            // Remove leading indentation (2 spaces or 1 tab)
+            // Remove leading indentation (2 spaces or 1 tab).
             var line = parser.current.content;
             if (line.startsWith('  ')) {
               line = line.substring(2);
@@ -118,29 +118,23 @@ class DefinitionListSyntax extends md.BlockSyntax {
           }
         }
 
-        // Parse the definition content as Markdown with document context
-        // Create Line objects from the definition content
-        final childLines = definitionLines.map(md.Line.new).toList();
-
-        // Create a new BlockParser with the same document context
-        // This preserves link references and other document-level state
+        // Create a new BlockParser with the same document context.
+        // This preserves link references and other document-level state.
         final definitionNodes = md.BlockParser(
-          childLines,
+          definitionLines.map(md.Line.new).toList(growable: false),
           parser.document,
         ).parseLines(parentSyntax: this);
 
-        final ddElement = md.Element('dd', []);
-        ddElement.children!.addAll(definitionNodes);
-        dlElement.children!.add(ddElement);
+        termElements.add(md.Element('dd', definitionNodes));
       }
 
-      // Skip empty lines between definition list items
+      // Skip empty lines between definition list items.
       while (!parser.isDone && parser.current.content.trim().isEmpty) {
         parser.advance();
       }
     }
 
-    return dlElement.children!.isNotEmpty ? dlElement : null;
+    return termElements.isNotEmpty ? md.Element('dl', termElements) : null;
   }
 
   /// Checks if the current position is part of a definition list
