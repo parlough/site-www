@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:html/parser.dart' as html;
 import 'package:jaspr_content/jaspr_content.dart';
 import 'package:markdown/markdown.dart' as md;
@@ -9,7 +11,6 @@ import 'fenced_code_block_syntax.dart';
 
 final md.Document _sharedMarkdownDocument = md.Document(
   blockSyntaxes: const [
-    CustomHtmlSyntax(),
     CustomFencedCodeBlockSyntax(),
     AttributeBlockSyntax(),
     AlertBlockSyntax(),
@@ -17,6 +18,7 @@ final md.Document _sharedMarkdownDocument = md.Document(
     md.HeaderWithIdSyntax(),
     md.TableSyntax(),
     md.FootnoteDefSyntax(),
+    CustomHtmlSyntax(),
   ],
   inlineSyntaxes: [
     md.InlineHtmlSyntax(),
@@ -39,12 +41,26 @@ class DashMarkdownParser implements PageParser {
 
   @override
   List<Node> parsePage(Page page) {
-    final markdownNodes = _sharedMarkdownDocument.parse(page.content);
+    final pageContent = _removeProcessingInstructions(page.content);
+
+    final markdownNodes = _sharedMarkdownDocument.parse(pageContent);
 
     final tempElement = md.Element('temp-dash-document', markdownNodes);
     tempElement.accept(_attributePostProcessor);
 
     return _buildNodes(tempElement.children ?? []);
+  }
+
+  // TODO(parlough): Remove workaround when processing instructions
+  //   stop breaking the HTML syntax.
+  static String _removeProcessingInstructions(String content) {
+    final lines = const LineSplitter().convert(content.trimRight());
+    final filteredLines = <String>[
+      for (final line in lines)
+        if (!line.contains('<?code-excerpt')) line,
+    ];
+
+    return filteredLines.join('\n');
   }
 
   List<Node> _buildNodes(Iterable<md.Node> markdownNodes) {
