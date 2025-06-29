@@ -215,14 +215,13 @@ final class SideNav extends StatelessComponent {
 
       // Check if this entry is in the active path.
       final isInActivePath =
+          possiblyActive &&
           currentLevel < activeIndices.length &&
           activeIndices[currentLevel] == i;
 
       // Check if this is the actual active page.
       final isActivePage =
-          possiblyActive &&
-          isInActivePath &&
-          currentLevel == activeIndices.length - 1;
+          isInActivePath && currentLevel == activeIndices.length - 1;
 
       components.add(switch (entry) {
         _NavDivider() => _buildDivider(currentLevel),
