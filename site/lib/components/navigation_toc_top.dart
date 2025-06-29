@@ -1,6 +1,7 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
+// TODO(parlough): Migrate this TOC to the style used by Flutter docs.
 class NavigationTocTop extends StatelessComponent {
   const NavigationTocTop({
     super.key,

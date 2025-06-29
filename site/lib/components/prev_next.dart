@@ -1,5 +1,24 @@
 import 'package:jaspr/jaspr.dart';
 
+class PrevNext extends StatelessComponent {
+  const PrevNext({super.key, this.previousPage, this.nextPage});
+
+  final ({String url, String title})? previousPage;
+  final ({String url, String title})? nextPage;
+
+  @override
+  Iterable<Component> build(BuildContext context) sync* {
+    if (previousPage == null && nextPage == null) return;
+
+    yield nav(id: 'site-prev-next', [
+      if (previousPage case final previousPage?)
+        _PrevNextCard(page: previousPage, isPrevious: true),
+      if (nextPage case final nextPage?)
+        _PrevNextCard(page: nextPage, isPrevious: false),
+    ]);
+  }
+}
+
 class _PrevNextCard extends StatelessComponent {
   const _PrevNextCard({required this.page, required this.isPrevious});
 
@@ -34,25 +53,6 @@ class _PrevNextCard extends StatelessComponent {
           attributes: {'aria-hidden': 'true'},
           [text(iconName)],
         ),
-    ]);
-  }
-}
-
-class PrevNext extends StatelessComponent {
-  const PrevNext({super.key, this.previousPage, this.nextPage});
-
-  final ({String url, String title})? previousPage;
-  final ({String url, String title})? nextPage;
-
-  @override
-  Iterable<Component> build(BuildContext context) sync* {
-    if (previousPage == null && nextPage == null) return;
-
-    yield nav(id: 'site-prev-next', [
-      if (previousPage case final previousPage?)
-        _PrevNextCard(page: previousPage, isPrevious: true),
-      if (nextPage case final nextPage?)
-        _PrevNextCard(page: nextPage, isPrevious: false),
     ]);
   }
 }

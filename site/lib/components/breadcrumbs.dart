@@ -42,12 +42,12 @@ class PageBreadcrumbs extends StatelessComponent {
 
   /// Extract breadcrumbs from page data.
   ///
-  /// Uses page metadata to generate breadcrumb titles with priority:
-  /// breadcrumb > short-title > title
+  /// Uses page metadata to generate breadcrumb titles with fallbacks:
+  /// breadcrumb >short-title > title.
   List<_BreadcrumbItem>? _breadcrumbsForPage(List<Page> pages, Page page) {
     final pageUrl = page.url;
 
-    // Only show breadcrumbs if we have a non-empty URL.
+    // Only show breadcrumbs if the URL isn't empty.
     if (pageUrl.isEmpty || pageUrl == '/') return null;
 
     final pageData = page.data['page'] as Map<String, Object?>?;
@@ -105,7 +105,7 @@ class PageBreadcrumbs extends StatelessComponent {
       return null;
     }
 
-    // Add the current page as the last breadcrumb.
+    // Add the current page as the final breadcrumb.
     breadcrumbs.add(
       _BreadcrumbItem(
         title: displayTitle,

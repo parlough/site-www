@@ -1,9 +1,9 @@
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
 
+import '../components/cookie_notice.dart';
 import '../components/footer.dart';
 import '../components/header.dart';
-import '../components/notice.dart';
 import '../components/sidenav.dart';
 
 abstract class DashLayout extends PageLayoutBase {
@@ -41,7 +41,6 @@ abstract class DashLayout extends PageLayoutBase {
       yield raw('<script>window.location.replace("$redirectTo");</script>');
     }
 
-    // Customize the Favicon and touch icons.
     yield link(
       rel: 'icon',
       href: '/assets/img/logo/dart-64.png',
@@ -67,7 +66,6 @@ abstract class DashLayout extends PageLayoutBase {
       attributes: {'sizes': '167x167'},
     );
 
-    // Customize the card rendered by Twitter.
     yield meta(name: 'twitter:card', content: 'summary');
     yield meta(name: 'twitter:site', content: '@dart_lang');
     yield meta(name: 'twitter:title', content: pageTitle);
@@ -76,7 +74,6 @@ abstract class DashLayout extends PageLayoutBase {
       content: '${pageData['description']}',
     );
 
-    // Customize the Open Graph meta attributes.
     yield meta(attributes: {'property': 'og:title', 'content': pageTitle});
     yield meta(
       attributes: {
@@ -96,6 +93,7 @@ abstract class DashLayout extends PageLayoutBase {
     yield link(
       rel: 'preconnect',
       href: 'https://fonts.gstatic.com',
+      // TODO(parlough): See if crossorigin should be added upstream.
       attributes: {'crossorigin': ''},
     );
     yield link(
@@ -147,7 +145,7 @@ abstract class DashLayout extends PageLayoutBase {
       [],
     );
 
-    // Set up Google Tag Manager.
+    // Set up tag manager and analytics.
     yield raw('''
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -159,7 +157,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-5VSZM5J');</script>
 ''');
 
-    // Set up Google Analytics.
     yield raw('''
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -189,8 +186,7 @@ ga('send', 'pageview');
       children: [
         Document.body(attributes: {if (bodyClass != null) 'class': bodyClass}),
         raw('''
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VSZM5J"
- height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5VSZM5J" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 '''),
         a(
           id: 'skip-to-main',

@@ -110,7 +110,7 @@ class DashHeader extends StatelessComponent {
               ),
             ],
           ),
-          // Fallback search button
+
           a(
             href: '/search',
             id: 'fallback-search-button',
