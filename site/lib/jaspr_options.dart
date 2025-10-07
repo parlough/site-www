@@ -17,7 +17,8 @@ import 'package:dart_dev_site/src/components/header/theme_switcher.dart'
     as prefix5;
 import 'package:dart_dev_site/src/components/cookie_notice.dart' as prefix6;
 import 'package:dart_dev_site/src/components/copy_button.dart' as prefix7;
-import 'package:dart_dev_site/src/components/feedback.dart' as prefix8;
+import 'package:dart_dev_site/src/components/client/dartpad_injector.dart' as prefix8;
+import 'package:dart_dev_site/src/components/feedback.dart' as prefix9;
 
 /// Default [JasprOptions] for use with your jaspr project.
 ///
@@ -59,9 +60,14 @@ JasprOptions get defaultJasprOptions => JasprOptions(
       params: _prefix7CopyButton,
     ),
 
-    prefix8.FeedbackComponent: ClientTarget<prefix8.FeedbackComponent>(
+    prefix8.DartPadInjector: ClientTarget<prefix8.DartPadInjector>(
+      'src/components/dartpad_injector',
+      params: _prefix8DartPadInjector,
+    ),
+
+    prefix9.FeedbackComponent: ClientTarget<prefix9.FeedbackComponent>(
       'src/components/feedback',
-      params: _prefix8FeedbackComponent,
+      params: _prefix9FeedbackComponent,
     ),
 
     prefix3.MenuToggle: ClientTarget<prefix3.MenuToggle>(
@@ -88,6 +94,13 @@ Map<String, dynamic> _prefix7CopyButton(prefix7.CopyButton c) => {
   'classes': c.classes,
   'title': c.title,
 };
-Map<String, dynamic> _prefix8FeedbackComponent(prefix8.FeedbackComponent c) => {
+Map<String, dynamic> _prefix8DartPadInjector(prefix8.DartPadInjector c) => {
+  'content': c.content,
+  'title': c.title,
+  'theme': c.theme,
+  'height': c.height,
+  'runAutomatically': c.runAutomatically,
+};
+Map<String, dynamic> _prefix9FeedbackComponent(prefix9.FeedbackComponent c) => {
   'issueUrl': c.issueUrl,
 };
