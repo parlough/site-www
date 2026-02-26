@@ -2,6 +2,8 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'dart:convert';
+
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
@@ -23,6 +25,24 @@ class DocLayout extends DashLayout {
   String get name => 'docs';
 
   bool get showTocDefault => true;
+
+  @override
+  Iterable<Component> buildHead(Page page) {
+    final pageData = page.data.page;
+    final prevUrl = _urlFromPageInfo(pageData['prevpage']);
+    final nextUrl = _urlFromPageInfo(pageData['nextpage']);
+
+    return [
+      ...super.buildHead(page),
+      if (prevUrl != null || nextUrl != null) ...[
+        // Use the Speculation Rules API to prerender prev/next pages,
+        // with a prefetch fallback for browsers that don't support it.
+        _speculationRulesScript(prevUrl, nextUrl),
+        if (prevUrl != null) link(rel: 'prefetch', href: prevUrl),
+        if (nextUrl != null) link(rel: 'prefetch', href: nextUrl),
+      ],
+    ];
+  }
 
   @override
   Component buildBody(Page page, Component child) {
@@ -106,4 +126,29 @@ class DocLayout extends DashLayout {
   }
 
   return null;
+}
+
+String? _urlFromPageInfo(Object? data) {
+  if (data case {'url': final String url}) {
+    return url;
+  }
+  return null;
+}
+
+RawText _speculationRulesScript(String? prevUrl, String? nextUrl) {
+  final urls = [
+    if (nextUrl != null) nextUrl,
+    if (prevUrl != null) prevUrl,
+  ];
+
+  final rules = jsonEncode({
+    'prerender': [
+      {'urls': urls},
+    ],
+    'prefetch': [
+      {'urls': urls},
+    ],
+  });
+
+  return RawText('<script type="speculationrules">$rules</script>');
 }
