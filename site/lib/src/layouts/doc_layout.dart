@@ -27,11 +27,12 @@ class DocLayout extends DashLayout {
   @override
   ({Set<String> prerender, Set<String> prefetch}) speculationUrls(Page page) {
     final pageData = page.data.page;
-    final urls = {
-      if (_urlFromPageInfo(pageData['prevpage']) case final url?) url,
-      if (_urlFromPageInfo(pageData['nextpage']) case final url?) url,
-    };
-    return (prerender: urls, prefetch: urls);
+    final prevUrl = _urlFromPageInfo(pageData['prevpage']);
+    final nextUrl = _urlFromPageInfo(pageData['nextpage']);
+    return (
+      prerender: {if (nextUrl case final url?) url},
+      prefetch: {if (prevUrl case final url?) url},
+    );
   }
 
   @override
