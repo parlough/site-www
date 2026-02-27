@@ -268,7 +268,11 @@ if (storedTheme === 'auto-mode') {
     );
   }
 
-  Iterable<Component> _speculationRulesHead(Page page) {
+  /// Builds the speculation rules `<script>` and `<link rel="prefetch">`
+  /// fallback tags based on the URLs returned by [speculationUrls].
+  ///
+  /// Returns an empty list if no URLs are provided.
+  List<Component> _speculationRulesHead(Page page) {
     final (:prerender, :prefetch) = speculationUrls(page);
 
     if (prerender.isEmpty && prefetch.isEmpty) {
