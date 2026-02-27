@@ -32,14 +32,18 @@ class DocLayout extends DashLayout {
     final prevUrl = _urlFromPageInfo(pageData['prevpage']);
     final nextUrl = _urlFromPageInfo(pageData['nextpage']);
 
+    final urls = {
+      if (prevUrl != null) prevUrl,
+      if (nextUrl != null) nextUrl,
+    };
+
     return [
       ...super.buildHead(page),
-      if (prevUrl != null || nextUrl != null) ...[
+      if (urls.isNotEmpty) ...[
         // Use the Speculation Rules API to prerender prev/next pages,
         // with a prefetch fallback for browsers that don't support it.
-        _speculationRulesScript(prevUrl, nextUrl),
-        if (prevUrl != null) link(rel: 'prefetch', href: prevUrl),
-        if (nextUrl != null) link(rel: 'prefetch', href: nextUrl),
+        _speculationRulesScript(prerender: urls, prefetch: urls),
+        for (final url in urls) link(rel: 'prefetch', href: url),
       ],
     ];
   }
@@ -128,6 +132,8 @@ class DocLayout extends DashLayout {
   return null;
 }
 
+/// Extracts and returns the `url` value from a page info map,
+/// or `null` if [data] is not a map or has no `url` entry.
 String? _urlFromPageInfo(Object? data) {
   if (data case {'url': final String url}) {
     return url;
@@ -135,19 +141,17 @@ String? _urlFromPageInfo(Object? data) {
   return null;
 }
 
-RawText _speculationRulesScript(String? prevUrl, String? nextUrl) {
-  final urls = [
-    if (nextUrl != null) nextUrl,
-    if (prevUrl != null) prevUrl,
-  ];
-
+/// Builds an inline `<script type="speculationrules">` element containing
+/// a JSON object with [prerender] and [prefetch] URL lists.
+///
+/// See <https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API>.
+RawText _speculationRulesScript({
+  Set<String> prerender = const {},
+  Set<String> prefetch = const {},
+}) {
   final rules = jsonEncode({
-    'prerender': [
-      {'urls': urls},
-    ],
-    'prefetch': [
-      {'urls': urls},
-    ],
+    if (prerender.isNotEmpty) 'prerender': [{'urls': [...prerender]}],
+    if (prefetch.isNotEmpty) 'prefetch': [{'urls': [...prefetch]}],
   });
 
   return RawText('<script type="speculationrules">$rules</script>');
