@@ -275,17 +275,20 @@ if (storedTheme === 'auto-mode') {
       return const [];
     }
 
-    final allPrefetchUrls = {...prerender, ...prefetch};
+    // Exclude prerendered URLs from the prefetch list since
+    // prerendering is a superset of prefetching.
+    final prefetchOnly = prefetch.difference(prerender);
     final rules = jsonEncode({
       if (prerender.isNotEmpty) 'prerender': [{'urls': [...prerender]}],
-      if (prefetch.isNotEmpty) 'prefetch': [{'urls': [...prefetch]}],
+      if (prefetchOnly.isNotEmpty) 'prefetch': [{'urls': [...prefetchOnly]}],
     });
 
     return [
       RawText('<script type="speculationrules">$rules</script>'),
       // Fall back to prefetch link tags for browsers without
       // Speculation Rules API support.
-      for (final url in allPrefetchUrls) link(rel: 'prefetch', href: url),
+      for (final url in {...prerender, ...prefetch})
+        link(rel: 'prefetch', href: url),
     ];
   }
 
