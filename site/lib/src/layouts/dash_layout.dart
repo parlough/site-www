@@ -28,11 +28,10 @@ abstract class DashLayout extends PageLayoutBase {
 
   String get defaultSidenav => 'default';
 
-  /// Returns URLs to include in a
-  /// [Speculation Rules API](https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API)
-  /// script for the given [page].
+  /// Returns page-specific URLs to eagerly speculate on, in addition to
+  /// the document-level rules that match all internal links.
   ///
-  /// Override in subclasses to provide page-specific URLs for prerendering
+  /// Override in subclasses to provide URLs for eager prerendering
   /// and prefetching. Returns empty sets by default.
   ({Set<String> prerender, Set<String> prefetch}) speculationUrls(Page page) =>
       (prerender: const {}, prefetch: const {});
@@ -269,28 +268,48 @@ if (storedTheme === 'auto-mode') {
   }
 
   /// Builds the speculation rules `<script>` and `<link rel="prefetch">`
-  /// fallback tags based on the URLs returned by [speculationUrls].
+  /// fallback tags for the given [page].
   ///
-  /// Returns an empty list if no URLs are provided.
+  /// Includes page-specific list rules from [speculationUrls] and
+  /// document rules that prefetch internal links on hover (`moderate`)
+  /// and prerender them on click (`conservative`).
+  ///
+  /// Add the `no-prerender` class to a link to exclude it from
+  /// document-level prerendering.
   List<Component> _speculationRulesHead(Page page) {
     final (:prerender, :prefetch) = speculationUrls(page);
-
-    if (prerender.isEmpty && prefetch.isEmpty) {
-      return const [];
-    }
 
     // Exclude prerendered URLs from the prefetch list since
     // prerendering is a superset of prefetching.
     final prefetchOnly = prefetch.difference(prerender);
+
+    // Document rules to match same-origin links across the page.
+    final internalLink = {'href_matches': '/*'};
+    final notNoPrerender = {
+      'not': {'selector_matches': '.no-prerender'},
+    };
+
     final rules = jsonEncode({
-      if (prerender.isNotEmpty)
-        'prerender': [
+      'prefetch': [
+        // Prefetch internal links on hover.
+        {
+          'where': internalLink,
+          'eagerness': 'moderate',
+        },
+        // Prefetch specific URLs from the page eagerly.
+        if (prefetchOnly.isNotEmpty) {'urls': [...prefetchOnly]},
+      ],
+      'prerender': [
+        // Prerender internal links on click,
+        // unless the link has the 'no-prerender' class.
+        {
+          'where': {'and': [internalLink, notNoPrerender]},
+          'eagerness': 'conservative',
+        },
+        // Prerender specific URLs from the page eagerly.
+        if (prerender.isNotEmpty)
           {'urls': [...prerender], 'eagerness': 'eager'},
-        ],
-      if (prefetchOnly.isNotEmpty)
-        'prefetch': [
-          {'urls': [...prefetchOnly]},
-        ],
+      ],
     });
 
     return [
