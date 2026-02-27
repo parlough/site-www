@@ -289,7 +289,7 @@ if (storedTheme === 'auto-mode') {
         ],
       if (prefetchOnly.isNotEmpty)
         'prefetch': [
-          {'urls': [...prefetchOnly], 'eagerness': 'eager'},
+          {'urls': [...prefetchOnly]},
         ],
     });
 
