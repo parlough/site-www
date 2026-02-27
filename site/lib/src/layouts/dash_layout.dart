@@ -28,6 +28,15 @@ abstract class DashLayout extends PageLayoutBase {
 
   String get defaultSidenav => 'default';
 
+  /// Returns URLs to include in a
+  /// [Speculation Rules API](https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API)
+  /// script for the given [page].
+  ///
+  /// Override in subclasses to provide page-specific URLs for prerendering
+  /// and prefetching. Returns empty sets by default.
+  ({Set<String> prerender, Set<String> prefetch}) speculationUrls(Page page) =>
+      (prerender: const {}, prefetch: const {});
+
   @override
   @mustCallSuper
   Iterable<Component> buildHead(Page page) {
@@ -166,6 +175,10 @@ ga('create', 'UA-26406144-4', 'auto');
 ga('send', 'pageview');
 </script>
 '''),
+
+      // Add speculation rules and prefetch fallback links for
+      // URLs provided by subclass overrides of speculationUrls.
+      ..._speculationRulesHead(page),
     ];
   }
 
@@ -253,6 +266,27 @@ if (storedTheme === 'auto-mode') {
         ]),
       ],
     );
+  }
+
+  Iterable<Component> _speculationRulesHead(Page page) {
+    final (:prerender, :prefetch) = speculationUrls(page);
+
+    if (prerender.isEmpty && prefetch.isEmpty) {
+      return const [];
+    }
+
+    final allPrefetchUrls = {...prerender, ...prefetch};
+    final rules = jsonEncode({
+      if (prerender.isNotEmpty) 'prerender': [{'urls': [...prerender]}],
+      if (prefetch.isNotEmpty) 'prefetch': [{'urls': [...prefetch]}],
+    });
+
+    return [
+      RawText('<script type="speculationrules">$rules</script>'),
+      // Fall back to prefetch link tags for browsers without
+      // Speculation Rules API support.
+      for (final url in allPrefetchUrls) link(rel: 'prefetch', href: url),
+    ];
   }
 
   Component? buildBanner(Page page) {

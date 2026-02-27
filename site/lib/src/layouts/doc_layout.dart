@@ -2,8 +2,6 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'dart:convert';
-
 import 'package:jaspr/dom.dart';
 import 'package:jaspr/jaspr.dart';
 import 'package:jaspr_content/jaspr_content.dart';
@@ -27,25 +25,13 @@ class DocLayout extends DashLayout {
   bool get showTocDefault => true;
 
   @override
-  Iterable<Component> buildHead(Page page) {
+  ({Set<String> prerender, Set<String> prefetch}) speculationUrls(Page page) {
     final pageData = page.data.page;
-    final prevUrl = _urlFromPageInfo(pageData['prevpage']);
-    final nextUrl = _urlFromPageInfo(pageData['nextpage']);
-
     final urls = {
-      if (prevUrl != null) prevUrl,
-      if (nextUrl != null) nextUrl,
+      if (_urlFromPageInfo(pageData['prevpage']) case final url?) url,
+      if (_urlFromPageInfo(pageData['nextpage']) case final url?) url,
     };
-
-    return [
-      ...super.buildHead(page),
-      if (urls.isNotEmpty) ...[
-        // Use the Speculation Rules API to prerender prev/next pages,
-        // with a prefetch fallback for browsers that don't support it.
-        _speculationRulesScript(prerender: urls, prefetch: urls),
-        for (final url in urls) link(rel: 'prefetch', href: url),
-      ],
-    ];
+    return (prerender: urls, prefetch: urls);
   }
 
   @override
@@ -139,20 +125,4 @@ String? _urlFromPageInfo(Object? data) {
     return url;
   }
   return null;
-}
-
-/// Builds an inline `<script type="speculationrules">` element containing
-/// a JSON object with [prerender] and [prefetch] URL lists.
-///
-/// See <https://developer.mozilla.org/en-US/docs/Web/API/Speculation_Rules_API>.
-RawText _speculationRulesScript({
-  Set<String> prerender = const {},
-  Set<String> prefetch = const {},
-}) {
-  final rules = jsonEncode({
-    if (prerender.isNotEmpty) 'prerender': [{'urls': [...prerender]}],
-    if (prefetch.isNotEmpty) 'prefetch': [{'urls': [...prefetch]}],
-  });
-
-  return RawText('<script type="speculationrules">$rules</script>');
 }
