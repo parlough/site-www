@@ -283,8 +283,14 @@ if (storedTheme === 'auto-mode') {
     // prerendering is a superset of prefetching.
     final prefetchOnly = prefetch.difference(prerender);
     final rules = jsonEncode({
-      if (prerender.isNotEmpty) 'prerender': [{'urls': [...prerender]}],
-      if (prefetchOnly.isNotEmpty) 'prefetch': [{'urls': [...prefetchOnly]}],
+      if (prerender.isNotEmpty)
+        'prerender': [
+          {'urls': [...prerender], 'eagerness': 'eager'},
+        ],
+      if (prefetchOnly.isNotEmpty)
+        'prefetch': [
+          {'urls': [...prefetchOnly], 'eagerness': 'eager'},
+        ],
     });
 
     return [
